@@ -39,6 +39,9 @@ async fn main {
     println("usage: server STORE PORT [FAILPOINT]")
     raise @storage.Invalid("missing store or port argument")
   }
+  let access = @auth.Access::from_json(
+    @env.get_env_var("MOON_UPLOAD_KEYS").unwrap_or("{}"),
+  )
   let root = args[1]
   let port = @storage.decimal(args[2])
   if port < 1L || port > 65535L {
@@ -73,6 +76,14 @@ async fn main {
           })
           return
         }
+        let owner = match
+          access.authenticate(req.headers.get("authorization")) {
+          Some(owner) => owner
+          None => {
+            reply(conn, 401, headers={ "WWW-Authenticate": "Bearer" })
+            return
+          }
+        }
         let download = req.path.has_suffix("/content")
         if !download && req.headers.get("tus-resumable") != Some("1.0.0") {
           reply(conn, 412, headers={ "Tus-Version": "1.0.0" })
@@ -93,6 +104,12 @@ async fn main {
             return
           }
           let id = store.create(length)
+          @fs.write_file(
+            root + "/" + id + "/owner",
+            owner,
+            sync=Full,
+            create_mode=CreateNew,
+          )
           reply(conn, 201, headers={ "Location": "/files/" + id })
           return
         }
@@ -112,6 +129,11 @@ async fn main {
         let dir = root + "/" + id
         if !@fs.exists(dir + "/manifest.json") {
           reply(conn, 404)
+          return
+        }
+        if !@fs.exists(dir + "/owner") ||
+          @fs.read_file(dir + "/owner").text() != owner {
+          reply(conn, 403)
           return
         }
         if busy.contains(id) {

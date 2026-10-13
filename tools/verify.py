@@ -16,7 +16,9 @@ import time
 
 PROJECT = Path(__file__).resolve().parents[1]
 BINARY = PROJECT / '_build/native/debug/build/cmd/server/server.exe'
-HEADERS = {'Tus-Resumable': '1.0.0'}
+TEST_KEY = 'a' * 64
+OTHER_KEY = 'b' * 64
+HEADERS = {'Tus-Resumable': '1.0.0', 'Authorization': 'Bearer ' + TEST_KEY}
 ACTIVE = []
 
 
@@ -30,7 +32,8 @@ class Server:
         self.log = open(self.store / 'server.log', 'ab')
         self.process = subprocess.Popen(
             [str(BINARY), str(self.store), str(self.port), failpoint],
-            stdout=self.log, stderr=self.log)
+            stdout=self.log, stderr=self.log,
+            env=os.environ | {'MOON_UPLOAD_KEYS': json.dumps({'alice': TEST_KEY, 'bob': OTHER_KEY})})
         ACTIVE.append(self)
         deadline = time.monotonic() + 10
         while time.monotonic() < deadline:
@@ -72,7 +75,7 @@ class Server:
     def download_hash(self, path):
         conn = http.client.HTTPConnection('127.0.0.1', self.port, timeout=30)
         try:
-            conn.request('GET', path + '/content')
+            conn.request('GET', path + '/content', headers=HEADERS)
             r = conn.getresponse()
             assert r.status == 200, r.status
             h = hashlib.sha256()
@@ -101,7 +104,7 @@ def partial_request(server, path, offset=0):
     s = socket.create_connection(('127.0.0.1', server.port))
     header = (
         f'PATCH {path} HTTP/1.1\r\nHost: localhost\r\nTus-Resumable: 1.0.0\r\n'
-        f'Upload-Offset: {offset}\r\nContent-Type: application/offset+octet-stream\r\n'
+        f'Authorization: Bearer {TEST_KEY}\r\nUpload-Offset: {offset}\r\nContent-Type: application/offset+octet-stream\r\n'
         'Content-Length: 1048576\r\n\r\n')
     s.sendall(header.encode() + b'incomplete' * 100)
     return s
@@ -117,6 +120,12 @@ def verify(output, big_mib):
     s = Server(store)
     try:
         p = s.create(11)
+        assert s.request('HEAD', p, headers={'Authorization': ''})[0] == 401
+        assert s.request('PATCH', p, b'bad', headers={'Authorization': 'Bearer ' + OTHER_KEY, 'Upload-Offset': '0', 'Content-Type': 'application/offset+octet-stream'})[0] == 403
+        assert s.request('GET', p + '/content', headers={'Authorization': 'Bearer ' + OTHER_KEY})[0] == 403
+        assert s.request('HEAD', p, headers={'Authorization': 'Bearer ' + OTHER_KEY})[0] == 403
+        assert s.offset(p) == 0
+        passed('anonymous and cross-user access denied without mutations')
         assert s.patch(p, 0, b'hello ')[0] == 204
         assert s.offset(p) == 6
         s.stop(kill=True)
@@ -144,7 +153,8 @@ def verify(output, big_mib):
         assert s.request('HEAD', '/files/../store.lock')[0] == 404
         passed('overflow, size limit and path traversal rejected')
         owner = subprocess.run([str(BINARY), str(store), str(s.port + 1)],
-                               stdout=subprocess.PIPE, stderr=subprocess.PIPE, timeout=5)
+                               stdout=subprocess.PIPE, stderr=subprocess.PIPE, timeout=5,
+                               env=os.environ | {'MOON_UPLOAD_KEYS': json.dumps({'alice': TEST_KEY})})
         assert owner.returncode != 0
         passed('second process cannot open the same store')
         missing = s.create(3)
@@ -156,7 +166,7 @@ def verify(output, big_mib):
             resume = s.create(2 * 1024 * 1024)
             assert s.patch(resume, 0, b'x' * (1024 * 1024))[0] == 204
             result = subprocess.run(['node', str(PROJECT / 'tools/interop.mjs'),
-                                     f'http://127.0.0.1:{s.port}', resume],
+                                     f'http://127.0.0.1:{s.port}', resume, TEST_KEY],
                                     check=True, capture_output=True, text=True, timeout=30)
             passed('standard tus-js-client create + resume', client_result=json.loads(result.stdout))
     finally:

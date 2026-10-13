@@ -2,12 +2,12 @@ import { Upload } from 'tus-js-client';
 import assert from 'node:assert/strict';
 import { createHash } from 'node:crypto';
 
-const [base, resumePath] = process.argv.slice(2);
+const [base, resumePath, token] = process.argv.slice(2);
 const input = Buffer.alloc(2 * 1024 * 1024, 'x');
 async function upload(options) {
   return new Promise((resolve, reject) => {
     const task = new Upload(input, {
-      endpoint: `${base}/files`, chunkSize: 1024 * 1024,
+      endpoint: `${base}/files`, headers: { Authorization: `Bearer ${token}` }, chunkSize: 1024 * 1024,
       retryDelays: [0, 50, 100], storeFingerprintForResuming: false,
       ...options,
       onError: reject, onSuccess: () => resolve(task.url),
@@ -17,10 +17,10 @@ async function upload(options) {
 }
 for (const options of [{}, { uploadUrl: `${base}${resumePath}` }]) {
   const url = await upload(options);
-  const head = await fetch(url, { method: 'HEAD', headers: { 'Tus-Resumable': '1.0.0' } });
+  const head = await fetch(url, { method: 'HEAD', headers: { 'Tus-Resumable': '1.0.0', Authorization: `Bearer ${token}` } });
   assert.equal(head.status, 200);
   assert.equal(head.headers.get('Upload-Offset'), String(input.length));
-  const response = await fetch(`${url}/content`);
+  const response = await fetch(`${url}/content`, {headers: {Authorization: `Bearer ${token}`}});
   assert.equal(response.status, 200);
   const downloaded = Buffer.from(await response.arrayBuffer());
   assert.equal(createHash('sha256').update(downloaded).digest('hex'),

@@ -3,6 +3,7 @@ supported_targets = "native"
 pkgtype(kind: "executable")
 
 import {
+  "kaigeliang/upload/auth",
   "kaigeliang/upload/storage",
   "moonbitlang/async",
   "moonbitlang/async/fs",
