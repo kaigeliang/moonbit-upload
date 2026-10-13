@@ -66,7 +66,11 @@ export async function uploadFile(file, {key, session=null, signal, onSession=()=
 }
 export async function downloadFile(session, key) {
   const r = await check(await fetch(uploadPath(session.path)+'/content', {headers:credentials(key)}));
-  // Browser saves the response body; very large downloads may consume memory.
+  if (Number(r.headers.get('Content-Length')) > 128*1024*1024) {
+    await r.body?.cancel();
+    throw new UploadError('演示页下载仅支持128 MiB以内文件；大文件请用带认证的命令行下载');
+  }
+  // Demo fallback is bounded; full-size downloads use an authenticated CLI.
   const url=URL.createObjectURL(await r.blob());
   const a=document.createElement('a'); a.href=url;a.download=session.file.name;a.click();
   setTimeout(()=>URL.revokeObjectURL(url),60000);

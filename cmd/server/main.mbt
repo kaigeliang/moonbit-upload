@@ -78,6 +78,9 @@ async fn main {
   let store = @storage.Store::open(root)
   defer store.close()
   let busy : Map[String, Bool] = Map([])
+  let web_dir = @env.get_env_var("MOON_UPLOAD_WEB_DIR").unwrap_or(
+    @env.current_dir().unwrap_or(".") + "/web",
+  )
   let server = @http.Server(@socket.Addr::parse("127.0.0.1:" + args[2]))
   defer server.close()
   println("READY 127.0.0.1:" + args[2])
@@ -85,6 +88,32 @@ async fn main {
     (req, body, conn) => {
       defer conn.close()
       try {
+        if req.meth == Get &&
+          (
+            req.path == "/" ||
+            req.path == "/app.mjs" ||
+            req.path == "/client.mjs" ||
+            req.path == "/style.css"
+          ) {
+          let name = if req.path == "/" { "/index.html" } else { req.path }
+          let mime = if req.path == "/" {
+            "text/html; charset=utf-8"
+          } else if req.path == "/style.css" {
+            "text/css; charset=utf-8"
+          } else {
+            "text/javascript; charset=utf-8"
+          }
+          let asset = @fs.read_file(web_dir + name)
+          conn.send_response(200, "OK", extra_headers={
+            "Content-Type": mime,
+            "Content-Security-Policy": "default-src 'self'; script-src 'self'; style-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'none'; frame-ancestors 'none'",
+            "X-Content-Type-Options": "nosniff",
+            "Cache-Control": "no-store",
+          })
+          conn.write(asset)
+          conn.end_response()
+          return
+        }
         if req.path == "/health" && req.meth == Get {
           reply(conn, 200, text="ready")
           return

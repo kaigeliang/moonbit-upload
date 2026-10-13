@@ -1,0 +1,8 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>MoonBit Upload</title><link rel="stylesheet" href="/style.css"></head>
+<body><main>
+<header><span class="badge">MoonBit Upload · 本机演示</span><h1>大文件，接着传。</h1><p>暂停、断网或服务重启后，从服务器已确认的位置继续。</p></header>
+<section aria-labelledby="connect-title"><h2 id="connect-title">连接你的收件箱</h2><form id="connect-form"><label for="key">访问密钥</label><div class="row"><input id="key" type="password" autocomplete="off" spellcheck="false" placeholder="输入管理员提供的访问密钥" required><button id="connect" type="submit">连接</button></div></form><p id="identity" class="muted">密钥只保存在本页内存中，不会写入浏览器存储。</p></section>
+<section aria-labelledby="file-title"><h2 id="file-title">选择文件</h2><label class="file-box" for="file"><strong>选择要上传的文件</strong><span>刷新页面后，请重新选择同一个文件</span><input id="file" type="file" disabled></label><p id="filename" class="muted">尚未选择文件</p><progress id="progress" value="0" max="100" aria-label="上传进度"></progress><div class="row between"><span id="amount">0%</span><span id="status" role="status" aria-live="polite">等待连接</span></div><div class="actions"><button id="start" disabled>开始上传</button><button id="pause" class="secondary" disabled>暂停</button><button id="download" class="secondary" disabled>下载验证文件</button><button id="reset" class="plain">清除本页记录</button></div><p id="resume" class="muted"></p></section>
+<footer>单机磁盘存储 · 当前演示仅在本机开放<br>续传记录按文件名、大小和修改时间匹配；请选择原始文件。完整性请核对下载文件的哈希。</footer>
+</main><script type="module" src="/app.mjs"></script></body></html>
