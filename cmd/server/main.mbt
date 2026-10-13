@@ -81,7 +81,10 @@ async fn main {
   let web_dir = @env.get_env_var("MOON_UPLOAD_WEB_DIR").unwrap_or(
     @env.current_dir().unwrap_or(".") + "/web",
   )
-  let server = @http.Server(@socket.Addr::parse("127.0.0.1:" + args[2]))
+  let server = @http.Server(
+    @socket.Addr::parse("127.0.0.1:" + args[2]),
+    reuse_addr=true,
+  )
   defer server.close()
   println("READY 127.0.0.1:" + args[2])
   server.run_forever(

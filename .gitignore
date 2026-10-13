@@ -5,3 +5,5 @@ output/
 node_modules/
 __pycache__/
 task_plan.md
+
+bin/
