@@ -4,6 +4,7 @@ pub struct Store {
   priv lock : @fs.File
   priv mut sequence : Int64
   priv busy : Map[String, Bool]
+  priv mut creating : Bool
 }
 
 ///|
@@ -23,7 +24,7 @@ pub async fn Store::open(root : String) -> Store {
     lock.close()
     raise Invalid("store is already open")
   }
-  { root, lock, sequence: 0L, busy: Map([]), }
+  { root, lock, sequence: 0L, busy: Map([]), creating: false, }
 }
 
 ///|
@@ -32,7 +33,31 @@ pub fn Store::close(self : Store) -> Unit {
 }
 
 ///|
-pub async fn Store::create(self : Store, length : Int64) -> String {
+pub async fn Store::create(
+  self : Store,
+  length : Int64,
+  quota_bytes~ : Int64 = 17179869184L,
+) -> String {
+  if self.creating {
+    raise Invalid("another creation is in progress")
+  }
+  self.creating = true
+  defer {
+    self.creating = false
+  }
+  let mut reserved = 0L
+  for id in @fs.readdir(self.root) {
+    if safe_id(id) && @fs.exists(self.root + "/" + id + "/manifest.json") {
+      let m = read_manifest(self.root + "/" + id)
+      if m.length > quota_bytes - reserved {
+        raise QuotaExceeded
+      }
+      reserved += m.length
+    }
+  }
+  if length > quota_bytes - reserved {
+    raise QuotaExceeded
+  }
   if length < 0L || length > 17179869184L {
     raise Invalid("file length out of bounds")
   }

@@ -47,6 +47,27 @@ async fn main {
   if port < 1L || port > 65535L {
     raise @storage.Invalid("invalid port")
   }
+  let max_bytes = @storage.decimal(
+    @env.get_env_var("MOON_UPLOAD_MAX_BYTES").unwrap_or("17179869184"),
+  )
+  let max_chunk = @storage.decimal(
+    @env.get_env_var("MOON_UPLOAD_MAX_CHUNK").unwrap_or("8388608"),
+  )
+  let timeout = @storage.decimal(
+    @env.get_env_var("MOON_UPLOAD_TIMEOUT_MS").unwrap_or("30000"),
+  )
+  let quota = @storage.decimal(
+    @env.get_env_var("MOON_UPLOAD_QUOTA_BYTES").unwrap_or("68719476736"),
+  )
+  if max_bytes < 1L ||
+    max_bytes > 17179869184L ||
+    max_chunk < 1L ||
+    max_chunk > 8388608L ||
+    timeout < 100L ||
+    timeout > 120000L ||
+    quota < max_bytes {
+    raise @storage.Invalid("invalid resource limits")
+  }
   let injection = if args.length() > 3 { args[3] } else { "" }
   if !@fs.exists(root) {
     @fs.mkdir(root, recursive=true)
@@ -72,7 +93,7 @@ async fn main {
           reply(conn, 204, headers={
             "Tus-Version": "1.0.0",
             "Tus-Extension": "creation",
-            "Tus-Max-Size": "17179869184",
+            "Tus-Max-Size": max_bytes.to_string(),
           })
           return
         }
@@ -84,6 +105,21 @@ async fn main {
             return
           }
         }
+        if req.path == "/session" && req.meth == Get {
+          reply(
+            conn,
+            200,
+            headers={ "Content-Type": "application/json" },
+            text="{\"owner\":\"" +
+              owner +
+              "\",\"maxBytes\":" +
+              max_bytes.to_string() +
+              ",\"chunkBytes\":" +
+              max_chunk.to_string() +
+              "}",
+          )
+          return
+        }
         let download = req.path.has_suffix("/content")
         if !download && req.headers.get("tus-resumable") != Some("1.0.0") {
           reply(conn, 412, headers={ "Tus-Version": "1.0.0" })
@@ -93,7 +129,7 @@ async fn main {
           let length = @storage.decimal(
             req.headers.get("upload-length").unwrap_or(""),
           )
-          if length > 17179869184L {
+          if length > max_bytes {
             reply(conn, 413)
             return
           }
@@ -103,7 +139,7 @@ async fn main {
             reply(conn, 400)
             return
           }
-          let id = store.create(length)
+          let id = store.create(length, quota_bytes=quota)
           @fs.write_file(
             root + "/" + id + "/owner",
             owner,
@@ -193,15 +229,19 @@ async fn main {
           reply(conn, 409, headers={ "Upload-Offset": m.offset.to_string() })
           return
         }
-        if size <= 0L || size > 8L * 1024L * 1024L || size > m.length - m.offset {
+        if size <= 0L || size > max_chunk || size > m.length - m.offset {
           reply(conn, 413)
           return
         }
-        let next = store.append(id, offset, size.to_int(), body, on_stage=stage => {
-          failpoint(root, injection, stage)
+        let next = @async.with_timeout(timeout.to_int(), () => {
+          store.append(id, offset, size.to_int(), body, on_stage=stage => {
+            failpoint(root, injection, stage)
+          })
         })
         reply(conn, 204, headers={ "Upload-Offset": next.offset.to_string() })
       } catch {
+        @storage.QuotaExceeded => reply(conn, 507) catch { _ => () }
+        @async.TimeoutError => reply(conn, 408) catch { _ => () }
         @storage.Invalid(_) => reply(conn, 400) catch { _ => () }
         _ => reply(conn, 500) catch { _ => () }
       }

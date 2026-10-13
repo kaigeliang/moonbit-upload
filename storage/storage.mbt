@@ -14,6 +14,7 @@ pub(all) struct Manifest {
 
 ///|
 pub(all) suberror UploadError {
+  QuotaExceeded
   Invalid(String)
 }
 
@@ -44,12 +45,18 @@ pub fn safe_id(s : String) -> Bool {
 }
 
 ///|
-pub async fn load_manifest(dir : String) -> Manifest {
+pub async fn read_manifest(dir : String) -> Manifest {
   let text = @fs.read_file(dir + "/manifest.json").text()
   let m : Manifest = @json.from_json(@json.parse(text))
   if m.version != 1 || m.length < 0L || m.offset < 0L || m.offset > m.length {
     raise Invalid("invalid manifest")
   }
+  m
+}
+
+///|
+pub async fn load_manifest(dir : String) -> Manifest {
+  let m = read_manifest(dir)
   let mut sum = 0L
   for chunk in m.chunks {
     if !safe_id(chunk.name) || chunk.size <= 0 || chunk.size > 8 * 1024 * 1024 {

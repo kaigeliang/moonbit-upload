@@ -23,7 +23,7 @@ ACTIVE = []
 
 
 class Server:
-    def __init__(self, store, failpoint=''):
+    def __init__(self, store, failpoint='', limits=None):
         self.store = Path(store)
         self.store.mkdir(parents=True, exist_ok=True)
         with socket.socket() as s:
@@ -33,7 +33,7 @@ class Server:
         self.process = subprocess.Popen(
             [str(BINARY), str(self.store), str(self.port), failpoint],
             stdout=self.log, stderr=self.log,
-            env=os.environ | {'MOON_UPLOAD_KEYS': json.dumps({'alice': TEST_KEY, 'bob': OTHER_KEY})})
+            env=os.environ | {'MOON_UPLOAD_KEYS': json.dumps({'alice': TEST_KEY, 'bob': OTHER_KEY})} | (limits or {}))
         ACTIVE.append(self)
         deadline = time.monotonic() + 10
         while time.monotonic() < deadline:
@@ -171,6 +171,24 @@ def verify(output, big_mib):
             passed('standard tus-js-client create + resume', client_result=json.loads(result.stdout))
     finally:
         s.stop()
+
+    limited = Server(output / 'limits', limits={'MOON_UPLOAD_MAX_BYTES': '1048576', 'MOON_UPLOAD_MAX_CHUNK': '1024', 'MOON_UPLOAD_QUOTA_BYTES': '1048576', 'MOON_UPLOAD_TIMEOUT_MS': '200'})
+    try:
+        p = limited.create(1048576)
+        assert limited.request('POST', '/files', b'', {'Upload-Length': '1'})[0] == 507
+        assert limited.patch(p, 0, b'z' * 1025)[0] == 413
+        sock = socket.create_connection(('127.0.0.1', limited.port))
+        sock.sendall((f'PATCH {p} HTTP/1.1\r\nHost: localhost\r\nAuthorization: Bearer {TEST_KEY}\r\nTus-Resumable: 1.0.0\r\nUpload-Offset: 0\r\nContent-Type: application/offset+octet-stream\r\nContent-Length: 1024\r\n\r\nx').encode())
+        sock.settimeout(3)
+        response = http.client.HTTPResponse(sock)
+        response.begin()
+        assert response.status == 408
+        response.close(); sock.close()
+        assert limited.offset(p) == 0
+        assert limited.patch(p, 0, b'z' * 1024)[0] == 204
+        passed('quota, chunk limit and slow-body timeout preserve upload state')
+    finally:
+        limited.stop()
 
     for stage in ['staged', 'installed', 'committed']:
         store = output / ('crash-' + stage)
