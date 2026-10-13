@@ -1,0 +1,12 @@
+supported_targets = "native"
+
+import {
+  "kaigeliang/upload/sha256",
+  "kaigeliang/upload/storage",
+  "moonbitlang/async",
+  "moonbitlang/async/fs",
+  "moonbitlang/async/http",
+  "moonbitlang/async/stdio",
+  "moonbitlang/core/env",
+  "moonbitlang/core/json",
+}
