@@ -1,9 +1,0 @@
-{
-  "source_sha256": "7019b748bbc39755e2747c7592f55d1e6ae8a70924fb3aab484ed6c95120dc91",
-  "moon_cli": "0.1.20261012",
-  "dependencies": {
-    "moonbitlang/async": "0.22.4"
-  },
-  "verification_report": "output/20261013-184526/verification.json",
-  "notes": "Full 1.25 GiB, standard client and SIGKILL suite rerun after toolchain/dependency migration."
-}

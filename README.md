@@ -92,12 +92,26 @@ HTTP 上传支持恢复，**HTTP 下载目前需要重新开始**。浏览器下
 
 ## 使用前了解这些限制
 
-- 只传单文件，支持 macOS / Linux；没有目录同步、Windows、云存储或中继功能。
+- 只传单文件；没有目录同步、云存储或中继功能。Windows 客户端适配与验证状态见下方。
 - 接收端保留分块和最终文件，成功传输约需文件大小 **2 倍磁盘空间**；没有自动清理功能。
 - SSH 每个协议请求启动一个 SSH 进程，可以沿用 OpenSSH 连接复用配置；尚无吞吐率对比结论。
 - 已验证本机及 Linux CI 中真实 OpenSSH 回环传输，Linux 实际大文件为 **1.25 GiB**；尚未验证跨物理机器、广域网或断电恢复。16 GiB 是单文件配置上限。
 - 进程中断可以恢复，持久化目录损坏或内容身份不匹配会报错；SSH 接收端使用登录账号的文件权限。
 
-功能验证、故障用例和复现步骤见 [验证记录](docs/verification.md) 与 [SSH 验证说明](docs/moonrelay.md#独立验证)。
+[Linux 功能验证](https://github.com/kaigeliang/moonbit-upload/actions/runs/38437898174)覆盖大文件、故障恢复及独立库调用。
 
 Apache-2.0。MoonBit 传输与存储逻辑独立实现；SSH 使用系统 OpenSSH。
+
+## Windows 客户端
+
+Windows 原生客户端适配正在验证，远端仍使用 macOS / Linux。需要系统 OpenSSH 客户端；源码构建需要 MoonBit 与 MSVC C++ Build Tools / Windows SDK（见 [MoonBit 官方说明](https://docs.moonbitlang.com/en/latest/toolchain/moon/package.html)）。在开发者 PowerShell 中运行：
+
+```powershell
+moon update
+./tools/build-cli.ps1
+./bin/moonrelay.exe hash 'C:\data\dataset.zip'
+./bin/moonrelay.exe push 'C:\data\dataset.zip' user@host:/data/dataset.zip --remote-bin /home/user/bin/moonrelay
+./bin/moonrelay.exe pull user@host:/data/model.bin 'C:\data\model.bin' --remote-bin /home/user/bin/moonrelay
+```
+
+本地路径可使用 Windows 盘符。Windows 作为 SSH 接收端尚未支持；远端可执行文件的引用规则针对 Unix shell。Windows CI 检查原生构建、哈希、本地路径和 HTTP 上传下载；Windows 到 Unix 的真实 SSH 传输尚待验证。

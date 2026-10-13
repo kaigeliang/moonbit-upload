@@ -1,4 +1,19 @@
 ///|
+// A drive letter is a local Windows path, not an SSH host.
+pub fn is_remote_address(value : String) -> Bool {
+  let chars = value.to_array()
+  if chars.length() >= 2 &&
+    chars[1] == ':' &&
+    (
+      (chars[0] >= 'A' && chars[0] <= 'Z') ||
+      (chars[0] >= 'a' && chars[0] <= 'z')
+    ) {
+    return false
+  }
+  value.contains(":")
+}
+
+///|
 pub(all) struct Endpoint {
   host : String
   path : String

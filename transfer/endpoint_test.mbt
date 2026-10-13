@@ -14,3 +14,11 @@ test "SSH endpoint rejects options and shell-bearing hosts" {
     }
   }
 }
+
+///|
+test "Windows drive and UNC paths remain local" {
+  assert_eq(@transfer.is_remote_address("C:\\data\\file.bin"), false)
+  assert_eq(@transfer.is_remote_address("D:/data/file.bin"), false)
+  assert_eq(@transfer.is_remote_address("\\\\server\\share\\file.bin"), false)
+  assert_eq(@transfer.is_remote_address("user@host:/data/file.bin"), true)
+}

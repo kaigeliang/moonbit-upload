@@ -1,4 +1,16 @@
 ///|
+#cfg(platform="windows")
+fn default_server_binary() -> String {
+  "./bin/moonrelay-server.exe"
+}
+
+///|
+#cfg(not(platform="windows"))
+fn default_server_binary() -> String {
+  "./bin/moonrelay-server"
+}
+
+///|
 extern "C" fn exit_process(code : Int32) -> Unit = "exit"
 
 ///|
@@ -38,7 +50,7 @@ async fn run() -> Unit {
       raise @transfer.Rejected("serve requires STORE PORT")
     }
     let binary = @env.get_env_var("MOONRELAY_SERVER_BIN").unwrap_or(
-      "./bin/moonrelay-server",
+      default_server_binary(),
     )
     let result = @process.run(
       binary,
@@ -156,13 +168,15 @@ async fn run() -> Unit {
         retries~,
         on_progress=progress,
       )
-    "status" if positional.length() == 1 && !positional[0].contains(":") =>
+    "status" if positional.length() == 1 &&
+      !@transfer.is_remote_address(positional[0]) =>
       @transfer.local_status(positional[0])
     "status" if positional.length() == 1 =>
       @transfer.status(
         @transfer.Endpoint::parse(positional[0], remote_bin~, ssh_config=config),
       )
-    "verify" if positional.length() == 1 && !positional[0].contains(":") => {
+    "verify" if positional.length() == 1 &&
+      !@transfer.is_remote_address(positional[0]) => {
       let info = @transfer.hash_file(positional[0], on_progress=progress)
       if info.sha256 != options.get("--sha256").unwrap_or("") {
         raise @transfer.Rejected("local SHA256 mismatch")

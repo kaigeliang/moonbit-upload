@@ -80,3 +80,34 @@ jobs:
             output/**/failure.json
             output/**/sshd.log
           if-no-files-found: ignore
+
+  windows-client:
+    runs-on: windows-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ilammy/msvc-dev-cmd@v1
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install MoonBit
+        shell: pwsh
+        run: |
+          irm https://cli.moonbitlang.com/install/powershell.ps1 | iex
+          "$env:USERPROFILE\.moon\bin" >> $env:GITHUB_PATH
+      - name: Build and check native Windows client
+        shell: pwsh
+        run: |
+          moon update
+          if ($LASTEXITCODE -ne 0) { throw 'Dependency resolution failed' }
+          moon check --target native --deny-warn
+          if ($LASTEXITCODE -ne 0) { throw 'Native check failed' }
+          moon test --target native
+          if ($LASTEXITCODE -ne 0) { throw 'Tests failed' }
+          ./tools/build-cli.ps1
+      - name: Native Windows file and HTTP workflows
+        run: python tools/windows-verify.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: moonrelay-windows-client
+          path: bin/*.exe
