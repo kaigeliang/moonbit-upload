@@ -1,0 +1,7 @@
+supported_targets = "native"
+
+import {
+  "moonbitlang/async/fs",
+  "moonbitlang/async/io",
+  "moonbitlang/core/json",
+}
