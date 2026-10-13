@@ -26,7 +26,7 @@ The fault harness waits for a marker at the chosen stage, sends SIGKILL to the e
 The OS releases the exclusive store advisory lock when that child dies.
 
 ## Scope of durability
-This is process-crash recovery on local macOS/APFS. It is not a proof of power-loss durability: directory entries are not synced, and network filesystems/other OSes are untested.
+This is process-crash recovery tested with large files on local macOS/APFS and small files on Linux CI. It is not a proof of power-loss durability: directory entries are not synced, and network filesystems, Windows, and large files on Linux are untested.
 An external writer modifying the store is outside the locking contract. Same-sized corrupt content is not detected internally.
 
 ## Scaling
@@ -34,4 +34,4 @@ Request buffering is bounded by a 64 KiB read plus transport buffers, independen
 The JSON manifest and its chunk array grow with the number of PATCHes; validation checks all committed chunk sizes on each access. These metadata costs are not constant.
 
 ## Next engineering gates
-Extract reusable library APIs; verify Linux; add request timeout/quotas, storage-integrity policy, orphan cleanup, and user-level access control before any public endpoint.
+Extract reusable library APIs; verify large files on Linux; add request timeout/quotas, storage-integrity policy, orphan cleanup, and user-level access control before any public endpoint.

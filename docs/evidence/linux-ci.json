@@ -1,0 +1,76 @@
+{
+  "passed": true,
+  "checks": [
+    {
+      "name": "committed prefix survives SIGKILL and resumes",
+      "passed": true
+    },
+    {
+      "name": "stale offset cannot overwrite committed bytes",
+      "passed": true
+    },
+    {
+      "name": "interrupted HTTP body does not advance offset",
+      "passed": true
+    },
+    {
+      "name": "zero-byte file",
+      "passed": true
+    },
+    {
+      "name": "overflow, size limit and path traversal rejected",
+      "passed": true
+    },
+    {
+      "name": "second process cannot open the same store",
+      "passed": true
+    },
+    {
+      "name": "missing committed chunk fails closed",
+      "passed": true
+    },
+    {
+      "name": "standard tus-js-client create + resume",
+      "passed": true,
+      "client_result": {
+        "passed": true,
+        "client": "tus-js-client@4.3.1",
+        "cases": [
+          "create and upload",
+          "resume pre-existing partially uploaded resource"
+        ]
+      }
+    },
+    {
+      "name": "concurrent PATCH rejected while upload is busy",
+      "passed": true
+    },
+    {
+      "name": "SIGKILL at staged",
+      "passed": true,
+      "recovered_offset": 3,
+      "client_errors": [
+        "RemoteDisconnected"
+      ]
+    },
+    {
+      "name": "SIGKILL at installed",
+      "passed": true,
+      "recovered_offset": 3,
+      "client_errors": [
+        "RemoteDisconnected"
+      ]
+    },
+    {
+      "name": "SIGKILL at committed",
+      "passed": true,
+      "recovered_offset": 6,
+      "client_errors": [
+        "RemoteDisconnected"
+      ]
+    }
+  ],
+  "big_mib": 0,
+  "scope": "local single-process SIGKILL recovery; not power-loss durability",
+  "platform": "Linux"
+}
