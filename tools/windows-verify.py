@@ -4,12 +4,13 @@ import json
 import os
 from pathlib import Path
 import socket
+import signal
 import subprocess
 import tempfile
 import time
 
 ROOT = Path(__file__).resolve().parents[1]
-CLI = ROOT / 'bin/moonrelay.exe'
+CLI = ROOT / ('bin/moonrelay.exe' if os.name == 'nt' else 'bin/moonrelay')
 KEY = os.urandom(32).hex()
 ENV = os.environ | {'MOON_UPLOAD_KEYS': json.dumps({'test': KEY}), 'MOON_UPLOAD_KEY': KEY}
 
@@ -23,7 +24,7 @@ with tempfile.TemporaryDirectory(prefix='moonrelay-windows-') as folder:
     source = base / 'source with spaces.bin'
     source.write_bytes(bytes(range(256)) * 262144 + b'tail')
     expected = hashlib.sha256(source.read_bytes()).hexdigest()
-    assert json.loads(run('hash', source).stdout)['sha256'] == expected
+    assert run('hash', source).stdout.decode().strip() == expected
     assert json.loads(run('verify', source, '--sha256', expected).stdout)['sha256'] == expected
     run('verify', source, '--sha256', '0' * 64, ok=False)
     # A drive path must be handled locally, even if it has no restore directory.
@@ -33,7 +34,7 @@ with tempfile.TemporaryDirectory(prefix='moonrelay-windows-') as folder:
         sock.bind(('127.0.0.1', 0))
         port = sock.getsockname()[1]
     server = subprocess.Popen([str(CLI), 'serve', str(base / 'store'), str(port)], cwd=ROOT, env=ENV,
-                              stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+                              stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL, start_new_session=os.name != 'nt')
     try:
         for _ in range(100):
             assert server.poll() is None, 'HTTP receiver exited'
@@ -54,5 +55,8 @@ with tempfile.TemporaryDirectory(prefix='moonrelay-windows-') as folder:
         print('PASS: Windows native hash, drive paths, HTTP serve/upload/status/download/verify (64 MiB)', flush=True)
     finally:
         # serve launches its own receiver; terminate the owned process tree on Windows.
-        subprocess.run(['taskkill', '/PID', str(server.pid), '/T', '/F'], capture_output=True)
+        if os.name == 'nt':
+            subprocess.run(['taskkill', '/PID', str(server.pid), '/T', '/F'], capture_output=True)
+        else:
+            os.killpg(server.pid, signal.SIGTERM)
         server.wait(timeout=15)

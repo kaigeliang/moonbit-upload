@@ -57,7 +57,7 @@ SSH 下载同样支持断点恢复。中断后重跑命令，保留本地 `model
 ./bin/moonrelay verify ./model.bin --sha256 TRUSTED_SHA256
 ```
 
-远端 `verify` 也可使用 `--remote-bin`。远端程序已在 PATH 中时可省略该参数；已有 SSH 配置可通过 `--ssh-config FILE` 使用。进度写入 stderr，结果以 JSON 写入 stdout，方便脚本读取。[完整命令与恢复说明](docs/moonrelay.md)。
+远端 `verify` 也可使用 `--remote-bin`。远端程序已在 PATH 中时可省略该参数；已有 SSH 配置可通过 `--ssh-config FILE` 使用。进度写入 stderr，传输回执与 SSH 状态以 JSON 写入 stdout（`hash` 返回纯哈希，HTTP `verify` 返回文本），方便脚本读取。[完整命令与恢复说明](docs/moonrelay.md)。
 
 ## HTTP 上传与浏览器演示
 
