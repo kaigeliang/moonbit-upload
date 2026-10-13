@@ -25,3 +25,11 @@
 当前 GitHub 工作流覆盖 Linux 单元测试、公共 API 调用和完整 1.25 GiB HTTP/崩溃回归，结果以对应运行 receipt 为准。旧的 linux-ci.json、large-file.json、interop-and-crashes.json 和 source-receipt.json 保留为先前原型历史，不能代表本轮新增功能。
 
 未验证 Windows、断电、网络文件系统、同长度内容篡改检测、TLS/公网部署、多节点、性能上限或赛事验收。用户自行撰写赛事申报书，提交数量和本地/CI 结果均不等于赛事认定或获奖。
+
+## 原生 CLI — 0.2.0
+
+报告：[`native-cli-macos.json`](evidence/native-cli-macos.json)。实际 1.25 GiB 文件由原生 CLI 上传：256 MiB 以上时杀死 CLI 和服务，在同一端口重启并用原记录恢复；第二次上传过程中再次杀死服务，运行中的 CLI 自动重试 HEAD 并恢复。上传自动流式核对远端 SHA-256；随后 CLI 下载完整大文件，与独立 Python SHA-256 一致。
+
+额外黑盒验证覆盖进度输出、已完成上传不重复创建、独立 hash/verify 命令、哈希错误不产生最终文件、已有目标不覆盖、同大小内容变化/错误用户拒绝续传、外部路径/无效记录/缺失密钥拒绝、空文件。SHA-256 标准向量与百万个 a 的增量测试通过，服务/browser 原有 15 项小型回归通过。
+
+CLI 使用 release 构建；上传和下载流式处理。当前只对上传提供断点恢复，下载中断需从头重试。CLI 文档见 [`cli.md`](cli.md)。Linux 工作流同时运行原有完整服务回归和 CLI 1.25 GiB 用例，最终状态以对应运行收据为准。

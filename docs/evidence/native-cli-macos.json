@@ -1,0 +1,47 @@
+{
+  "passed": true,
+  "platform": "Darwin",
+  "big_mib": 1280,
+  "checks": [
+    {
+      "name": "native CLI hash, progress, upload verification and completed resume reuse",
+      "passed": true
+    },
+    {
+      "name": "download publishes only hash-verified exact bytes and verify command",
+      "passed": true
+    },
+    {
+      "name": "hash mismatch and existing destination never publish or overwrite",
+      "passed": true
+    },
+    {
+      "name": "same-size content change and wrong owner refuse saved upload",
+      "passed": true
+    },
+    {
+      "name": "malformed receipt, external paths, invalid origin and missing key rejected",
+      "passed": true
+    },
+    {
+      "name": "zero-byte native CLI upload verifies empty SHA256",
+      "passed": true
+    },
+    {
+      "name": "CLI SIGKILL and service restart preserve committed prefix",
+      "passed": true,
+      "offset": 268435456
+    },
+    {
+      "name": "live CLI automatically reconnects after server restart and verifies large upload",
+      "passed": true,
+      "bytes": 1342177280,
+      "sha256": "41e3e47b68ab26afc6838c2d8c17f198f589de77307402daf1fb3c6e9d3cf095"
+    },
+    {
+      "name": "native large download matches independent Python SHA256",
+      "passed": true,
+      "bytes": 1342177280
+    }
+  ]
+}

@@ -28,10 +28,13 @@ jobs:
           moon check --target native --deny-warn
           moon test --target native
           moon build --target native
+          moon build --target native --release
           moon run cmd/consumer --target native
           npm ci --prefix tools --ignore-scripts
       - name: HTTP interoperability and process crash recovery
         run: python3 tools/verify.py --big-mib 1280
+      - name: Native CLI large upload, restart, download and hash verification
+        run: python3 tools/cli-verify.py --big-mib 1280
       - uses: actions/upload-artifact@v4
         if: always()
         with:
@@ -40,4 +43,6 @@ jobs:
             output/**/verification.json
             output/**/failure.json
             output/**/server.log
+            output/**/large-cli.log
+            output/**/resume-cli.log
           if-no-files-found: ignore

@@ -1,6 +1,6 @@
 # MoonBit Upload
 
-原生 MoonBit 断点续传库与 HTTP 服务。分块以固定缓冲区写入磁盘，只有清单原子提交后才确认新偏移。提供可复用的存储 API、Bearer 访问控制和同源浏览器演示。
+原生 MoonBit 断点续传库与 HTTP 服务。分块以固定缓冲区写入磁盘，只有清单原子提交后才确认新偏移。提供可复用的存储 API、Bearer 访问控制、正式原生 CLI 和同源浏览器演示。
 
 支持已知长度的 tus 1.0 Core + Creation 子集、单机磁盘存储和完成文件下载。当前为可验证原型，尚未提交赛事验收。
 
@@ -22,6 +22,22 @@ export MOON_UPLOAD_KEYS="$(python3 -c 'import json,secrets; print(json.dumps({"a
 密钥只保存在页面内存；浏览器存储仅保存上传路径、用户和文件名/大小/修改时间。文件匹配不是内容哈希校验。浏览器下载验证按钮限制为 128 MiB，大文件请使用 HTTP 客户端流式下载并计算哈希。
 
 ![实际浏览器上传完成](docs/evidence/browser-demo.jpg)
+
+## CLI 使用
+
+```sh
+tools/build-cli.sh
+# MOON_UPLOAD_KEY 为管理员提供的用户密钥
+bin/moon-upload upload ./large.bin
+# 同一命令再次运行会从服务器已确认偏移恢复
+bin/moon-upload upload ./large.bin
+# ID 从上传返回的 receipt 中取得
+a=12
+bin/moon-upload download "$a" ./download.bin --receipt ./large.bin.moon-upload.json
+bin/moon-upload hash ./download.bin
+```
+
+CLI 支持大文件流式上传、进度、内容哈希绑定的续传记录、服务重启自动重连、下载与 SHA-256 验证。上传成功前自动核对远端完整内容；下载验证成功才生成最终文件，已有目标不会覆盖。运行时不需要 Python/Node，浏览器保留为辅助演示。[完整 CLI 文档](docs/cli.md)说明密钥配置、退出码、重试和下载边界。
 
 ## 库接口
 
@@ -81,8 +97,10 @@ moon fmt --check
 moon check --target native --deny-warn
 moon test --target native
 moon build --target native
+moon build --target native --release
 moon run cmd/consumer --target native
 python3 tools/verify.py --big-mib 1280
+python3 tools/cli-verify.py --big-mib 1280
 ```
 
 测试启动独立端口与存储，仅终止自身创建的子进程。大文件用例约需 2.5 GiB 可用空间，保留上传分块和 JSON 报告，删除自身生成的源文件。Node/Python 只用于独立验证，不参与 MoonBit 服务运行。

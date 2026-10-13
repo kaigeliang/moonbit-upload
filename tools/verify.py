@@ -23,12 +23,15 @@ ACTIVE = []
 
 
 class Server:
-    def __init__(self, store, failpoint='', limits=None):
+    def __init__(self, store, failpoint='', limits=None, port=None):
         self.store = Path(store)
         self.store.mkdir(parents=True, exist_ok=True)
-        with socket.socket() as s:
-            s.bind(('127.0.0.1', 0))
-            self.port = s.getsockname()[1]
+        if port is None:
+            with socket.socket() as s:
+                s.bind(('127.0.0.1', 0))
+                self.port = s.getsockname()[1]
+        else:
+            self.port = port
         self.log = open(self.store / 'server.log', 'ab')
         self.process = subprocess.Popen(
             [str(BINARY), str(self.store), str(self.port), failpoint],
