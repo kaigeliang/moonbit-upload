@@ -1,0 +1,13 @@
+supported_targets = "native"
+
+pkgtype(kind: "executable")
+
+import {
+  "moonbitlang/async/process",
+  "kaigeliang/upload/storage",
+  "kaigeliang/upload/transfer",
+  "kaigeliang/upload/httpclient",
+  "moonbitlang/async",
+  "moonbitlang/async/stdio",
+  "moonbitlang/core/env",
+}
