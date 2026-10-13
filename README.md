@@ -1,118 +1,103 @@
-# MoonRelay — MoonBit 可靠文件传输库
+# MoonRelay — MoonBit 可靠文件传输库与 CLI
 
-原生 MoonBit 断点续传库与 HTTP 服务。分块以固定缓冲区写入磁盘，只有清单原子提交后才确认新偏移。提供可复用的存储 API、Bearer 访问控制、正式原生 CLI 和同源浏览器演示。
+把大文件传到另一台电脑，或从远端取回结果。MoonRelay 提供进度显示、SSH 双向断点续传和 SHA-256 校验，也提供可在 MoonBit 应用中直接调用的传输接口。
 
-支持已知长度的 tus 1.0 Core + Creation 子集、单机磁盘存储和完成文件下载。当前为可验证原型，尚未提交赛事验收。
+适合你能登录、能安装程序的 macOS / Linux 机器：例如上传数据集到计算服务器、取回模型和实验结果，或在两台电脑之间传送大文件。SSH 登录和加密使用系统 OpenSSH；分块、恢复状态与内容校验由 MoonBit 实现。
 
-## 快速启动
+## 安装
 
-已验证 MoonBit CLI `0.1.20261012`、async `0.22.4`。需要系统支持原生文件锁。
+当前版本 **0.3.0**，需要从源码构建，尚未提供预编译安装包或 Mooncakes 发布包。构建需要 Git 和 MoonBit CLI；已验证的 MoonBit CLI 版本为 `0.1.20261012`。
 
 ```sh
+git clone https://github.com/kaigeliang/moonbit-upload.git
+cd moonbit-upload
 moon update
-moon test --target native
-moon build --target native
-# 每次生成随机密钥；不要使用测试脚本中的固定密钥
-export MOON_UPLOAD_KEYS="$(python3 -c 'import json,secrets; print(json.dumps({"alice":secrets.token_hex(32)}))')"
-./_build/native/debug/build/cmd/server/server.exe ./data 4176
-```
-
-打开 <http://127.0.0.1:4176>，把配置中 alice 的密钥输入页面，连接后选择文件即可上传。暂停后点击继续；刷新或服务重启后，重新输入密钥并选择原文件。服务固定监听本机回环地址，同一目录只允许一个进程打开。
-
-密钥只保存在页面内存；浏览器存储仅保存上传路径、用户和文件名/大小/修改时间。文件匹配不是内容哈希校验。浏览器下载验证按钮限制为 128 MiB，大文件请使用 HTTP 客户端流式下载并计算哈希。
-
-![实际浏览器上传完成](docs/evidence/browser-demo.jpg)
-
-## 统一 CLI
-
-```sh
 tools/build-cli.sh
-bin/moonrelay push ./dataset.zip user@host:/data/dataset.zip
-bin/moonrelay pull user@host:/data/dataset.zip ./copy.zip
-bin/moonrelay status user@host:/data/dataset.zip
-bin/moonrelay verify user@host:/data/dataset.zip --sha256 TRUSTED_SHA256
-bin/moonrelay hash ./copy.zip
+./bin/moonrelay --version
 ```
 
-SSH 两端预装程序，复用系统 OpenSSH；可指定 --remote-bin 和 --ssh-config。push/pull 都支持恢复，远端文件路径通过协议传递，验证成功后才生成最终文件。也可以用 push/pull/status/verify 操作 HTTP 地址，保留原 upload/download 命令、HTTP 服务与浏览器。[详细命令、API、恢复规则及边界](docs/moonrelay.md)。
+运行构建后的 CLI 不需要 MoonBit、Python 或 Node。SSH 传输需要**两端分别构建安装**匹配版本的 `moonrelay`，macOS 二进制不能直接用于 Linux。先确认普通 SSH 登录可用，并已配置密钥和主机信任；CLI 不进行密码交互。
 
-公共 `kaigeliang/upload/transfer` 提供 push/pull/status/verify/hash_file 与 Progress 回调。`examples/library-consumer` 用独立模块直接调用 API。[原 HTTP CLI 文档](docs/cli.md)保留为兼容说明。
+下面的例子假设远端程序位于 `/home/user/moonbit-upload/bin/moonrelay`，远端 `/data` 目录已存在且可写。请换成自己的账号、机器和路径。
 
-## 库接口
-
-`kaigeliang/upload/storage` 提供 `Store::open`、`create`、`snapshot`、`append`、`download` 和 `close`。`append` 接受 `io.Reader`，`download` 接受 `io.Writer`，可接文件或 HTTP 流。每次调用会校验偏移、规范分块序列及实际文件大小；同资源并发追加被拒绝。
-
-可运行的独立调用包：
+## 上传大文件
 
 ```sh
-moon run cmd/consumer --target native
+./bin/moonrelay push ./dataset.zip user@host:/data/dataset.zip \
+  --remote-bin /home/user/moonbit-upload/bin/moonrelay
 ```
 
-示例会通过公共接口创建上传、写入前半段、关闭并重新打开存储、续传和下载核对。更多说明见 [库与访问控制](docs/api.md)。库提供磁盘存储机制，HTTP 身份验证和资源所有权检查由服务层承担。
+终端显示进度；连接中断会自动重试。退出终端或接收进程被终止后，**重跑同一条命令**继续传输。请保留原文件内容，以及目标旁的 `dataset.zip.moonrelay/` 恢复目录。
 
-## HTTP 与权限
+接收完成后会核对完整 SHA-256，校验通过才生成最终文件。已有同名文件默认拒绝覆盖；本工具已完成且内容仍匹配的文件可以复用。
 
-- `POST /files`：带 `Upload-Length` 创建上传，响应 `Location`。
-- `HEAD /files/ID`：查询服务器已提交偏移。
-- `PATCH /files/ID`：带 `Upload-Offset` 和 `Content-Type: application/offset+octet-stream` 追加非空分块。
-- `GET /files/ID/content`：仅可下载完整文件。
-- `GET /session`：返回当前用户与容量限制。
-
-以上请求必须有 `Authorization: Bearer KEY`；tus 请求还需 `Tus-Resumable: 1.0.0`。匿名请求返回 401，访问其他用户的资源返回 403。用户 ID 持久化在上传目录，重启和同用户密钥轮换后仍保持所有权。旧版没有所有权记录的上传会拒绝访问。
+## 下载结果
 
 ```sh
-# KEY 为启动配置中的实际密钥
-curl -i -X POST http://127.0.0.1:4176/files \
-  -H "Authorization: Bearer $KEY" -H 'Tus-Resumable: 1.0.0' \
-  -H 'Upload-Length: 3' -d ''
-# 用响应 Location 替换 /files/1
-curl -i -X PATCH http://127.0.0.1:4176/files/1 \
-  -H "Authorization: Bearer $KEY" -H 'Tus-Resumable: 1.0.0' \
-  -H 'Upload-Offset: 0' -H 'Content-Type: application/offset+octet-stream' \
-  --data-binary 'abc'
-curl -H "Authorization: Bearer $KEY" http://127.0.0.1:4176/files/1/content
+./bin/moonrelay pull user@host:/data/model.bin ./model.bin \
+  --remote-bin /home/user/moonbit-upload/bin/moonrelay
 ```
 
-`/health`、协议 OPTIONS 和静态演示页面公开；上传及下载内容始终受权限检查。
+SSH 下载同样支持断点恢复。中断后重跑命令，保留本地 `model.bin.moonrelay/`，远端源文件内容须保持一致。
 
-## 限制配置
-
-| 环境变量 | 默认 | 含义 |
-|---|---:|---|
-| `MOON_UPLOAD_KEYS` | 必填 | 用户 ID 到 64 位小写十六进制密钥的 JSON 映射 |
-| `MOON_UPLOAD_MAX_BYTES` | 16 GiB | 单文件上限，可降低 |
-| `MOON_UPLOAD_MAX_CHUNK` | 8 MiB | 每个 PATCH 上限，可降低 |
-| `MOON_UPLOAD_QUOTA_BYTES` | 64 GiB | 全库按声明文件长度预留的容量 |
-| `MOON_UPLOAD_TIMEOUT_MS` | 30000 | PATCH 整体超时，范围 100–120000 ms |
-| `MOON_UPLOAD_WEB_DIR` | `./web` | 演示资源目录 |
-
-额度是所有用户共享的预留容量，并非实时磁盘剩余空间或每用户配额。没有删除/自动回收接口，未完成上传也占用预留额度。
-
-## 验证与证据
+## 查进度、核对文件
 
 ```sh
-npm ci --prefix tools --ignore-scripts
-moon fmt --check
-moon check --target native --deny-warn
-moon test --target native
-moon build --target native
-moon build --target native --release
-moon run cmd/consumer --target native
-python3 tools/verify.py --big-mib 1280
-python3 tools/cli-verify.py --big-mib 1280
+# 查看上传目标状态
+./bin/moonrelay status user@host:/data/dataset.zip \
+  --remote-bin /home/user/moonbit-upload/bin/moonrelay
+
+# 查看本工具下载任务的本地状态
+./bin/moonrelay status ./model.bin
+
+# 计算任意本地文件的 SHA-256
+./bin/moonrelay hash ./model.bin
+
+# 与你事先保存的可信哈希比较；替换 TRUSTED_SHA256 为实际哈希
+./bin/moonrelay verify ./model.bin --sha256 TRUSTED_SHA256
 ```
 
-测试启动独立端口与存储，仅终止自身创建的子进程。大文件用例约需 2.5 GiB 可用空间，保留上传分块和 JSON 报告，删除自身生成的源文件。Node/Python 只用于独立验证，不参与 MoonBit 服务运行。
+远端 `verify` 也可使用 `--remote-bin`。远端程序已在 PATH 中时可省略该参数；已有 SSH 配置可通过 `--ssh-config FILE` 使用。进度写入 stderr，结果以 JSON 写入 stdout，方便脚本读取。[完整命令与恢复说明](docs/moonrelay.md)。
 
-[验证记录](docs/verification.md)包含实际 1.25 GiB 上传、256 MiB 时 SIGKILL 恢复、两次下载 SHA-256、标准 tus-js-client、浏览器客户端暂停恢复、用户隔离、配额、超时、并发和三个提交窗口测试。真实浏览器完成了 28 MiB 文件上传、下载哈希核对与刷新后会话恢复。
+## HTTP 上传与浏览器演示
 
-## 当前边界
+需要浏览器选文件上传时，可以运行本机 HTTP 服务。先设置用户密钥（每个密钥为随机生成的 64 位小写十六进制字符串）：
 
-- 单机、单进程、可信本机目录；没有 TLS、CORS、公开部署、S3、多节点、下载续传或其他 tus 扩展。
-- 文件 sync 和原子 rename 已验证进程崩溃恢复；没有目录 fsync 或断电测试。
-- 检查分块序列、存在性和大小；同长度内容篡改不由内部校验发现。端到端 SHA-256 在外部验证端计算。
-- 浏览器依赖原文件重新选择与元数据匹配；刷新后不会自动恢复访问密钥。
-- 没有孤儿块/目录回收、每用户配额、审计系统或公网安全评估。单文件 16 GiB 是配置上限，实际验证到 1.25 GiB。
-- 包已公开在 GitHub，尚未发布到 Mooncakes。提交数量和测试通过不代表赛事验收或获奖。
+```sh
+export MOON_UPLOAD_KEYS='{"alice":"替换为实际随机密钥"}'
+./bin/moonrelay serve ./data 4176
+```
 
-Apache-2.0。协议及磁盘提交逻辑独立实现，未复制 MoonTusCore 代码。
+打开 <http://127.0.0.1:4176>，输入密钥并选择文件。可以暂停、继续；刷新或重启服务后，需要重新输入密钥并选择原文件。上述密钥占位内容必须替换才能启动服务。
+
+![浏览器上传演示](docs/evidence/browser-demo.jpg)
+
+CLI 也能访问这个服务：
+
+```sh
+export MOON_UPLOAD_KEY='替换为同一用户的实际密钥'
+./bin/moonrelay push ./dataset.zip http://127.0.0.1:4176
+# 用上传结果中的实际资源地址替换 /files/12
+./bin/moonrelay pull http://127.0.0.1:4176/files/12 ./copy.zip \
+  --receipt ./dataset.zip.moon-upload.json
+```
+
+HTTP 上传支持恢复，**HTTP 下载目前需要重新开始**。浏览器下载验证限制为 128 MiB；更大文件使用 CLI。HTTP 服务固定监听本机回环地址。权限、密钥和配置见 [HTTP 使用说明](docs/cli.md) 与 [访问控制说明](docs/api.md)。
+
+## 在 MoonBit 应用中使用
+
+公共 `kaigeliang/upload/transfer` 包提供 `push`、`pull`、`status`、`verify`、`hash_file` 和进度回调，供应用直接传文件；`storage`、`httpclient`、`sha256` 提供存储与 HTTP 集成接口，当前面向 native 目标。
+
+查看 [API 与接入示例](docs/moonrelay.md#公共-api) 和 [独立调用项目](examples/library-consumer)。尚未发布 Mooncakes，示例通过本地 workspace 接入源码。
+
+## 使用前了解这些限制
+
+- 只传单文件，支持 macOS / Linux；没有目录同步、Windows、云存储或中继功能。
+- 接收端保留分块和最终文件，成功传输约需文件大小 **2 倍磁盘空间**；没有自动清理功能。
+- SSH 每个协议请求启动一个 SSH 进程，可以沿用 OpenSSH 连接复用配置；尚无吞吐率对比结论。
+- 已验证本机及 Linux CI 中真实 OpenSSH 回环传输，Linux 实际大文件为 **1.25 GiB**；尚未验证跨物理机器、广域网或断电恢复。16 GiB 是单文件配置上限。
+- 进程中断可以恢复，持久化目录损坏或内容身份不匹配会报错；SSH 接收端使用登录账号的文件权限。
+
+功能验证、故障用例和复现步骤见 [验证记录](docs/verification.md) 与 [SSH 验证说明](docs/moonrelay.md#独立验证)。
+
+Apache-2.0。MoonBit 传输与存储逻辑独立实现；SSH 使用系统 OpenSSH。

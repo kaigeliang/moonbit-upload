@@ -6,7 +6,7 @@ license = "Apache-2.0"
 
 preferred_target = "native"
 
-description = "Persistent resumable upload library with authenticated HTTP and browser demo"
+description = "MoonBit reliable file transfer library and CLI with SSH resume, SHA-256 verification and authenticated HTTP"
 
 import {
   "moonbitlang/async@0.22.4",
