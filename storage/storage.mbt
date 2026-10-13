@@ -48,10 +48,30 @@ pub fn safe_id(s : String) -> Bool {
 pub async fn read_manifest(dir : String) -> Manifest {
   let text = @fs.read_file(dir + "/manifest.json").text()
   let m : Manifest = @json.from_json(@json.parse(text))
+  validate_manifest(m)
+  m
+}
+
+///|
+pub fn validate_manifest(m : Manifest) -> Unit raise UploadError {
   if m.version != 1 || m.length < 0L || m.offset < 0L || m.offset > m.length {
     raise Invalid("invalid manifest")
   }
-  m
+  let mut sum = 0L
+  for chunk in m.chunks {
+    if chunk.name != sum.to_string() ||
+      chunk.size <= 0 ||
+      chunk.size > 8 * 1024 * 1024 {
+      raise Invalid("invalid chunk sequence")
+    }
+    if chunk.size.to_int64() > m.length - sum {
+      raise Invalid("invalid sum")
+    }
+    sum += chunk.size.to_int64()
+  }
+  if sum != m.offset {
+    raise Invalid("offset mismatch")
+  }
 }
 
 ///|
