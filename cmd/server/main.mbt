@@ -1,12 +1,12 @@
 ///|
 struct Chunk {
   name : String
-  size : Int
+  size : Int32
 } derive(ToJson, FromJson)
 
 ///|
 struct Manifest {
-  version : Int
+  version : Int32
   length : Int64
   offset : Int64
   chunks : Array[Chunk]
@@ -101,9 +101,9 @@ async fn failpoint(root : String, configured : String, stage : String) -> Unit {
 ///|
 async fn reply(
   conn : @http.ServerConnection,
-  code : Int,
-  headers? : Map[String, String] = {},
-  text? : String = "",
+  code : Int32,
+  headers~ : @http.Headers = {},
+  text~ : String = "",
 ) -> Unit {
   let h = headers.copy()
   h["Tus-Resumable"] = "1.0.0"
@@ -121,7 +121,7 @@ async fn main {
   let args = @env.args()
   if args.length() < 3 {
     println("usage: server STORE PORT [FAILPOINT]")
-    @sys.exit(2)
+    raise Invalid("missing store or port argument")
   }
   let root = args[1]
   let port = decimal(args[2])

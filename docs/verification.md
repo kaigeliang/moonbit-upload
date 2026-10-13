@@ -11,8 +11,8 @@
 - 256 MiB 时发出未完成的 PATCH，再 SIGKILL 服务；同目录新进程恢复的偏移为已提交的 256 MiB。
 - 续传完成后的下载、完成后再次重启的下载均与源文件 SHA-256 一致。
 - SHA-256：`41e3e47b68ab26afc6838c2d8c17f198f589de77307402daf1fb3c6e9d3cf095`。
-- 上传、故障恢复、两次下载核对的整体阶段耗时 67.8 秒。不是单独上传吞吐量 benchmark。
-- 每 128 MiB 通过系统 `ps` 采样服务 RSS，3,424–4,272 KiB；仅为采样值，未测连续峰值。
+- 上传、故障恢复、两次下载核对的整体阶段耗时 82.48 秒。不是单独上传吞吐量 benchmark。
+- 每 128 MiB 通过系统 `ps` 采样服务 RSS，3,472–4,224 KiB；仅为采样值，未测连续峰值。
 - 测试删除自己的生成源文件，保留上传数据和原始报告。
 
 ## 故障与互操作验证
@@ -36,7 +36,7 @@
 | tus-js-client 恢复已有部分上传 | HEAD 后续传成功，下载哈希正确 |
 
 `moon check --target native --deny-warn` 与 native 构建通过。
-大文件用例完成后仅运行过格式化，没有服务器语义修改。格式化源代码的哈希与依赖记录见 [`source-receipt.json`](evidence/source-receipt.json)。
+本轮已在 MoonBit 0.1.20261012 / async 0.22.4 完成兼容性修复后重新运行全部大文件、互操作和崩溃验证。当前源代码的哈希与依赖记录见 [`source-receipt.json`](evidence/source-receipt.json)。
 
 ## 尚未证明
 

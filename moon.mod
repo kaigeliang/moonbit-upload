@@ -9,6 +9,5 @@ preferred_target = "native"
 description = "Persistent resumable upload service prototype for MoonBit"
 
 import {
-  "moonbitlang/async@0.19.0",
-  "moonbitlang/x@0.5.5",
+  "moonbitlang/async@0.22.4",
 }

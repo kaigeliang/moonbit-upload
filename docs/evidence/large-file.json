@@ -30,6 +30,18 @@
       "passed": true
     },
     {
+      "name": "standard tus-js-client create + resume",
+      "passed": true,
+      "client_result": {
+        "passed": true,
+        "client": "tus-js-client@4.3.1",
+        "cases": [
+          "create and upload",
+          "resume pre-existing partially uploaded resource"
+        ]
+      }
+    },
+    {
       "name": "concurrent PATCH rejected while upload is busy",
       "passed": true
     },
@@ -62,50 +74,50 @@
       "passed": true,
       "bytes": 1342177280,
       "sha256": "41e3e47b68ab26afc6838c2d8c17f198f589de77307402daf1fb3c6e9d3cf095",
-      "elapsed_seconds": 67.8,
+      "elapsed_seconds": 82.48,
       "rss_samples": [
         {
           "offset": 134217728,
-          "rss_kib": 3824
+          "rss_kib": 4016
         },
         {
           "offset": 268435456,
-          "rss_kib": 3888
+          "rss_kib": 3472
         },
         {
           "offset": 402653184,
-          "rss_kib": 3840
+          "rss_kib": 4048
         },
         {
           "offset": 536870912,
-          "rss_kib": 3984
+          "rss_kib": 4224
         },
         {
           "offset": 671088640,
-          "rss_kib": 4032
+          "rss_kib": 3648
         },
         {
           "offset": 805306368,
-          "rss_kib": 4064
+          "rss_kib": 3696
         },
         {
           "offset": 939524096,
-          "rss_kib": 4096
+          "rss_kib": 3728
         },
         {
           "offset": 1073741824,
-          "rss_kib": 4192
+          "rss_kib": 3824
         },
         {
           "offset": 1207959552,
-          "rss_kib": 4272
+          "rss_kib": 3904
         },
         {
           "offset": 1342177280,
-          "rss_kib": 3424
+          "rss_kib": 3904
         }
       ],
-      "max_sampled_rss_kib": 4272
+      "max_sampled_rss_kib": 4224
     }
   ],
   "big_mib": 1280,
