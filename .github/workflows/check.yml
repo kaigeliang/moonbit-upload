@@ -36,5 +36,8 @@ jobs:
         if: always()
         with:
           name: linux-prototype-verification
-          path: output/
+          path: |
+            output/**/verification.json
+            output/**/failure.json
+            output/**/server.log
           if-no-files-found: ignore
