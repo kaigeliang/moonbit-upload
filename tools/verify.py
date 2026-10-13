@@ -169,6 +169,10 @@ def verify(output, big_mib):
                                      f'http://127.0.0.1:{s.port}', resume, TEST_KEY],
                                     check=True, capture_output=True, text=True, timeout=30)
             passed('standard tus-js-client create + resume', client_result=json.loads(result.stdout))
+            result = subprocess.run(['node', str(PROJECT / 'tools/client-test.mjs'),
+                                     f'http://127.0.0.1:{s.port}', TEST_KEY, OTHER_KEY],
+                                    check=True, capture_output=True, text=True, timeout=30)
+            passed('browser client pause/resume and identity guards', client_result=json.loads(result.stdout))
     finally:
         s.stop()
 
