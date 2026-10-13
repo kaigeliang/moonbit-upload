@@ -80,6 +80,14 @@ def main():
  destination=out/'pulled.bin';result=json.loads(run('pull',endpoint,destination).stdout)
  assert result['complete'] and hashlib.sha256(destination.read_bytes()).hexdigest()==expected
  passed('CLI SSH orchestration push, pull, status, verify and large-file hashes')
+ large_sha=expected
+ # Keep one full-size pair; equivalent recovery/consumer checks use smaller fixtures.
+ if args.big_mib>64:
+  small=out/'fault-source.bin'
+  with source.open('rb') as f:small.write_bytes(f.read(64*1048576))
+  source=small;expected=hashlib.sha256(source.read_bytes()).hexdigest()
+  remote=out/'fault-remote.bin';endpoint=f'{args.host}:{remote}'
+  run('push',source,endpoint)
  # Restart a partially persisted pull from independent protocol-created local prefix.
  resumed=out/'resumed.bin';request('open',resumed,length=source.stat().st_size,sha=expected)
  prefix=source.read_bytes()[:8388608];request('write',resumed,prefix,source.stat().st_size,expected,0,len(prefix))
@@ -116,10 +124,11 @@ def main():
   passed('unified HTTP push, pull, status and verify reuse existing authenticated library')
  finally:server.stop()
  if args.consumer:
-  subprocess.run([str(ROOT/'tools/consumer-verify.sh'),str(source),f'{args.host}:{out/"consumer-remote.bin"}',str(out/'consumer-pull.bin'),str(CLI),args.ssh_config or '-'],env=env,check=True,timeout=600)
-  assert hashlib.sha256((out/'consumer-pull.bin').read_bytes()).hexdigest()==expected
+  consumer_source=out/'consumer-source.bin';consumer_source.write_bytes(data)
+  subprocess.run([str(ROOT/'tools/consumer-verify.sh'),str(consumer_source),f'{args.host}:{out/"consumer-remote.bin"}',str(out/'consumer-pull.bin'),str(CLI),args.ssh_config or '-'],env=env,check=True,timeout=600)
+  assert hashlib.sha256((out/'consumer-pull.bin').read_bytes()).hexdigest()==sha
   passed('independent MoonBit module directly calls public push/pull API and progress callbacks')
- report=dict(passed=True,platform=os.uname().sysname,mode='real-ssh' if args.ssh_config else 'local-ssh-shim',big_mib=args.big_mib,checks=checks)
+ report=dict(passed=True,platform=os.uname().sysname,mode='real-ssh' if args.ssh_config else 'local-ssh-shim',big_mib=args.big_mib,large_sha256=large_sha,recovery_mib=min(args.big_mib,64),consumer_bytes=len(data) if args.consumer else 0,checks=checks)
  (out/'verification.json').write_text(json.dumps(report,indent=2)+'\n');print('REPORT',out/'verification.json',flush=True)
  if fixture:fixture.close()
 if __name__=='__main__': main()

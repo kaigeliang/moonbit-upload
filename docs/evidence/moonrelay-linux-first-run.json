@@ -1,0 +1,43 @@
+{
+  "platform": "Linux",
+  "mode": "real-ssh",
+  "source_head": "30e7f66048f40661f404b0ae59cdb8cd7d286a5d",
+  "run_url": "https://github.com/kaigeliang/moonbit-upload/actions/runs/38434004466",
+  "full_run_passed": false,
+  "reason": "20-minute CI deadline reached during independent consumer after 8 successful checks",
+  "completed_checks": [
+    {
+      "name": "actual receiver SIGKILL preserves committed prefix",
+      "passed": true
+    },
+    {
+      "name": "bounded RPC append, stale offsets, incomplete body, restart resume and verified publication",
+      "passed": true
+    },
+    {
+      "name": "changed content, hash mismatch and existing destination fail without overwrite",
+      "passed": true
+    },
+    {
+      "name": "oversized protocol header rejected without reading arbitrary payload",
+      "passed": true
+    },
+    {
+      "name": "CLI SSH orchestration push, pull, status, verify and large-file hashes",
+      "passed": true
+    },
+    {
+      "name": "pull uses existing committed chunks and verifies before final publication",
+      "passed": true
+    },
+    {
+      "name": "live push and pull recover lost commit response and truncated download packet",
+      "passed": true
+    },
+    {
+      "name": "unified HTTP push, pull, status and verify reuse existing authenticated library",
+      "passed": true
+    }
+  ],
+  "big_mib": 1280
+}

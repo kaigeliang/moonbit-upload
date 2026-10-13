@@ -122,3 +122,5 @@ python3 tools/relay-verify.py --real-ssh --big-mib 1280 --consumer
 用例覆盖实际接收进程 SIGKILL、提交前缀恢复、截断请求、丢失已提交响应、截断下载包、双向恢复、内容绑定、hash 错误不发布、已有目标保护、含空格和多个引号的远端可执行文件名、HTTP 统一入口及独立 MoonBit 调用项目。
 
 没有 Windows、断电、WAN、端到端吞吐率上限或公网安全评估的结论。自动重试不保证所有错误都能恢复；持久化目录损坏和身份不匹配必须处理原始错误。
+
+验证规模说明：Linux 大文件用例保留实际 1.25 GiB 的 SSH push/pull 与独立哈希核对；重复的故障/恢复矩阵使用 64 MiB，独立模块接入使用约 1 MiB。报告分别记录 big_mib、recovery_mib、consumer_bytes。首轮把所有重复用例都设为 1.25 GiB，在大文件与故障检查通过后于 consumer 阶段触及 20 分钟 CI 时限；不将该超时轮次视为完整验收成功。
