@@ -1,0 +1,6 @@
+{
+  "name": "moonbit-upload-verification",
+  "private": true,
+  "type": "module",
+  "devDependencies": { "tus-js-client": "4.3.1" }
+}

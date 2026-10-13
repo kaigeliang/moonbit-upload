@@ -1,0 +1,114 @@
+{
+  "passed": true,
+  "checks": [
+    {
+      "name": "committed prefix survives SIGKILL and resumes",
+      "passed": true
+    },
+    {
+      "name": "stale offset cannot overwrite committed bytes",
+      "passed": true
+    },
+    {
+      "name": "interrupted HTTP body does not advance offset",
+      "passed": true
+    },
+    {
+      "name": "zero-byte file",
+      "passed": true
+    },
+    {
+      "name": "overflow, size limit and path traversal rejected",
+      "passed": true
+    },
+    {
+      "name": "second process cannot open the same store",
+      "passed": true
+    },
+    {
+      "name": "missing committed chunk fails closed",
+      "passed": true
+    },
+    {
+      "name": "concurrent PATCH rejected while upload is busy",
+      "passed": true
+    },
+    {
+      "name": "SIGKILL at staged",
+      "passed": true,
+      "recovered_offset": 3,
+      "client_errors": [
+        "RemoteDisconnected"
+      ]
+    },
+    {
+      "name": "SIGKILL at installed",
+      "passed": true,
+      "recovered_offset": 3,
+      "client_errors": [
+        "RemoteDisconnected"
+      ]
+    },
+    {
+      "name": "SIGKILL at committed",
+      "passed": true,
+      "recovered_offset": 6,
+      "client_errors": [
+        "RemoteDisconnected"
+      ]
+    },
+    {
+      "name": "large actual file upload + interrupted request + restart + SHA256",
+      "passed": true,
+      "bytes": 1342177280,
+      "sha256": "41e3e47b68ab26afc6838c2d8c17f198f589de77307402daf1fb3c6e9d3cf095",
+      "elapsed_seconds": 67.8,
+      "rss_samples": [
+        {
+          "offset": 134217728,
+          "rss_kib": 3824
+        },
+        {
+          "offset": 268435456,
+          "rss_kib": 3888
+        },
+        {
+          "offset": 402653184,
+          "rss_kib": 3840
+        },
+        {
+          "offset": 536870912,
+          "rss_kib": 3984
+        },
+        {
+          "offset": 671088640,
+          "rss_kib": 4032
+        },
+        {
+          "offset": 805306368,
+          "rss_kib": 4064
+        },
+        {
+          "offset": 939524096,
+          "rss_kib": 4096
+        },
+        {
+          "offset": 1073741824,
+          "rss_kib": 4192
+        },
+        {
+          "offset": 1207959552,
+          "rss_kib": 4272
+        },
+        {
+          "offset": 1342177280,
+          "rss_kib": 3424
+        }
+      ],
+      "max_sampled_rss_kib": 4272
+    }
+  ],
+  "big_mib": 1280,
+  "scope": "local single-process SIGKILL recovery; not power-loss durability",
+  "platform": "Darwin"
+}

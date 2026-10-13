@@ -1,0 +1,9 @@
+{
+  "source_sha256": "382887749d570be898884cfc82f80136fa7e2d6486160c0640251e4d410a484b",
+  "moon_cli": "0.1.20260920",
+  "dependencies": {
+    "moonbitlang/async": "0.19.0",
+    "moonbitlang/x": "0.5.5"
+  },
+  "notes": "Large-file verification preceded moon fmt only; no semantic source change after those tests. Interop report is a separate black-box run. Source snapshot describes formatted source."
+}

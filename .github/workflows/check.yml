@@ -1,0 +1,38 @@
+name: Native prototype checks
+on:
+  push:
+  pull_request:
+permissions:
+  contents: read
+jobs:
+  linux:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install MoonBit
+        run: |
+          curl -fsSL https://cli.moonbitlang.com/install/unix.sh | bash
+          echo "$HOME/.moon/bin" >> "$GITHUB_PATH"
+      - name: Resolve and build
+        run: |
+          moon version --all
+          moon update
+          moon fmt --check
+          moon check --target native --deny-warn
+          moon build --target native
+          npm ci --prefix tools --ignore-scripts
+      - name: HTTP interoperability and process crash recovery
+        run: python3 tools/verify.py --big-mib 0
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: linux-prototype-verification
+          path: output/
+          if-no-files-found: ignore
