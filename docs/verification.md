@@ -1,47 +1,27 @@
-# 原型验证记录 — 2026-10-13
+# 验证记录 — 2026-10-13
 
-结论：macOS 大文件与进程崩溃验证通过；Linux 编译、标准客户端和小文件进程崩溃验证也已通过。仍不等于生产可用、断电持久性、赛事验收或获奖。
+当前库、认证、限制和浏览器客户端在 macOS 上通过完整验证。报告：[`current-verification.json`](evidence/current-verification.json)，源代码范围与浏览器人工测试记录：[`current-source-receipt.json`](evidence/current-source-receipt.json)。
 
-## 大文件实际验证
+## 实际大文件
 
-报告：[`evidence/large-file.json`](evidence/large-file.json)。
+- 大小：1,342,177,280 字节（1.25 GiB），源文件实际写入磁盘，8 MiB 分块上传。
+- 256 MiB 时发送不完整请求并 SIGKILL；重启 HEAD 返回已提交的 256 MiB，随后续传。
+- 上传完成与再次重启后两次下载 SHA-256 均一致：`41e3e47b68ab26afc6838c2d8c17f198f589de77307402daf1fb3c6e9d3cf095`。
+- 整体上传、恢复与下载核对阶段：78.49 秒；并非单独吞吐率 benchmark。
+- 每 128 MiB 离散 RSS 采样：3,936–4,416 KiB，不代表连续峰值或生产保证。
 
-- 先在磁盘生成非空、随位置变化的 1.25 GiB 源文件，再从磁盘读取并以 8 MiB PATCH 上传。
-- 总大小：1,342,177,280 字节。
-- 256 MiB 时发出未完成的 PATCH，再 SIGKILL 服务；同目录新进程恢复的偏移为已提交的 256 MiB。
-- 续传完成后的下载、完成后再次重启的下载均与源文件 SHA-256 一致。
-- SHA-256：`41e3e47b68ab26afc6838c2d8c17f198f589de77307402daf1fb3c6e9d3cf095`。
-- 上传、故障恢复、两次下载核对的整体阶段耗时 82.48 秒。不是单独上传吞吐量 benchmark。
-- 每 128 MiB 通过系统 `ps` 采样服务 RSS，3,472–4,224 KiB；仅为采样值，未测连续峰值。
-- 测试删除自己的生成源文件，保留上传数据和原始报告。
+## 回归测试
 
-## 故障与互操作验证
+16 个黑盒检查通过：匿名/跨用户拒绝；SIGKILL 后续传；旧偏移拒绝；不完整请求不推进；空文件；数字/大小/路径限制；目录独占锁；缺失已提交块失败；tus-js-client 创建/恢复；浏览器客户端暂停/恢复与身份/路径检查；配额/分块限制/慢请求超时；并发 PATCH 拒绝；staged/installed/committed 三个真实 SIGKILL 窗口；实际大文件。
 
-报告：[`evidence/interop-and-crashes.json`](evidence/interop-and-crashes.json)。
+3 个 MoonBit 单元测试通过：密钥轮换与稳定用户、非法配置拒绝、重复/乱序/非规范分块清单拒绝。公共接口独立调用包 cmd/consumer 完成创建、追加、关闭重开、续传和下载字节核对。native check --deny-warn、fmt 和构建通过。
 
-| 验证 | 观察结果 |
-|---|---|
-| 提交前缀后 SIGKILL | 原偏移恢复，继续上传后字节正确 |
-| 请求体提前断开 | 偏移不增加，再传成功 |
-| 暂存分块后 SIGKILL | 保留旧偏移，重传后结果正确 |
-| 安装分块后 SIGKILL | 未提交块不计入偏移，重传正确 |
-| 清单提交后、响应前 SIGKILL | 恢复新偏移，无需重传已提交块 |
-| 同资源并发 PATCH | 第二个请求 409，不覆盖第一请求 |
-| 旧偏移 PATCH | 409，内容保持原样 |
-| 第二进程打开同目录 | 独占锁阻止启动 |
-| 已提交分块丢失 | HEAD 不返回成功偏移 |
-| 空文件 | 创建、下载与空内容哈希正确 |
-| 数字溢出、总大小超限、路径越界 | 拒绝 |
-| tus-js-client 4.3.1 新建上传 | 成功，下载哈希正确 |
-| tus-js-client 恢复已有部分上传 | HEAD 后续传成功，下载哈希正确 |
+## 浏览器人工验证
 
-`moon check --target native --deny-warn` 与 native 构建通过。
-本轮已在 MoonBit 0.1.20261012 / async 0.22.4 完成兼容性修复后重新运行全部大文件、互操作和崩溃验证。当前源代码的哈希与依赖记录见 [`source-receipt.json`](evidence/source-receipt.json)。
+真实浏览器完成 28 MiB 合成文件上传、下载，SHA-256 与源文件相同。无效密钥拒绝；刷新后密钥为空、续传记录仍在；重新连接并选择同一文件后通过 HEAD 恢复已完成会话。截图见 [`browser-demo.jpg`](evidence/browser-demo.jpg)。暂停/部分续传由独立客户端黑盒测试覆盖；本次人工点击暂停前小文件已上传完成，因此不宣称人工暂停测试通过。
 
-## 尚未证明
+## 平台与边界
 
-Linux 大文件／Windows、断电、网络文件系统、生产认证、慢连接超时、存储配额、同长度内容篡改检测、公开浏览器跨域接入和性能上限。tus 的其他扩展未实现。
+当前 GitHub 工作流覆盖 Linux 单元测试、公共 API 调用和完整 1.25 GiB HTTP/崩溃回归，结果以对应运行 receipt 为准。旧的 linux-ci.json、large-file.json、interop-and-crashes.json 和 source-receipt.json 保留为先前原型历史，不能代表本轮新增功能。
 
-## Linux CI
-
-[运行 38385760700](https://github.com/kaigeliang/moonbit-upload/actions/runs/38385760700)在提交 `32014ff5f87eb22e8205e82588b487a611f8923b` 上成功。实际报告见 [`evidence/linux-ci.json`](evidence/linux-ci.json)，12项检查通过，包括 tus-js-client、三个 SIGKILL 窗口及磁盘独占锁。该 CI 使用 `--big-mib 0`，不证明 Linux 大文件验证。
+未验证 Windows、断电、网络文件系统、同长度内容篡改检测、TLS/公网部署、多节点、性能上限或赛事验收。用户自行撰写赛事申报书，提交数量和本地/CI 结果均不等于赛事认定或获奖。

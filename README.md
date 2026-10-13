@@ -1,77 +1,101 @@
-# MoonBit Upload — 磁盘断点续传原型
+# MoonBit Upload
 
-原生 MoonBit HTTP 服务。上传以有限大小的分块落盘，只有上传清单原子提交后才确认新的偏移；中断或服务进程被强制终止后，可以查询已提交偏移并继续上传。
+原生 MoonBit 断点续传库与 HTTP 服务。分块以固定缓冲区写入磁盘，只有清单原子提交后才确认新偏移。提供可复用的存储 API、Bearer 访问控制和同源浏览器演示。
 
-当前版本为本地原型。支持已知文件长度的 tus 1.0 上传子集、单机磁盘存储和完成文件下载。并非完整 tus 实现，也不承诺生产环境或断电恢复。
+支持已知长度的 tus 1.0 Core + Creation 子集、单机磁盘存储和完成文件下载。当前为可验证原型，尚未提交赛事验收。
 
-## 已验证
+## 快速启动
 
-- **1.25 GiB（1,342,177,280 字节）实际文件**：上传途中在 256 MiB 时 SIGKILL，重启后续传成功。
-- 完成后下载、再次重启后重新下载，SHA-256 都与原始文件一致。
-- 分块暂存完成、分块安装完成、清单提交完成三个位置的实际 SIGKILL 测试通过。
-- 上传请求未传完即断开时，偏移不前进；旧偏移和并发写入不覆盖已提交数据。
-- `tus-js-client@4.3.1` 直接创建上传，并恢复一个已有的部分上传，均通过。
-- 上传过程每 128 MiB 采样一次的服务 RSS 为 **3,472–4,224 KiB**。这是本机 debug 构建的离散采样，不是峰值内存上界或性能承诺。
-
-小型、可保留的报告见 [验证报告](docs/verification.md) 和 `docs/evidence/`。原始上传分块保存在被 Git 忽略的 `output/` 中。
-
-## 启动
-
-使用已验证的 MoonBit CLI `0.1.20261012`，依赖固定为 async 0.22.4。
+已验证 MoonBit CLI `0.1.20261012`、async `0.22.4`。需要系统支持原生文件锁。
 
 ```sh
 moon update
+moon test --target native
 moon build --target native
+# 每次生成随机密钥；不要使用测试脚本中的固定密钥
+export MOON_UPLOAD_KEYS="$(python3 -c 'import json,secrets; print(json.dumps({"alice":secrets.token_hex(32)}))')"
 ./_build/native/debug/build/cmd/server/server.exe ./data 4176
 ```
 
-服务固定监听 `127.0.0.1`。一个存储目录只能由一个服务进程持有；冲突的第二个进程会拒绝启动。用 Ctrl-C 停止前台服务。
+打开 <http://127.0.0.1:4176>，把配置中 alice 的密钥输入页面，连接后选择文件即可上传。暂停后点击继续；刷新或服务重启后，重新输入密钥并选择原文件。服务固定监听本机回环地址，同一目录只允许一个进程打开。
 
-## HTTP 使用
+密钥只保存在页面内存；浏览器存储仅保存上传路径、用户和文件名/大小/修改时间。文件匹配不是内容哈希校验。浏览器下载验证按钮限制为 128 MiB，大文件请使用 HTTP 客户端流式下载并计算哈希。
+
+![实际浏览器上传完成](docs/evidence/browser-demo.jpg)
+
+## 库接口
+
+`kaigeliang/upload/storage` 提供 `Store::open`、`create`、`snapshot`、`append`、`download` 和 `close`。`append` 接受 `io.Reader`，`download` 接受 `io.Writer`，可接文件或 HTTP 流。每次调用会校验偏移、规范分块序列及实际文件大小；同资源并发追加被拒绝。
+
+可运行的独立调用包：
 
 ```sh
-# 创建长度为 11 字节的上传，响应 Location 中取得 /files/ID
-curl -i -X POST http://127.0.0.1:4176/files \
-  -H 'Tus-Resumable: 1.0.0' -H 'Upload-Length: 11' -d ''
-
-# 用上一步实际返回的 ID 替换下方 1
-curl -i -X PATCH http://127.0.0.1:4176/files/1 \
-  -H 'Tus-Resumable: 1.0.0' -H 'Upload-Offset: 0' \
-  -H 'Content-Type: application/offset+octet-stream' --data-binary 'hello '
-
-# 此时停止服务、用同一存储目录重启，再查询偏移，应为 6
-curl -I http://127.0.0.1:4176/files/1 -H 'Tus-Resumable: 1.0.0'
-
-curl -i -X PATCH http://127.0.0.1:4176/files/1 \
-  -H 'Tus-Resumable: 1.0.0' -H 'Upload-Offset: 6' \
-  -H 'Content-Type: application/offset+octet-stream' --data-binary 'world'
-
-curl http://127.0.0.1:4176/files/1/content
+moon run cmd/consumer --target native
 ```
 
-每次 PATCH 必须有 Content-Length，分块为 1–8 MiB 以内的非空内容（不限于整 MiB）；文件上限配置为 16 GiB，但当前实际验证到 1.25 GiB。元数据暂不保存，文件名不用于磁盘路径。只有完整上传的文件可下载。
+示例会通过公共接口创建上传、写入前半段、关闭并重新打开存储、续传和下载核对。更多说明见 [库与访问控制](docs/api.md)。库提供磁盘存储机制，HTTP 身份验证和资源所有权检查由服务层承担。
 
-## 独立复现
+## HTTP 与权限
 
-需要 Python 3、Node.js 和 npm；Node 依赖仅用于标准客户端测试，不参与服务运行。
+- `POST /files`：带 `Upload-Length` 创建上传，响应 `Location`。
+- `HEAD /files/ID`：查询服务器已提交偏移。
+- `PATCH /files/ID`：带 `Upload-Offset` 和 `Content-Type: application/offset+octet-stream` 追加非空分块。
+- `GET /files/ID/content`：仅可下载完整文件。
+- `GET /session`：返回当前用户与容量限制。
+
+以上请求必须有 `Authorization: Bearer KEY`；tus 请求还需 `Tus-Resumable: 1.0.0`。匿名请求返回 401，访问其他用户的资源返回 403。用户 ID 持久化在上传目录，重启和同用户密钥轮换后仍保持所有权。旧版没有所有权记录的上传会拒绝访问。
+
+```sh
+# KEY 为启动配置中的实际密钥
+curl -i -X POST http://127.0.0.1:4176/files \
+  -H "Authorization: Bearer $KEY" -H 'Tus-Resumable: 1.0.0' \
+  -H 'Upload-Length: 3' -d ''
+# 用响应 Location 替换 /files/1
+curl -i -X PATCH http://127.0.0.1:4176/files/1 \
+  -H "Authorization: Bearer $KEY" -H 'Tus-Resumable: 1.0.0' \
+  -H 'Upload-Offset: 0' -H 'Content-Type: application/offset+octet-stream' \
+  --data-binary 'abc'
+curl -H "Authorization: Bearer $KEY" http://127.0.0.1:4176/files/1/content
+```
+
+`/health`、协议 OPTIONS 和静态演示页面公开；上传及下载内容始终受权限检查。
+
+## 限制配置
+
+| 环境变量 | 默认 | 含义 |
+|---|---:|---|
+| `MOON_UPLOAD_KEYS` | 必填 | 用户 ID 到 64 位小写十六进制密钥的 JSON 映射 |
+| `MOON_UPLOAD_MAX_BYTES` | 16 GiB | 单文件上限，可降低 |
+| `MOON_UPLOAD_MAX_CHUNK` | 8 MiB | 每个 PATCH 上限，可降低 |
+| `MOON_UPLOAD_QUOTA_BYTES` | 64 GiB | 全库按声明文件长度预留的容量 |
+| `MOON_UPLOAD_TIMEOUT_MS` | 30000 | PATCH 整体超时，范围 100–120000 ms |
+| `MOON_UPLOAD_WEB_DIR` | `./web` | 演示资源目录 |
+
+额度是所有用户共享的预留容量，并非实时磁盘剩余空间或每用户配额。没有删除/自动回收接口，未完成上传也占用预留额度。
+
+## 验证与证据
 
 ```sh
 npm ci --prefix tools --ignore-scripts
+moon fmt --check
 moon check --target native --deny-warn
+moon test --target native
 moon build --target native
-python3 tools/verify.py --big-mib 0     # HTTP、SIGKILL、标准客户端
-python3 tools/verify.py --big-mib 1280  # 加上 1.25 GiB 实际文件和哈希验证
+moon run cmd/consumer --target native
+python3 tools/verify.py --big-mib 1280
 ```
 
-每次验证使用新 `output/时间戳/`，启动独立端口，并只终止自己创建的进程。大文件用例约需 2.5 GiB 可用磁盘空间；测试后删除自己生成的源文件，保留服务上传分块和报告。不删除其他路径。
+测试启动独立端口与存储，仅终止自身创建的子进程。大文件用例约需 2.5 GiB 可用空间，保留上传分块和 JSON 报告，删除自身生成的源文件。Node/Python 只用于独立验证，不参与 MoonBit 服务运行。
 
-## 原型边界
+[验证记录](docs/verification.md)包含实际 1.25 GiB 上传、256 MiB 时 SIGKILL 恢复、两次下载 SHA-256、标准 tus-js-client、浏览器客户端暂停恢复、用户隔离、配额、超时、并发和三个提交窗口测试。真实浏览器完成了 28 MiB 文件上传、下载哈希核对与刷新后会话恢复。
 
-- 单服务进程、可信本机目录。未做认证、CORS、TLS、公开部署、S3、多节点或下载断点续传。
-- 没有目录 fsync 和断电测试；文件 sync 与原子 rename 只支持本轮已验证的进程崩溃恢复结论。
-- 检查已提交分块存在且大小正确；同长度的磁盘内容篡改不会被内部检查发现。测试的端到端 SHA-256 在外部客户端计算。
-- 未加入磁盘配额、请求超时、孤儿目录回收和生产级输入限制。不能当公网文件服务部署。
-- 每次访问会核对清单及分块大小，分块很多时有额外开销。错误诊断与库 API 将在后续阶段完善。Linux 编译、标准客户端和小文件 SIGKILL 恢复已通过 [CI](https://github.com/kaigeliang/moonbit-upload/actions/runs/38385760700)，Linux 大文件仍未验证。
-- 与 MoonTusCore 相邻，但未复制其代码：它的 `plan_append` 当前要求内存数据长度等于上传偏移。原型独立实现较小的已知长度协议面和磁盘提交逻辑；后续可以推动上游分离元数据与内存存储校验。
+## 当前边界
 
-许可证：Apache-2.0。当前为原型版本，尚未发布到 Mooncakes 或提交赛事验收。
+- 单机、单进程、可信本机目录；没有 TLS、CORS、公开部署、S3、多节点、下载续传或其他 tus 扩展。
+- 文件 sync 和原子 rename 已验证进程崩溃恢复；没有目录 fsync 或断电测试。
+- 检查分块序列、存在性和大小；同长度内容篡改不由内部校验发现。端到端 SHA-256 在外部验证端计算。
+- 浏览器依赖原文件重新选择与元数据匹配；刷新后不会自动恢复访问密钥。
+- 没有孤儿块/目录回收、每用户配额、审计系统或公网安全评估。单文件 16 GiB 是配置上限，实际验证到 1.25 GiB。
+- 包已公开在 GitHub，尚未发布到 Mooncakes。提交数量和测试通过不代表赛事验收或获奖。
+
+Apache-2.0。协议及磁盘提交逻辑独立实现，未复制 MoonTusCore 代码。

@@ -1,0 +1,19 @@
+{
+  "source_sha256": "1fb0344a3c6481c8cf6de1ecc13ef9fb836b9b57085ee81b34c032607865b0b2",
+  "hash_scope": "Sorted relative paths + NUL + contents of tracked-source MoonBit/package files; excludes generated directories",
+  "source_commit_before_docs": "ba1a7b4",
+  "moon_cli": "0.1.20261012",
+  "async": "0.22.4",
+  "report": "output/20261013-190734/verification.json",
+  "browser": {
+    "bytes": 29360128,
+    "sha256": "1adcecccbc0e3965da0365fe3bb7427e60d4bd923f0e46d9a9cbc576b7e264d0",
+    "checks": [
+      "invalid key denied",
+      "upload completed",
+      "download hash matched",
+      "reload forgets key and preserves session",
+      "reselect and HEAD resume completed session"
+    ]
+  }
+}

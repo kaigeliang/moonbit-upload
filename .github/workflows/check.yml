@@ -1,4 +1,4 @@
-name: Native prototype checks
+name: Native library and upload checks
 on:
   push:
   pull_request:
@@ -26,10 +26,12 @@ jobs:
           moon update
           moon fmt --check
           moon check --target native --deny-warn
+          moon test --target native
           moon build --target native
+          moon run cmd/consumer --target native
           npm ci --prefix tools --ignore-scripts
       - name: HTTP interoperability and process crash recovery
-        run: python3 tools/verify.py --big-mib 0
+        run: python3 tools/verify.py --big-mib 1280
       - uses: actions/upload-artifact@v4
         if: always()
         with:

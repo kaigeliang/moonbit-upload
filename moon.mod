@@ -1,12 +1,12 @@
 name = "kaigeliang/upload"
 
-version = "0.0.1"
+version = "0.1.0"
 
 license = "Apache-2.0"
 
 preferred_target = "native"
 
-description = "Persistent resumable upload service prototype for MoonBit"
+description = "Persistent resumable upload library with authenticated HTTP and browser demo"
 
 import {
   "moonbitlang/async@0.22.4",
