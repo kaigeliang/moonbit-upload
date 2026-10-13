@@ -1,0 +1,44 @@
+{
+  "passed": true,
+  "platform": "Darwin",
+  "mode": "real-ssh",
+  "big_mib": 64,
+  "checks": [
+    {
+      "name": "actual receiver SIGKILL preserves committed prefix",
+      "passed": true
+    },
+    {
+      "name": "bounded RPC append, stale offsets, incomplete body, restart resume and verified publication",
+      "passed": true
+    },
+    {
+      "name": "changed content, hash mismatch and existing destination fail without overwrite",
+      "passed": true
+    },
+    {
+      "name": "oversized protocol header rejected without reading arbitrary payload",
+      "passed": true
+    },
+    {
+      "name": "CLI SSH orchestration push, pull, status, verify and large-file hashes",
+      "passed": true
+    },
+    {
+      "name": "pull uses existing committed chunks and verifies before final publication",
+      "passed": true
+    },
+    {
+      "name": "live push and pull recover lost commit response and truncated download packet",
+      "passed": true
+    },
+    {
+      "name": "unified HTTP push, pull, status and verify reuse existing authenticated library",
+      "passed": true
+    },
+    {
+      "name": "independent MoonBit module directly calls public push/pull API and progress callbacks",
+      "passed": true
+    }
+  ]
+}

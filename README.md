@@ -1,4 +1,4 @@
-# MoonBit Upload
+# MoonRelay — MoonBit 可靠文件传输库
 
 原生 MoonBit 断点续传库与 HTTP 服务。分块以固定缓冲区写入磁盘，只有清单原子提交后才确认新偏移。提供可复用的存储 API、Bearer 访问控制、正式原生 CLI 和同源浏览器演示。
 
@@ -23,21 +23,20 @@ export MOON_UPLOAD_KEYS="$(python3 -c 'import json,secrets; print(json.dumps({"a
 
 ![实际浏览器上传完成](docs/evidence/browser-demo.jpg)
 
-## CLI 使用
+## 统一 CLI
 
 ```sh
 tools/build-cli.sh
-# MOON_UPLOAD_KEY 为管理员提供的用户密钥
-bin/moon-upload upload ./large.bin
-# 同一命令再次运行会从服务器已确认偏移恢复
-bin/moon-upload upload ./large.bin
-# ID 从上传返回的 receipt 中取得
-a=12
-bin/moon-upload download "$a" ./download.bin --receipt ./large.bin.moon-upload.json
-bin/moon-upload hash ./download.bin
+bin/moonrelay push ./dataset.zip user@host:/data/dataset.zip
+bin/moonrelay pull user@host:/data/dataset.zip ./copy.zip
+bin/moonrelay status user@host:/data/dataset.zip
+bin/moonrelay verify user@host:/data/dataset.zip --sha256 TRUSTED_SHA256
+bin/moonrelay hash ./copy.zip
 ```
 
-CLI 支持大文件流式上传、进度、内容哈希绑定的续传记录、服务重启自动重连、下载与 SHA-256 验证。上传成功前自动核对远端完整内容；下载验证成功才生成最终文件，已有目标不会覆盖。运行时不需要 Python/Node，浏览器保留为辅助演示。[完整 CLI 文档](docs/cli.md)说明密钥配置、退出码、重试和下载边界。
+SSH 两端预装程序，复用系统 OpenSSH；可指定 --remote-bin 和 --ssh-config。push/pull 都支持恢复，远端文件路径通过协议传递，验证成功后才生成最终文件。也可以用 push/pull/status/verify 操作 HTTP 地址，保留原 upload/download 命令、HTTP 服务与浏览器。[详细命令、API、恢复规则及边界](docs/moonrelay.md)。
+
+公共 `kaigeliang/upload/transfer` 提供 push/pull/status/verify/hash_file 与 Progress 回调。`examples/library-consumer` 用独立模块直接调用 API。[原 HTTP CLI 文档](docs/cli.md)保留为兼容说明。
 
 ## 库接口
 

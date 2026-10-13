@@ -33,3 +33,9 @@
 额外黑盒验证覆盖进度输出、已完成上传不重复创建、独立 hash/verify 命令、哈希错误不产生最终文件、已有目标不覆盖、同大小内容变化/错误用户拒绝续传、外部路径/无效记录/缺失密钥拒绝、空文件。SHA-256 标准向量与百万个 a 的增量测试通过，服务/browser 原有 15 项小型回归通过。
 
 CLI 使用 release 构建；上传和下载流式处理。当前只对上传提供断点恢复，下载中断需从头重试。CLI 文档见 [`cli.md`](cli.md)。Linux 工作流同时运行原有完整服务回归和 CLI 1.25 GiB 用例，最终状态以对应运行收据为准。
+
+## MoonRelay 0.3 公共库与统一 CLI
+
+[`moonrelay-local-ssh.json`](evidence/moonrelay-local-ssh.json) 为 macOS 真实 OpenSSH 回环 64 MiB 验证，9 项检查通过，包括接收进程 SIGKILL、丢失提交响应、截断下载包、双向恢复、内容/目标保护、统一 HTTP 命令及独立 MoonBit 模块公共 API/进度回调。另有本机 ssh shim 1.25 GiB 传输报告；shim 仅证明协议及调用编排，不等于真实 SSH。7 个单元测试通过，包含多单引号 shell 转义。
+
+Linux relay CI 在独立回环 sshd 上运行真实 SSH 1.25 GiB 与独立 consumer；原 HTTP 大文件回归仍保留。最终结论以对应运行 receipt 为准，均不代表跨物理机器/WAN 验证。详细接口及边界见 [`moonrelay.md`](moonrelay.md)。

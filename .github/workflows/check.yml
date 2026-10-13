@@ -46,3 +46,37 @@ jobs:
             output/**/large-cli.log
             output/**/resume-cli.log
           if-no-files-found: ignore
+
+  relay-linux:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install native tools and test SSH daemon
+        run: |
+          curl -fsSL https://cli.moonbitlang.com/install/unix.sh | bash
+          echo "$HOME/.moon/bin" >> "$GITHUB_PATH"
+          sudo apt-get update -qq
+          sudo apt-get install -y openssh-server
+          sudo mkdir -p /run/sshd
+      - name: Build public libraries and unified CLI
+        run: |
+          moon update
+          moon fmt --check
+          moon check --target native --deny-warn
+          moon test --target native
+          moon build --target native --release
+      - name: Real SSH, bidirectional recovery and independent library consumer
+        run: python3 tools/relay-verify.py --real-ssh --big-mib 1280 --consumer
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: linux-relay-verification
+          path: |
+            output/**/verification.json
+            output/**/failure.json
+            output/**/sshd.log
+          if-no-files-found: ignore
