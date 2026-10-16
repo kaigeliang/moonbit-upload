@@ -1,0 +1,3400 @@
+{
+  "complete": true,
+  "environment": {
+    "client_platform": "macOS-27.0-arm64-arm-64bit-Mach-O",
+    "ssh": "OpenSSH_10.3p1, LibreSSL 3.3.6",
+    "scp": "OpenSSH scp, default SFTP transport",
+    "rsync_client": "rsync  version 3.5.0  protocol version 32",
+    "receiver": "Linux x86_64",
+    "rsync_receiver": "rsync  version 3.2.7  protocol version 31",
+    "moonrelay_client": "moonrelay 0.4.0",
+    "moonrelay_receiver": "moonrelay 0.4.0",
+    "cli_sha256": "8f8a0b2d64e5c4155d50383f34691e824ca6ec2442120c4e2e4edca7095efac0",
+    "receiver_cli_sha256": "d0771ae64f43eb55a3406e20e98d78148d4a6d43af4158d6e430afdc9f2dc709"
+  },
+  "parameters": {
+    "big_mib": 128,
+    "small_files": 32,
+    "small_file_bytes": 65536,
+    "rounds": 3,
+    "cut_target_mib": 32,
+    "restart_link_cap_bytes_per_second": 8388608,
+    "cipher": "aes128-gcm@openssh.com",
+    "compression": false,
+    "connection": "single prewarmed SSH ControlMaster shared by all tools; probe SSH uses separate connection",
+    "wire_counter": "encrypted SSH stream bytes through common loopback TCP relay; excludes TCP/IP headers; master setup and verification/probes excluded",
+    "memory": "sampled sum of sender process group RSS; excludes pre-existing shared SSH master; 100ms polling plus ps/probe overhead",
+    "cache": "warm/shared source, no privileged cache eviction, balanced Latin rotation, fresh receiver directories",
+    "contract": "content and relative paths only; same independent external SHA-256 after every successful command; tool built-in hashing remains enabled",
+    "durability": "process-completion and content verification, no common fsync/power-loss contract",
+    "cut_basis": "sender encrypted SSH stream budget; same counting-proxy callback for all tools"
+  },
+  "driver_sha256": "dc6d249fab5daa86fac2e0c32797ee64412d409dcaed38398fe96b9e8c6a6e77",
+  "input_manifest": {
+    "large": {
+      "payload.bin": {
+        "bytes": 134217728,
+        "sha256": "32d7386cf2fb7ee6e6fc37c843abd3475a090fb74b79a3954f1a2a28b6638dcc"
+      }
+    },
+    "small_directory": {
+      "group-2/0006.bin": {
+        "bytes": 65536,
+        "sha256": "29f50355418a5f404e1fc5f26b5359968f69a03f8deeb1697e8b6ae777b7e5f5"
+      },
+      "group-2/0010.bin": {
+        "bytes": 65536,
+        "sha256": "baf2b26bdc08cddce152b17122f63fb56804c6a74d0865f19e98a05c92d0be35"
+      },
+      "group-2/0014.bin": {
+        "bytes": 65536,
+        "sha256": "746420744908fc59df3bee912a9747c8c40251ab379b648530729680ada51290"
+      },
+      "group-2/0002.bin": {
+        "bytes": 65536,
+        "sha256": "bd661e4c5ca7396949e2a75e80c6586e86805b58cd14751e904c51ebfc063c62"
+      },
+      "group-2/0026.bin": {
+        "bytes": 65536,
+        "sha256": "34bae1493f75247f0d8238aa1b18433a6b6618e6a2503521c836a29f19c8772a"
+      },
+      "group-2/0018.bin": {
+        "bytes": 65536,
+        "sha256": "85110f1695eb40757d786b7734d9571290ec1fc394182a34aab2abbdb0360fb4"
+      },
+      "group-2/0030.bin": {
+        "bytes": 65536,
+        "sha256": "ec29f0b7bedd38a1b91bc8c5ff0d5fe11a43a25411d000ddc31f8b12656fc41e"
+      },
+      "group-2/0022.bin": {
+        "bytes": 65536,
+        "sha256": "e5e08b67e36def43cdf91aba88e7560ec202ba3885c3d648a786508a8ca473a4"
+      },
+      "group-3/0007.bin": {
+        "bytes": 65536,
+        "sha256": "5081aae754b4f10cf62ad2b4b47090109ff00b63d453270616d64dee04b78211"
+      },
+      "group-3/0011.bin": {
+        "bytes": 65536,
+        "sha256": "bca450e76841cfe00b36c75e006fbf09f9dbc7d0b2c0b1ee2ca36cbd4b511d7c"
+      },
+      "group-3/0015.bin": {
+        "bytes": 65536,
+        "sha256": "a6d1a256cf8aa068e9b98c19e2e05d90cd941d9a8cb691094b8eea8d2108e423"
+      },
+      "group-3/0003.bin": {
+        "bytes": 65536,
+        "sha256": "24b5aaadb8d359a3cb2898ab9b0311ec27859832ff410b9b09e232f02c7fc7f2"
+      },
+      "group-3/0027.bin": {
+        "bytes": 65536,
+        "sha256": "d53308b7c606efe11bf15623b1852c575f8a8c039445ad8173ab0771ca100caa"
+      },
+      "group-3/0031.bin": {
+        "bytes": 65536,
+        "sha256": "32706d2c9f1510d3daf75d5b4f750e034ce8940b34953f48cbdb27f5f6fd47ce"
+      },
+      "group-3/0019.bin": {
+        "bytes": 65536,
+        "sha256": "47f18dd3d287db482a694e60bd34feb92f0d43b5bebcc6e7d81e7bcca1b92806"
+      },
+      "group-3/0023.bin": {
+        "bytes": 65536,
+        "sha256": "104956ea036a5a856265d721bceb1292e4c6983970c6dd4dc5e9c9efee4f9daf"
+      },
+      "group-1/0013.bin": {
+        "bytes": 65536,
+        "sha256": "1ca0221ef2a5a10cec9715bd6bafcc0d3388997d52104a6dd7e760b996a84002"
+      },
+      "group-1/0005.bin": {
+        "bytes": 65536,
+        "sha256": "1a9781c26935d9cc68e676a729361b678c4c4c45c46123bb576aedbba53bf024"
+      },
+      "group-1/0029.bin": {
+        "bytes": 65536,
+        "sha256": "53e4e572d39083283b623f5564bb7514168496fe97140e8fa1974300d4d5ab98"
+      },
+      "group-1/0001.bin": {
+        "bytes": 65536,
+        "sha256": "89e368c61c6dbcf5f6516f2775ce036f0a8b2ff21bb5cb5a7b119a799629dc2a"
+      },
+      "group-1/0017.bin": {
+        "bytes": 65536,
+        "sha256": "dcc461e1745846b10868d90d1e516be9637bbb2d8770fde3859a53e0103eed9c"
+      },
+      "group-1/0025.bin": {
+        "bytes": 65536,
+        "sha256": "2e9e8245c15f3deed53abab3ad205c38a3c65e40c20f326ee3933fd26f6483e5"
+      },
+      "group-1/0021.bin": {
+        "bytes": 65536,
+        "sha256": "eb611a22db833411638facc5f32c63e600584bef04b2d54021d15c898ef5c2a6"
+      },
+      "group-1/0009.bin": {
+        "bytes": 65536,
+        "sha256": "5209e5ef2a1c313e225bd81cd6e8040074c0a6029380fe29efa615334bfec54d"
+      },
+      "group-0/0012.bin": {
+        "bytes": 65536,
+        "sha256": "e6b48c3a5e8d48bb76f7e246f774f4f445d58570bde4e8bb9aab310d973de291"
+      },
+      "group-0/0004.bin": {
+        "bytes": 65536,
+        "sha256": "9b5613a731c54129fd5a0a4df7da1dd27a73b3dd7643b7f400e787e91090e2d1"
+      },
+      "group-0/0000.bin": {
+        "bytes": 65536,
+        "sha256": "fed565a4134b59df002ec36c40074ea45aa3797dee3b65512ff5dab48aa7e74c"
+      },
+      "group-0/0028.bin": {
+        "bytes": 65536,
+        "sha256": "d9abf3dbe7dad716ee0cd02150135b4898c916443af30684f7b6aa50c2fad36f"
+      },
+      "group-0/0016.bin": {
+        "bytes": 65536,
+        "sha256": "9984b6914e0e0eac0379b4aff3fddf16dc6be967b6c04093b8656ff46a7edff1"
+      },
+      "group-0/0024.bin": {
+        "bytes": 65536,
+        "sha256": "560c041bf97c9d7d109397b417fe8158b9f9b19d24eb50c08d58939300c502d6"
+      },
+      "group-0/0008.bin": {
+        "bytes": 65536,
+        "sha256": "2e9fc0d339cc427d08dc33bc59a2d2e646ccd587cd327aab763d10c0f638ae9d"
+      },
+      "group-0/0020.bin": {
+        "bytes": 65536,
+        "sha256": "35ca7425fece57c3fdd5baef47281811f163921b6378d303ca2c4f78c6006d5d"
+      }
+    }
+  },
+  "runs": [
+    {
+      "round": 1,
+      "scenario": "fresh",
+      "tool": "moonrelay",
+      "order": [
+        "moonrelay",
+        "scp",
+        "rsync"
+      ],
+      "command": [
+        "<moonrelay-cli>",
+        "push",
+        "<dataset>/payload.bin",
+        "receiver:<scratch>/r1-fresh-moonrelay/payload.bin",
+        "--remote-bin",
+        "<remote-cli>",
+        "--ssh-config",
+        "<ssh-config>"
+      ],
+      "payload_bytes": 134217728,
+      "file_count": 1,
+      "process_seconds": 19.046159291872755,
+      "client_process_group_peak_rss_sampled_bytes": 15368192,
+      "ssh_stream_sent_bytes": 134383516,
+      "ssh_stream_received_bytes": 53736,
+      "exit_code": 0,
+      "cut_observation": null,
+      "absolute_wire_start": [
+        4742,
+        4386
+      ],
+      "absolute_wire_end": [
+        134388258,
+        58122
+      ],
+      "independent_sha256_passed": true,
+      "verification_seconds": 0.32951879198662937,
+      "verified_delivery_seconds": 19.375678083859384,
+      "receiver_logical_bytes_after": 268436217,
+      "receiver_allocated_bytes_after": 268447744,
+      "interrupted_leg": null,
+      "state_before_restart": null,
+      "actual_file_hashes": {
+        "payload.bin": {
+          "bytes": 134217728,
+          "sha256": "32d7386cf2fb7ee6e6fc37c843abd3475a090fb74b79a3954f1a2a28b6638dcc"
+        }
+      },
+      "completed_at_utc": "2026-10-16T19:24:53Z",
+      "optional_completed_cleanup": {
+        "seconds": 1.4049712920095772,
+        "result": {
+          "target": "<scratch>/r1-fresh-moonrelay/payload.bin",
+          "kind": "ssh",
+          "reclaimed_bytes": "134218204",
+          "files": 1
+        },
+        "logical_bytes_after": 134218013,
+        "allocated_bytes_after": 134230016,
+        "sha256_passed": true
+      }
+    },
+    {
+      "round": 1,
+      "scenario": "fresh",
+      "tool": "scp",
+      "order": [
+        "moonrelay",
+        "scp",
+        "rsync"
+      ],
+      "command": [
+        "scp",
+        "-q",
+        "-B",
+        "-F",
+        "<ssh-config>",
+        "<dataset>/payload.bin",
+        "receiver:<scratch>/r1-fresh-scp/payload.bin"
+      ],
+      "payload_bytes": 134217728,
+      "file_count": 1,
+      "process_seconds": 7.298606832977384,
+      "client_process_group_peak_rss_sampled_bytes": 6258688,
+      "ssh_stream_sent_bytes": 134766264,
+      "ssh_stream_received_bytes": 80344,
+      "exit_code": 0,
+      "cut_observation": null,
+      "absolute_wire_start": [
+        134388258,
+        58122
+      ],
+      "absolute_wire_end": [
+        269154522,
+        138466
+      ],
+      "independent_sha256_passed": true,
+      "verification_seconds": 0.3031900411006063,
+      "verified_delivery_seconds": 7.601796874077991,
+      "receiver_logical_bytes_after": 134217728,
+      "receiver_allocated_bytes_after": 134217728,
+      "interrupted_leg": null,
+      "state_before_restart": null,
+      "actual_file_hashes": {
+        "payload.bin": {
+          "bytes": 134217728,
+          "sha256": "32d7386cf2fb7ee6e6fc37c843abd3475a090fb74b79a3954f1a2a28b6638dcc"
+        }
+      },
+      "completed_at_utc": "2026-10-16T19:25:02Z"
+    },
+    {
+      "round": 1,
+      "scenario": "fresh",
+      "tool": "rsync",
+      "order": [
+        "moonrelay",
+        "scp",
+        "rsync"
+      ],
+      "command": [
+        "/opt/homebrew/bin/rsync",
+        "-rt",
+        "--partial-dir=.rsync-partial",
+        "--no-whole-file",
+        "--no-compress",
+        "--stats",
+        "-e",
+        "ssh -F <ssh-config>",
+        "<dataset>/payload.bin",
+        "receiver:<scratch>/r1-fresh-rsync/payload.bin"
+      ],
+      "payload_bytes": 134217728,
+      "file_count": 1,
+      "process_seconds": 6.897061833878979,
+      "client_process_group_peak_rss_sampled_bytes": 8404992,
+      "ssh_stream_sent_bytes": 134837884,
+      "ssh_stream_received_bytes": 45496,
+      "exit_code": 0,
+      "cut_observation": null,
+      "absolute_wire_start": [
+        269154522,
+        138466
+      ],
+      "absolute_wire_end": [
+        403992406,
+        183962
+      ],
+      "independent_sha256_passed": true,
+      "verification_seconds": 0.31431699986569583,
+      "verified_delivery_seconds": 7.211378833744675,
+      "receiver_logical_bytes_after": 134217728,
+      "receiver_allocated_bytes_after": 134217728,
+      "interrupted_leg": null,
+      "state_before_restart": null,
+      "actual_file_hashes": {
+        "payload.bin": {
+          "bytes": 134217728,
+          "sha256": "32d7386cf2fb7ee6e6fc37c843abd3475a090fb74b79a3954f1a2a28b6638dcc"
+        }
+      },
+      "completed_at_utc": "2026-10-16T19:25:10Z"
+    },
+    {
+      "round": 1,
+      "scenario": "completed-rerun",
+      "tool": "moonrelay",
+      "order": [
+        "moonrelay",
+        "scp",
+        "rsync"
+      ],
+      "command": [
+        "<moonrelay-cli>",
+        "push",
+        "<dataset>/payload.bin",
+        "receiver:<scratch>/r1-completed-rerun-moonrelay/payload.bin",
+        "--remote-bin",
+        "<remote-cli>",
+        "--ssh-config",
+        "<ssh-config>"
+      ],
+      "payload_bytes": 134217728,
+      "file_count": 1,
+      "process_seconds": 1.8471253751777112,
+      "client_process_group_peak_rss_sampled_bytes": 7700480,
+      "ssh_stream_sent_bytes": 1000,
+      "ssh_stream_received_bytes": 920,
+      "exit_code": 0,
+      "cut_observation": null,
+      "absolute_wire_start": [
+        538376402,
+        237862
+      ],
+      "absolute_wire_end": [
+        538377402,
+        238782
+      ],
+      "independent_sha256_passed": true,
+      "verification_seconds": 0.3067642499227077,
+      "verified_delivery_seconds": 2.153889625100419,
+      "receiver_logical_bytes_after": 268436217,
+      "receiver_allocated_bytes_after": 268447744,
+      "interrupted_leg": null,
+      "state_before_restart": null,
+      "actual_file_hashes": {
+        "payload.bin": {
+          "bytes": 134217728,
+          "sha256": "32d7386cf2fb7ee6e6fc37c843abd3475a090fb74b79a3954f1a2a28b6638dcc"
+        }
+      },
+      "completed_at_utc": "2026-10-16T19:25:28Z"
+    },
+    {
+      "round": 1,
+      "scenario": "completed-rerun",
+      "tool": "scp",
+      "order": [
+        "moonrelay",
+        "scp",
+        "rsync"
+      ],
+      "command": [
+        "scp",
+        "-q",
+        "-B",
+        "-F",
+        "<ssh-config>",
+        "<dataset>/payload.bin",
+        "receiver:<scratch>/r1-completed-rerun-scp/payload.bin"
+      ],
+      "payload_bytes": 134217728,
+      "file_count": 1,
+      "process_seconds": 6.83258158294484,
+      "client_process_group_peak_rss_sampled_bytes": 6242304,
+      "ssh_stream_sent_bytes": 134780668,
+      "ssh_stream_received_bytes": 79640,
+      "exit_code": 0,
+      "cut_observation": null,
+      "absolute_wire_start": [
+        673159194,
+        318478
+      ],
+      "absolute_wire_end": [
+        807939862,
+        398118
+      ],
+      "independent_sha256_passed": true,
+      "verification_seconds": 0.30339658400043845,
+      "verified_delivery_seconds": 7.135978166945279,
+      "receiver_logical_bytes_after": 134217728,
+      "receiver_allocated_bytes_after": 134217728,
+      "interrupted_leg": null,
+      "state_before_restart": null,
+      "actual_file_hashes": {
+        "payload.bin": {
+          "bytes": 134217728,
+          "sha256": "32d7386cf2fb7ee6e6fc37c843abd3475a090fb74b79a3954f1a2a28b6638dcc"
+        }
+      },
+      "completed_at_utc": "2026-10-16T19:25:43Z"
+    },
+    {
+      "round": 1,
+      "scenario": "completed-rerun",
+      "tool": "rsync",
+      "order": [
+        "moonrelay",
+        "scp",
+        "rsync"
+      ],
+      "command": [
+        "/opt/homebrew/bin/rsync",
+        "-rt",
+        "--partial-dir=.rsync-partial",
+        "--no-whole-file",
+        "--no-compress",
+        "--stats",
+        "-e",
+        "ssh -F <ssh-config>",
+        "<dataset>/payload.bin",
+        "receiver:<scratch>/r1-completed-rerun-rsync/payload.bin"
+      ],
+      "payload_bytes": 134217728,
+      "file_count": 1,
+      "process_seconds": 0.1323511670343578,
+      "client_process_group_peak_rss_sampled_bytes": 540672,
+      "ssh_stream_sent_bytes": 576,
+      "ssh_stream_received_bytes": 644,
+      "exit_code": 0,
+      "cut_observation": null,
+      "absolute_wire_start": [
+        942816742,
+        443830
+      ],
+      "absolute_wire_end": [
+        942817318,
+        444474
+      ],
+      "independent_sha256_passed": true,
+      "verification_seconds": 0.3050587500911206,
+      "verified_delivery_seconds": 0.4374099171254784,
+      "receiver_logical_bytes_after": 134217728,
+      "receiver_allocated_bytes_after": 134217728,
+      "interrupted_leg": null,
+      "state_before_restart": null,
+      "actual_file_hashes": {
+        "payload.bin": {
+          "bytes": 134217728,
+          "sha256": "32d7386cf2fb7ee6e6fc37c843abd3475a090fb74b79a3954f1a2a28b6638dcc"
+        }
+      },
+      "completed_at_utc": "2026-10-16T19:25:50Z"
+    },
+    {
+      "round": 1,
+      "scenario": "small-directory",
+      "tool": "moonrelay",
+      "order": [
+        "moonrelay",
+        "scp",
+        "rsync"
+      ],
+      "command": [
+        "<moonrelay-cli>",
+        "push",
+        "<dataset>/smallfiles",
+        "receiver:<scratch>/r1-small-directory-moonrelay/tree",
+        "--remote-bin",
+        "<remote-cli>",
+        "--ssh-config",
+        "<ssh-config>",
+        "--recursive"
+      ],
+      "payload_bytes": 2097152,
+      "file_count": 32,
+      "process_seconds": 10.155011292081326,
+      "client_process_group_peak_rss_sampled_bytes": 7503872,
+      "ssh_stream_sent_bytes": 2219188,
+      "ssh_stream_received_bytes": 106268,
+      "exit_code": 0,
+      "cut_observation": null,
+      "absolute_wire_start": [
+        942817318,
+        444474
+      ],
+      "absolute_wire_end": [
+        945036506,
+        550742
+      ],
+      "independent_sha256_passed": true,
+      "verification_seconds": 0.09422616707161069,
+      "verified_delivery_seconds": 10.249237459152937,
+      "receiver_logical_bytes_after": 4206029,
+      "receiver_allocated_bytes_after": 4464640,
+      "interrupted_leg": null,
+      "state_before_restart": null,
+      "actual_file_hashes": {
+        "group-3/0023.bin": {
+          "bytes": 65536,
+          "sha256": "104956ea036a5a856265d721bceb1292e4c6983970c6dd4dc5e9c9efee4f9daf"
+        },
+        "group-3/0011.bin": {
+          "bytes": 65536,
+          "sha256": "bca450e76841cfe00b36c75e006fbf09f9dbc7d0b2c0b1ee2ca36cbd4b511d7c"
+        },
+        "group-3/0015.bin": {
+          "bytes": 65536,
+          "sha256": "a6d1a256cf8aa068e9b98c19e2e05d90cd941d9a8cb691094b8eea8d2108e423"
+        },
+        "group-3/0003.bin": {
+          "bytes": 65536,
+          "sha256": "24b5aaadb8d359a3cb2898ab9b0311ec27859832ff410b9b09e232f02c7fc7f2"
+        },
+        "group-3/0019.bin": {
+          "bytes": 65536,
+          "sha256": "47f18dd3d287db482a694e60bd34feb92f0d43b5bebcc6e7d81e7bcca1b92806"
+        },
+        "group-3/0007.bin": {
+          "bytes": 65536,
+          "sha256": "5081aae754b4f10cf62ad2b4b47090109ff00b63d453270616d64dee04b78211"
+        },
+        "group-3/0031.bin": {
+          "bytes": 65536,
+          "sha256": "32706d2c9f1510d3daf75d5b4f750e034ce8940b34953f48cbdb27f5f6fd47ce"
+        },
+        "group-3/0027.bin": {
+          "bytes": 65536,
+          "sha256": "d53308b7c606efe11bf15623b1852c575f8a8c039445ad8173ab0771ca100caa"
+        },
+        "group-2/0030.bin": {
+          "bytes": 65536,
+          "sha256": "ec29f0b7bedd38a1b91bc8c5ff0d5fe11a43a25411d000ddc31f8b12656fc41e"
+        },
+        "group-2/0014.bin": {
+          "bytes": 65536,
+          "sha256": "746420744908fc59df3bee912a9747c8c40251ab379b648530729680ada51290"
+        },
+        "group-2/0018.bin": {
+          "bytes": 65536,
+          "sha256": "85110f1695eb40757d786b7734d9571290ec1fc394182a34aab2abbdb0360fb4"
+        },
+        "group-2/0026.bin": {
+          "bytes": 65536,
+          "sha256": "34bae1493f75247f0d8238aa1b18433a6b6618e6a2503521c836a29f19c8772a"
+        },
+        "group-2/0010.bin": {
+          "bytes": 65536,
+          "sha256": "baf2b26bdc08cddce152b17122f63fb56804c6a74d0865f19e98a05c92d0be35"
+        },
+        "group-2/0006.bin": {
+          "bytes": 65536,
+          "sha256": "29f50355418a5f404e1fc5f26b5359968f69a03f8deeb1697e8b6ae777b7e5f5"
+        },
+        "group-2/0002.bin": {
+          "bytes": 65536,
+          "sha256": "bd661e4c5ca7396949e2a75e80c6586e86805b58cd14751e904c51ebfc063c62"
+        },
+        "group-2/0022.bin": {
+          "bytes": 65536,
+          "sha256": "e5e08b67e36def43cdf91aba88e7560ec202ba3885c3d648a786508a8ca473a4"
+        },
+        "group-1/0017.bin": {
+          "bytes": 65536,
+          "sha256": "dcc461e1745846b10868d90d1e516be9637bbb2d8770fde3859a53e0103eed9c"
+        },
+        "group-1/0029.bin": {
+          "bytes": 65536,
+          "sha256": "53e4e572d39083283b623f5564bb7514168496fe97140e8fa1974300d4d5ab98"
+        },
+        "group-1/0025.bin": {
+          "bytes": 65536,
+          "sha256": "2e9e8245c15f3deed53abab3ad205c38a3c65e40c20f326ee3933fd26f6483e5"
+        },
+        "group-1/0021.bin": {
+          "bytes": 65536,
+          "sha256": "eb611a22db833411638facc5f32c63e600584bef04b2d54021d15c898ef5c2a6"
+        },
+        "group-1/0009.bin": {
+          "bytes": 65536,
+          "sha256": "5209e5ef2a1c313e225bd81cd6e8040074c0a6029380fe29efa615334bfec54d"
+        },
+        "group-1/0005.bin": {
+          "bytes": 65536,
+          "sha256": "1a9781c26935d9cc68e676a729361b678c4c4c45c46123bb576aedbba53bf024"
+        },
+        "group-1/0001.bin": {
+          "bytes": 65536,
+          "sha256": "89e368c61c6dbcf5f6516f2775ce036f0a8b2ff21bb5cb5a7b119a799629dc2a"
+        },
+        "group-1/0013.bin": {
+          "bytes": 65536,
+          "sha256": "1ca0221ef2a5a10cec9715bd6bafcc0d3388997d52104a6dd7e760b996a84002"
+        },
+        "group-0/0000.bin": {
+          "bytes": 65536,
+          "sha256": "fed565a4134b59df002ec36c40074ea45aa3797dee3b65512ff5dab48aa7e74c"
+        },
+        "group-0/0024.bin": {
+          "bytes": 65536,
+          "sha256": "560c041bf97c9d7d109397b417fe8158b9f9b19d24eb50c08d58939300c502d6"
+        },
+        "group-0/0004.bin": {
+          "bytes": 65536,
+          "sha256": "9b5613a731c54129fd5a0a4df7da1dd27a73b3dd7643b7f400e787e91090e2d1"
+        },
+        "group-0/0020.bin": {
+          "bytes": 65536,
+          "sha256": "35ca7425fece57c3fdd5baef47281811f163921b6378d303ca2c4f78c6006d5d"
+        },
+        "group-0/0008.bin": {
+          "bytes": 65536,
+          "sha256": "2e9fc0d339cc427d08dc33bc59a2d2e646ccd587cd327aab763d10c0f638ae9d"
+        },
+        "group-0/0028.bin": {
+          "bytes": 65536,
+          "sha256": "d9abf3dbe7dad716ee0cd02150135b4898c916443af30684f7b6aa50c2fad36f"
+        },
+        "group-0/0016.bin": {
+          "bytes": 65536,
+          "sha256": "9984b6914e0e0eac0379b4aff3fddf16dc6be967b6c04093b8656ff46a7edff1"
+        },
+        "group-0/0012.bin": {
+          "bytes": 65536,
+          "sha256": "e6b48c3a5e8d48bb76f7e246f774f4f445d58570bde4e8bb9aab310d973de291"
+        }
+      },
+      "completed_at_utc": "2026-10-16T19:26:01Z"
+    },
+    {
+      "round": 1,
+      "scenario": "small-directory",
+      "tool": "scp",
+      "order": [
+        "moonrelay",
+        "scp",
+        "rsync"
+      ],
+      "command": [
+        "scp",
+        "-q",
+        "-B",
+        "-F",
+        "<ssh-config>",
+        "-r",
+        "<dataset>/smallfiles",
+        "receiver:<scratch>/r1-small-directory-scp/tree"
+      ],
+      "payload_bytes": 2097152,
+      "file_count": 32,
+      "process_seconds": 1.8685909588821232,
+      "client_process_group_peak_rss_sampled_bytes": 5652480,
+      "ssh_stream_sent_bytes": 2118264,
+      "ssh_stream_received_bytes": 10468,
+      "exit_code": 0,
+      "cut_observation": null,
+      "absolute_wire_start": [
+        945036506,
+        550742
+      ],
+      "absolute_wire_end": [
+        947154770,
+        561210
+      ],
+      "independent_sha256_passed": true,
+      "verification_seconds": 0.08527387492358685,
+      "verified_delivery_seconds": 1.95386483380571,
+      "receiver_logical_bytes_after": 2097152,
+      "receiver_allocated_bytes_after": 2097152,
+      "interrupted_leg": null,
+      "state_before_restart": null,
+      "actual_file_hashes": {
+        "group-3/0023.bin": {
+          "bytes": 65536,
+          "sha256": "104956ea036a5a856265d721bceb1292e4c6983970c6dd4dc5e9c9efee4f9daf"
+        },
+        "group-3/0011.bin": {
+          "bytes": 65536,
+          "sha256": "bca450e76841cfe00b36c75e006fbf09f9dbc7d0b2c0b1ee2ca36cbd4b511d7c"
+        },
+        "group-3/0015.bin": {
+          "bytes": 65536,
+          "sha256": "a6d1a256cf8aa068e9b98c19e2e05d90cd941d9a8cb691094b8eea8d2108e423"
+        },
+        "group-3/0003.bin": {
+          "bytes": 65536,
+          "sha256": "24b5aaadb8d359a3cb2898ab9b0311ec27859832ff410b9b09e232f02c7fc7f2"
+        },
+        "group-3/0019.bin": {
+          "bytes": 65536,
+          "sha256": "47f18dd3d287db482a694e60bd34feb92f0d43b5bebcc6e7d81e7bcca1b92806"
+        },
+        "group-3/0007.bin": {
+          "bytes": 65536,
+          "sha256": "5081aae754b4f10cf62ad2b4b47090109ff00b63d453270616d64dee04b78211"
+        },
+        "group-3/0031.bin": {
+          "bytes": 65536,
+          "sha256": "32706d2c9f1510d3daf75d5b4f750e034ce8940b34953f48cbdb27f5f6fd47ce"
+        },
+        "group-3/0027.bin": {
+          "bytes": 65536,
+          "sha256": "d53308b7c606efe11bf15623b1852c575f8a8c039445ad8173ab0771ca100caa"
+        },
+        "group-2/0030.bin": {
+          "bytes": 65536,
+          "sha256": "ec29f0b7bedd38a1b91bc8c5ff0d5fe11a43a25411d000ddc31f8b12656fc41e"
+        },
+        "group-2/0014.bin": {
+          "bytes": 65536,
+          "sha256": "746420744908fc59df3bee912a9747c8c40251ab379b648530729680ada51290"
+        },
+        "group-2/0018.bin": {
+          "bytes": 65536,
+          "sha256": "85110f1695eb40757d786b7734d9571290ec1fc394182a34aab2abbdb0360fb4"
+        },
+        "group-2/0026.bin": {
+          "bytes": 65536,
+          "sha256": "34bae1493f75247f0d8238aa1b18433a6b6618e6a2503521c836a29f19c8772a"
+        },
+        "group-2/0010.bin": {
+          "bytes": 65536,
+          "sha256": "baf2b26bdc08cddce152b17122f63fb56804c6a74d0865f19e98a05c92d0be35"
+        },
+        "group-2/0006.bin": {
+          "bytes": 65536,
+          "sha256": "29f50355418a5f404e1fc5f26b5359968f69a03f8deeb1697e8b6ae777b7e5f5"
+        },
+        "group-2/0002.bin": {
+          "bytes": 65536,
+          "sha256": "bd661e4c5ca7396949e2a75e80c6586e86805b58cd14751e904c51ebfc063c62"
+        },
+        "group-2/0022.bin": {
+          "bytes": 65536,
+          "sha256": "e5e08b67e36def43cdf91aba88e7560ec202ba3885c3d648a786508a8ca473a4"
+        },
+        "group-1/0017.bin": {
+          "bytes": 65536,
+          "sha256": "dcc461e1745846b10868d90d1e516be9637bbb2d8770fde3859a53e0103eed9c"
+        },
+        "group-1/0029.bin": {
+          "bytes": 65536,
+          "sha256": "53e4e572d39083283b623f5564bb7514168496fe97140e8fa1974300d4d5ab98"
+        },
+        "group-1/0025.bin": {
+          "bytes": 65536,
+          "sha256": "2e9e8245c15f3deed53abab3ad205c38a3c65e40c20f326ee3933fd26f6483e5"
+        },
+        "group-1/0021.bin": {
+          "bytes": 65536,
+          "sha256": "eb611a22db833411638facc5f32c63e600584bef04b2d54021d15c898ef5c2a6"
+        },
+        "group-1/0009.bin": {
+          "bytes": 65536,
+          "sha256": "5209e5ef2a1c313e225bd81cd6e8040074c0a6029380fe29efa615334bfec54d"
+        },
+        "group-1/0005.bin": {
+          "bytes": 65536,
+          "sha256": "1a9781c26935d9cc68e676a729361b678c4c4c45c46123bb576aedbba53bf024"
+        },
+        "group-1/0001.bin": {
+          "bytes": 65536,
+          "sha256": "89e368c61c6dbcf5f6516f2775ce036f0a8b2ff21bb5cb5a7b119a799629dc2a"
+        },
+        "group-1/0013.bin": {
+          "bytes": 65536,
+          "sha256": "1ca0221ef2a5a10cec9715bd6bafcc0d3388997d52104a6dd7e760b996a84002"
+        },
+        "group-0/0000.bin": {
+          "bytes": 65536,
+          "sha256": "fed565a4134b59df002ec36c40074ea45aa3797dee3b65512ff5dab48aa7e74c"
+        },
+        "group-0/0024.bin": {
+          "bytes": 65536,
+          "sha256": "560c041bf97c9d7d109397b417fe8158b9f9b19d24eb50c08d58939300c502d6"
+        },
+        "group-0/0004.bin": {
+          "bytes": 65536,
+          "sha256": "9b5613a731c54129fd5a0a4df7da1dd27a73b3dd7643b7f400e787e91090e2d1"
+        },
+        "group-0/0020.bin": {
+          "bytes": 65536,
+          "sha256": "35ca7425fece57c3fdd5baef47281811f163921b6378d303ca2c4f78c6006d5d"
+        },
+        "group-0/0008.bin": {
+          "bytes": 65536,
+          "sha256": "2e9fc0d339cc427d08dc33bc59a2d2e646ccd587cd327aab763d10c0f638ae9d"
+        },
+        "group-0/0028.bin": {
+          "bytes": 65536,
+          "sha256": "d9abf3dbe7dad716ee0cd02150135b4898c916443af30684f7b6aa50c2fad36f"
+        },
+        "group-0/0016.bin": {
+          "bytes": 65536,
+          "sha256": "9984b6914e0e0eac0379b4aff3fddf16dc6be967b6c04093b8656ff46a7edff1"
+        },
+        "group-0/0012.bin": {
+          "bytes": 65536,
+          "sha256": "e6b48c3a5e8d48bb76f7e246f774f4f445d58570bde4e8bb9aab310d973de291"
+        }
+      },
+      "completed_at_utc": "2026-10-16T19:26:03Z"
+    },
+    {
+      "round": 1,
+      "scenario": "small-directory",
+      "tool": "rsync",
+      "order": [
+        "moonrelay",
+        "scp",
+        "rsync"
+      ],
+      "command": [
+        "/opt/homebrew/bin/rsync",
+        "-rt",
+        "--partial-dir=.rsync-partial",
+        "--no-whole-file",
+        "--no-compress",
+        "--stats",
+        "-e",
+        "ssh -F <ssh-config>",
+        "<dataset>/smallfiles/",
+        "receiver:<scratch>/r1-small-directory-rsync/tree"
+      ],
+      "payload_bytes": 2097152,
+      "file_count": 32,
+      "process_seconds": 0.23433904186822474,
+      "client_process_group_peak_rss_sampled_bytes": 8404992,
+      "ssh_stream_sent_bytes": 2106096,
+      "ssh_stream_received_bytes": 2160,
+      "exit_code": 0,
+      "cut_observation": null,
+      "absolute_wire_start": [
+        947154770,
+        561210
+      ],
+      "absolute_wire_end": [
+        949260866,
+        563370
+      ],
+      "independent_sha256_passed": true,
+      "verification_seconds": 0.0889495830051601,
+      "verified_delivery_seconds": 0.32328862487338483,
+      "receiver_logical_bytes_after": 2097152,
+      "receiver_allocated_bytes_after": 2097152,
+      "interrupted_leg": null,
+      "state_before_restart": null,
+      "actual_file_hashes": {
+        "group-3/0023.bin": {
+          "bytes": 65536,
+          "sha256": "104956ea036a5a856265d721bceb1292e4c6983970c6dd4dc5e9c9efee4f9daf"
+        },
+        "group-3/0011.bin": {
+          "bytes": 65536,
+          "sha256": "bca450e76841cfe00b36c75e006fbf09f9dbc7d0b2c0b1ee2ca36cbd4b511d7c"
+        },
+        "group-3/0015.bin": {
+          "bytes": 65536,
+          "sha256": "a6d1a256cf8aa068e9b98c19e2e05d90cd941d9a8cb691094b8eea8d2108e423"
+        },
+        "group-3/0003.bin": {
+          "bytes": 65536,
+          "sha256": "24b5aaadb8d359a3cb2898ab9b0311ec27859832ff410b9b09e232f02c7fc7f2"
+        },
+        "group-3/0019.bin": {
+          "bytes": 65536,
+          "sha256": "47f18dd3d287db482a694e60bd34feb92f0d43b5bebcc6e7d81e7bcca1b92806"
+        },
+        "group-3/0007.bin": {
+          "bytes": 65536,
+          "sha256": "5081aae754b4f10cf62ad2b4b47090109ff00b63d453270616d64dee04b78211"
+        },
+        "group-3/0031.bin": {
+          "bytes": 65536,
+          "sha256": "32706d2c9f1510d3daf75d5b4f750e034ce8940b34953f48cbdb27f5f6fd47ce"
+        },
+        "group-3/0027.bin": {
+          "bytes": 65536,
+          "sha256": "d53308b7c606efe11bf15623b1852c575f8a8c039445ad8173ab0771ca100caa"
+        },
+        "group-2/0030.bin": {
+          "bytes": 65536,
+          "sha256": "ec29f0b7bedd38a1b91bc8c5ff0d5fe11a43a25411d000ddc31f8b12656fc41e"
+        },
+        "group-2/0014.bin": {
+          "bytes": 65536,
+          "sha256": "746420744908fc59df3bee912a9747c8c40251ab379b648530729680ada51290"
+        },
+        "group-2/0018.bin": {
+          "bytes": 65536,
+          "sha256": "85110f1695eb40757d786b7734d9571290ec1fc394182a34aab2abbdb0360fb4"
+        },
+        "group-2/0026.bin": {
+          "bytes": 65536,
+          "sha256": "34bae1493f75247f0d8238aa1b18433a6b6618e6a2503521c836a29f19c8772a"
+        },
+        "group-2/0010.bin": {
+          "bytes": 65536,
+          "sha256": "baf2b26bdc08cddce152b17122f63fb56804c6a74d0865f19e98a05c92d0be35"
+        },
+        "group-2/0006.bin": {
+          "bytes": 65536,
+          "sha256": "29f50355418a5f404e1fc5f26b5359968f69a03f8deeb1697e8b6ae777b7e5f5"
+        },
+        "group-2/0002.bin": {
+          "bytes": 65536,
+          "sha256": "bd661e4c5ca7396949e2a75e80c6586e86805b58cd14751e904c51ebfc063c62"
+        },
+        "group-2/0022.bin": {
+          "bytes": 65536,
+          "sha256": "e5e08b67e36def43cdf91aba88e7560ec202ba3885c3d648a786508a8ca473a4"
+        },
+        "group-1/0017.bin": {
+          "bytes": 65536,
+          "sha256": "dcc461e1745846b10868d90d1e516be9637bbb2d8770fde3859a53e0103eed9c"
+        },
+        "group-1/0029.bin": {
+          "bytes": 65536,
+          "sha256": "53e4e572d39083283b623f5564bb7514168496fe97140e8fa1974300d4d5ab98"
+        },
+        "group-1/0025.bin": {
+          "bytes": 65536,
+          "sha256": "2e9e8245c15f3deed53abab3ad205c38a3c65e40c20f326ee3933fd26f6483e5"
+        },
+        "group-1/0021.bin": {
+          "bytes": 65536,
+          "sha256": "eb611a22db833411638facc5f32c63e600584bef04b2d54021d15c898ef5c2a6"
+        },
+        "group-1/0009.bin": {
+          "bytes": 65536,
+          "sha256": "5209e5ef2a1c313e225bd81cd6e8040074c0a6029380fe29efa615334bfec54d"
+        },
+        "group-1/0005.bin": {
+          "bytes": 65536,
+          "sha256": "1a9781c26935d9cc68e676a729361b678c4c4c45c46123bb576aedbba53bf024"
+        },
+        "group-1/0001.bin": {
+          "bytes": 65536,
+          "sha256": "89e368c61c6dbcf5f6516f2775ce036f0a8b2ff21bb5cb5a7b119a799629dc2a"
+        },
+        "group-1/0013.bin": {
+          "bytes": 65536,
+          "sha256": "1ca0221ef2a5a10cec9715bd6bafcc0d3388997d52104a6dd7e760b996a84002"
+        },
+        "group-0/0000.bin": {
+          "bytes": 65536,
+          "sha256": "fed565a4134b59df002ec36c40074ea45aa3797dee3b65512ff5dab48aa7e74c"
+        },
+        "group-0/0024.bin": {
+          "bytes": 65536,
+          "sha256": "560c041bf97c9d7d109397b417fe8158b9f9b19d24eb50c08d58939300c502d6"
+        },
+        "group-0/0004.bin": {
+          "bytes": 65536,
+          "sha256": "9b5613a731c54129fd5a0a4df7da1dd27a73b3dd7643b7f400e787e91090e2d1"
+        },
+        "group-0/0020.bin": {
+          "bytes": 65536,
+          "sha256": "35ca7425fece57c3fdd5baef47281811f163921b6378d303ca2c4f78c6006d5d"
+        },
+        "group-0/0008.bin": {
+          "bytes": 65536,
+          "sha256": "2e9fc0d339cc427d08dc33bc59a2d2e646ccd587cd327aab763d10c0f638ae9d"
+        },
+        "group-0/0028.bin": {
+          "bytes": 65536,
+          "sha256": "d9abf3dbe7dad716ee0cd02150135b4898c916443af30684f7b6aa50c2fad36f"
+        },
+        "group-0/0016.bin": {
+          "bytes": 65536,
+          "sha256": "9984b6914e0e0eac0379b4aff3fddf16dc6be967b6c04093b8656ff46a7edff1"
+        },
+        "group-0/0012.bin": {
+          "bytes": 65536,
+          "sha256": "e6b48c3a5e8d48bb76f7e246f774f4f445d58570bde4e8bb9aab310d973de291"
+        }
+      },
+      "completed_at_utc": "2026-10-16T19:26:04Z"
+    },
+    {
+      "round": 2,
+      "scenario": "fresh",
+      "tool": "scp",
+      "order": [
+        "scp",
+        "rsync",
+        "moonrelay"
+      ],
+      "command": [
+        "scp",
+        "-q",
+        "-B",
+        "-F",
+        "<ssh-config>",
+        "<dataset>/payload.bin",
+        "receiver:<scratch>/r2-fresh-scp/payload.bin"
+      ],
+      "payload_bytes": 134217728,
+      "file_count": 1,
+      "process_seconds": 6.623724333010614,
+      "client_process_group_peak_rss_sampled_bytes": 6258688,
+      "ssh_stream_sent_bytes": 134812152,
+      "ssh_stream_received_bytes": 79948,
+      "exit_code": 0,
+      "cut_observation": null,
+      "absolute_wire_start": [
+        1390465402,
+        810986
+      ],
+      "absolute_wire_end": [
+        1525277554,
+        890934
+      ],
+      "independent_sha256_passed": true,
+      "verification_seconds": 0.30466845794580877,
+      "verified_delivery_seconds": 6.928392790956423,
+      "receiver_logical_bytes_after": 134217728,
+      "receiver_allocated_bytes_after": 134217728,
+      "interrupted_leg": null,
+      "state_before_restart": null,
+      "actual_file_hashes": {
+        "payload.bin": {
+          "bytes": 134217728,
+          "sha256": "32d7386cf2fb7ee6e6fc37c843abd3475a090fb74b79a3954f1a2a28b6638dcc"
+        }
+      },
+      "completed_at_utc": "2026-10-16T19:27:35Z"
+    },
+    {
+      "round": 2,
+      "scenario": "fresh",
+      "tool": "rsync",
+      "order": [
+        "scp",
+        "rsync",
+        "moonrelay"
+      ],
+      "command": [
+        "/opt/homebrew/bin/rsync",
+        "-rt",
+        "--partial-dir=.rsync-partial",
+        "--no-whole-file",
+        "--no-compress",
+        "--stats",
+        "-e",
+        "ssh -F <ssh-config>",
+        "<dataset>/payload.bin",
+        "receiver:<scratch>/r2-fresh-rsync/payload.bin"
+      ],
+      "payload_bytes": 134217728,
+      "file_count": 1,
+      "process_seconds": 6.508639458101243,
+      "client_process_group_peak_rss_sampled_bytes": 8372224,
+      "ssh_stream_sent_bytes": 134901140,
+      "ssh_stream_received_bytes": 46144,
+      "exit_code": 0,
+      "cut_observation": null,
+      "absolute_wire_start": [
+        1525277554,
+        890934
+      ],
+      "absolute_wire_end": [
+        1660178694,
+        937078
+      ],
+      "independent_sha256_passed": true,
+      "verification_seconds": 0.3034627919550985,
+      "verified_delivery_seconds": 6.812102250056341,
+      "receiver_logical_bytes_after": 134217728,
+      "receiver_allocated_bytes_after": 134217728,
+      "interrupted_leg": null,
+      "state_before_restart": null,
+      "actual_file_hashes": {
+        "payload.bin": {
+          "bytes": 134217728,
+          "sha256": "32d7386cf2fb7ee6e6fc37c843abd3475a090fb74b79a3954f1a2a28b6638dcc"
+        }
+      },
+      "completed_at_utc": "2026-10-16T19:27:42Z"
+    },
+    {
+      "round": 2,
+      "scenario": "fresh",
+      "tool": "moonrelay",
+      "order": [
+        "scp",
+        "rsync",
+        "moonrelay"
+      ],
+      "command": [
+        "<moonrelay-cli>",
+        "push",
+        "<dataset>/payload.bin",
+        "receiver:<scratch>/r2-fresh-moonrelay/payload.bin",
+        "--remote-bin",
+        "<remote-cli>",
+        "--ssh-config",
+        "<ssh-config>"
+      ],
+      "payload_bytes": 134217728,
+      "file_count": 1,
+      "process_seconds": 19.2477481670212,
+      "client_process_group_peak_rss_sampled_bytes": 15384576,
+      "ssh_stream_sent_bytes": 134383516,
+      "ssh_stream_received_bytes": 53756,
+      "exit_code": 0,
+      "cut_observation": null,
+      "absolute_wire_start": [
+        1660178694,
+        937078
+      ],
+      "absolute_wire_end": [
+        1794562210,
+        990834
+      ],
+      "independent_sha256_passed": true,
+      "verification_seconds": 0.3097708330024034,
+      "verified_delivery_seconds": 19.557519000023603,
+      "receiver_logical_bytes_after": 268436217,
+      "receiver_allocated_bytes_after": 268447744,
+      "interrupted_leg": null,
+      "state_before_restart": null,
+      "actual_file_hashes": {
+        "payload.bin": {
+          "bytes": 134217728,
+          "sha256": "32d7386cf2fb7ee6e6fc37c843abd3475a090fb74b79a3954f1a2a28b6638dcc"
+        }
+      },
+      "completed_at_utc": "2026-10-16T19:28:02Z"
+    },
+    {
+      "round": 2,
+      "scenario": "completed-rerun",
+      "tool": "scp",
+      "order": [
+        "scp",
+        "rsync",
+        "moonrelay"
+      ],
+      "command": [
+        "scp",
+        "-q",
+        "-B",
+        "-F",
+        "<ssh-config>",
+        "<dataset>/payload.bin",
+        "receiver:<scratch>/r2-completed-rerun-scp/payload.bin"
+      ],
+      "payload_bytes": 134217728,
+      "file_count": 1,
+      "process_seconds": 6.019270125078037,
+      "client_process_group_peak_rss_sampled_bytes": 6307840,
+      "ssh_stream_sent_bytes": 134691636,
+      "ssh_stream_received_bytes": 78272,
+      "exit_code": 0,
+      "cut_observation": null,
+      "absolute_wire_start": [
+        1929341050,
+        1071214
+      ],
+      "absolute_wire_end": [
+        2064032686,
+        1149486
+      ],
+      "independent_sha256_passed": true,
+      "verification_seconds": 0.3051433749496937,
+      "verified_delivery_seconds": 6.324413500027731,
+      "receiver_logical_bytes_after": 134217728,
+      "receiver_allocated_bytes_after": 134217728,
+      "interrupted_leg": null,
+      "state_before_restart": null,
+      "actual_file_hashes": {
+        "payload.bin": {
+          "bytes": 134217728,
+          "sha256": "32d7386cf2fb7ee6e6fc37c843abd3475a090fb74b79a3954f1a2a28b6638dcc"
+        }
+      },
+      "completed_at_utc": "2026-10-16T19:28:17Z"
+    },
+    {
+      "round": 2,
+      "scenario": "completed-rerun",
+      "tool": "rsync",
+      "order": [
+        "scp",
+        "rsync",
+        "moonrelay"
+      ],
+      "command": [
+        "/opt/homebrew/bin/rsync",
+        "-rt",
+        "--partial-dir=.rsync-partial",
+        "--no-whole-file",
+        "--no-compress",
+        "--stats",
+        "-e",
+        "ssh -F <ssh-config>",
+        "<dataset>/payload.bin",
+        "receiver:<scratch>/r2-completed-rerun-rsync/payload.bin"
+      ],
+      "payload_bytes": 134217728,
+      "file_count": 1,
+      "process_seconds": 0.11045841686427593,
+      "client_process_group_peak_rss_sampled_bytes": 557056,
+      "ssh_stream_sent_bytes": 576,
+      "ssh_stream_received_bytes": 644,
+      "exit_code": 0,
+      "cut_observation": null,
+      "absolute_wire_start": [
+        2198843042,
+        1194298
+      ],
+      "absolute_wire_end": [
+        2198843618,
+        1194942
+      ],
+      "independent_sha256_passed": true,
+      "verification_seconds": 0.31085741706192493,
+      "verified_delivery_seconds": 0.42131583392620087,
+      "receiver_logical_bytes_after": 134217728,
+      "receiver_allocated_bytes_after": 134217728,
+      "interrupted_leg": null,
+      "state_before_restart": null,
+      "actual_file_hashes": {
+        "payload.bin": {
+          "bytes": 134217728,
+          "sha256": "32d7386cf2fb7ee6e6fc37c843abd3475a090fb74b79a3954f1a2a28b6638dcc"
+        }
+      },
+      "completed_at_utc": "2026-10-16T19:28:24Z"
+    },
+    {
+      "round": 2,
+      "scenario": "completed-rerun",
+      "tool": "moonrelay",
+      "order": [
+        "scp",
+        "rsync",
+        "moonrelay"
+      ],
+      "command": [
+        "<moonrelay-cli>",
+        "push",
+        "<dataset>/payload.bin",
+        "receiver:<scratch>/r2-completed-rerun-moonrelay/payload.bin",
+        "--remote-bin",
+        "<remote-cli>",
+        "--ssh-config",
+        "<ssh-config>"
+      ],
+      "payload_bytes": 134217728,
+      "file_count": 1,
+      "process_seconds": 1.969679499976337,
+      "client_process_group_peak_rss_sampled_bytes": 7716864,
+      "ssh_stream_sent_bytes": 1000,
+      "ssh_stream_received_bytes": 972,
+      "exit_code": 0,
+      "cut_observation": null,
+      "absolute_wire_start": [
+        2333227614,
+        1248834
+      ],
+      "absolute_wire_end": [
+        2333228614,
+        1249806
+      ],
+      "independent_sha256_passed": true,
+      "verification_seconds": 0.29904829198494554,
+      "verified_delivery_seconds": 2.2687277919612825,
+      "receiver_logical_bytes_after": 268436217,
+      "receiver_allocated_bytes_after": 268447744,
+      "interrupted_leg": null,
+      "state_before_restart": null,
+      "actual_file_hashes": {
+        "payload.bin": {
+          "bytes": 134217728,
+          "sha256": "32d7386cf2fb7ee6e6fc37c843abd3475a090fb74b79a3954f1a2a28b6638dcc"
+        }
+      },
+      "completed_at_utc": "2026-10-16T19:28:45Z"
+    },
+    {
+      "round": 2,
+      "scenario": "small-directory",
+      "tool": "scp",
+      "order": [
+        "scp",
+        "rsync",
+        "moonrelay"
+      ],
+      "command": [
+        "scp",
+        "-q",
+        "-B",
+        "-F",
+        "<ssh-config>",
+        "-r",
+        "<dataset>/smallfiles",
+        "receiver:<scratch>/r2-small-directory-scp/tree"
+      ],
+      "payload_bytes": 2097152,
+      "file_count": 32,
+      "process_seconds": 1.663693374954164,
+      "client_process_group_peak_rss_sampled_bytes": 5718016,
+      "ssh_stream_sent_bytes": 2118264,
+      "ssh_stream_received_bytes": 10432,
+      "exit_code": 0,
+      "cut_observation": null,
+      "absolute_wire_start": [
+        2333228614,
+        1249806
+      ],
+      "absolute_wire_end": [
+        2335346878,
+        1260238
+      ],
+      "independent_sha256_passed": true,
+      "verification_seconds": 0.08159837499260902,
+      "verified_delivery_seconds": 1.745291749946773,
+      "receiver_logical_bytes_after": 2097152,
+      "receiver_allocated_bytes_after": 2097152,
+      "interrupted_leg": null,
+      "state_before_restart": null,
+      "actual_file_hashes": {
+        "group-3/0023.bin": {
+          "bytes": 65536,
+          "sha256": "104956ea036a5a856265d721bceb1292e4c6983970c6dd4dc5e9c9efee4f9daf"
+        },
+        "group-3/0011.bin": {
+          "bytes": 65536,
+          "sha256": "bca450e76841cfe00b36c75e006fbf09f9dbc7d0b2c0b1ee2ca36cbd4b511d7c"
+        },
+        "group-3/0015.bin": {
+          "bytes": 65536,
+          "sha256": "a6d1a256cf8aa068e9b98c19e2e05d90cd941d9a8cb691094b8eea8d2108e423"
+        },
+        "group-3/0003.bin": {
+          "bytes": 65536,
+          "sha256": "24b5aaadb8d359a3cb2898ab9b0311ec27859832ff410b9b09e232f02c7fc7f2"
+        },
+        "group-3/0019.bin": {
+          "bytes": 65536,
+          "sha256": "47f18dd3d287db482a694e60bd34feb92f0d43b5bebcc6e7d81e7bcca1b92806"
+        },
+        "group-3/0007.bin": {
+          "bytes": 65536,
+          "sha256": "5081aae754b4f10cf62ad2b4b47090109ff00b63d453270616d64dee04b78211"
+        },
+        "group-3/0031.bin": {
+          "bytes": 65536,
+          "sha256": "32706d2c9f1510d3daf75d5b4f750e034ce8940b34953f48cbdb27f5f6fd47ce"
+        },
+        "group-3/0027.bin": {
+          "bytes": 65536,
+          "sha256": "d53308b7c606efe11bf15623b1852c575f8a8c039445ad8173ab0771ca100caa"
+        },
+        "group-2/0030.bin": {
+          "bytes": 65536,
+          "sha256": "ec29f0b7bedd38a1b91bc8c5ff0d5fe11a43a25411d000ddc31f8b12656fc41e"
+        },
+        "group-2/0014.bin": {
+          "bytes": 65536,
+          "sha256": "746420744908fc59df3bee912a9747c8c40251ab379b648530729680ada51290"
+        },
+        "group-2/0018.bin": {
+          "bytes": 65536,
+          "sha256": "85110f1695eb40757d786b7734d9571290ec1fc394182a34aab2abbdb0360fb4"
+        },
+        "group-2/0026.bin": {
+          "bytes": 65536,
+          "sha256": "34bae1493f75247f0d8238aa1b18433a6b6618e6a2503521c836a29f19c8772a"
+        },
+        "group-2/0010.bin": {
+          "bytes": 65536,
+          "sha256": "baf2b26bdc08cddce152b17122f63fb56804c6a74d0865f19e98a05c92d0be35"
+        },
+        "group-2/0006.bin": {
+          "bytes": 65536,
+          "sha256": "29f50355418a5f404e1fc5f26b5359968f69a03f8deeb1697e8b6ae777b7e5f5"
+        },
+        "group-2/0002.bin": {
+          "bytes": 65536,
+          "sha256": "bd661e4c5ca7396949e2a75e80c6586e86805b58cd14751e904c51ebfc063c62"
+        },
+        "group-2/0022.bin": {
+          "bytes": 65536,
+          "sha256": "e5e08b67e36def43cdf91aba88e7560ec202ba3885c3d648a786508a8ca473a4"
+        },
+        "group-1/0017.bin": {
+          "bytes": 65536,
+          "sha256": "dcc461e1745846b10868d90d1e516be9637bbb2d8770fde3859a53e0103eed9c"
+        },
+        "group-1/0029.bin": {
+          "bytes": 65536,
+          "sha256": "53e4e572d39083283b623f5564bb7514168496fe97140e8fa1974300d4d5ab98"
+        },
+        "group-1/0025.bin": {
+          "bytes": 65536,
+          "sha256": "2e9e8245c15f3deed53abab3ad205c38a3c65e40c20f326ee3933fd26f6483e5"
+        },
+        "group-1/0021.bin": {
+          "bytes": 65536,
+          "sha256": "eb611a22db833411638facc5f32c63e600584bef04b2d54021d15c898ef5c2a6"
+        },
+        "group-1/0009.bin": {
+          "bytes": 65536,
+          "sha256": "5209e5ef2a1c313e225bd81cd6e8040074c0a6029380fe29efa615334bfec54d"
+        },
+        "group-1/0005.bin": {
+          "bytes": 65536,
+          "sha256": "1a9781c26935d9cc68e676a729361b678c4c4c45c46123bb576aedbba53bf024"
+        },
+        "group-1/0001.bin": {
+          "bytes": 65536,
+          "sha256": "89e368c61c6dbcf5f6516f2775ce036f0a8b2ff21bb5cb5a7b119a799629dc2a"
+        },
+        "group-1/0013.bin": {
+          "bytes": 65536,
+          "sha256": "1ca0221ef2a5a10cec9715bd6bafcc0d3388997d52104a6dd7e760b996a84002"
+        },
+        "group-0/0000.bin": {
+          "bytes": 65536,
+          "sha256": "fed565a4134b59df002ec36c40074ea45aa3797dee3b65512ff5dab48aa7e74c"
+        },
+        "group-0/0024.bin": {
+          "bytes": 65536,
+          "sha256": "560c041bf97c9d7d109397b417fe8158b9f9b19d24eb50c08d58939300c502d6"
+        },
+        "group-0/0004.bin": {
+          "bytes": 65536,
+          "sha256": "9b5613a731c54129fd5a0a4df7da1dd27a73b3dd7643b7f400e787e91090e2d1"
+        },
+        "group-0/0020.bin": {
+          "bytes": 65536,
+          "sha256": "35ca7425fece57c3fdd5baef47281811f163921b6378d303ca2c4f78c6006d5d"
+        },
+        "group-0/0008.bin": {
+          "bytes": 65536,
+          "sha256": "2e9fc0d339cc427d08dc33bc59a2d2e646ccd587cd327aab763d10c0f638ae9d"
+        },
+        "group-0/0028.bin": {
+          "bytes": 65536,
+          "sha256": "d9abf3dbe7dad716ee0cd02150135b4898c916443af30684f7b6aa50c2fad36f"
+        },
+        "group-0/0016.bin": {
+          "bytes": 65536,
+          "sha256": "9984b6914e0e0eac0379b4aff3fddf16dc6be967b6c04093b8656ff46a7edff1"
+        },
+        "group-0/0012.bin": {
+          "bytes": 65536,
+          "sha256": "e6b48c3a5e8d48bb76f7e246f774f4f445d58570bde4e8bb9aab310d973de291"
+        }
+      },
+      "completed_at_utc": "2026-10-16T19:28:47Z"
+    },
+    {
+      "round": 2,
+      "scenario": "small-directory",
+      "tool": "rsync",
+      "order": [
+        "scp",
+        "rsync",
+        "moonrelay"
+      ],
+      "command": [
+        "/opt/homebrew/bin/rsync",
+        "-rt",
+        "--partial-dir=.rsync-partial",
+        "--no-whole-file",
+        "--no-compress",
+        "--stats",
+        "-e",
+        "ssh -F <ssh-config>",
+        "<dataset>/smallfiles/",
+        "receiver:<scratch>/r2-small-directory-rsync/tree"
+      ],
+      "payload_bytes": 2097152,
+      "file_count": 32,
+      "process_seconds": 0.23810949991457164,
+      "client_process_group_peak_rss_sampled_bytes": 8454144,
+      "ssh_stream_sent_bytes": 2105284,
+      "ssh_stream_received_bytes": 2124,
+      "exit_code": 0,
+      "cut_observation": null,
+      "absolute_wire_start": [
+        2335346878,
+        1260238
+      ],
+      "absolute_wire_end": [
+        2337452162,
+        1262362
+      ],
+      "independent_sha256_passed": true,
+      "verification_seconds": 0.08690025005489588,
+      "verified_delivery_seconds": 0.3250097499694675,
+      "receiver_logical_bytes_after": 2097152,
+      "receiver_allocated_bytes_after": 2097152,
+      "interrupted_leg": null,
+      "state_before_restart": null,
+      "actual_file_hashes": {
+        "group-3/0023.bin": {
+          "bytes": 65536,
+          "sha256": "104956ea036a5a856265d721bceb1292e4c6983970c6dd4dc5e9c9efee4f9daf"
+        },
+        "group-3/0011.bin": {
+          "bytes": 65536,
+          "sha256": "bca450e76841cfe00b36c75e006fbf09f9dbc7d0b2c0b1ee2ca36cbd4b511d7c"
+        },
+        "group-3/0015.bin": {
+          "bytes": 65536,
+          "sha256": "a6d1a256cf8aa068e9b98c19e2e05d90cd941d9a8cb691094b8eea8d2108e423"
+        },
+        "group-3/0003.bin": {
+          "bytes": 65536,
+          "sha256": "24b5aaadb8d359a3cb2898ab9b0311ec27859832ff410b9b09e232f02c7fc7f2"
+        },
+        "group-3/0019.bin": {
+          "bytes": 65536,
+          "sha256": "47f18dd3d287db482a694e60bd34feb92f0d43b5bebcc6e7d81e7bcca1b92806"
+        },
+        "group-3/0007.bin": {
+          "bytes": 65536,
+          "sha256": "5081aae754b4f10cf62ad2b4b47090109ff00b63d453270616d64dee04b78211"
+        },
+        "group-3/0031.bin": {
+          "bytes": 65536,
+          "sha256": "32706d2c9f1510d3daf75d5b4f750e034ce8940b34953f48cbdb27f5f6fd47ce"
+        },
+        "group-3/0027.bin": {
+          "bytes": 65536,
+          "sha256": "d53308b7c606efe11bf15623b1852c575f8a8c039445ad8173ab0771ca100caa"
+        },
+        "group-2/0030.bin": {
+          "bytes": 65536,
+          "sha256": "ec29f0b7bedd38a1b91bc8c5ff0d5fe11a43a25411d000ddc31f8b12656fc41e"
+        },
+        "group-2/0014.bin": {
+          "bytes": 65536,
+          "sha256": "746420744908fc59df3bee912a9747c8c40251ab379b648530729680ada51290"
+        },
+        "group-2/0018.bin": {
+          "bytes": 65536,
+          "sha256": "85110f1695eb40757d786b7734d9571290ec1fc394182a34aab2abbdb0360fb4"
+        },
+        "group-2/0026.bin": {
+          "bytes": 65536,
+          "sha256": "34bae1493f75247f0d8238aa1b18433a6b6618e6a2503521c836a29f19c8772a"
+        },
+        "group-2/0010.bin": {
+          "bytes": 65536,
+          "sha256": "baf2b26bdc08cddce152b17122f63fb56804c6a74d0865f19e98a05c92d0be35"
+        },
+        "group-2/0006.bin": {
+          "bytes": 65536,
+          "sha256": "29f50355418a5f404e1fc5f26b5359968f69a03f8deeb1697e8b6ae777b7e5f5"
+        },
+        "group-2/0002.bin": {
+          "bytes": 65536,
+          "sha256": "bd661e4c5ca7396949e2a75e80c6586e86805b58cd14751e904c51ebfc063c62"
+        },
+        "group-2/0022.bin": {
+          "bytes": 65536,
+          "sha256": "e5e08b67e36def43cdf91aba88e7560ec202ba3885c3d648a786508a8ca473a4"
+        },
+        "group-1/0017.bin": {
+          "bytes": 65536,
+          "sha256": "dcc461e1745846b10868d90d1e516be9637bbb2d8770fde3859a53e0103eed9c"
+        },
+        "group-1/0029.bin": {
+          "bytes": 65536,
+          "sha256": "53e4e572d39083283b623f5564bb7514168496fe97140e8fa1974300d4d5ab98"
+        },
+        "group-1/0025.bin": {
+          "bytes": 65536,
+          "sha256": "2e9e8245c15f3deed53abab3ad205c38a3c65e40c20f326ee3933fd26f6483e5"
+        },
+        "group-1/0021.bin": {
+          "bytes": 65536,
+          "sha256": "eb611a22db833411638facc5f32c63e600584bef04b2d54021d15c898ef5c2a6"
+        },
+        "group-1/0009.bin": {
+          "bytes": 65536,
+          "sha256": "5209e5ef2a1c313e225bd81cd6e8040074c0a6029380fe29efa615334bfec54d"
+        },
+        "group-1/0005.bin": {
+          "bytes": 65536,
+          "sha256": "1a9781c26935d9cc68e676a729361b678c4c4c45c46123bb576aedbba53bf024"
+        },
+        "group-1/0001.bin": {
+          "bytes": 65536,
+          "sha256": "89e368c61c6dbcf5f6516f2775ce036f0a8b2ff21bb5cb5a7b119a799629dc2a"
+        },
+        "group-1/0013.bin": {
+          "bytes": 65536,
+          "sha256": "1ca0221ef2a5a10cec9715bd6bafcc0d3388997d52104a6dd7e760b996a84002"
+        },
+        "group-0/0000.bin": {
+          "bytes": 65536,
+          "sha256": "fed565a4134b59df002ec36c40074ea45aa3797dee3b65512ff5dab48aa7e74c"
+        },
+        "group-0/0024.bin": {
+          "bytes": 65536,
+          "sha256": "560c041bf97c9d7d109397b417fe8158b9f9b19d24eb50c08d58939300c502d6"
+        },
+        "group-0/0004.bin": {
+          "bytes": 65536,
+          "sha256": "9b5613a731c54129fd5a0a4df7da1dd27a73b3dd7643b7f400e787e91090e2d1"
+        },
+        "group-0/0020.bin": {
+          "bytes": 65536,
+          "sha256": "35ca7425fece57c3fdd5baef47281811f163921b6378d303ca2c4f78c6006d5d"
+        },
+        "group-0/0008.bin": {
+          "bytes": 65536,
+          "sha256": "2e9fc0d339cc427d08dc33bc59a2d2e646ccd587cd327aab763d10c0f638ae9d"
+        },
+        "group-0/0028.bin": {
+          "bytes": 65536,
+          "sha256": "d9abf3dbe7dad716ee0cd02150135b4898c916443af30684f7b6aa50c2fad36f"
+        },
+        "group-0/0016.bin": {
+          "bytes": 65536,
+          "sha256": "9984b6914e0e0eac0379b4aff3fddf16dc6be967b6c04093b8656ff46a7edff1"
+        },
+        "group-0/0012.bin": {
+          "bytes": 65536,
+          "sha256": "e6b48c3a5e8d48bb76f7e246f774f4f445d58570bde4e8bb9aab310d973de291"
+        }
+      },
+      "completed_at_utc": "2026-10-16T19:28:48Z"
+    },
+    {
+      "round": 2,
+      "scenario": "small-directory",
+      "tool": "moonrelay",
+      "order": [
+        "scp",
+        "rsync",
+        "moonrelay"
+      ],
+      "command": [
+        "<moonrelay-cli>",
+        "push",
+        "<dataset>/smallfiles",
+        "receiver:<scratch>/r2-small-directory-moonrelay/tree",
+        "--remote-bin",
+        "<remote-cli>",
+        "--ssh-config",
+        "<ssh-config>",
+        "--recursive"
+      ],
+      "payload_bytes": 2097152,
+      "file_count": 32,
+      "process_seconds": 9.169611582998186,
+      "client_process_group_peak_rss_sampled_bytes": 7553024,
+      "ssh_stream_sent_bytes": 2219448,
+      "ssh_stream_received_bytes": 105424,
+      "exit_code": 0,
+      "cut_observation": null,
+      "absolute_wire_start": [
+        2337452162,
+        1262362
+      ],
+      "absolute_wire_end": [
+        2339671610,
+        1367786
+      ],
+      "independent_sha256_passed": true,
+      "verification_seconds": 0.09798045782372355,
+      "verified_delivery_seconds": 9.26759204082191,
+      "receiver_logical_bytes_after": 4206029,
+      "receiver_allocated_bytes_after": 4464640,
+      "interrupted_leg": null,
+      "state_before_restart": null,
+      "actual_file_hashes": {
+        "group-3/0023.bin": {
+          "bytes": 65536,
+          "sha256": "104956ea036a5a856265d721bceb1292e4c6983970c6dd4dc5e9c9efee4f9daf"
+        },
+        "group-3/0011.bin": {
+          "bytes": 65536,
+          "sha256": "bca450e76841cfe00b36c75e006fbf09f9dbc7d0b2c0b1ee2ca36cbd4b511d7c"
+        },
+        "group-3/0015.bin": {
+          "bytes": 65536,
+          "sha256": "a6d1a256cf8aa068e9b98c19e2e05d90cd941d9a8cb691094b8eea8d2108e423"
+        },
+        "group-3/0003.bin": {
+          "bytes": 65536,
+          "sha256": "24b5aaadb8d359a3cb2898ab9b0311ec27859832ff410b9b09e232f02c7fc7f2"
+        },
+        "group-3/0019.bin": {
+          "bytes": 65536,
+          "sha256": "47f18dd3d287db482a694e60bd34feb92f0d43b5bebcc6e7d81e7bcca1b92806"
+        },
+        "group-3/0007.bin": {
+          "bytes": 65536,
+          "sha256": "5081aae754b4f10cf62ad2b4b47090109ff00b63d453270616d64dee04b78211"
+        },
+        "group-3/0031.bin": {
+          "bytes": 65536,
+          "sha256": "32706d2c9f1510d3daf75d5b4f750e034ce8940b34953f48cbdb27f5f6fd47ce"
+        },
+        "group-3/0027.bin": {
+          "bytes": 65536,
+          "sha256": "d53308b7c606efe11bf15623b1852c575f8a8c039445ad8173ab0771ca100caa"
+        },
+        "group-2/0030.bin": {
+          "bytes": 65536,
+          "sha256": "ec29f0b7bedd38a1b91bc8c5ff0d5fe11a43a25411d000ddc31f8b12656fc41e"
+        },
+        "group-2/0014.bin": {
+          "bytes": 65536,
+          "sha256": "746420744908fc59df3bee912a9747c8c40251ab379b648530729680ada51290"
+        },
+        "group-2/0018.bin": {
+          "bytes": 65536,
+          "sha256": "85110f1695eb40757d786b7734d9571290ec1fc394182a34aab2abbdb0360fb4"
+        },
+        "group-2/0026.bin": {
+          "bytes": 65536,
+          "sha256": "34bae1493f75247f0d8238aa1b18433a6b6618e6a2503521c836a29f19c8772a"
+        },
+        "group-2/0010.bin": {
+          "bytes": 65536,
+          "sha256": "baf2b26bdc08cddce152b17122f63fb56804c6a74d0865f19e98a05c92d0be35"
+        },
+        "group-2/0006.bin": {
+          "bytes": 65536,
+          "sha256": "29f50355418a5f404e1fc5f26b5359968f69a03f8deeb1697e8b6ae777b7e5f5"
+        },
+        "group-2/0002.bin": {
+          "bytes": 65536,
+          "sha256": "bd661e4c5ca7396949e2a75e80c6586e86805b58cd14751e904c51ebfc063c62"
+        },
+        "group-2/0022.bin": {
+          "bytes": 65536,
+          "sha256": "e5e08b67e36def43cdf91aba88e7560ec202ba3885c3d648a786508a8ca473a4"
+        },
+        "group-1/0017.bin": {
+          "bytes": 65536,
+          "sha256": "dcc461e1745846b10868d90d1e516be9637bbb2d8770fde3859a53e0103eed9c"
+        },
+        "group-1/0029.bin": {
+          "bytes": 65536,
+          "sha256": "53e4e572d39083283b623f5564bb7514168496fe97140e8fa1974300d4d5ab98"
+        },
+        "group-1/0025.bin": {
+          "bytes": 65536,
+          "sha256": "2e9e8245c15f3deed53abab3ad205c38a3c65e40c20f326ee3933fd26f6483e5"
+        },
+        "group-1/0021.bin": {
+          "bytes": 65536,
+          "sha256": "eb611a22db833411638facc5f32c63e600584bef04b2d54021d15c898ef5c2a6"
+        },
+        "group-1/0009.bin": {
+          "bytes": 65536,
+          "sha256": "5209e5ef2a1c313e225bd81cd6e8040074c0a6029380fe29efa615334bfec54d"
+        },
+        "group-1/0005.bin": {
+          "bytes": 65536,
+          "sha256": "1a9781c26935d9cc68e676a729361b678c4c4c45c46123bb576aedbba53bf024"
+        },
+        "group-1/0001.bin": {
+          "bytes": 65536,
+          "sha256": "89e368c61c6dbcf5f6516f2775ce036f0a8b2ff21bb5cb5a7b119a799629dc2a"
+        },
+        "group-1/0013.bin": {
+          "bytes": 65536,
+          "sha256": "1ca0221ef2a5a10cec9715bd6bafcc0d3388997d52104a6dd7e760b996a84002"
+        },
+        "group-0/0000.bin": {
+          "bytes": 65536,
+          "sha256": "fed565a4134b59df002ec36c40074ea45aa3797dee3b65512ff5dab48aa7e74c"
+        },
+        "group-0/0024.bin": {
+          "bytes": 65536,
+          "sha256": "560c041bf97c9d7d109397b417fe8158b9f9b19d24eb50c08d58939300c502d6"
+        },
+        "group-0/0004.bin": {
+          "bytes": 65536,
+          "sha256": "9b5613a731c54129fd5a0a4df7da1dd27a73b3dd7643b7f400e787e91090e2d1"
+        },
+        "group-0/0020.bin": {
+          "bytes": 65536,
+          "sha256": "35ca7425fece57c3fdd5baef47281811f163921b6378d303ca2c4f78c6006d5d"
+        },
+        "group-0/0008.bin": {
+          "bytes": 65536,
+          "sha256": "2e9fc0d339cc427d08dc33bc59a2d2e646ccd587cd327aab763d10c0f638ae9d"
+        },
+        "group-0/0028.bin": {
+          "bytes": 65536,
+          "sha256": "d9abf3dbe7dad716ee0cd02150135b4898c916443af30684f7b6aa50c2fad36f"
+        },
+        "group-0/0016.bin": {
+          "bytes": 65536,
+          "sha256": "9984b6914e0e0eac0379b4aff3fddf16dc6be967b6c04093b8656ff46a7edff1"
+        },
+        "group-0/0012.bin": {
+          "bytes": 65536,
+          "sha256": "e6b48c3a5e8d48bb76f7e246f774f4f445d58570bde4e8bb9aab310d973de291"
+        }
+      },
+      "completed_at_utc": "2026-10-16T19:28:57Z"
+    },
+    {
+      "round": 3,
+      "scenario": "fresh",
+      "tool": "rsync",
+      "order": [
+        "rsync",
+        "moonrelay",
+        "scp"
+      ],
+      "command": [
+        "/opt/homebrew/bin/rsync",
+        "-rt",
+        "--partial-dir=.rsync-partial",
+        "--no-whole-file",
+        "--no-compress",
+        "--stats",
+        "-e",
+        "ssh -F <ssh-config>",
+        "<dataset>/payload.bin",
+        "receiver:<scratch>/r3-fresh-rsync/payload.bin"
+      ],
+      "payload_bytes": 134217728,
+      "file_count": 1,
+      "process_seconds": 5.664282541023567,
+      "client_process_group_peak_rss_sampled_bytes": 8404992,
+      "ssh_stream_sent_bytes": 134830240,
+      "ssh_stream_received_bytes": 45532,
+      "exit_code": 0,
+      "cut_observation": null,
+      "absolute_wire_start": [
+        2781667758,
+        1615878
+      ],
+      "absolute_wire_end": [
+        2916497998,
+        1661410
+      ],
+      "independent_sha256_passed": true,
+      "verification_seconds": 0.30593604198656976,
+      "verified_delivery_seconds": 5.970218583010137,
+      "receiver_logical_bytes_after": 134217728,
+      "receiver_allocated_bytes_after": 134217728,
+      "interrupted_leg": null,
+      "state_before_restart": null,
+      "actual_file_hashes": {
+        "payload.bin": {
+          "bytes": 134217728,
+          "sha256": "32d7386cf2fb7ee6e6fc37c843abd3475a090fb74b79a3954f1a2a28b6638dcc"
+        }
+      },
+      "completed_at_utc": "2026-10-16T19:30:23Z"
+    },
+    {
+      "round": 3,
+      "scenario": "fresh",
+      "tool": "moonrelay",
+      "order": [
+        "rsync",
+        "moonrelay",
+        "scp"
+      ],
+      "command": [
+        "<moonrelay-cli>",
+        "push",
+        "<dataset>/payload.bin",
+        "receiver:<scratch>/r3-fresh-moonrelay/payload.bin",
+        "--remote-bin",
+        "<remote-cli>",
+        "--ssh-config",
+        "<ssh-config>"
+      ],
+      "payload_bytes": 134217728,
+      "file_count": 1,
+      "process_seconds": 16.646301624830812,
+      "client_process_group_peak_rss_sampled_bytes": 15351808,
+      "ssh_stream_sent_bytes": 134383516,
+      "ssh_stream_received_bytes": 54092,
+      "exit_code": 0,
+      "cut_observation": null,
+      "absolute_wire_start": [
+        2916497998,
+        1661410
+      ],
+      "absolute_wire_end": [
+        3050881514,
+        1715502
+      ],
+      "independent_sha256_passed": true,
+      "verification_seconds": 0.3062501661479473,
+      "verified_delivery_seconds": 16.95255179097876,
+      "receiver_logical_bytes_after": 268436217,
+      "receiver_allocated_bytes_after": 268447744,
+      "interrupted_leg": null,
+      "state_before_restart": null,
+      "actual_file_hashes": {
+        "payload.bin": {
+          "bytes": 134217728,
+          "sha256": "32d7386cf2fb7ee6e6fc37c843abd3475a090fb74b79a3954f1a2a28b6638dcc"
+        }
+      },
+      "completed_at_utc": "2026-10-16T19:30:40Z"
+    },
+    {
+      "round": 3,
+      "scenario": "fresh",
+      "tool": "scp",
+      "order": [
+        "rsync",
+        "moonrelay",
+        "scp"
+      ],
+      "command": [
+        "scp",
+        "-q",
+        "-B",
+        "-F",
+        "<ssh-config>",
+        "<dataset>/payload.bin",
+        "receiver:<scratch>/r3-fresh-scp/payload.bin"
+      ],
+      "payload_bytes": 134217728,
+      "file_count": 1,
+      "process_seconds": 6.187567790970206,
+      "client_process_group_peak_rss_sampled_bytes": 6324224,
+      "ssh_stream_sent_bytes": 134731172,
+      "ssh_stream_received_bytes": 78976,
+      "exit_code": 0,
+      "cut_observation": null,
+      "absolute_wire_start": [
+        3050881514,
+        1715502
+      ],
+      "absolute_wire_end": [
+        3185612686,
+        1794478
+      ],
+      "independent_sha256_passed": true,
+      "verification_seconds": 0.30696466681547463,
+      "verified_delivery_seconds": 6.494532457785681,
+      "receiver_logical_bytes_after": 134217728,
+      "receiver_allocated_bytes_after": 134217728,
+      "interrupted_leg": null,
+      "state_before_restart": null,
+      "actual_file_hashes": {
+        "payload.bin": {
+          "bytes": 134217728,
+          "sha256": "32d7386cf2fb7ee6e6fc37c843abd3475a090fb74b79a3954f1a2a28b6638dcc"
+        }
+      },
+      "completed_at_utc": "2026-10-16T19:30:47Z"
+    },
+    {
+      "round": 3,
+      "scenario": "completed-rerun",
+      "tool": "rsync",
+      "order": [
+        "rsync",
+        "moonrelay",
+        "scp"
+      ],
+      "command": [
+        "/opt/homebrew/bin/rsync",
+        "-rt",
+        "--partial-dir=.rsync-partial",
+        "--no-whole-file",
+        "--no-compress",
+        "--stats",
+        "-e",
+        "ssh -F <ssh-config>",
+        "<dataset>/payload.bin",
+        "receiver:<scratch>/r3-completed-rerun-rsync/payload.bin"
+      ],
+      "payload_bytes": 134217728,
+      "file_count": 1,
+      "process_seconds": 0.1277745000552386,
+      "client_process_group_peak_rss_sampled_bytes": 409600,
+      "ssh_stream_sent_bytes": 576,
+      "ssh_stream_received_bytes": 644,
+      "exit_code": 0,
+      "cut_observation": null,
+      "absolute_wire_start": [
+        3320504198,
+        1841846
+      ],
+      "absolute_wire_end": [
+        3320504774,
+        1842490
+      ],
+      "independent_sha256_passed": true,
+      "verification_seconds": 0.30624741595238447,
+      "verified_delivery_seconds": 0.4340219160076231,
+      "receiver_logical_bytes_after": 134217728,
+      "receiver_allocated_bytes_after": 134217728,
+      "interrupted_leg": null,
+      "state_before_restart": null,
+      "actual_file_hashes": {
+        "payload.bin": {
+          "bytes": 134217728,
+          "sha256": "32d7386cf2fb7ee6e6fc37c843abd3475a090fb74b79a3954f1a2a28b6638dcc"
+        }
+      },
+      "completed_at_utc": "2026-10-16T19:30:56Z"
+    },
+    {
+      "round": 3,
+      "scenario": "completed-rerun",
+      "tool": "moonrelay",
+      "order": [
+        "rsync",
+        "moonrelay",
+        "scp"
+      ],
+      "command": [
+        "<moonrelay-cli>",
+        "push",
+        "<dataset>/payload.bin",
+        "receiver:<scratch>/r3-completed-rerun-moonrelay/payload.bin",
+        "--remote-bin",
+        "<remote-cli>",
+        "--ssh-config",
+        "<ssh-config>"
+      ],
+      "payload_bytes": 134217728,
+      "file_count": 1,
+      "process_seconds": 1.9512423328123987,
+      "client_process_group_peak_rss_sampled_bytes": 7733248,
+      "ssh_stream_sent_bytes": 1000,
+      "ssh_stream_received_bytes": 972,
+      "exit_code": 0,
+      "cut_observation": null,
+      "absolute_wire_start": [
+        3454888770,
+        1896242
+      ],
+      "absolute_wire_end": [
+        3454889770,
+        1897214
+      ],
+      "independent_sha256_passed": true,
+      "verification_seconds": 0.30410179193131626,
+      "verified_delivery_seconds": 2.255344124743715,
+      "receiver_logical_bytes_after": 268436217,
+      "receiver_allocated_bytes_after": 268447744,
+      "interrupted_leg": null,
+      "state_before_restart": null,
+      "actual_file_hashes": {
+        "payload.bin": {
+          "bytes": 134217728,
+          "sha256": "32d7386cf2fb7ee6e6fc37c843abd3475a090fb74b79a3954f1a2a28b6638dcc"
+        }
+      },
+      "completed_at_utc": "2026-10-16T19:31:15Z"
+    },
+    {
+      "round": 3,
+      "scenario": "completed-rerun",
+      "tool": "scp",
+      "order": [
+        "rsync",
+        "moonrelay",
+        "scp"
+      ],
+      "command": [
+        "scp",
+        "-q",
+        "-B",
+        "-F",
+        "<ssh-config>",
+        "<dataset>/payload.bin",
+        "receiver:<scratch>/r3-completed-rerun-scp/payload.bin"
+      ],
+      "payload_bytes": 134217728,
+      "file_count": 1,
+      "process_seconds": 6.12342195911333,
+      "client_process_group_peak_rss_sampled_bytes": 6307840,
+      "ssh_stream_sent_bytes": 134719620,
+      "ssh_stream_received_bytes": 78668,
+      "exit_code": 0,
+      "cut_observation": null,
+      "absolute_wire_start": [
+        3589660686,
+        1976766
+      ],
+      "absolute_wire_end": [
+        3724380306,
+        2055434
+      ],
+      "independent_sha256_passed": true,
+      "verification_seconds": 0.30782941705547273,
+      "verified_delivery_seconds": 6.431251376168802,
+      "receiver_logical_bytes_after": 134217728,
+      "receiver_allocated_bytes_after": 134217728,
+      "interrupted_leg": null,
+      "state_before_restart": null,
+      "actual_file_hashes": {
+        "payload.bin": {
+          "bytes": 134217728,
+          "sha256": "32d7386cf2fb7ee6e6fc37c843abd3475a090fb74b79a3954f1a2a28b6638dcc"
+        }
+      },
+      "completed_at_utc": "2026-10-16T19:31:28Z"
+    },
+    {
+      "round": 3,
+      "scenario": "small-directory",
+      "tool": "rsync",
+      "order": [
+        "rsync",
+        "moonrelay",
+        "scp"
+      ],
+      "command": [
+        "/opt/homebrew/bin/rsync",
+        "-rt",
+        "--partial-dir=.rsync-partial",
+        "--no-whole-file",
+        "--no-compress",
+        "--stats",
+        "-e",
+        "ssh -F <ssh-config>",
+        "<dataset>/smallfiles/",
+        "receiver:<scratch>/r3-small-directory-rsync/tree"
+      ],
+      "payload_bytes": 2097152,
+      "file_count": 32,
+      "process_seconds": 0.28973612491972744,
+      "client_process_group_peak_rss_sampled_bytes": 8323072,
+      "ssh_stream_sent_bytes": 2110896,
+      "ssh_stream_received_bytes": 2196,
+      "exit_code": 0,
+      "cut_observation": null,
+      "absolute_wire_start": [
+        3724380306,
+        2055434
+      ],
+      "absolute_wire_end": [
+        3726491202,
+        2057630
+      ],
+      "independent_sha256_passed": true,
+      "verification_seconds": 0.0734082090202719,
+      "verified_delivery_seconds": 0.36314433393999934,
+      "receiver_logical_bytes_after": 2097152,
+      "receiver_allocated_bytes_after": 2097152,
+      "interrupted_leg": null,
+      "state_before_restart": null,
+      "actual_file_hashes": {
+        "group-3/0023.bin": {
+          "bytes": 65536,
+          "sha256": "104956ea036a5a856265d721bceb1292e4c6983970c6dd4dc5e9c9efee4f9daf"
+        },
+        "group-3/0011.bin": {
+          "bytes": 65536,
+          "sha256": "bca450e76841cfe00b36c75e006fbf09f9dbc7d0b2c0b1ee2ca36cbd4b511d7c"
+        },
+        "group-3/0015.bin": {
+          "bytes": 65536,
+          "sha256": "a6d1a256cf8aa068e9b98c19e2e05d90cd941d9a8cb691094b8eea8d2108e423"
+        },
+        "group-3/0003.bin": {
+          "bytes": 65536,
+          "sha256": "24b5aaadb8d359a3cb2898ab9b0311ec27859832ff410b9b09e232f02c7fc7f2"
+        },
+        "group-3/0019.bin": {
+          "bytes": 65536,
+          "sha256": "47f18dd3d287db482a694e60bd34feb92f0d43b5bebcc6e7d81e7bcca1b92806"
+        },
+        "group-3/0007.bin": {
+          "bytes": 65536,
+          "sha256": "5081aae754b4f10cf62ad2b4b47090109ff00b63d453270616d64dee04b78211"
+        },
+        "group-3/0031.bin": {
+          "bytes": 65536,
+          "sha256": "32706d2c9f1510d3daf75d5b4f750e034ce8940b34953f48cbdb27f5f6fd47ce"
+        },
+        "group-3/0027.bin": {
+          "bytes": 65536,
+          "sha256": "d53308b7c606efe11bf15623b1852c575f8a8c039445ad8173ab0771ca100caa"
+        },
+        "group-2/0030.bin": {
+          "bytes": 65536,
+          "sha256": "ec29f0b7bedd38a1b91bc8c5ff0d5fe11a43a25411d000ddc31f8b12656fc41e"
+        },
+        "group-2/0014.bin": {
+          "bytes": 65536,
+          "sha256": "746420744908fc59df3bee912a9747c8c40251ab379b648530729680ada51290"
+        },
+        "group-2/0018.bin": {
+          "bytes": 65536,
+          "sha256": "85110f1695eb40757d786b7734d9571290ec1fc394182a34aab2abbdb0360fb4"
+        },
+        "group-2/0026.bin": {
+          "bytes": 65536,
+          "sha256": "34bae1493f75247f0d8238aa1b18433a6b6618e6a2503521c836a29f19c8772a"
+        },
+        "group-2/0010.bin": {
+          "bytes": 65536,
+          "sha256": "baf2b26bdc08cddce152b17122f63fb56804c6a74d0865f19e98a05c92d0be35"
+        },
+        "group-2/0006.bin": {
+          "bytes": 65536,
+          "sha256": "29f50355418a5f404e1fc5f26b5359968f69a03f8deeb1697e8b6ae777b7e5f5"
+        },
+        "group-2/0002.bin": {
+          "bytes": 65536,
+          "sha256": "bd661e4c5ca7396949e2a75e80c6586e86805b58cd14751e904c51ebfc063c62"
+        },
+        "group-2/0022.bin": {
+          "bytes": 65536,
+          "sha256": "e5e08b67e36def43cdf91aba88e7560ec202ba3885c3d648a786508a8ca473a4"
+        },
+        "group-1/0017.bin": {
+          "bytes": 65536,
+          "sha256": "dcc461e1745846b10868d90d1e516be9637bbb2d8770fde3859a53e0103eed9c"
+        },
+        "group-1/0029.bin": {
+          "bytes": 65536,
+          "sha256": "53e4e572d39083283b623f5564bb7514168496fe97140e8fa1974300d4d5ab98"
+        },
+        "group-1/0025.bin": {
+          "bytes": 65536,
+          "sha256": "2e9e8245c15f3deed53abab3ad205c38a3c65e40c20f326ee3933fd26f6483e5"
+        },
+        "group-1/0021.bin": {
+          "bytes": 65536,
+          "sha256": "eb611a22db833411638facc5f32c63e600584bef04b2d54021d15c898ef5c2a6"
+        },
+        "group-1/0009.bin": {
+          "bytes": 65536,
+          "sha256": "5209e5ef2a1c313e225bd81cd6e8040074c0a6029380fe29efa615334bfec54d"
+        },
+        "group-1/0005.bin": {
+          "bytes": 65536,
+          "sha256": "1a9781c26935d9cc68e676a729361b678c4c4c45c46123bb576aedbba53bf024"
+        },
+        "group-1/0001.bin": {
+          "bytes": 65536,
+          "sha256": "89e368c61c6dbcf5f6516f2775ce036f0a8b2ff21bb5cb5a7b119a799629dc2a"
+        },
+        "group-1/0013.bin": {
+          "bytes": 65536,
+          "sha256": "1ca0221ef2a5a10cec9715bd6bafcc0d3388997d52104a6dd7e760b996a84002"
+        },
+        "group-0/0000.bin": {
+          "bytes": 65536,
+          "sha256": "fed565a4134b59df002ec36c40074ea45aa3797dee3b65512ff5dab48aa7e74c"
+        },
+        "group-0/0024.bin": {
+          "bytes": 65536,
+          "sha256": "560c041bf97c9d7d109397b417fe8158b9f9b19d24eb50c08d58939300c502d6"
+        },
+        "group-0/0004.bin": {
+          "bytes": 65536,
+          "sha256": "9b5613a731c54129fd5a0a4df7da1dd27a73b3dd7643b7f400e787e91090e2d1"
+        },
+        "group-0/0020.bin": {
+          "bytes": 65536,
+          "sha256": "35ca7425fece57c3fdd5baef47281811f163921b6378d303ca2c4f78c6006d5d"
+        },
+        "group-0/0008.bin": {
+          "bytes": 65536,
+          "sha256": "2e9fc0d339cc427d08dc33bc59a2d2e646ccd587cd327aab763d10c0f638ae9d"
+        },
+        "group-0/0028.bin": {
+          "bytes": 65536,
+          "sha256": "d9abf3dbe7dad716ee0cd02150135b4898c916443af30684f7b6aa50c2fad36f"
+        },
+        "group-0/0016.bin": {
+          "bytes": 65536,
+          "sha256": "9984b6914e0e0eac0379b4aff3fddf16dc6be967b6c04093b8656ff46a7edff1"
+        },
+        "group-0/0012.bin": {
+          "bytes": 65536,
+          "sha256": "e6b48c3a5e8d48bb76f7e246f774f4f445d58570bde4e8bb9aab310d973de291"
+        }
+      },
+      "completed_at_utc": "2026-10-16T19:31:29Z"
+    },
+    {
+      "round": 3,
+      "scenario": "small-directory",
+      "tool": "moonrelay",
+      "order": [
+        "rsync",
+        "moonrelay",
+        "scp"
+      ],
+      "command": [
+        "<moonrelay-cli>",
+        "push",
+        "<dataset>/smallfiles",
+        "receiver:<scratch>/r3-small-directory-moonrelay/tree",
+        "--remote-bin",
+        "<remote-cli>",
+        "--ssh-config",
+        "<ssh-config>",
+        "--recursive"
+      ],
+      "payload_bytes": 2097152,
+      "file_count": 32,
+      "process_seconds": 9.655300291953608,
+      "client_process_group_peak_rss_sampled_bytes": 7602176,
+      "ssh_stream_sent_bytes": 2219448,
+      "ssh_stream_received_bytes": 105700,
+      "exit_code": 0,
+      "cut_observation": null,
+      "absolute_wire_start": [
+        3726491202,
+        2057630
+      ],
+      "absolute_wire_end": [
+        3728710650,
+        2163330
+      ],
+      "independent_sha256_passed": true,
+      "verification_seconds": 0.09507425012998283,
+      "verified_delivery_seconds": 9.750374542083591,
+      "receiver_logical_bytes_after": 4206029,
+      "receiver_allocated_bytes_after": 4464640,
+      "interrupted_leg": null,
+      "state_before_restart": null,
+      "actual_file_hashes": {
+        "group-3/0023.bin": {
+          "bytes": 65536,
+          "sha256": "104956ea036a5a856265d721bceb1292e4c6983970c6dd4dc5e9c9efee4f9daf"
+        },
+        "group-3/0011.bin": {
+          "bytes": 65536,
+          "sha256": "bca450e76841cfe00b36c75e006fbf09f9dbc7d0b2c0b1ee2ca36cbd4b511d7c"
+        },
+        "group-3/0015.bin": {
+          "bytes": 65536,
+          "sha256": "a6d1a256cf8aa068e9b98c19e2e05d90cd941d9a8cb691094b8eea8d2108e423"
+        },
+        "group-3/0003.bin": {
+          "bytes": 65536,
+          "sha256": "24b5aaadb8d359a3cb2898ab9b0311ec27859832ff410b9b09e232f02c7fc7f2"
+        },
+        "group-3/0019.bin": {
+          "bytes": 65536,
+          "sha256": "47f18dd3d287db482a694e60bd34feb92f0d43b5bebcc6e7d81e7bcca1b92806"
+        },
+        "group-3/0007.bin": {
+          "bytes": 65536,
+          "sha256": "5081aae754b4f10cf62ad2b4b47090109ff00b63d453270616d64dee04b78211"
+        },
+        "group-3/0031.bin": {
+          "bytes": 65536,
+          "sha256": "32706d2c9f1510d3daf75d5b4f750e034ce8940b34953f48cbdb27f5f6fd47ce"
+        },
+        "group-3/0027.bin": {
+          "bytes": 65536,
+          "sha256": "d53308b7c606efe11bf15623b1852c575f8a8c039445ad8173ab0771ca100caa"
+        },
+        "group-2/0030.bin": {
+          "bytes": 65536,
+          "sha256": "ec29f0b7bedd38a1b91bc8c5ff0d5fe11a43a25411d000ddc31f8b12656fc41e"
+        },
+        "group-2/0014.bin": {
+          "bytes": 65536,
+          "sha256": "746420744908fc59df3bee912a9747c8c40251ab379b648530729680ada51290"
+        },
+        "group-2/0018.bin": {
+          "bytes": 65536,
+          "sha256": "85110f1695eb40757d786b7734d9571290ec1fc394182a34aab2abbdb0360fb4"
+        },
+        "group-2/0026.bin": {
+          "bytes": 65536,
+          "sha256": "34bae1493f75247f0d8238aa1b18433a6b6618e6a2503521c836a29f19c8772a"
+        },
+        "group-2/0010.bin": {
+          "bytes": 65536,
+          "sha256": "baf2b26bdc08cddce152b17122f63fb56804c6a74d0865f19e98a05c92d0be35"
+        },
+        "group-2/0006.bin": {
+          "bytes": 65536,
+          "sha256": "29f50355418a5f404e1fc5f26b5359968f69a03f8deeb1697e8b6ae777b7e5f5"
+        },
+        "group-2/0002.bin": {
+          "bytes": 65536,
+          "sha256": "bd661e4c5ca7396949e2a75e80c6586e86805b58cd14751e904c51ebfc063c62"
+        },
+        "group-2/0022.bin": {
+          "bytes": 65536,
+          "sha256": "e5e08b67e36def43cdf91aba88e7560ec202ba3885c3d648a786508a8ca473a4"
+        },
+        "group-1/0017.bin": {
+          "bytes": 65536,
+          "sha256": "dcc461e1745846b10868d90d1e516be9637bbb2d8770fde3859a53e0103eed9c"
+        },
+        "group-1/0029.bin": {
+          "bytes": 65536,
+          "sha256": "53e4e572d39083283b623f5564bb7514168496fe97140e8fa1974300d4d5ab98"
+        },
+        "group-1/0025.bin": {
+          "bytes": 65536,
+          "sha256": "2e9e8245c15f3deed53abab3ad205c38a3c65e40c20f326ee3933fd26f6483e5"
+        },
+        "group-1/0021.bin": {
+          "bytes": 65536,
+          "sha256": "eb611a22db833411638facc5f32c63e600584bef04b2d54021d15c898ef5c2a6"
+        },
+        "group-1/0009.bin": {
+          "bytes": 65536,
+          "sha256": "5209e5ef2a1c313e225bd81cd6e8040074c0a6029380fe29efa615334bfec54d"
+        },
+        "group-1/0005.bin": {
+          "bytes": 65536,
+          "sha256": "1a9781c26935d9cc68e676a729361b678c4c4c45c46123bb576aedbba53bf024"
+        },
+        "group-1/0001.bin": {
+          "bytes": 65536,
+          "sha256": "89e368c61c6dbcf5f6516f2775ce036f0a8b2ff21bb5cb5a7b119a799629dc2a"
+        },
+        "group-1/0013.bin": {
+          "bytes": 65536,
+          "sha256": "1ca0221ef2a5a10cec9715bd6bafcc0d3388997d52104a6dd7e760b996a84002"
+        },
+        "group-0/0000.bin": {
+          "bytes": 65536,
+          "sha256": "fed565a4134b59df002ec36c40074ea45aa3797dee3b65512ff5dab48aa7e74c"
+        },
+        "group-0/0024.bin": {
+          "bytes": 65536,
+          "sha256": "560c041bf97c9d7d109397b417fe8158b9f9b19d24eb50c08d58939300c502d6"
+        },
+        "group-0/0004.bin": {
+          "bytes": 65536,
+          "sha256": "9b5613a731c54129fd5a0a4df7da1dd27a73b3dd7643b7f400e787e91090e2d1"
+        },
+        "group-0/0020.bin": {
+          "bytes": 65536,
+          "sha256": "35ca7425fece57c3fdd5baef47281811f163921b6378d303ca2c4f78c6006d5d"
+        },
+        "group-0/0008.bin": {
+          "bytes": 65536,
+          "sha256": "2e9fc0d339cc427d08dc33bc59a2d2e646ccd587cd327aab763d10c0f638ae9d"
+        },
+        "group-0/0028.bin": {
+          "bytes": 65536,
+          "sha256": "d9abf3dbe7dad716ee0cd02150135b4898c916443af30684f7b6aa50c2fad36f"
+        },
+        "group-0/0016.bin": {
+          "bytes": 65536,
+          "sha256": "9984b6914e0e0eac0379b4aff3fddf16dc6be967b6c04093b8656ff46a7edff1"
+        },
+        "group-0/0012.bin": {
+          "bytes": 65536,
+          "sha256": "e6b48c3a5e8d48bb76f7e246f774f4f445d58570bde4e8bb9aab310d973de291"
+        }
+      },
+      "completed_at_utc": "2026-10-16T19:31:39Z"
+    },
+    {
+      "round": 3,
+      "scenario": "small-directory",
+      "tool": "scp",
+      "order": [
+        "rsync",
+        "moonrelay",
+        "scp"
+      ],
+      "command": [
+        "scp",
+        "-q",
+        "-B",
+        "-F",
+        "<ssh-config>",
+        "-r",
+        "<dataset>/smallfiles",
+        "receiver:<scratch>/r3-small-directory-scp/tree"
+      ],
+      "payload_bytes": 2097152,
+      "file_count": 32,
+      "process_seconds": 1.7608277089893818,
+      "client_process_group_peak_rss_sampled_bytes": 5865472,
+      "ssh_stream_sent_bytes": 2118264,
+      "ssh_stream_received_bytes": 10432,
+      "exit_code": 0,
+      "cut_observation": null,
+      "absolute_wire_start": [
+        3728710650,
+        2163330
+      ],
+      "absolute_wire_end": [
+        3730828914,
+        2173762
+      ],
+      "independent_sha256_passed": true,
+      "verification_seconds": 0.09592558396980166,
+      "verified_delivery_seconds": 1.8567532929591835,
+      "receiver_logical_bytes_after": 2097152,
+      "receiver_allocated_bytes_after": 2097152,
+      "interrupted_leg": null,
+      "state_before_restart": null,
+      "actual_file_hashes": {
+        "group-3/0023.bin": {
+          "bytes": 65536,
+          "sha256": "104956ea036a5a856265d721bceb1292e4c6983970c6dd4dc5e9c9efee4f9daf"
+        },
+        "group-3/0011.bin": {
+          "bytes": 65536,
+          "sha256": "bca450e76841cfe00b36c75e006fbf09f9dbc7d0b2c0b1ee2ca36cbd4b511d7c"
+        },
+        "group-3/0015.bin": {
+          "bytes": 65536,
+          "sha256": "a6d1a256cf8aa068e9b98c19e2e05d90cd941d9a8cb691094b8eea8d2108e423"
+        },
+        "group-3/0003.bin": {
+          "bytes": 65536,
+          "sha256": "24b5aaadb8d359a3cb2898ab9b0311ec27859832ff410b9b09e232f02c7fc7f2"
+        },
+        "group-3/0019.bin": {
+          "bytes": 65536,
+          "sha256": "47f18dd3d287db482a694e60bd34feb92f0d43b5bebcc6e7d81e7bcca1b92806"
+        },
+        "group-3/0007.bin": {
+          "bytes": 65536,
+          "sha256": "5081aae754b4f10cf62ad2b4b47090109ff00b63d453270616d64dee04b78211"
+        },
+        "group-3/0031.bin": {
+          "bytes": 65536,
+          "sha256": "32706d2c9f1510d3daf75d5b4f750e034ce8940b34953f48cbdb27f5f6fd47ce"
+        },
+        "group-3/0027.bin": {
+          "bytes": 65536,
+          "sha256": "d53308b7c606efe11bf15623b1852c575f8a8c039445ad8173ab0771ca100caa"
+        },
+        "group-2/0030.bin": {
+          "bytes": 65536,
+          "sha256": "ec29f0b7bedd38a1b91bc8c5ff0d5fe11a43a25411d000ddc31f8b12656fc41e"
+        },
+        "group-2/0014.bin": {
+          "bytes": 65536,
+          "sha256": "746420744908fc59df3bee912a9747c8c40251ab379b648530729680ada51290"
+        },
+        "group-2/0018.bin": {
+          "bytes": 65536,
+          "sha256": "85110f1695eb40757d786b7734d9571290ec1fc394182a34aab2abbdb0360fb4"
+        },
+        "group-2/0026.bin": {
+          "bytes": 65536,
+          "sha256": "34bae1493f75247f0d8238aa1b18433a6b6618e6a2503521c836a29f19c8772a"
+        },
+        "group-2/0010.bin": {
+          "bytes": 65536,
+          "sha256": "baf2b26bdc08cddce152b17122f63fb56804c6a74d0865f19e98a05c92d0be35"
+        },
+        "group-2/0006.bin": {
+          "bytes": 65536,
+          "sha256": "29f50355418a5f404e1fc5f26b5359968f69a03f8deeb1697e8b6ae777b7e5f5"
+        },
+        "group-2/0002.bin": {
+          "bytes": 65536,
+          "sha256": "bd661e4c5ca7396949e2a75e80c6586e86805b58cd14751e904c51ebfc063c62"
+        },
+        "group-2/0022.bin": {
+          "bytes": 65536,
+          "sha256": "e5e08b67e36def43cdf91aba88e7560ec202ba3885c3d648a786508a8ca473a4"
+        },
+        "group-1/0017.bin": {
+          "bytes": 65536,
+          "sha256": "dcc461e1745846b10868d90d1e516be9637bbb2d8770fde3859a53e0103eed9c"
+        },
+        "group-1/0029.bin": {
+          "bytes": 65536,
+          "sha256": "53e4e572d39083283b623f5564bb7514168496fe97140e8fa1974300d4d5ab98"
+        },
+        "group-1/0025.bin": {
+          "bytes": 65536,
+          "sha256": "2e9e8245c15f3deed53abab3ad205c38a3c65e40c20f326ee3933fd26f6483e5"
+        },
+        "group-1/0021.bin": {
+          "bytes": 65536,
+          "sha256": "eb611a22db833411638facc5f32c63e600584bef04b2d54021d15c898ef5c2a6"
+        },
+        "group-1/0009.bin": {
+          "bytes": 65536,
+          "sha256": "5209e5ef2a1c313e225bd81cd6e8040074c0a6029380fe29efa615334bfec54d"
+        },
+        "group-1/0005.bin": {
+          "bytes": 65536,
+          "sha256": "1a9781c26935d9cc68e676a729361b678c4c4c45c46123bb576aedbba53bf024"
+        },
+        "group-1/0001.bin": {
+          "bytes": 65536,
+          "sha256": "89e368c61c6dbcf5f6516f2775ce036f0a8b2ff21bb5cb5a7b119a799629dc2a"
+        },
+        "group-1/0013.bin": {
+          "bytes": 65536,
+          "sha256": "1ca0221ef2a5a10cec9715bd6bafcc0d3388997d52104a6dd7e760b996a84002"
+        },
+        "group-0/0000.bin": {
+          "bytes": 65536,
+          "sha256": "fed565a4134b59df002ec36c40074ea45aa3797dee3b65512ff5dab48aa7e74c"
+        },
+        "group-0/0024.bin": {
+          "bytes": 65536,
+          "sha256": "560c041bf97c9d7d109397b417fe8158b9f9b19d24eb50c08d58939300c502d6"
+        },
+        "group-0/0004.bin": {
+          "bytes": 65536,
+          "sha256": "9b5613a731c54129fd5a0a4df7da1dd27a73b3dd7643b7f400e787e91090e2d1"
+        },
+        "group-0/0020.bin": {
+          "bytes": 65536,
+          "sha256": "35ca7425fece57c3fdd5baef47281811f163921b6378d303ca2c4f78c6006d5d"
+        },
+        "group-0/0008.bin": {
+          "bytes": 65536,
+          "sha256": "2e9fc0d339cc427d08dc33bc59a2d2e646ccd587cd327aab763d10c0f638ae9d"
+        },
+        "group-0/0028.bin": {
+          "bytes": 65536,
+          "sha256": "d9abf3dbe7dad716ee0cd02150135b4898c916443af30684f7b6aa50c2fad36f"
+        },
+        "group-0/0016.bin": {
+          "bytes": 65536,
+          "sha256": "9984b6914e0e0eac0379b4aff3fddf16dc6be967b6c04093b8656ff46a7edff1"
+        },
+        "group-0/0012.bin": {
+          "bytes": 65536,
+          "sha256": "e6b48c3a5e8d48bb76f7e246f774f4f445d58570bde4e8bb9aab310d973de291"
+        }
+      },
+      "completed_at_utc": "2026-10-16T19:31:41Z"
+    },
+    {
+      "round": 1,
+      "scenario": "interrupted-restart",
+      "tool": "moonrelay",
+      "order": [
+        "moonrelay",
+        "scp",
+        "rsync"
+      ],
+      "command": [
+        "<moonrelay-cli>",
+        "push",
+        "<dataset>/payload.bin",
+        "receiver:<scratch>/r1-interrupted-restart-moonrelay/payload.bin",
+        "--remote-bin",
+        "<remote-cli>",
+        "--ssh-config",
+        "<ssh-config>"
+      ],
+      "payload_bytes": 134217728,
+      "file_count": 1,
+      "process_seconds": 26.84345354186371,
+      "client_process_group_peak_rss_sampled_bytes": 15220736,
+      "ssh_stream_sent_bytes": 100788380,
+      "ssh_stream_received_bytes": 40572,
+      "exit_code": 0,
+      "cut_observation": null,
+      "absolute_wire_start": [
+        33600862,
+        17606
+      ],
+      "absolute_wire_end": [
+        134389242,
+        58178
+      ],
+      "independent_sha256_passed": true,
+      "verification_seconds": 0.30678800004534423,
+      "verified_delivery_seconds": 27.150241541909054,
+      "receiver_logical_bytes_after": 268436217,
+      "receiver_allocated_bytes_after": 268447744,
+      "interrupted_leg": {
+        "process_seconds": 6.261150625068694,
+        "client_process_group_peak_rss_sampled_bytes": 15089664,
+        "ssh_stream_sent_bytes": 33596120,
+        "ssh_stream_received_bytes": 13132,
+        "exit_code": -9,
+        "cut_observation": {
+          "trigger": "sender encrypted SSH stream budget",
+          "sent_bytes_observed": 33554760
+        },
+        "absolute_wire_start": [
+          4742,
+          4386
+        ],
+        "absolute_wire_end": [
+          33600862,
+          17518
+        ],
+        "settled_ssh_stream_sent_bytes": 33596120,
+        "settled_ssh_stream_received_bytes": 13220
+      },
+      "state_before_restart": {
+        "files": {},
+        "retained_logical_bytes": 33554768,
+        "allocated_bytes": 33562624,
+        "progress_bytes": 33554432,
+        "committed_offset": 33554432,
+        "final_path_exists": false
+      },
+      "actual_file_hashes": {
+        "payload.bin": {
+          "bytes": 134217728,
+          "sha256": "32d7386cf2fb7ee6e6fc37c843abd3475a090fb74b79a3954f1a2a28b6638dcc"
+        }
+      },
+      "completed_at_utc": "2026-10-16T19:35:45Z"
+    },
+    {
+      "round": 1,
+      "scenario": "interrupted-restart",
+      "tool": "scp",
+      "order": [
+        "moonrelay",
+        "scp",
+        "rsync"
+      ],
+      "command": [
+        "scp",
+        "-q",
+        "-B",
+        "-F",
+        "<ssh-config>",
+        "<dataset>/payload.bin",
+        "receiver:<scratch>/r1-interrupted-restart-scp/payload.bin"
+      ],
+      "payload_bytes": 134217728,
+      "file_count": 1,
+      "process_seconds": 20.519371667178348,
+      "client_process_group_peak_rss_sampled_bytes": 6225920,
+      "ssh_stream_sent_bytes": 134776044,
+      "ssh_stream_received_bytes": 79712,
+      "exit_code": 0,
+      "cut_observation": null,
+      "absolute_wire_start": [
+        169934182,
+        79498
+      ],
+      "absolute_wire_end": [
+        304710226,
+        159210
+      ],
+      "independent_sha256_passed": true,
+      "verification_seconds": 0.3102112920023501,
+      "verified_delivery_seconds": 20.829582959180698,
+      "receiver_logical_bytes_after": 134217728,
+      "receiver_allocated_bytes_after": 134217728,
+      "interrupted_leg": {
+        "process_seconds": 5.176544083049521,
+        "client_process_group_peak_rss_sampled_bytes": 6242304,
+        "ssh_stream_sent_bytes": 34539128,
+        "ssh_stream_received_bytes": 20636,
+        "exit_code": -9,
+        "cut_observation": {
+          "trigger": "sender encrypted SSH stream budget",
+          "sent_bytes_observed": 33556088
+        },
+        "absolute_wire_start": [
+          134389242,
+          58178
+        ],
+        "absolute_wire_end": [
+          168928370,
+          78814
+        ],
+        "settled_ssh_stream_sent_bytes": 35544940,
+        "settled_ssh_stream_received_bytes": 21320
+      },
+      "state_before_restart": {
+        "files": {
+          "payload.bin": {
+            "bytes": 35251200,
+            "sha256": null
+          }
+        },
+        "retained_logical_bytes": 35251200,
+        "allocated_bytes": 35254272,
+        "progress_bytes": 35251200,
+        "committed_offset": null,
+        "final_path_exists": true
+      },
+      "actual_file_hashes": {
+        "payload.bin": {
+          "bytes": 134217728,
+          "sha256": "32d7386cf2fb7ee6e6fc37c843abd3475a090fb74b79a3954f1a2a28b6638dcc"
+        }
+      },
+      "completed_at_utc": "2026-10-16T19:36:12Z"
+    },
+    {
+      "round": 1,
+      "scenario": "interrupted-restart",
+      "tool": "rsync",
+      "order": [
+        "moonrelay",
+        "scp",
+        "rsync"
+      ],
+      "command": [
+        "/opt/homebrew/bin/rsync",
+        "-rt",
+        "--partial-dir=.rsync-partial",
+        "--no-whole-file",
+        "--no-compress",
+        "--stats",
+        "-e",
+        "ssh -F <ssh-config>",
+        "<dataset>/payload.bin",
+        "receiver:<scratch>/r1-interrupted-restart-rsync/payload.bin"
+      ],
+      "payload_bytes": 134217728,
+      "file_count": 1,
+      "process_seconds": 15.306900042109191,
+      "client_process_group_peak_rss_sampled_bytes": 8929280,
+      "ssh_stream_sent_bytes": 99523976,
+      "ssh_stream_received_bytes": 76044,
+      "exit_code": 0,
+      "cut_observation": null,
+      "absolute_wire_start": [
+        340129962,
+        171486
+      ],
+      "absolute_wire_end": [
+        439653938,
+        247530
+      ],
+      "independent_sha256_passed": true,
+      "verification_seconds": 0.37587270815856755,
+      "verified_delivery_seconds": 15.682772750267759,
+      "receiver_logical_bytes_after": 134217728,
+      "receiver_allocated_bytes_after": 134217728,
+      "interrupted_leg": {
+        "process_seconds": 5.148437374969944,
+        "client_process_group_peak_rss_sampled_bytes": 8372224,
+        "ssh_stream_sent_bytes": 34866612,
+        "ssh_stream_received_bytes": 11936,
+        "exit_code": -9,
+        "cut_observation": {
+          "trigger": "sender encrypted SSH stream budget",
+          "sent_bytes_observed": 33555892
+        },
+        "absolute_wire_start": [
+          304710226,
+          159210
+        ],
+        "absolute_wire_end": [
+          339576838,
+          171146
+        ],
+        "settled_ssh_stream_sent_bytes": 35419736,
+        "settled_ssh_stream_received_bytes": 12276
+      },
+      "state_before_restart": {
+        "files": {},
+        "retained_logical_bytes": 35225600,
+        "allocated_bytes": 35225600,
+        "progress_bytes": 35225600,
+        "committed_offset": null,
+        "final_path_exists": false
+      },
+      "actual_file_hashes": {
+        "payload.bin": {
+          "bytes": 134217728,
+          "sha256": "32d7386cf2fb7ee6e6fc37c843abd3475a090fb74b79a3954f1a2a28b6638dcc"
+        }
+      },
+      "completed_at_utc": "2026-10-16T19:36:35Z"
+    },
+    {
+      "round": 2,
+      "scenario": "interrupted-restart",
+      "tool": "scp",
+      "order": [
+        "scp",
+        "rsync",
+        "moonrelay"
+      ],
+      "command": [
+        "scp",
+        "-q",
+        "-B",
+        "-F",
+        "<ssh-config>",
+        "<dataset>/payload.bin",
+        "receiver:<scratch>/r2-interrupted-restart-scp/payload.bin"
+      ],
+      "payload_bytes": 134217728,
+      "file_count": 1,
+      "process_seconds": 21.026754499878734,
+      "client_process_group_peak_rss_sampled_bytes": 6307840,
+      "ssh_stream_sent_bytes": 134773292,
+      "ssh_stream_received_bytes": 79676,
+      "exit_code": 0,
+      "cut_observation": null,
+      "absolute_wire_start": [
+        475187746,
+        268958
+      ],
+      "absolute_wire_end": [
+        609961038,
+        348634
+      ],
+      "independent_sha256_passed": true,
+      "verification_seconds": 0.31620562518946826,
+      "verified_delivery_seconds": 21.342960125068203,
+      "receiver_logical_bytes_after": 134217728,
+      "receiver_allocated_bytes_after": 134217728,
+      "interrupted_leg": {
+        "process_seconds": 5.163802708033472,
+        "client_process_group_peak_rss_sampled_bytes": 6291456,
+        "ssh_stream_sent_bytes": 35161720,
+        "ssh_stream_received_bytes": 21060,
+        "exit_code": -9,
+        "cut_observation": {
+          "trigger": "sender encrypted SSH stream budget",
+          "sent_bytes_observed": 33556088
+        },
+        "absolute_wire_start": [
+          439653938,
+          247530
+        ],
+        "absolute_wire_end": [
+          474815658,
+          268590
+        ],
+        "settled_ssh_stream_sent_bytes": 35533808,
+        "settled_ssh_stream_received_bytes": 21428
+      },
+      "state_before_restart": {
+        "files": {
+          "payload.bin": {
+            "bytes": 35251200,
+            "sha256": null
+          }
+        },
+        "retained_logical_bytes": 35251200,
+        "allocated_bytes": 35254272,
+        "progress_bytes": 35251200,
+        "committed_offset": null,
+        "final_path_exists": true
+      },
+      "actual_file_hashes": {
+        "payload.bin": {
+          "bytes": 134217728,
+          "sha256": "32d7386cf2fb7ee6e6fc37c843abd3475a090fb74b79a3954f1a2a28b6638dcc"
+        }
+      },
+      "completed_at_utc": "2026-10-16T19:37:03Z"
+    },
+    {
+      "round": 2,
+      "scenario": "interrupted-restart",
+      "tool": "rsync",
+      "order": [
+        "scp",
+        "rsync",
+        "moonrelay"
+      ],
+      "command": [
+        "/opt/homebrew/bin/rsync",
+        "-rt",
+        "--partial-dir=.rsync-partial",
+        "--no-whole-file",
+        "--no-compress",
+        "--stats",
+        "-e",
+        "ssh -F <ssh-config>",
+        "<dataset>/payload.bin",
+        "receiver:<scratch>/r2-interrupted-restart-rsync/payload.bin"
+      ],
+      "payload_bytes": 134217728,
+      "file_count": 1,
+      "process_seconds": 15.283268583007157,
+      "client_process_group_peak_rss_sampled_bytes": 8994816,
+      "ssh_stream_sent_bytes": 99460552,
+      "ssh_stream_received_bytes": 75916,
+      "exit_code": 0,
+      "cut_observation": null,
+      "absolute_wire_start": [
+        645421806,
+        360946
+      ],
+      "absolute_wire_end": [
+        744882358,
+        436862
+      ],
+      "independent_sha256_passed": true,
+      "verification_seconds": 0.30471020890399814,
+      "verified_delivery_seconds": 15.587978791911155,
+      "receiver_logical_bytes_after": 134217728,
+      "receiver_allocated_bytes_after": 134217728,
+      "interrupted_leg": {
+        "process_seconds": 5.097271416801959,
+        "client_process_group_peak_rss_sampled_bytes": 8388608,
+        "ssh_stream_sent_bytes": 34244020,
+        "ssh_stream_received_bytes": 11792,
+        "exit_code": -9,
+        "cut_observation": {
+          "trigger": "sender encrypted SSH stream budget",
+          "sent_bytes_observed": 33555892
+        },
+        "absolute_wire_start": [
+          609961038,
+          348634
+        ],
+        "absolute_wire_end": [
+          644205058,
+          360426
+        ],
+        "settled_ssh_stream_sent_bytes": 35460768,
+        "settled_ssh_stream_received_bytes": 12312
+      },
+      "state_before_restart": {
+        "files": {},
+        "retained_logical_bytes": 35291136,
+        "allocated_bytes": 35291136,
+        "progress_bytes": 35291136,
+        "committed_offset": null,
+        "final_path_exists": false
+      },
+      "actual_file_hashes": {
+        "payload.bin": {
+          "bytes": 134217728,
+          "sha256": "32d7386cf2fb7ee6e6fc37c843abd3475a090fb74b79a3954f1a2a28b6638dcc"
+        }
+      },
+      "completed_at_utc": "2026-10-16T19:37:25Z"
+    },
+    {
+      "round": 2,
+      "scenario": "interrupted-restart",
+      "tool": "moonrelay",
+      "order": [
+        "scp",
+        "rsync",
+        "moonrelay"
+      ],
+      "command": [
+        "<moonrelay-cli>",
+        "push",
+        "<dataset>/payload.bin",
+        "receiver:<scratch>/r2-interrupted-restart-moonrelay/payload.bin",
+        "--remote-bin",
+        "<remote-cli>",
+        "--ssh-config",
+        "<ssh-config>"
+      ],
+      "payload_bytes": 134217728,
+      "file_count": 1,
+      "process_seconds": 26.267424416029826,
+      "client_process_group_peak_rss_sampled_bytes": 15286272,
+      "ssh_stream_sent_bytes": 100788380,
+      "ssh_stream_received_bytes": 40572,
+      "exit_code": 0,
+      "cut_observation": null,
+      "absolute_wire_start": [
+        778478478,
+        450238
+      ],
+      "absolute_wire_end": [
+        879266858,
+        490810
+      ],
+      "independent_sha256_passed": true,
+      "verification_seconds": 0.31608424987643957,
+      "verified_delivery_seconds": 26.583508665906265,
+      "receiver_logical_bytes_after": 268436217,
+      "receiver_allocated_bytes_after": 268447744,
+      "interrupted_leg": {
+        "process_seconds": 6.043239791877568,
+        "client_process_group_peak_rss_sampled_bytes": 15171584,
+        "ssh_stream_sent_bytes": 33596120,
+        "ssh_stream_received_bytes": 13376,
+        "exit_code": -9,
+        "cut_observation": {
+          "trigger": "sender encrypted SSH stream budget",
+          "sent_bytes_observed": 33554760
+        },
+        "absolute_wire_start": [
+          744882358,
+          436862
+        ],
+        "absolute_wire_end": [
+          778478478,
+          450238
+        ],
+        "settled_ssh_stream_sent_bytes": 33596120,
+        "settled_ssh_stream_received_bytes": 13376
+      },
+      "state_before_restart": {
+        "files": {},
+        "retained_logical_bytes": 33554768,
+        "allocated_bytes": 33562624,
+        "progress_bytes": 33554432,
+        "committed_offset": 33554432,
+        "final_path_exists": false
+      },
+      "actual_file_hashes": {
+        "payload.bin": {
+          "bytes": 134217728,
+          "sha256": "32d7386cf2fb7ee6e6fc37c843abd3475a090fb74b79a3954f1a2a28b6638dcc"
+        }
+      },
+      "completed_at_utc": "2026-10-16T19:37:59Z"
+    },
+    {
+      "round": 3,
+      "scenario": "interrupted-restart",
+      "tool": "rsync",
+      "order": [
+        "rsync",
+        "moonrelay",
+        "scp"
+      ],
+      "command": [
+        "/opt/homebrew/bin/rsync",
+        "-rt",
+        "--partial-dir=.rsync-partial",
+        "--no-whole-file",
+        "--no-compress",
+        "--stats",
+        "-e",
+        "ssh -F <ssh-config>",
+        "<dataset>/payload.bin",
+        "receiver:<scratch>/r3-interrupted-restart-rsync/payload.bin"
+      ],
+      "payload_bytes": 134217728,
+      "file_count": 1,
+      "process_seconds": 15.259392415871844,
+      "client_process_group_peak_rss_sampled_bytes": 9027584,
+      "ssh_stream_sent_bytes": 99331580,
+      "ssh_stream_received_bytes": 75976,
+      "exit_code": 0,
+      "cut_observation": null,
+      "absolute_wire_start": [
+        914851982,
+        502978
+      ],
+      "absolute_wire_end": [
+        1014183562,
+        578954
+      ],
+      "independent_sha256_passed": true,
+      "verification_seconds": 0.30532458308152854,
+      "verified_delivery_seconds": 15.564716998953372,
+      "receiver_logical_bytes_after": 134217728,
+      "receiver_allocated_bytes_after": 134217728,
+      "interrupted_leg": {
+        "process_seconds": 5.152325584087521,
+        "client_process_group_peak_rss_sampled_bytes": 8404992,
+        "ssh_stream_sent_bytes": 34571700,
+        "ssh_stream_received_bytes": 11720,
+        "exit_code": -9,
+        "cut_observation": {
+          "trigger": "sender encrypted SSH stream budget",
+          "sent_bytes_observed": 33555892
+        },
+        "absolute_wire_start": [
+          879266858,
+          490810
+        ],
+        "absolute_wire_end": [
+          913838558,
+          502530
+        ],
+        "settled_ssh_stream_sent_bytes": 35585124,
+        "settled_ssh_stream_received_bytes": 12168
+      },
+      "state_before_restart": {
+        "files": {},
+        "retained_logical_bytes": 35422208,
+        "allocated_bytes": 35422208,
+        "progress_bytes": 35422208,
+        "committed_offset": null,
+        "final_path_exists": false
+      },
+      "actual_file_hashes": {
+        "payload.bin": {
+          "bytes": 134217728,
+          "sha256": "32d7386cf2fb7ee6e6fc37c843abd3475a090fb74b79a3954f1a2a28b6638dcc"
+        }
+      },
+      "completed_at_utc": "2026-10-16T19:38:21Z"
+    },
+    {
+      "round": 3,
+      "scenario": "interrupted-restart",
+      "tool": "moonrelay",
+      "order": [
+        "rsync",
+        "moonrelay",
+        "scp"
+      ],
+      "command": [
+        "<moonrelay-cli>",
+        "push",
+        "<dataset>/payload.bin",
+        "receiver:<scratch>/r3-interrupted-restart-moonrelay/payload.bin",
+        "--remote-bin",
+        "<remote-cli>",
+        "--ssh-config",
+        "<ssh-config>"
+      ],
+      "payload_bytes": 134217728,
+      "file_count": 1,
+      "process_seconds": 36.57984554185532,
+      "client_process_group_peak_rss_sampled_bytes": 15155200,
+      "ssh_stream_sent_bytes": 100788380,
+      "ssh_stream_received_bytes": 40800,
+      "exit_code": 0,
+      "cut_observation": null,
+      "absolute_wire_start": [
+        1047779682,
+        592226
+      ],
+      "absolute_wire_end": [
+        1148568062,
+        633026
+      ],
+      "independent_sha256_passed": true,
+      "verification_seconds": 0.3109762498643249,
+      "verified_delivery_seconds": 36.890821791719645,
+      "receiver_logical_bytes_after": 268436217,
+      "receiver_allocated_bytes_after": 268447744,
+      "interrupted_leg": {
+        "process_seconds": 5.982652541948482,
+        "client_process_group_peak_rss_sampled_bytes": 15187968,
+        "ssh_stream_sent_bytes": 33596120,
+        "ssh_stream_received_bytes": 13272,
+        "exit_code": -9,
+        "cut_observation": {
+          "trigger": "sender encrypted SSH stream budget",
+          "sent_bytes_observed": 33554760
+        },
+        "absolute_wire_start": [
+          1014183562,
+          578954
+        ],
+        "absolute_wire_end": [
+          1047779682,
+          592226
+        ],
+        "settled_ssh_stream_sent_bytes": 33596120,
+        "settled_ssh_stream_received_bytes": 13272
+      },
+      "state_before_restart": {
+        "files": {},
+        "retained_logical_bytes": 33554768,
+        "allocated_bytes": 33562624,
+        "progress_bytes": 33554432,
+        "committed_offset": 33554432,
+        "final_path_exists": false
+      },
+      "actual_file_hashes": {
+        "payload.bin": {
+          "bytes": 134217728,
+          "sha256": "32d7386cf2fb7ee6e6fc37c843abd3475a090fb74b79a3954f1a2a28b6638dcc"
+        }
+      },
+      "completed_at_utc": "2026-10-16T19:39:06Z"
+    },
+    {
+      "round": 3,
+      "scenario": "interrupted-restart",
+      "tool": "scp",
+      "order": [
+        "rsync",
+        "moonrelay",
+        "scp"
+      ],
+      "command": [
+        "scp",
+        "-q",
+        "-B",
+        "-F",
+        "<ssh-config>",
+        "<dataset>/payload.bin",
+        "receiver:<scratch>/r3-interrupted-restart-scp/payload.bin"
+      ],
+      "payload_bytes": 134217728,
+      "file_count": 1,
+      "process_seconds": 21.34788979194127,
+      "client_process_group_peak_rss_sampled_bytes": 6307840,
+      "ssh_stream_sent_bytes": 134809412,
+      "ssh_stream_received_bytes": 80036,
+      "exit_code": 0,
+      "cut_observation": null,
+      "absolute_wire_start": [
+        1183709278,
+        654210
+      ],
+      "absolute_wire_end": [
+        1318518690,
+        734246
+      ],
+      "independent_sha256_passed": true,
+      "verification_seconds": 0.30465220799669623,
+      "verified_delivery_seconds": 21.652541999937966,
+      "receiver_logical_bytes_after": 134217728,
+      "receiver_allocated_bytes_after": 134217728,
+      "interrupted_leg": {
+        "process_seconds": 5.185367000056431,
+        "client_process_group_peak_rss_sampled_bytes": 6258688,
+        "ssh_stream_sent_bytes": 35063416,
+        "ssh_stream_received_bytes": 21024,
+        "exit_code": -9,
+        "cut_observation": {
+          "trigger": "sender encrypted SSH stream budget",
+          "sent_bytes_observed": 33556088
+        },
+        "absolute_wire_start": [
+          1148568062,
+          633026
+        ],
+        "absolute_wire_end": [
+          1183631478,
+          654050
+        ],
+        "settled_ssh_stream_sent_bytes": 35141216,
+        "settled_ssh_stream_received_bytes": 21184
+      },
+      "state_before_restart": {
+        "files": {
+          "payload.bin": {
+            "bytes": 34990080,
+            "sha256": null
+          }
+        },
+        "retained_logical_bytes": 34990080,
+        "allocated_bytes": 34992128,
+        "progress_bytes": 34990080,
+        "committed_offset": null,
+        "final_path_exists": true
+      },
+      "actual_file_hashes": {
+        "payload.bin": {
+          "bytes": 134217728,
+          "sha256": "32d7386cf2fb7ee6e6fc37c843abd3475a090fb74b79a3954f1a2a28b6638dcc"
+        }
+      },
+      "completed_at_utc": "2026-10-16T19:39:34Z"
+    }
+  ],
+  "protocol_segments": [
+    {
+      "scenario_set": [
+        "fresh",
+        "completed-rerun",
+        "small-directory"
+      ],
+      "count": 27,
+      "driver_sha256": "7e1b5059c9fd529f3ca99e5445b07d088a82d9a6fabba30c3da02c7a2af92686"
+    },
+    {
+      "scenario_set": [
+        "interrupted-restart"
+      ],
+      "count": 9,
+      "driver_sha256": "dc6d249fab5daa86fac2e0c32797ee64412d409dcaed38398fe96b9e8c6a6e77"
+    }
+  ],
+  "excluded_diagnostics": {
+    "count": 9,
+    "scenario": "old receiver-probed interruption",
+    "reason": "probe latency caused unequal cut points; all nine excluded regardless of speed; original records retained locally"
+  }
+}

@@ -106,11 +106,15 @@ HTTP 上传与 CLI 下载支持断点恢复；下载中断后，保留目标旁�
 
 用 moonrelay tasks ./results 查看任务、恢复文件占用和可回收字节数；用 moonrelay clean ./results/model.bin 校验最终文件后回收重复分块。HTTP 仓库的显式删除、锁保护和完整命令见[维护说明](docs/maintenance.md)。
 
+## 性能与选型
+
+[与 scp、rsync 的三轮实机对照](docs/transfer-comparison.md)包含首次传输、已完成重跑、小文件目录、中断恢复，以及内存、空间和 SSH 字节数。在本次 Mac→Linux 环境中，scp/rsync 的首次和小文件传输更快；MoonRelay 侧重可在 MoonBit 应用中直接调用的传输接口与恢复状态。完整参数、逐轮数字和复现工具均随报告提供。
+
 ## 使用前了解这些限制
 
 - SSH 已增加 `--recursive` 目录传输，支持逐文件恢复和空目录，见[目录说明](docs/moonrelay.md#目录断点续传)。没有删除同步、云存储或中继功能。Windows 客户端的验证范围见下方。
 - 接收端保留分块和最终文件，成功传输约需文件大小 **2 倍磁盘空间**；可用 clean 显式清理已完成任务的重复分块。
-- SSH 每个协议请求启动一个 SSH 进程，可以沿用 OpenSSH 连接复用配置；尚无吞吐率对比结论。
+- SSH 每个协议请求启动一个 SSH 进程，可以沿用 OpenSSH 连接复用配置；已提供单机组合的[对照结果](docs/transfer-comparison.md)，不代表所有网络和机器。
 - 已验证本机及 Linux CI 中真实 OpenSSH 回环传输，以及 **macOS→Linux / Linux→macOS 的 1.25 GiB 跨机器双向中断续传与最终哈希**。尚未验证断电恢复。16 GiB 是单文件配置上限。
 - 进程中断可以恢复，持久化目录损坏或内容身份不匹配会报错；SSH 接收端使用登录账号的文件权限。
 
