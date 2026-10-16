@@ -22,6 +22,8 @@ MoonRelay 是使用 MoonBit 独立实现的可靠文件传输库与 CLI，面向
 
 项目采用 Apache-2.0，已说明 tus HTTP 协议参考范围、async 和标准库依赖、OpenSSH 外部程序及 tus-js-client 测试依赖。Windows 原生构建、HTTP 和维护由 CI 验证；Windows→Linux 实机 SSH 尚待验证，Windows SSH 接收端不支持。未宣称断电恢复、全平台 SSH 实机验证、目录删除同步或吞吐率优势。
 
+新增实际库组合案例：独立 native 应用从 Mooncakes 安装第三方 MoonDocKit 0.6.0 和 MoonRelay 0.4.0，生成五页真实文档，在 Mac↔Linux 间完成站点交付、SIGKILL 后批次重跑、已完成文件复用与全部文件独立哈希复核。案例由本项目实现，不代表上游采用。详见 [案例与三分钟讲稿](cases/moondockit-delivery.md)。
+
 ## 证据链接
 
 | 材料 | 链接 |

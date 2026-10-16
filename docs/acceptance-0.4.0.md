@@ -40,3 +40,7 @@ GitHub v0.4.0 二进制发布源为 47b30301371ab31480fd0a1121300b48ee6a1120；M
 Windows 原生构建、HTTP 与维护由 CI 验证；Windows→Linux 实机 SSH 按用户决定保留待验证，Windows SSH 接收端不支持。没有断电恢复或全平台 SSH 已验证的声明。AI 可用于开发；参赛者仍需理解和负责项目目标、技术路线与质量。入群及 GitHub ID 群昵称由参赛者确认，工程仓库无法代证。
 
 [十月官网](https://moonbitlang.github.io/Hackathon2026/)写明 2026-10-31 截止；飞书章程残留旧月份及 10-24 日期，存在冲突，实际安排以主办方最新通知为准。
+
+## 补充的第三方库组合案例
+
+[MoonDocKit 文档站交付](cases/moondockit-delivery.md)提供真实库 API 组合、Mac↔Linux 站点交付与批次重跑、独立哈希及浏览器产物。它是新增的集成验证材料，不改变 0.4.0 的发布包或上游采用状态。

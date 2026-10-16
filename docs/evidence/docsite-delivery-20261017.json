@@ -1,0 +1,245 @@
+{
+  "passed": true,
+  "run_id": "docsite-20261016T190005Z",
+  "timestamp_utc": "2026-10-16T19:00:19.474612+00:00",
+  "integration": "MoonDocKit library -> generated documentation -> MoonRelay public API -> Linux -> return verification",
+  "dependencies": {
+    "Estrella-11/moondockit": "0.6.0",
+    "kaigeliang/upload": "0.4.0",
+    "moonbitlang/async": "0.22.4"
+  },
+  "registry_consumer_outside_repository": true,
+  "workspace_override": false,
+  "third_party_adoption_claim": false,
+  "files": {
+    "http-guide.html": {
+      "bytes": 37692,
+      "sha256": "daebc07ac5742950a3368d6c9e8cae6a616f3010d488ebd59c7dce680e818810"
+    },
+    "index.html": {
+      "bytes": 365,
+      "sha256": "cc2d45c46e0df9e406f49136106fc6bbe56f91b1da871657597f8d926f1a6794"
+    },
+    "maintenance.html": {
+      "bytes": 34847,
+      "sha256": "ee61d5a87435ac8753aaf0155c2ca3e30cc7b6b7f55af0cf4ace43099a81e1d7"
+    },
+    "overview.html": {
+      "bytes": 42831,
+      "sha256": "216e91949bf959850d9a547bf74cd6413f7b8e4fd269659e51823a8029f5f8ea"
+    },
+    "quality-report.json": {
+      "bytes": 623,
+      "sha256": "487e611e44e3114eb24074e8fc8254babfc7e6c8a608d72d1bed343644603c84"
+    },
+    "references.html": {
+      "bytes": 34281,
+      "sha256": "617725ebe205040752a4eb46467c87c5d2d1eca20a67565a5856187549f34acb"
+    },
+    "releases.html": {
+      "bytes": 33632,
+      "sha256": "a432826bf4c9a7098a33276e90cbfa055b167193bcfd3978e67d6f8e72d2908e"
+    },
+    "robots.txt": {
+      "bytes": 44,
+      "sha256": "88316e9923a8aac0da63fedd15ad1367a7ed6b9bbea4724e96c57ed1d66198c5"
+    },
+    "search-index.json": {
+      "bytes": 23908,
+      "sha256": "3ee00d5e9754c9f42f2da79af2f0197d80721d44025994c9725d6644c48fc598"
+    },
+    "site-manifest.json": {
+      "bytes": 684,
+      "sha256": "6f2c2f56f95974fe86eb83ee4f8e5b9b2e7f1b7fb5a3c624fd8e7c5ba3901ce4"
+    },
+    "sitemap.xml": {
+      "bytes": 307,
+      "sha256": "3d170e91843ff7de09e6259bbfbfa84e8196dc91424ea8be38fde0c0a47d41d2"
+    }
+  },
+  "file_count": 11,
+  "bytes": 209214,
+  "interruption": {
+    "signal": "SIGKILL",
+    "boundary": "after one file was published and remotely verified; before the rest of the batch",
+    "first_committed_file": "index.html",
+    "resumed_initial_offset": "365",
+    "resumed_progress_advance_bytes": "0"
+  },
+  "checks": [
+    "registry native build",
+    "real MoonDocKit generated site",
+    "remote full hash verification",
+    "SIGKILL and batch restart",
+    "committed file reused",
+    "public pull API",
+    "independent per-file local and remote SHA-256"
+  ],
+  "events": [
+    {
+      "step": "registry-update",
+      "exit_code": 0,
+      "seconds": 2.305
+    },
+    {
+      "step": "consumer-check",
+      "exit_code": 0,
+      "seconds": 0.262
+    },
+    {
+      "step": "registry-tree",
+      "exit_code": 0,
+      "seconds": 0.005
+    },
+    {
+      "step": "consumer-build",
+      "exit_code": 0,
+      "seconds": 6.084
+    },
+    {
+      "step": "generate-site",
+      "exit_code": 0,
+      "seconds": 0.007
+    },
+    {
+      "step": "remote-create",
+      "exit_code": 0,
+      "seconds": 0.314
+    },
+    {
+      "step": "resume-delivery",
+      "exit_code": 0,
+      "seconds": 4.374
+    },
+    {
+      "step": "remote-independent-hashes",
+      "exit_code": 0,
+      "seconds": 0.071
+    },
+    {
+      "step": "toolchain",
+      "exit_code": 0,
+      "seconds": 0.027
+    }
+  ],
+  "generated_package_sources": {
+    "Estrella-11/moondockit": {
+      "ai/ai_common.mbt": "8273e6f7bcb3f563db60049ad2b52a5169f2fb23d264ad6c6ffe1cbca1fcaf8d",
+      "ai/ai_consistency.mbt": "91b5b392d81f33290a3c62371f8f1cb73c07f67e272c5ed592653be796eecf93",
+      "ai/ai_core.mbt": "2e640fac9ca95bae972cd33f82f118db90a034ade848eb510cc2cd00b13689ae",
+      "ai/ai_coverage.mbt": "c757d372b18877908877a1f4b7e8453923eb24b3f09ae160edef83ecd6238137",
+      "ai/ai_doc_gen.mbt": "2cc671ab715d30458098146b758dce86afd5957c5b567625dec57a2439dab5ab",
+      "ai/ai_prompts.mbt": "4c6759f45c666486a27e793dab5b08cc5870fd794b84cf23fe49a15d911ee3c3",
+      "ai/ai_quality.mbt": "56f33e694758c2caf05012d3ad76d96260efb2d4f729d83b341648cac8e887ad",
+      "ai/ai_recommend.mbt": "cddc1e3d86490352e7ed990388a35d0d004ac8fa471f168dd887081d0aaa7448",
+      "ai/ai_seo.mbt": "74167be1641f6e160e48f3c3717947fd06fcd284cfafc15f4989ef53ba4b5193",
+      "ai/ai_summary.mbt": "57b6008c3d9162fd8e55977a5816a84f80ecbded164b67cfc6ae5cc07977901f",
+      "ai/ai_test.mbt": "815b3cc6e97faa688dfc24fa77b9b13166b8a2683e2603a82a83f1f9a8918cb4",
+      "ai/ai_test_gen.mbt": "0cc9017f238c9c8f5220d6352d75f266710292d29b71b30a64b979bc42d0cc18",
+      "ai/ai_xref.mbt": "0324d0bfd3e9eb909bcaa3d416f8a0b03b2940d5a827dc96389c76658102e6e9",
+      "cmd/main/main.mbt": "b0b570bd17a150d808dc103c4f4e27763d02a8d7f2ebc269b7218ad90f5e736d",
+      "cmd/moondockit/fs_js.mbt": "f3d10f336a5bc104b1a22b84eb4a79371cb049121fb94882227a7a2482e5125e",
+      "cmd/moondockit/main_js.mbt": "49c87e379784bc852ada86b614d5fcdce86a177526c88b408cba182e66629432",
+      "cmd/moondockit/main_nonjs.mbt": "5eb1eccbb10776e7d04ebc68e0942e296ceb9da0e874fac1f47601551d8ca479",
+      "cmd/playground/main_js.mbt": "72043bda5d2a3b0f2d851b37fad8db286dd027e5df631d2434080fdd479d1aea",
+      "cmd/playground/main_nonjs.mbt": "e80c3235800ee92001330828461772be968333a62b0a78990188c4c817c84275",
+      "doctests/doc_examples_test.mbt": "cea0ded8aac62d860d3e48eaeed6d9f58ad112d426f4396760943e9a57596836",
+      "moondockit.mbt": "8414691831505fe30163a13befd2d3dad70bf106da560529c461e6a5001df87a",
+      "moondockit_test.mbt": "eedd2cdb26738d0d384f9b24ffe4db2689992662d3f60e4ddb7b363ed6712c45",
+      "moondockit_wbtest.mbt": "8c936dec60fbb27e698f1b379e889882d71d05ac52096d9cceb6569d6e407e2b"
+    },
+    "kaigeliang/upload": {
+      "auth/auth.mbt": "42629e8fd2885397cb25b924e76deaaae6258f2a5247128819ad5a583f2a48f0",
+      "auth/auth_test.mbt": "d2b92c28cded7eb9ea62ea248d33758a0899c8d8c41191b6713a690480db743c",
+      "cmd/consumer/main.mbt": "bcd1df620a1938bfc2720b1796101edb66060758b10658bc608fedcf13b42e5f",
+      "cmd/moonrelay/main.mbt": "0d1f4a1d30265160dc8913174e52c68df711390dae670f1be988b5278b9548ae",
+      "cmd/server/main.mbt": "32fd20961c726f6b5c32001b6ed18c0f03b852922a553188cf727e6c8324c468",
+      "cmd/upload/main.mbt": "a952bdc7fd9a690948818f7c212af9341b8a3fd508dc3aec4d279728140e1e53",
+      "examples/library-consumer/main.mbt": "2d7bf9ed59906c097dc4c8b6bbeb386100d26f2fb0137ec7a85cb723c75e1b3a",
+      "httpclient/client.mbt": "bee8b8244363f1c3ad1e354fb163675aae2baa548bb0ba9bfea8c2bc6ac33ee8",
+      "httpclient/download.mbt": "429b70e28885217bbbea7dd4e100219779d6465fa0f375c8415fc1932ed1ce94",
+      "maintenance/tasks.mbt": "0bf7d494c31800406978e138298dd2c7d367ae7f1f60a55be932be212d489f98",
+      "sha256/sha256.mbt": "11e44bec9f0e848968787e68ab179fea58b871b910c296536c9f05e8e38d462e",
+      "sha256/sha256_test.mbt": "b424efccd4144705b5b5a0f6ac11c37e1697f886b09ac88e8cd038070afee97f",
+      "storage/storage.mbt": "7d9e7edb25eec450c8d75d624044bb5f07974b2dbf9d424c898d35c8e6435961",
+      "storage/store.mbt": "cb2b915bf341673bea44bf694e9e2b8a6d998104aae987a7322574d182ced1ab",
+      "storage/validation_test.mbt": "a0baaaf0310ed0bfbc637df5f74be4e06f669e8aca8cef4d1dead8712f7c3d72",
+      "transfer/endpoint_test.mbt": "11ace9dd4d44df77f2df02d821993fae03a34696ac6e91acd4922871dd9ffa6a",
+      "transfer/quote_wbtest.mbt": "e83d7206a2186de461070765e1494c41525738b1e4dbe70e5575bc6ed5edd910",
+      "transfer/ssh.mbt": "da47d00ff921cf5e5fa96c58c708d38b3d54d4c57afe274f94d293d40817b843",
+      "transfer/tree.mbt": "cd9305437fc50a8425985baa008c9a9bce1a7af8534dba5e74541064decc9637",
+      "transfer/tree_wbtest.mbt": "0654d6adf885fe3680d25f205399c3499a4299e0df22b63956feb140ed80d3c6",
+      "transfer/wire.mbt": "d3134828eaaf0e7c179397f90de36d07d6d6a41b92026645fa2f8d72b331941e"
+    }
+  },
+  "inputs": {
+    "README.md": "54d37cc0064ef806440fb6e1989884efac8c274a34b14c6f01dfdca4dc5a2370",
+    "docs/cli.md": "dedaa93f270d77f9b435a8f158805b6ff46e0aff92c438a277e32ca627a93baa",
+    "docs/maintenance.md": "c3677522d84f218ae8069039038cb9ae2a115687c576701d844528411b2f456d",
+    "docs/releases.md": "66f6acad0718da1e5ada81c53f50871901a42ae185669c45c83d9ea1eced12eb",
+    "docs/references.md": "95637bc1eb7fdb12216571bdd0a753971636cffc1329b5d0875d11fe2a7126b9"
+  },
+  "integration_sources": {
+    "examples/docsite-delivery/moon.pkg": "7db0cace4cc6ebe4fb5eeb7feb6390ef77d2ff8a5b98f0942505340740711901",
+    "examples/docsite-delivery/moon.mod": "74af1b7eb6ae87d9abac98b96a5ea4821662b2e240441c3a0209c6bd31962939",
+    "examples/docsite-delivery/main.mbt": "c16cfcb33e7300134ed83ffa7f07609c19bde77510a504854ba3ef1f9047e108",
+    "examples/docsite-delivery/README.md": "1237452bc1ce2b439fde91eefe4264723f85924c707c7daa7be490c25ef42e9b"
+  },
+  "moon_version": "moon 0.1.20261012 (748b63c 2026-10-12) ~/competition/moonbit-upload/output/toolchain/bin/moon\nmoonc v0.10.15+943464bfa (2026-10-12) ~/competition/moonbit-upload/output/toolchain/bin/moonc\nmoonrun 0.1.20261012 (748b63c 2026-10-12) ~/competition/moonbit-upload/output/toolchain/bin/moonrun\n\nFeature flags enabled: rr_moon_mod,rr_moon_pkg",
+  "source_commit": "cfabd8c301f7c58fd4960d360f76d6471a6982f4",
+  "working_tree_dirty": false,
+  "machines": {
+    "sender": "macOS ARM64",
+    "receiver": "Linux x86_64",
+    "transport": "actual SSH between separate machines"
+  },
+  "upstream_reference": {
+    "url": "https://github.com/Estrella-11/moonbit_1",
+    "commit": "9b937684f4bc9a649acbe2fda16e4fa3eeb9c48b",
+    "license": "Apache-2.0",
+    "executed_source": "Mooncakes Estrella-11/moondockit@0.6.0; per-file source hashes below"
+  },
+  "quality_report": {
+    "site_title": "MoonRelay — reliable documentation delivery",
+    "passed": true,
+    "score": 100,
+    "checks": [
+      {
+        "name": "validation",
+        "passed": true,
+        "message": "site validation passed"
+      },
+      {
+        "name": "content",
+        "passed": true,
+        "message": "site has measurable documentation content"
+      },
+      {
+        "name": "outputs",
+        "passed": true,
+        "message": "manifest includes html pages and data outputs"
+      },
+      {
+        "name": "readability",
+        "passed": true,
+        "message": "every page is within the baseline reading threshold"
+      }
+    ],
+    "metrics": {
+      "page_count": 5,
+      "heading_count": 25,
+      "code_block_count": 12,
+      "word_count": 933,
+      "reading_minutes": 5
+    },
+    "diagnostics": []
+  },
+  "browser_checks": {
+    "viewed": "actual pulled-back site over loopback HTTP",
+    "home": true,
+    "maintenance_navigation": true,
+    "search_returned_results": true,
+    "screenshot": "docsite-delivery-20261017.png",
+    "screenshot_sha256": "7f9ef95ab8c57bc3c61d411c52a06d6fdba601725c2a65e6dd07c536fa632602"
+  }
+}
