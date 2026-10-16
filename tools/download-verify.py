@@ -82,7 +82,7 @@ def interrupted(url, target):
             buffer = (buffer + byte)[-2048:]
             if b'download ' in buffer and b'1048576/' in buffer:
                 inventory = json.loads(cli('tasks', target.parent).stdout)
-                task = next(task for task in inventory['tasks'] if task['target'] == str(target))
+                task = next(task for task in inventory['tasks'] if Path(task['target']) == target)
                 assert task['active'] and task['status'] == 'active', task
                 cli('clean', target, ok=False)
                 p.kill()

@@ -55,7 +55,7 @@ if os.name != 'nt':
     target = out / 'complete.bin'
     sha = create_received(target, data)
     inventory = run('tasks', out)
-    task = next(t for t in inventory['tasks'] if t['target'] == str(target))
+    task = next(t for t in inventory['tasks'] if Path(t['target']) == target)
     assert task['status'] == 'complete' and int(task['reclaimable_bytes']) >= len(data)
     original_chunks = {p.name: p.read_bytes() for p in (Path(str(target)+'.moonrelay')/'1').iterdir()}
     before = sum(p.stat().st_size for p in Path(str(target)+'.moonrelay').rglob('*') if p.is_file())
@@ -73,7 +73,7 @@ if os.name != 'nt':
     checkpoint.mkdir()
     for name, content in original_chunks.items():
         (checkpoint/name).write_bytes(content)
-    task = next(t for t in run('tasks', out)['tasks'] if t['target'] == str(target))
+    task = next(t for t in run('tasks', out)['tasks'] if Path(t['target']) == target)
     assert task['status'] == 'cleaned' and int(task['reclaimable_bytes']) >= len(data)
     assert int(run('clean', target)['reclaimed_bytes']) >= len(data)
     assert run('status', target)['complete']
@@ -102,7 +102,7 @@ if os.name != 'nt':
             assert time.monotonic()<deadline and receiver.poll() is None
             time.sleep(.01)
         inventory = run('tasks', out)
-        task = next(t for t in inventory['tasks'] if t['target']==str(partial))
+        task = next(t for t in inventory['tasks'] if Path(t['target'])==partial)
         assert task['active'] and task['status']=='active'
         run('clean', partial, ok=False)
         assert int(json.loads((state/'1/manifest.json').read_text())['offset'])==1048576
@@ -149,7 +149,7 @@ try:
     downloaded = out/'download.bin'
     url = f'http://127.0.0.1:{server.port}'+path
     run('pull', url, downloaded, '--sha256', sha, env=env)
-    task = next(t for t in run('tasks', out)['tasks'] if t['target']==str(downloaded))
+    task = next(t for t in run('tasks', out)['tasks'] if Path(t['target'])==downloaded)
     assert task['status']=='complete'
     assert int(run('clean', downloaded)['reclaimed_bytes'])>0
     assert downloaded.read_bytes()==data and not Path(str(downloaded)+'.part.json').exists()
