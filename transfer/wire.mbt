@@ -217,6 +217,23 @@ pub async fn receive_rpc(reader : &@io.Reader, writer : &@io.Writer) -> Unit {
     let mut info = empty_info()
     let mut data = b""
     match req.op {
+      "tree-scan" => {
+        tree_path_check(req.path)
+        let manifest = scan_tree(req.path)
+        data = @utf8.encode(ToJson::to_json(manifest).stringify()[:])
+        if data.length() > 8388608 {
+          raise Rejected("tree manifest exceeds 8 MiB")
+        }
+      }
+      "tree-open" => {
+        if req.count < 1 || req.count > 8388608 {
+          raise Rejected("invalid tree manifest size")
+        }
+        let manifest : TreeManifest = @json.from_json(
+          @json.parse(@utf8.decode(reader.read_exactly(req.count)[:])),
+        )
+        open_tree(req.path, manifest)
+      }
       "inspect" => info = hash_file(req.path)
       "read" => {
         if req.count < 1 ||

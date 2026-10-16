@@ -37,7 +37,7 @@ async fn run() -> Unit {
   let args = @env.args()
   if args.length() < 2 || args.contains("--help") {
     println(
-      "MoonRelay\nmoonrelay push FILE user@host:/absolute/path [--remote-bin PATH] [--ssh-config FILE] [--retries N]\nmoonrelay pull user@host:/absolute/path FILE [options]\nmoonrelay status user@host:/absolute/path [options]\nmoonrelay verify user@host:/absolute/path --sha256 HASH [options]\nmoonrelay hash FILE\nmoonrelay serve STORE PORT (HTTP receiver)\nmoonrelay rpc (SSH receiver; protocol stdin/stdout)\nHTTP: moonrelay upload/download/verify/hash ... --server URL (legacy options supported)",
+      "MoonRelay\nmoonrelay push FILE_OR_DIRECTORY user@host:/absolute/path [--recursive] [--remote-bin PATH] [--ssh-config FILE] [--retries N]\nmoonrelay pull user@host:/absolute/path FILE_OR_DIRECTORY [--recursive] [options]\nmoonrelay status user@host:/absolute/path [options]\nmoonrelay verify user@host:/absolute/path --sha256 HASH [options]\nmoonrelay hash FILE\nmoonrelay serve STORE PORT (HTTP receiver)\nmoonrelay rpc (SSH receiver; protocol stdin/stdout)\nHTTP: moonrelay upload/download/verify/hash ... --server URL (legacy options supported)",
     )
     return
   }
@@ -129,9 +129,13 @@ async fn run() -> Unit {
   }
   let positional : Array[String] = []
   let options : Map[String, String] = Map([])
+  let mut recursive = false
   let mut i = 2
   while i < args.length() {
-    if args[i].has_prefix("--") {
+    if args[i] == "--recursive" && !recursive {
+      recursive = true
+      i += 1
+    } else if args[i].has_prefix("--") {
       if !["--remote-bin", "--ssh-config", "--retries", "--sha256"].contains(
           args[i],
         ) ||
@@ -153,6 +157,30 @@ async fn run() -> Unit {
   let retries = retry_budget.to_int()
   let remote_bin = options.get("--remote-bin").unwrap_or("moonrelay")
   let config = options.get("--ssh-config")
+  if recursive {
+    let receipt = if args[1] == "push" && positional.length() == 2 {
+      @transfer.push_tree(
+        positional[0],
+        @transfer.Endpoint::parse(positional[1], remote_bin~, ssh_config=config),
+        retries~,
+        on_progress=progress,
+      )
+    } else if args[1] == "pull" && positional.length() == 2 {
+      @transfer.pull_tree(
+        @transfer.Endpoint::parse(positional[0], remote_bin~, ssh_config=config),
+        positional[1],
+        retries~,
+        on_progress=progress,
+      )
+    } else {
+      raise @transfer.Rejected("--recursive requires SSH push or pull")
+    }
+    println(ToJson::to_json(receipt).stringify())
+    if !receipt.complete {
+      exit_process(1)
+    }
+    return
+  }
   let result = match args[1] {
     "push" if positional.length() == 2 =>
       @transfer.push(

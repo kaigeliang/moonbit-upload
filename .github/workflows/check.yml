@@ -69,6 +69,10 @@ jobs:
           moon check --target native --deny-warn
           moon test --target native
           moon build --target native --release
+      - name: Recursive directory interruption and conflict checks
+        run: |
+          tools/build-cli.sh
+          python3 tools/tree-verify.py
       - name: Real SSH, bidirectional recovery and independent library consumer
         run: python3 tools/relay-verify.py --real-ssh --big-mib 1280 --consumer
       - uses: actions/upload-artifact@v4

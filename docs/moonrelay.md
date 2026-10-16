@@ -105,3 +105,18 @@ assert_eq(sent.sha256, received.sha256)
 HTTP 旧客户端位于 `kaigeliang/upload/httpclient`，磁盘 API 位于 `kaigeliang/upload/storage`，SHA256 位于 `kaigeliang/upload/sha256`。CLI 共用这些库，不复制一套存储恢复实现。
 
 `examples/library-consumer` 是拥有独立 moon.mod 的调用项目，直接通过 API 发送/接收并检查进度回调，不是调用 CLI 完成传输。当前未发布到 Mooncakes，用 `tools/consumer-verify.sh` 建立临时 MoonBit workspace 接入本地源码；它不冒充注册表 fresh-install 验证。
+
+## 目录断点续传
+
+SSH 两端需要安装支持目录协议的版本。`--recursive` 把源目录的内容放入目标目录，并保留空目录；目标的父目录必须已存在。
+
+```sh
+./bin/moonrelay push ./results user@host:/data/results --recursive --remote-bin /home/user/moonbit-upload/bin/moonrelay
+./bin/moonrelay pull user@host:/data/results ./results-copy --recursive --remote-bin /home/user/moonbit-upload/bin/moonrelay
+```
+
+第一次传输固定整个目录的相对路径、大小与 SHA-256 清单。重跑同一命令可继续未完成的文件，并校验、跳过已完成文件。每个文件沿用单文件的分块恢复、内容校验和拒绝覆盖规则。文件失败后继续处理其他文件，最终 JSON 给出 `complete`、成功 `files`、`skipped`、`failed`、`failed_paths` 和已验证 `bytes`；有失败时退出码非零。空目录传输成功时文件计数和字节数均为零。
+
+保留目标旁的 `目标.moonrelay-tree/` 以及文件旁的 `.moonrelay/` 恢复目录。清单不匹配时拒绝继续，包括文件增删、改名或内容变化；需要为新一批内容选择新目标。已存在的无关同名文件不会被覆盖。此功能是目录传输，不执行删除同步，也不承诺保留权限、所有者、时间戳或硬链接关系。
+
+首版限制为 10,000 个条目、清单最多 8 MiB、单文件最多 16 GiB；拒绝符号链接、特殊文件、路径穿越、大小写冲突以及恢复目录保留名称。传输期间保持源目录不变。目录整体不是一次原子发布：已校验文件会逐个出现，以最终回执判断整个任务是否完成。CLI 会显示总字节进度；源扫描和哈希校验期间可能暂时没有传输进度。
