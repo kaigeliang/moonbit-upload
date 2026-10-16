@@ -1,0 +1,23 @@
+{
+  "passed": true,
+  "version": "0.4.0",
+  "module": "kaigeliang/upload",
+  "registry_install": true,
+  "workspace_override": false,
+  "consumer_outside_repository": true,
+  "bytes": 4194304,
+  "sha256": "2b07811057df887086f06a67edc6ebf911de8b6741156e7a2eb1416a4b8b1b2e",
+  "checks": [
+    "registry dependency download",
+    "native check deny-warn",
+    "public push/pull API over macOS to Linux SSH",
+    "progress callbacks",
+    "independent final SHA-256"
+  ],
+  "published_at_verified_utc": "2026-10-16T07:58:03.801421+00:00",
+  "publish_source_commit": "e923fe2",
+  "publish_response": "Server status: 200 OK",
+  "url": "https://mooncakes.io/docs/kaigeliang/upload",
+  "runtime_sources_equal_to_git_tag": "v0.4.0",
+  "package_sha256": "357319ac79485288e9b4374401cb09b14c2504f75ea90004a363c6e4109e8724"
+}
