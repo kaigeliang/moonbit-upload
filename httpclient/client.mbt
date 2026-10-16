@@ -270,7 +270,7 @@ pub async fn upload(config : Config, source : String, state : String) -> Unit {
     defer conn.close()
     expect(response, 201)
     let path = resource(response.headers.get("Location").unwrap_or(""))
-    let receipt = {
+    let receipt : Receipt = {
       version: 1,
       server: config.server,
       owner,
@@ -468,38 +468,13 @@ pub async fn run(args : Array[String]) -> Unit {
       println("verified " + bytes.to_string() + " bytes SHA256 " + sha)
     } else {
       let target = positional[1]
-      if @fs.exists(target) {
-        raise Fatal("目标文件已存在，拒绝覆盖")
-      }
-      let file = @fs.open(
-        target + ".part",
-        mode=ReadWrite,
-        create_mode=OpenOrCreate,
-        permission=0o600,
-      )
-      defer file.close()
-      if !file.try_lock(Exclusive) {
-        raise Fatal("目标临时文件被另一个下载占用")
-      }
-      // Open a fresh sibling temp path; failed or interrupted data never becomes the final file.
-      let temp = target + ".part." + @env.now().to_string()
-      let output = @fs.open(
-        temp,
-        mode=WriteOnly,
-        create_mode=CreateNew,
-        permission=0o600,
-      )
-      defer output.close()
-      let (bytes, sha) = remote_hash(
+      let (bytes, sha) = download_resumable(
         config,
         path,
+        target,
         expected,
-        destination=Some(output),
         length=receipt.map(r => r.length),
       )
-      output.sync()
-      output.close()
-      @fs.rename(temp, target, replace=false)
       println(
         "downloaded " +
         bytes.to_string() +

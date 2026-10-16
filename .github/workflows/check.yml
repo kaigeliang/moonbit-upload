@@ -73,6 +73,7 @@ jobs:
         run: |
           tools/build-cli.sh
           python3 tools/tree-verify.py
+          python3 tools/download-verify.py
       - name: Real SSH, bidirectional recovery and independent library consumer
         run: python3 tools/relay-verify.py --real-ssh --big-mib 1280 --consumer
       - uses: actions/upload-artifact@v4
@@ -110,7 +111,9 @@ jobs:
           if ($LASTEXITCODE -ne 0) { throw 'Tests failed' }
           ./tools/build-cli.ps1
       - name: Native Windows file and HTTP workflows
-        run: python tools/windows-verify.py
+        run: |
+          python tools/windows-verify.py
+          python tools/download-verify.py
       - uses: actions/upload-artifact@v4
         with:
           name: moonrelay-windows-client

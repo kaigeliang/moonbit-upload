@@ -25,11 +25,15 @@ async fn reply(
   h["Tus-Resumable"] = "1.0.0"
   h["Cache-Control"] = "no-store"
   h["Connection"] = "close"
-  conn.send_response(code, "Upload", extra_headers=h)
-  if text != "" {
-    conn.write(text)
+  try {
+    conn.send_response(code, "Upload", extra_headers=h)
+    if text != "" {
+      conn.write(text)
+    }
+    conn.end_response()
+  } catch {
+    _ => ()
   }
-  conn.end_response()
 }
 
 ///|
@@ -90,6 +94,7 @@ async fn main {
   server.run_forever(
     (req, body, conn) => {
       defer conn.close()
+      let mut response_started = false
       try {
         if req.meth == Get &&
           (
@@ -107,6 +112,7 @@ async fn main {
             "text/javascript; charset=utf-8"
           }
           let asset = @fs.read_file(web_dir + name)
+          response_started = true
           conn.send_response(200, "OK", extra_headers={
             "Content-Type": mime,
             "Content-Security-Policy": "default-src 'self'; script-src 'self'; style-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'none'; frame-ancestors 'none'",
@@ -223,15 +229,66 @@ async fn main {
             reply(conn, 409)
             return
           }
-          conn.send_response(200, "OK", extra_headers={
-            "Content-Length": m.length.to_string(),
+          let mut offset = 0L
+          let mut partial = false
+          if req.headers.get("range") is Some(range) {
+            if !range.has_prefix("bytes=") ||
+              !range.has_suffix("-") ||
+              range.contains(",") {
+              reply(conn, 416, headers={
+                "Content-Range": "bytes */" + m.length.to_string(),
+              })
+              return
+            }
+            offset = @storage.decimal(range[6:range.length() - 1].to_owned())
+            if offset >= m.length {
+              reply(conn, 416, headers={
+                "Content-Range": "bytes */" + m.length.to_string(),
+              })
+              return
+            }
+            partial = true
+          }
+          let headers : @http.Headers = {
+            "Content-Length": (m.length - offset).to_string(),
             "Content-Type": "application/octet-stream",
+            "Accept-Ranges": "bytes",
             "Connection": "close",
-          })
+          }
+          if partial {
+            headers["Content-Range"] = "bytes " +
+              offset.to_string() +
+              "-" +
+              (m.length - 1L).to_string() +
+              "/" +
+              m.length.to_string()
+          }
+          response_started = true
+          conn.send_response(
+            if partial {
+              206
+            } else {
+              200
+            },
+            "OK",
+            extra_headers=headers,
+          )
+          let mut base = 0L
           for chunk in m.chunks {
-            let file = @fs.open(dir + "/" + chunk.name, mode=ReadOnly)
-            defer file.close()
-            conn.write_reader(file)
+            let end = base + chunk.size.to_int64()
+            if end > offset {
+              let file = @fs.open(dir + "/" + chunk.name, mode=ReadOnly)
+              defer file.close()
+              let mut position = (offset - base).max(0L)
+              while position < chunk.size.to_int64() {
+                let count = (chunk.size.to_int64() - position)
+                  .min(65536L)
+                  .to_int()
+                conn.write(file.read_exactly_at(count, position~))
+                position += count.to_int64()
+              }
+            }
+            base = end
           }
           conn.end_response()
           return
@@ -272,10 +329,10 @@ async fn main {
         })
         reply(conn, 204, headers={ "Upload-Offset": next.offset.to_string() })
       } catch {
-        @storage.QuotaExceeded => reply(conn, 507) catch { _ => () }
-        @async.TimeoutError => reply(conn, 408) catch { _ => () }
-        @storage.Invalid(_) => reply(conn, 400) catch { _ => () }
-        _ => reply(conn, 500) catch { _ => () }
+        @storage.QuotaExceeded => if !response_started { reply(conn, 507) }
+        @async.TimeoutError => if !response_started { reply(conn, 408) }
+        @storage.Invalid(_) => if !response_started { reply(conn, 400) }
+        _ => if !response_started { reply(conn, 500) }
       }
     },
     max_connections=8,

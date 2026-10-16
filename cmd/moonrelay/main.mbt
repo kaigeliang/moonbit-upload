@@ -232,9 +232,9 @@ async fn main {
       @stdio.stderr.write("\nError: " + message + "\n")
       exit_process(1)
     }
-    _ => {
+    error => {
       @stdio.stderr.write(
-        "\nError: IO, SSH connection or protocol failed; partial state retained\n",
+        "\nError: " + error.to_string() + "; partial state retained\n",
       )
       exit_process(1)
     }

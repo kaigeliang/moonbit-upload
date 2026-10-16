@@ -84,7 +84,7 @@ export MOON_UPLOAD_KEY='替换为同一用户的实际密钥'
   --receipt ./dataset.zip.moon-upload.json
 ```
 
-HTTP 上传支持恢复，**HTTP 下载目前需要重新开始**。浏览器下载验证限制为 128 MiB；更大文件使用 CLI。HTTP 服务固定监听本机回环地址。权限、密钥和配置见 [HTTP 使用说明](docs/cli.md) 与 [访问控制说明](docs/api.md)。
+HTTP 上传与 CLI 下载支持断点恢复；下载中断后，保留目标旁的 `.part` 和 `.part.json`，重跑同一命令继续，最终核对完整 SHA-256。浏览器下载验证限制为 128 MiB；更大文件使用 CLI。HTTP 服务固定监听本机回环地址。权限、密钥和配置见 [HTTP 使用说明](docs/cli.md) 与 [访问控制说明](docs/api.md)。
 
 ## 在 MoonBit 应用中使用
 
@@ -97,7 +97,7 @@ HTTP 上传支持恢复，**HTTP 下载目前需要重新开始**。浏览器下
 - SSH 已增加 `--recursive` 目录传输，支持逐文件恢复和空目录，见[目录说明](docs/moonrelay.md#目录断点续传)。没有删除同步、云存储或中继功能。Windows 客户端的验证范围见下方。
 - 接收端保留分块和最终文件，成功传输约需文件大小 **2 倍磁盘空间**；没有自动清理功能。
 - SSH 每个协议请求启动一个 SSH 进程，可以沿用 OpenSSH 连接复用配置；尚无吞吐率对比结论。
-- 已验证本机及 Linux CI 中真实 OpenSSH 回环传输，Linux 实际大文件为 **1.25 GiB**；尚未验证跨物理机器、广域网或断电恢复。16 GiB 是单文件配置上限。
+- 已验证本机及 Linux CI 中真实 OpenSSH 回环传输，以及 **macOS→Linux / Linux→macOS 的 1.25 GiB 跨机器双向中断续传与最终哈希**。尚未验证断电恢复。16 GiB 是单文件配置上限。
 - 进程中断可以恢复，持久化目录损坏或内容身份不匹配会报错；SSH 接收端使用登录账号的文件权限。
 
 [Linux 功能验证](https://github.com/kaigeliang/moonbit-upload/actions/runs/38437898174)覆盖大文件、故障恢复及独立库调用。
