@@ -65,7 +65,7 @@ for mode in ['legacy', 'future']:
     assert not remote.exists() and not Path(str(remote) + '.moonrelay').exists()
 checks.append('legacy and incompatible future peers rejected by capabilities before opening destination')
 # Kill the client after a committed file prefix, then resume the entire directory.
-args = [str(CLI), 'push', str(source), 'test:' + str(remote), '--recursive', '--remote-bin', str(CLI)]
+args = [str(CLI), 'push', str(source) + '/', 'test:' + str(remote) + '/', '--recursive', '--remote-bin', str(CLI)]
 p = subprocess.Popen(args, env=env, stdout=subprocess.PIPE, stderr=subprocess.PIPE, start_new_session=True)
 try:
     buffer = b''
@@ -94,7 +94,7 @@ receipt = run('push', source, 'test:' + str(remote), '--recursive')
 assert receipt['skipped'] == 4, receipt
 checks.append('repeated directory push skips every verified completed file')
 local = out / 'download'
-p = subprocess.Popen([str(CLI), 'pull', 'test:' + str(remote), str(local), '--recursive', '--remote-bin', str(CLI)], env=env, stdout=subprocess.PIPE, stderr=subprocess.PIPE, start_new_session=True)
+p = subprocess.Popen([str(CLI), 'pull', 'test:' + str(remote) + '/', str(local) + '/', '--recursive', '--remote-bin', str(CLI)], env=env, stdout=subprocess.PIPE, stderr=subprocess.PIPE, start_new_session=True)
 try:
     buffer = b''
     while True:
@@ -142,6 +142,26 @@ linked = out / 'linked'
 linked.symlink_to(remote, target_is_directory=True)
 run('pull', 'test:' + str(remote), linked, '--recursive', ok=False)
 checks.append('source and destination symlinks rejected')
+dot_source = out / 'dot-source'
+dot_source.mkdir()
+(dot_source / 'empty').mkdir()
+(dot_source / 'file').write_bytes(b'dot-path')
+dot_remote = out / 'dot-remote'
+dot_copy = out / 'dot-copy'
+dot_copy.mkdir()
+for arguments, cwd in [
+    (['push', '.', 'test:' + str(dot_remote) + '/.', '--recursive'], dot_source),
+    (['pull', 'test:' + str(dot_remote) + '/.', '.', '--recursive'], dot_copy),
+    (['clean', '.'], dot_copy),
+    (['pull', 'test:' + str(dot_remote), '.', '--recursive'], dot_copy),
+]:
+    p = subprocess.run([str(CLI), *arguments, *([] if arguments[0] == 'clean' else ['--remote-bin', str(CLI)])],
+                       cwd=cwd, env=env, capture_output=True, timeout=60)
+    assert p.returncode == 0, (arguments, p.stderr)
+assert (dot_copy / 'file').read_bytes() == b'dot-path' and (dot_copy / 'empty').is_dir()
+assert Path(str(dot_copy) + '.moonrelay-tree').is_dir()
+assert not (dot_copy / '..moonrelay-tree').exists()
+checks.append('dot and trailing-directory paths normalize to the same sibling recovery state through resume and cleanup')
 (out / 'verification.json').write_text(json.dumps({'passed': True, 'checks': checks}, indent=2) + '\n')
 for check in checks:
     print('PASS', check)

@@ -264,6 +264,7 @@ async fn walk_tasks(
 
 ///|
 pub async fn tasks(root : String) -> Inventory {
+  let root = @transfer.absolute_task_path(root)
   let tasks = []
   let issues = []
   walk_tasks(root, tasks, issues)
@@ -361,6 +362,7 @@ async fn clean_download(target : String) -> Cleanup {
 
 ///|
 pub async fn clean(target : String) -> Cleanup {
+  let target = @transfer.absolute_task_path(target)
   if @fs.exists(target + ".moonrelay/identity.json") {
     return clean_ssh(target)
   }
@@ -412,6 +414,7 @@ pub extend Cleanup with ToJson::{to_json}
 
 ///|
 pub async fn store_tasks(root : String) -> Inventory {
+  let root = @transfer.absolute_task_path(root)
   plain_path(root)
   if !@fs.exists(root + "/store.lock") {
     raise @transfer.Rejected("not a recognized HTTP store")
@@ -476,6 +479,7 @@ pub async fn store_tasks(root : String) -> Inventory {
 
 ///|
 pub async fn store_delete(root : String, id : String) -> Cleanup {
+  let root = @transfer.absolute_task_path(root)
   if !@storage.safe_id(id) {
     raise @transfer.Rejected("invalid HTTP upload ID")
   }

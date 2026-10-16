@@ -62,3 +62,18 @@ test "tree identity ignores sibling enumeration order" {
     same_tree({ version: 1, entries: [a, b], }, { version: 1, entries: [a], }),
   )
 }
+
+///|
+test "task roots normalize dots and separators and reject ambiguous roots" {
+  assert_eq(absolute_task_path("/tmp/a/./b/"), "/tmp/a/b")
+  assert_eq(absolute_task_path("C:/work/./job/"), "C:/work/job")
+  assert_eq(absolute_task_path("."), absolute_task_path("./"))
+  for value in ["", "/", "..", "C:relative", "//host/share/"] {
+    try absolute_task_path(value) catch {
+      Rejected(_) => ()
+      _ => fail("unexpected path error")
+    } noraise {
+      _ => fail("ambiguous task root accepted")
+    }
+  }
+}

@@ -133,7 +133,7 @@ if os.name != 'nt':
     body = json.dumps(tree_manifest).encode()
     assert rpc('tree-open', tree, data=body, count=len(body))['ok']
     create_received(tree/'file', data)
-    receipt = run('clean', tree)
+    receipt = run('clean', str(tree) + '/')
     assert receipt['kind']=='ssh-tree' and int(receipt['reclaimed_bytes'])>len(data)-1024
     assert (tree/'empty').is_dir() and (tree/'file').read_bytes()==data
     manifest = rpc('tree-scan', tree)

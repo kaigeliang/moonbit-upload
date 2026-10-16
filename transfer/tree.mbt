@@ -138,6 +138,7 @@ async fn scan_tree_at(
 
 ///|
 pub async fn scan_tree(root : String) -> TreeManifest {
+  let root = absolute_task_path(root)
   let entries = []
   tree_path_check(root)
   let managed : Map[String, TreeEntry] = Map([])
@@ -183,6 +184,7 @@ async fn tree_path_check(path : String) -> Unit {
 
 ///|
 async fn open_tree(root : String, manifest : TreeManifest) -> Unit {
+  let root = absolute_task_path(root)
   validate_tree(manifest)
   tree_path_check(root)
   tree_path_check(root + ".moonrelay-tree")
@@ -251,6 +253,11 @@ pub async fn push_tree(
   retries~ : Int32 = 10,
   on_progress~ : async (Progress) -> Unit = _ => (),
 ) -> TreeReceipt {
+  let source = absolute_task_path(source)
+  let destination = {
+    ..destination,
+    path: absolute_task_path(destination.path),
+  }
   compatible_peer(destination)
   tree_path_check(source)
   let manifest = scan_tree(source)
@@ -440,4 +447,66 @@ pub fn same_tree(a : TreeManifest, b : TreeManifest) -> Bool {
   left.sort_by((a, b) => a.path.compare(b.path))
   right.sort_by((a, b) => a.path.compare(b.path))
   left == right
+}
+
+///|
+/// Resolve dot/trailing separators without following filesystem links.
+pub fn absolute_task_path(path : String) -> String raise {
+  if path == "" {
+    raise Rejected("task path must not be empty")
+  }
+  let normalized = task_slashes(path)
+  let chars = normalized.to_array()
+  let drive_absolute = chars.length() >= 3 && chars[1] == ':' && chars[2] == '/'
+  if chars.length() >= 2 && chars[1] == ':' && !drive_absolute {
+    raise Rejected("drive-relative task paths are not supported")
+  }
+  let base = if normalized.has_prefix("/") || drive_absolute {
+    normalized
+  } else {
+    let cwd = match @env.current_dir() {
+      Some(value) => task_slashes(value)
+      None => raise Rejected("cannot resolve current task directory")
+    }
+    cwd + "/" + normalized
+  }
+  let parts = []
+  for part in base.split("/") {
+    if part == ".." {
+      raise Rejected("task paths cannot contain parent traversal")
+    }
+    if part != "" && part != "." {
+      parts.push(part.to_owned())
+    }
+  }
+  let prefix = if base.has_prefix("//") {
+    "//"
+  } else if base.has_prefix("/") {
+    "/"
+  } else {
+    ""
+  }
+  let root = prefix + parts.join("/")
+  if root == "" ||
+    root == "/" ||
+    (root.length() == 2 && root.has_suffix(":")) ||
+    (prefix == "//" && parts.length() < 3) {
+    raise Rejected("choose a task below the filesystem root")
+  }
+  root
+}
+
+///|
+#cfg(platform="windows")
+fn task_slashes(path : String) -> String {
+  path.replace_all(old="\\", new="/")
+}
+
+///|
+#cfg(not(platform="windows"))
+fn task_slashes(path : String) -> String raise {
+  if path.contains("\\") {
+    raise Rejected("backslash task paths are not supported on Unix")
+  }
+  path
 }

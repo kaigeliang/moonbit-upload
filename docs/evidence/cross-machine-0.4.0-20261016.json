@@ -1,0 +1,44 @@
+{
+  "passed": true,
+  "bytes": 1342177280,
+  "sha256": "ccd3f8af5d7ac261c502e9bd2139656ed849f2c9f0eb50578a6528bec2df4bde",
+  "checks": [
+    {
+      "name": "physical SSH upload interrupted then resumed and verified",
+      "prefix": {
+        "length": "1342177280",
+        "offset": "8388608",
+        "sha256": "ccd3f8af5d7ac261c502e9bd2139656ed849f2c9f0eb50578a6528bec2df4bde",
+        "stamp": "",
+        "complete": false
+      },
+      "result": {
+        "length": "1342177280",
+        "offset": "1342177280",
+        "sha256": "ccd3f8af5d7ac261c502e9bd2139656ed849f2c9f0eb50578a6528bec2df4bde",
+        "stamp": "",
+        "complete": true
+      }
+    },
+    {
+      "name": "physical SSH download interrupted then resumed and verified",
+      "prefix": {
+        "length": "1342177280",
+        "offset": "8388608",
+        "sha256": "ccd3f8af5d7ac261c502e9bd2139656ed849f2c9f0eb50578a6528bec2df4bde",
+        "stamp": "",
+        "complete": false
+      },
+      "result": {
+        "length": "1342177280",
+        "offset": "1342177280",
+        "sha256": "ccd3f8af5d7ac261c502e9bd2139656ed849f2c9f0eb50578a6528bec2df4bde",
+        "stamp": "",
+        "complete": true
+      }
+    }
+  ],
+  "client": "moonrelay 0.4.0",
+  "dirty": true,
+  "source_commit": "91c1c8fcff01f22e71ef616d97b484111b185f63"
+}
