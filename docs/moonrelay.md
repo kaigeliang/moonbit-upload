@@ -104,7 +104,7 @@ assert_eq(sent.sha256, received.sha256)
 
 HTTP 旧客户端位于 `kaigeliang/upload/httpclient`，磁盘 API 位于 `kaigeliang/upload/storage`，SHA256 位于 `kaigeliang/upload/sha256`。CLI 共用这些库，不复制一套存储恢复实现。
 
-`examples/library-consumer` 是拥有独立 moon.mod 的调用项目，直接通过 API 发送/接收并检查进度回调，不是调用 CLI 完成传输。当前未发布到 Mooncakes，用 `tools/consumer-verify.sh` 建立临时 MoonBit workspace 接入本地源码；它不冒充注册表 fresh-install 验证。
+`examples/library-consumer` 是拥有独立 moon.mod 的调用项目，直接通过 API 发送/接收并检查进度回调，不是调用 CLI 完成传输。已发布 Mooncakes `kaigeliang/upload@0.4.0`。`tools/registry-consumer-verify.sh` 在仓库外从注册表安装并验证 API；`tools/consumer-verify.sh` 保留为本地源码 workspace 验证入口。两者的依赖来源不同，注册表验证回执见 [验收核对](acceptance-0.4.0.md)。
 
 ## 目录断点续传
 
