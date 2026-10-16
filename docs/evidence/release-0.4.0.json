@@ -1,0 +1,42 @@
+{
+  "version": "0.4.0",
+  "tag": "v0.4.0",
+  "source_commit": "47b30301371ab31480fd0a1121300b48ee6a1120",
+  "url": "https://github.com/kaigeliang/moonbit-upload/releases/tag/v0.4.0",
+  "published_at": "2026-10-16T06:41:58Z",
+  "draft": false,
+  "prerelease": false,
+  "anonymous_downloads_verified": true,
+  "native_ci": "https://github.com/kaigeliang/moonbit-upload/actions/runs/38860963811",
+  "package_ci": "https://github.com/kaigeliang/moonbit-upload/actions/runs/38861055111",
+  "release_ci": "https://github.com/kaigeliang/moonbit-upload/actions/runs/38862031375",
+  "macos_package_ci": "https://github.com/kaigeliang/moonbit-upload/actions/runs/38861055111",
+  "physical_receipt": "cross-machine-0.4.0-20261016.json",
+  "windows_to_linux_physical_ssh": "pending; explicitly deferred by user",
+  "assets": [
+    {
+      "name": "moonrelay-0.4.0-linux-x86_64.tar.gz",
+      "sha256": "4f7877ffc2652c24ff9a3284c8e6cc4d0ad759cfdcfed19b82b7aca85be99548",
+      "url": "https://github.com/kaigeliang/moonbit-upload/releases/download/v0.4.0/moonrelay-0.4.0-linux-x86_64.tar.gz",
+      "bytes": 2313483
+    },
+    {
+      "name": "moonrelay-0.4.0-macos-arm64.tar.gz",
+      "sha256": "b3a7be6ed1059b7e33819b35bd5ce57b67e2818b23f65ec5beb71ef8b44a1d41",
+      "url": "https://github.com/kaigeliang/moonbit-upload/releases/download/v0.4.0/moonrelay-0.4.0-macos-arm64.tar.gz",
+      "bytes": 1787902
+    },
+    {
+      "name": "moonrelay-0.4.0-windows-x86_64.zip",
+      "sha256": "92dc5ba00bdc7da56b5d5678e07b71775c8a1b29300f6e19394ae5234a65255c",
+      "url": "https://github.com/kaigeliang/moonbit-upload/releases/download/v0.4.0/moonrelay-0.4.0-windows-x86_64.zip",
+      "bytes": 1442648
+    },
+    {
+      "name": "SHA256SUMS",
+      "sha256": "c27f5485dbb3c3cf550c2ea391951e210293b8f2c6a77d97fb64191286acef28",
+      "url": "https://github.com/kaigeliang/moonbit-upload/releases/download/v0.4.0/SHA256SUMS",
+      "bytes": 304
+    }
+  ]
+}

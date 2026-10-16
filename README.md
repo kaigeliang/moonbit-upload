@@ -6,7 +6,13 @@
 
 ## 安装
 
-当前开发版本 **0.4.0**，需要从源码构建，尚未提供预编译安装包或 Mooncakes 发布包。构建需要 Git 和 MoonBit CLI；已验证的 MoonBit CLI 版本为 `0.1.20261012`。
+当前版本 **0.4.0**。从 [Release 页面](https://github.com/kaigeliang/moonbit-upload/releases/tag/v0.4.0) 下载 macOS ARM64、Linux x86_64 或 Windows x86_64 包及 SHA256SUMS，校验后完整解压，进入包根目录运行：
+
+    ./bin/moonrelay --version
+
+Windows 使用 ./bin/moonrelay.exe。保留 bin/ 与 web/ 目录；HTTP serve 当前需要从包根目录运行。运行安装包不需要 MoonBit、Python 或 Node；SSH 需要系统 OpenSSH。
+
+源码构建需要 Git 和 MoonBit CLI；已验证的 CLI 版本为 0.1.20261012：
 
 ```sh
 git clone https://github.com/kaigeliang/moonbit-upload.git
@@ -16,7 +22,7 @@ tools/build-cli.sh
 ./bin/moonrelay --version
 ```
 
-运行构建后的 CLI 不需要 MoonBit、Python 或 Node。SSH 传输需要**两端分别构建安装**匹配版本的 `moonrelay`，macOS 二进制不能直接用于 Linux。先确认普通 SSH 登录可用，并已配置密钥和主机信任；CLI 不进行密码交互。
+运行构建后的 CLI 不需要 MoonBit、Python 或 Node。SSH 传输需要**两端分别安装**支持相同协议能力的 `moonrelay`，macOS 二进制不能直接用于 Linux。先确认普通 SSH 登录可用，并已配置密钥和主机信任；CLI 不进行密码交互。
 
 下面的例子假设远端程序位于 `/home/user/moonbit-upload/bin/moonrelay`，远端 `/data` 目录已存在且可写。请换成自己的账号、机器和路径。
 
@@ -104,13 +110,13 @@ HTTP 上传与 CLI 下载支持断点恢复；下载中断后，保留目标旁�
 - 已验证本机及 Linux CI 中真实 OpenSSH 回环传输，以及 **macOS→Linux / Linux→macOS 的 1.25 GiB 跨机器双向中断续传与最终哈希**。尚未验证断电恢复。16 GiB 是单文件配置上限。
 - 进程中断可以恢复，持久化目录损坏或内容身份不匹配会报错；SSH 接收端使用登录账号的文件权限。
 
-[Linux 功能验证](https://github.com/kaigeliang/moonbit-upload/actions/runs/38437898174)覆盖大文件、故障恢复及独立库调用。
+[Linux 功能验证](https://github.com/kaigeliang/moonbit-upload/actions/runs/38860963811)覆盖大文件、故障恢复及独立库调用。
 
 Apache-2.0。MoonBit 传输与存储逻辑独立实现；SSH 使用系统 OpenSSH。
 
 ## Windows 客户端
 
-Windows 原生构建、8 个单元测试、盘符路径与 64 MiB HTTP 上传下载已通过 [Windows CI](https://github.com/kaigeliang/moonbit-upload/actions/runs/38441150946)。SSH 远端仍使用 macOS / Linux。需要系统 OpenSSH 客户端；源码构建需要 MoonBit 与 MSVC C++ Build Tools / Windows SDK（见 [MoonBit 官方说明](https://docs.moonbitlang.com/en/latest/toolchain/moon/package.html)）。在开发者 PowerShell 中运行：
+Windows 原生构建、11 项单元测试、盘符路径、64 MiB HTTP 上传下载、HTTP 断点恢复及任务维护已通过 [功能 CI](https://github.com/kaigeliang/moonbit-upload/actions/runs/38860963811)。SSH 远端仍使用 macOS / Linux。需要系统 OpenSSH 客户端；源码构建需要 MoonBit 与 MSVC C++ Build Tools / Windows SDK（见 [MoonBit 官方说明](https://docs.moonbitlang.com/en/latest/toolchain/moon/package.html)）。在开发者 PowerShell 中运行：
 
 ```powershell
 moon update
@@ -122,4 +128,4 @@ moon update
 
 本地路径可使用 Windows 盘符。Windows 作为 SSH 接收端尚未支持；远端可执行文件的引用规则针对 Unix shell。Windows CI 检查原生构建、哈希、本地路径和 HTTP 上传下载；Windows 到 Unix 的真实 SSH 传输尚待验证。
 
-Windows 可执行文件可在上述 CI 页面的 `moonrelay-windows-client` artifact 中下载；这不是正式版本发布包。
+Windows 正式安装包和校验文件见 [0.4.0 Release](https://github.com/kaigeliang/moonbit-upload/releases/tag/v0.4.0)。Windows 到 Linux 的实机 SSH 验证保留待验证。

@@ -60,7 +60,7 @@ def main():
             with tarfile.open(archive, 'w:gz') as packed:
                 packed.add(stage, arcname=name)
         digest = hashlib.sha256(archive.read_bytes()).hexdigest()
-        (output / (archive.name + '.sha256')).write_text(f'{digest}  {archive.name}\n', encoding='ascii')
+        (output / (archive.name + '.sha256')).write_text(f'{digest}  {archive.name}\n', encoding='ascii', newline='\n')
         print(archive)
 
 

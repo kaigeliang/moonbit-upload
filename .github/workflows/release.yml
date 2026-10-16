@@ -57,6 +57,7 @@ jobs:
     permissions:
       contents: write
     steps:
+      - uses: actions/checkout@v4
       - uses: actions/download-artifact@v4
         with:
           pattern: package-*
@@ -69,7 +70,7 @@ jobs:
           RELEASE_TAG: ${{ github.ref_name }}
         shell: bash
         run: |
-          cat packages/*.sha256 > packages/SHA256SUMS
+          python3 tools/assemble-checksums.py packages
           cd packages
           sha256sum --check SHA256SUMS
           gh release create "$RELEASE_TAG" ./*.tar.gz ./*.zip SHA256SUMS --draft --verify-tag --title "MoonRelay $RELEASE_TAG" --notes 'Native CLI packages. Extract the entire archive and follow INSTALL.txt. SHA256SUMS verifies archive integrity. SSH requires system OpenSSH and a matching package on the remote host.'

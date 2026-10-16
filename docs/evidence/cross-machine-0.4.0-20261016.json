@@ -39,6 +39,17 @@
     }
   ],
   "client": "moonrelay 0.4.0",
-  "dirty": true,
-  "source_commit": "91c1c8fcff01f22e71ef616d97b484111b185f63"
+  "dirty": false,
+  "source_commit": "47b30301371ab31480fd0a1121300b48ee6a1120",
+  "tested_client_sha256": "8f8a0b2d64e5c4155d50383f34691e824ca6ec2442120c4e2e4edca7095efac0",
+  "tested_receiver_sha256": "d0771ae64f43eb55a3406e20e98d78148d4a6d43af4158d6e430afdc9f2dc709",
+  "package_workflow": "https://github.com/kaigeliang/moonbit-upload/actions/runs/38861055111",
+  "release_tag": "v0.4.0",
+  "release_workflow": "https://github.com/kaigeliang/moonbit-upload/actions/runs/38862031375",
+  "release_archive_sha256": {
+    "moonrelay-0.4.0-linux-x86_64.tar.gz": "4f7877ffc2652c24ff9a3284c8e6cc4d0ad759cfdcfed19b82b7aca85be99548",
+    "moonrelay-0.4.0-macos-arm64.tar.gz": "b3a7be6ed1059b7e33819b35bd5ce57b67e2818b23f65ec5beb71ef8b44a1d41",
+    "moonrelay-0.4.0-windows-x86_64.zip": "92dc5ba00bdc7da56b5d5678e07b71775c8a1b29300f6e19394ae5234a65255c"
+  },
+  "macos_package_workflow": "https://github.com/kaigeliang/moonbit-upload/actions/runs/38861055111"
 }

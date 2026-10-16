@@ -1,4 +1,8 @@
-# 构建与验证安装包
+# 下载、构建与验证安装包
+
+[MoonRelay 0.4.0 正式发布](https://github.com/kaigeliang/moonbit-upload/releases/tag/v0.4.0) 提供 macOS ARM64、Linux x86_64、Windows x86_64 包及 SHA256SUMS。下载对应包后，将计算出的 SHA-256 与清单中的对应行比较，再完整解压。macOS 可使用 shasum -a 256，Linux 使用 sha256sum，Windows PowerShell 使用 Get-FileHash -Algorithm SHA256。
+
+Linux 包在 Ubuntu 22.04 构建，需使用兼容其原生运行环境的发行版。
 
 安装包包含 `bin/` 中的三个原生程序、`web/` 浏览器资源、许可证、`build.json` 与安装说明。运行时不需要 MoonBit、Node 或 Python；SSH 需要系统 OpenSSH。
 
@@ -25,4 +29,4 @@ Windows 使用 `./bin/moonrelay.exe`。HTTP `serve` 目前依赖包根目录下�
 
 GitHub Actions 的 `Release packages` 支持手动构建 macOS ARM64、Linux x86_64 和 Windows x86_64 包，并分别执行解压检查。推送 `v*` 标签时，三端成功后创建含 `SHA256SUMS` 的草稿 Release。检查完成后再发布草稿。当前脚本使用官方安装器的最新工具链；实际版本记录在包内，构建检查会阻止不兼容工具链产生新包。
 
-这些机制不代表三端包已经完成发布；以对应 workflow 和 Release 的实际结果为准。
+0.4.0 已发布；三端公开下载和校验清单均完成独立核对。后续自动发布会统一使用 LF 换行，兼容不同平台的校验工具。
