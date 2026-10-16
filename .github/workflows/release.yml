@@ -1,0 +1,73 @@
+name: Release packages
+on:
+  workflow_dispatch:
+  push:
+    tags: ['v*']
+permissions:
+  contents: read
+jobs:
+  package:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-22.04, macos-14, windows-latest]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: ilammy/msvc-dev-cmd@v1
+        if: runner.os == 'Windows'
+      - name: Install MoonBit (Unix)
+        if: runner.os != 'Windows'
+        shell: bash
+        run: |
+          curl -fsSL https://cli.moonbitlang.com/install/unix.sh | bash
+          echo "$HOME/.moon/bin" >> "$GITHUB_PATH"
+      - name: Install MoonBit (Windows)
+        if: runner.os == 'Windows'
+        shell: pwsh
+        run: |
+          irm https://cli.moonbitlang.com/install/powershell.ps1 | iex
+          "$env:USERPROFILE\.moon\bin" >> $env:GITHUB_PATH
+      - name: Check and package
+        run: |
+          moon update
+          moon check --target native --deny-warn
+          moon test --target native
+          python tools/package-release.py
+      - name: Verify extracted package
+        shell: bash
+        run: |
+          for archive in output/release/*.tar.gz output/release/*.zip; do
+            if [ -f "$archive" ]; then python tools/check-release.py "$archive"; fi
+          done
+      - uses: actions/upload-artifact@v4
+        with:
+          name: package-${{ matrix.os }}
+          path: output/release/*
+          if-no-files-found: error
+  draft-release:
+    if: startsWith(github.ref, 'refs/tags/v')
+    needs: package
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: package-*
+          merge-multiple: true
+          path: packages
+      - name: Assemble checksums and create draft
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+          RELEASE_TAG: ${{ github.ref_name }}
+        shell: bash
+        run: |
+          cat packages/*.sha256 > packages/SHA256SUMS
+          cd packages
+          sha256sum --check SHA256SUMS
+          gh release create "$RELEASE_TAG" ./*.tar.gz ./*.zip SHA256SUMS --draft --verify-tag --title "MoonRelay $RELEASE_TAG" --notes 'Native CLI packages. Extract the entire archive and follow INSTALL.txt. SHA256SUMS verifies archive integrity. SSH requires system OpenSSH and a matching package on the remote host.'

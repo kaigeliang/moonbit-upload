@@ -20,6 +20,8 @@ tools/build-cli.sh
 
 下面的例子假设远端程序位于 `/home/user/moonbit-upload/bin/moonrelay`，远端 `/data` 目录已存在且可写。请换成自己的账号、机器和路径。
 
+打包脚本、解压验证和三端发布工作流见 [安装包构建说明](docs/releases.md)。
+
 ## 上传大文件
 
 ```sh
