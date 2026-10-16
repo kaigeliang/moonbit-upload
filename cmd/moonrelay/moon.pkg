@@ -5,6 +5,7 @@ pkgtype(kind: "executable")
 import {
   "moonbitlang/async/process",
   "kaigeliang/upload/storage",
+  "kaigeliang/upload/maintenance",
   "kaigeliang/upload/transfer",
   "kaigeliang/upload/httpclient",
   "moonbitlang/async",

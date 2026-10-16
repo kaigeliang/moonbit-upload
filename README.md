@@ -6,7 +6,7 @@
 
 ## 安装
 
-当前版本 **0.3.0**，需要从源码构建，尚未提供预编译安装包或 Mooncakes 发布包。构建需要 Git 和 MoonBit CLI；已验证的 MoonBit CLI 版本为 `0.1.20261012`。
+当前开发版本 **0.4.0**，需要从源码构建，尚未提供预编译安装包或 Mooncakes 发布包。构建需要 Git 和 MoonBit CLI；已验证的 MoonBit CLI 版本为 `0.1.20261012`。
 
 ```sh
 git clone https://github.com/kaigeliang/moonbit-upload.git
@@ -92,10 +92,14 @@ HTTP 上传与 CLI 下载支持断点恢复；下载中断后，保留目标旁�
 
 查看 [API 与接入示例](docs/moonrelay.md#公共-api) 和 [独立调用项目](examples/library-consumer)。尚未发布 Mooncakes，示例通过本地 workspace 接入源码。
 
+## 任务与空间管理
+
+用 moonrelay tasks ./results 查看任务、恢复文件占用和可回收字节数；用 moonrelay clean ./results/model.bin 校验最终文件后回收重复分块。HTTP 仓库的显式删除、锁保护和完整命令见[维护说明](docs/maintenance.md)。
+
 ## 使用前了解这些限制
 
 - SSH 已增加 `--recursive` 目录传输，支持逐文件恢复和空目录，见[目录说明](docs/moonrelay.md#目录断点续传)。没有删除同步、云存储或中继功能。Windows 客户端的验证范围见下方。
-- 接收端保留分块和最终文件，成功传输约需文件大小 **2 倍磁盘空间**；没有自动清理功能。
+- 接收端保留分块和最终文件，成功传输约需文件大小 **2 倍磁盘空间**；可用 clean 显式清理已完成任务的重复分块。
 - SSH 每个协议请求启动一个 SSH 进程，可以沿用 OpenSSH 连接复用配置；尚无吞吐率对比结论。
 - 已验证本机及 Linux CI 中真实 OpenSSH 回环传输，以及 **macOS→Linux / Linux→macOS 的 1.25 GiB 跨机器双向中断续传与最终哈希**。尚未验证断电恢复。16 GiB 是单文件配置上限。
 - 进程中断可以恢复，持久化目录损坏或内容身份不匹配会报错；SSH 接收端使用登录账号的文件权限。

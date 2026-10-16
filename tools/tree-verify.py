@@ -44,6 +44,26 @@ source = out / 'source'
 (source / 'zero').touch()
 (source / 'large.bin').write_bytes(bytes(range(256)) * (32 * 4096))
 remote = out / 'remote'
+
+# Incompatible receivers must fail at capability discovery, before opening a task.
+for mode in ['legacy', 'future']:
+    legacy = out / ('receiver-' + mode + '.py')
+    observed = out / ('receiver-' + mode + '.ops')
+    legacy.write_text(
+        '#!/usr/bin/env python3\nimport sys,struct,json\nfrom pathlib import Path\n'
+        'n=struct.unpack(">I",sys.stdin.buffer.read(4))[0]\n'
+        'req=json.loads(sys.stdin.buffer.read(n))\n'
+        'with Path(' + repr(str(observed)) + ').open("a") as f:f.write(req["op"]+"\\n")\n'
+        'info=dict(length="0",offset="0",sha256="",stamp="moonrelay-wire/999",complete=True)\n'
+        'reply=dict(ok=' + repr(mode != 'legacy') + ',error="unknown operation",info=info,count=0)\n'
+        'data=json.dumps(reply).encode();sys.stdout.buffer.write(struct.pack(">I",len(data))+data)\n')
+    legacy.chmod(0o755)
+    rejected = subprocess.run([str(CLI), 'push', str(source), 'test:' + str(remote),
+                               '--remote-bin', str(legacy)], env=env, capture_output=True, timeout=30)
+    assert rejected.returncode != 0 and b'incompatible SSH' in rejected.stderr, rejected.stderr
+    assert observed.read_text().splitlines() == ['capabilities']
+    assert not remote.exists() and not Path(str(remote) + '.moonrelay').exists()
+checks.append('legacy and incompatible future peers rejected by capabilities before opening destination')
 # Kill the client after a committed file prefix, then resume the entire directory.
 args = [str(CLI), 'push', str(source), 'test:' + str(remote), '--recursive', '--remote-bin', str(CLI)]
 p = subprocess.Popen(args, env=env, stdout=subprocess.PIPE, stderr=subprocess.PIPE, start_new_session=True)

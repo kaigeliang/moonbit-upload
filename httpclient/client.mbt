@@ -349,7 +349,7 @@ pub async fn upload(config : Config, source : String, state : String) -> Unit {
 ///|
 pub async fn run(args : Array[String]) -> Unit {
   if args.contains("--version") {
-    println("moon-upload 0.2.0")
+    println("moon-upload 0.4.0")
     return
   }
   if args.length() == 1 || args.contains("--help") {

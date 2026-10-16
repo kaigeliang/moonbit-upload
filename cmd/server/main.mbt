@@ -201,7 +201,8 @@ async fn main {
         }
         let id = parts[2].to_owned()
         let dir = root + "/" + id
-        if !@fs.exists(dir + "/manifest.json") {
+        if @fs.exists(dir + "/deleted.json") ||
+          !@fs.exists(dir + "/manifest.json") {
           reply(conn, 404)
           return
         }

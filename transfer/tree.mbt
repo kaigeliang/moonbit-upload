@@ -160,7 +160,13 @@ pub async fn scan_tree(root : String) -> TreeManifest {
 // Reject symlinks in existing path components, including outside the tree root.
 async fn tree_path_check(path : String) -> Unit {
   let normalized = path.replace_all(old="\\", new="/")
-  let mut prefix = if normalized.has_prefix("/") { "/" } else { "" }
+  let mut prefix = if normalized.has_prefix("//") {
+    "//"
+  } else if normalized.has_prefix("/") {
+    "/"
+  } else {
+    ""
+  }
   for part in normalized.split("/") {
     if part == ".." {
       raise Rejected("tree paths cannot contain parent traversal")
@@ -195,7 +201,8 @@ async fn open_tree(root : String, manifest : TreeManifest) -> Unit {
     let prior : TreeManifest = @json.from_json(
       @json.parse(@fs.read_file(identity).text()),
     )
-    if prior != manifest {
+    validate_tree(prior)
+    if !same_tree(prior, manifest) {
       raise Rejected(
         "tree contents changed since the first transfer; use a new destination",
       )
@@ -244,6 +251,7 @@ pub async fn push_tree(
   retries~ : Int32 = 10,
   on_progress~ : async (Progress) -> Unit = _ => (),
 ) -> TreeReceipt {
+  compatible_peer(destination)
   tree_path_check(source)
   let manifest = scan_tree(source)
   let data = @utf8.encode(ToJson::to_json(manifest).stringify()[:])
@@ -305,7 +313,7 @@ pub async fn push_tree(
       done += entry.length
     }
   }
-  if scan_tree(source) != manifest {
+  if !same_tree(scan_tree(source), manifest) {
     raise Rejected("tree source changed during transfer")
   }
   {
@@ -387,7 +395,7 @@ pub async fn pull_tree(
   let final_manifest : TreeManifest = @json.from_json(
     @json.parse(@utf8.decode(final_data[:])),
   )
-  if final_manifest != manifest {
+  if !same_tree(final_manifest, manifest) {
     raise Rejected("tree source changed during transfer")
   }
   {
@@ -420,3 +428,16 @@ pub extend TreeManifest with Eq::{equal, not_equal}
 
 ///|
 pub extend TreeReceipt with ToJson::{to_json}
+
+///|
+/// Compare directory contents independently of filesystem enumeration order.
+pub fn same_tree(a : TreeManifest, b : TreeManifest) -> Bool {
+  if a.version != b.version || a.entries.length() != b.entries.length() {
+    return false
+  }
+  let left = a.entries.copy()
+  let right = b.entries.copy()
+  left.sort_by((a, b) => a.path.compare(b.path))
+  right.sort_by((a, b) => a.path.compare(b.path))
+  left == right
+}

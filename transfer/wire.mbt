@@ -157,6 +157,19 @@ async fn receive_state(
       permission=0o600,
     )
   }
+  if @fs.exists(path + ".moonrelay/cleaned.json") {
+    let marker : Info = @json.from_json(
+      @json.parse(@fs.read_file(path + ".moonrelay/cleaned.json").text()),
+    )
+    if marker.length != length || marker.sha256 != sha || !marker.complete {
+      raise Rejected("invalid completed cleanup identity")
+    }
+    let actual = hash_file(path)
+    if actual.length != length || actual.sha256 != sha {
+      raise Rejected("cleaned destination changed")
+    }
+    return (store, { ..marker, offset: length, complete: true, })
+  }
   let m = store.snapshot("1")
   if m.length != length {
     raise Rejected("stored length differs from transfer identity")
@@ -217,6 +230,8 @@ pub async fn receive_rpc(reader : &@io.Reader, writer : &@io.Writer) -> Unit {
     let mut info = empty_info()
     let mut data = b""
     match req.op {
+      "capabilities" =>
+        info = { ..empty_info(), stamp: wire_capabilities(), complete: true, }
       "tree-scan" => {
         tree_path_check(req.path)
         let manifest = scan_tree(req.path)
@@ -328,4 +343,9 @@ pub async fn local_status(path : String) -> Info {
   let (store, info) = receive_state(path, identity.length, identity.sha256)
   defer store.close()
   info
+}
+
+///|
+fn wire_capabilities() -> String {
+  "moonrelay-wire/1;features=file,tree,cleaned"
 }

@@ -133,11 +133,13 @@ fn request_for(
 
 ///|
 pub async fn status(endpoint : Endpoint) -> Info {
+  compatible_peer(endpoint)
   rpc(endpoint, request_for("status", endpoint.path, empty_info())).0
 }
 
 ///|
 pub async fn verify(endpoint : Endpoint, expected_sha256 : String) -> Info {
+  compatible_peer(endpoint)
   let info = rpc(endpoint, request_for("inspect", endpoint.path, empty_info())).0
   if info.sha256 != expected_sha256 {
     raise Rejected("remote SHA256 mismatch")
@@ -155,6 +157,7 @@ pub async fn push(
   if retries < 0 || retries > 100 {
     raise Rejected("retry budget out of range")
   }
+  compatible_peer(destination)
   let identity = hash_file(source, on_progress~)
   let input = @fs.open(source, mode=ReadOnly)
   defer input.close()
@@ -214,6 +217,7 @@ pub async fn pull(
   if retries < 0 || retries > 100 {
     raise Rejected("retry budget out of range")
   }
+  compatible_peer(source)
   let identity = rpc(source, request_for("inspect", source.path, empty_info())).0
   let (store, initial) = receive_state(
     destination,
@@ -273,4 +277,23 @@ pub async fn pull(
     }
   }
   raise Rejected("transfer ended unexpectedly")
+}
+
+///|
+async fn compatible_peer(endpoint : Endpoint) -> Unit {
+  let (info, _) = rpc(
+    endpoint,
+    request_for("capabilities", endpoint.path, empty_info()),
+  ) catch {
+    Rejected(_) =>
+      raise Rejected(
+        "incompatible SSH receiver: install MoonRelay 0.4.0 or a compatible newer protocol on both ends",
+      )
+    error => raise error
+  }
+  if !info.complete || info.stamp != wire_capabilities() {
+    raise Rejected(
+      "incompatible SSH protocol capabilities; update both MoonRelay installations",
+    )
+  }
 }

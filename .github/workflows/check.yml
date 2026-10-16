@@ -74,6 +74,7 @@ jobs:
           tools/build-cli.sh
           python3 tools/tree-verify.py
           python3 tools/download-verify.py
+          python3 tools/maintenance-verify.py
       - name: Real SSH, bidirectional recovery and independent library consumer
         run: python3 tools/relay-verify.py --real-ssh --big-mib 1280 --consumer
       - uses: actions/upload-artifact@v4
@@ -114,6 +115,7 @@ jobs:
         run: |
           python tools/windows-verify.py
           python tools/download-verify.py
+          python tools/maintenance-verify.py
       - uses: actions/upload-artifact@v4
         with:
           name: moonrelay-windows-client

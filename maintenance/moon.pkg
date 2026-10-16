@@ -1,0 +1,9 @@
+supported_targets = "native"
+
+import {
+  "kaigeliang/upload/transfer",
+  "kaigeliang/upload/storage",
+  "kaigeliang/upload/httpclient",
+  "moonbitlang/async/fs",
+  "moonbitlang/core/json",
+}

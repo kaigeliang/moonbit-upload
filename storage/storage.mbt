@@ -46,6 +46,9 @@ pub fn safe_id(s : String) -> Bool {
 
 ///|
 pub async fn read_manifest(dir : String) -> Manifest {
+  if @fs.exists(dir + "/deleted.json") {
+    raise Invalid("upload was explicitly deleted")
+  }
   let text = @fs.read_file(dir + "/manifest.json").text()
   let m : Manifest = @json.from_json(@json.parse(text))
   validate_manifest(m)

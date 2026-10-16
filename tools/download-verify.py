@@ -81,6 +81,10 @@ def interrupted(url, target):
             assert byte, (p.poll(), buffer[-1000:])
             buffer = (buffer + byte)[-2048:]
             if b'download ' in buffer and b'1048576/' in buffer:
+                inventory = json.loads(cli('tasks', target.parent).stdout)
+                task = next(task for task in inventory['tasks'] if task['target'] == str(target))
+                assert task['active'] and task['status'] == 'active', task
+                cli('clean', target, ok=False)
                 p.kill()
                 p.wait(timeout=10)
                 break
@@ -155,6 +159,7 @@ try:
     checks.append('zero-byte HTTP file download succeeds')
     assert server.process.poll() is None, server.process.returncode
     checks.append('HTTP service survives repeated client cancellation and truncated responses')
+    checks.append('active native HTTP download lock is reported and prevents cleanup')
     (out / 'verification.json').write_text(json.dumps({'passed': True, 'checks': checks}, indent=2) + '\n')
     for check in checks:
         print('PASS', check)

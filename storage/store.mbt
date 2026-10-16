@@ -47,7 +47,9 @@ pub async fn Store::create(
   }
   let mut reserved = 0L
   for id in @fs.readdir(self.root) {
-    if safe_id(id) && @fs.exists(self.root + "/" + id + "/manifest.json") {
+    if safe_id(id) &&
+      @fs.exists(self.root + "/" + id + "/manifest.json") &&
+      !@fs.exists(self.root + "/" + id + "/deleted.json") {
       let m = read_manifest(self.root + "/" + id)
       if m.length > quota_bytes - reserved {
         raise QuotaExceeded

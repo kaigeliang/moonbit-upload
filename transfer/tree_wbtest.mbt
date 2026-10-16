@@ -40,3 +40,25 @@ test "tree manifest rejects traversal aliases duplicate and non-directory parent
     ],
   })
 }
+
+///|
+test "tree identity ignores sibling enumeration order" {
+  let a : TreeEntry = {
+    path: "longname",
+    directory: true,
+    length: 0L,
+    sha256: "",
+  }
+  let b : TreeEntry = {
+    path: "short",
+    directory: true,
+    length: 0L,
+    sha256: "",
+  }
+  assert_true(
+    same_tree({ version: 1, entries: [a, b], }, { version: 1, entries: [b, a], }),
+  )
+  assert_false(
+    same_tree({ version: 1, entries: [a, b], }, { version: 1, entries: [a], }),
+  )
+}

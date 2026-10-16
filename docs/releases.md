@@ -7,7 +7,7 @@
 ```sh
 moon update
 python3 tools/package-release.py
-python3 tools/check-release.py output/release/moonrelay-0.3.0-macos-arm64.tar.gz
+python3 tools/check-release.py output/release/moonrelay-0.4.0-macos-arm64.tar.gz
 ```
 
 最后一个参数替换为本机生成的实际文件。Windows 使用 `python`。打包过程会重新构建 release 二进制，失败即停止，并核对 CLI 版本与 `moon.mod`。不能用 macOS 构建产物充当 Linux/Windows 包。

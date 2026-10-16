@@ -37,12 +37,41 @@ async fn run() -> Unit {
   let args = @env.args()
   if args.length() < 2 || args.contains("--help") {
     println(
-      "MoonRelay\nmoonrelay push FILE_OR_DIRECTORY user@host:/absolute/path [--recursive] [--remote-bin PATH] [--ssh-config FILE] [--retries N]\nmoonrelay pull user@host:/absolute/path FILE_OR_DIRECTORY [--recursive] [options]\nmoonrelay status user@host:/absolute/path [options]\nmoonrelay verify user@host:/absolute/path --sha256 HASH [options]\nmoonrelay hash FILE\nmoonrelay serve STORE PORT (HTTP receiver)\nmoonrelay rpc (SSH receiver; protocol stdin/stdout)\nHTTP: moonrelay upload/download/verify/hash ... --server URL (legacy options supported)",
+      "MoonRelay\nmoonrelay push FILE_OR_DIRECTORY user@host:/absolute/path [--recursive] [--remote-bin PATH] [--ssh-config FILE] [--retries N]\nmoonrelay pull user@host:/absolute/path FILE_OR_DIRECTORY [--recursive] [options]\nmoonrelay status user@host:/absolute/path [options]\nmoonrelay verify user@host:/absolute/path --sha256 HASH [options]\nmoonrelay tasks DIRECTORY\nmoonrelay clean EXACT_TARGET\nmoonrelay store-tasks STORE\nmoonrelay store-delete STORE ID --delete-data\nmoonrelay hash FILE\nmoonrelay serve STORE PORT (HTTP receiver)\nmoonrelay rpc (SSH receiver; protocol stdin/stdout)\nHTTP: moonrelay upload/download/verify/hash ... --server URL (legacy options supported)",
     )
     return
   }
   if args[1] == "--version" {
-    println("moonrelay 0.3.0")
+    println("moonrelay 0.4.0")
+    return
+  }
+  if args[1] == "store-tasks" {
+    if args.length() != 3 {
+      raise @transfer.Rejected("store-tasks STORE_DIRECTORY")
+    }
+    println(ToJson::to_json(@maintenance.store_tasks(args[2])).stringify())
+    return
+  }
+  if args[1] == "store-delete" {
+    if args.length() != 5 || args[4] != "--delete-data" {
+      raise @transfer.Rejected(
+        "store-delete STORE_DIRECTORY ID --delete-data (requires stopped server)",
+      )
+    }
+    println(
+      ToJson::to_json(@maintenance.store_delete(args[2], args[3])).stringify(),
+    )
+    return
+  }
+  if args[1] == "tasks" || args[1] == "clean" {
+    if args.length() != 3 {
+      raise @transfer.Rejected("tasks DIRECTORY or clean EXACT_TARGET")
+    }
+    if args[1] == "tasks" {
+      println(ToJson::to_json(@maintenance.tasks(args[2])).stringify())
+    } else {
+      println(ToJson::to_json(@maintenance.clean(args[2])).stringify())
+    }
     return
   }
   if args[1] == "serve" {
