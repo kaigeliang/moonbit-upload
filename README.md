@@ -96,7 +96,7 @@ HTTP 上传与 CLI 下载支持断点恢复；下载中断后，保留目标旁�
 
 公共 `kaigeliang/upload/transfer` 包提供 `push`、`pull`、`status`、`verify`、`hash_file` 和进度回调，供应用直接传文件；`storage`、`httpclient`、`sha256` 提供存储与 HTTP 集成接口，当前面向 native 目标。
 
-查看 [API 与接入示例](docs/moonrelay.md#公共-api) 和 [独立调用项目](examples/library-consumer)。已发布 [kaigeliang/upload@0.4.0](https://mooncakes.io/docs/kaigeliang/upload)。在独立项目中运行 `moon add kaigeliang/upload@0.4.0`，按示例导入包并使用 `--target native` 构建。注册表安装与真实 API 验证见 [验收核对记录](docs/acceptance-0.4.0.md)。
+查看 [API 与接入示例](docs/moonrelay.md#公共-api) 和 [独立调用项目](examples/library-consumer)。已发布 [kaigeliang/upload@0.4.0](https://mooncakes.io/docs/kaigeliang/upload)。在独立项目中运行 `moon add kaigeliang/upload@0.4.0`，按示例导入包并使用 `--target native` 构建。注册表安装与真实 API 验证见 [独立安装验证记录](docs/evidence/mooncakes-0.4.0.json)。
 
 ## 第三方库接入案例
 

@@ -7,3 +7,7 @@ __pycache__/
 task_plan.md
 
 bin/
+
+# Local development and submission material
+private/
+internal/

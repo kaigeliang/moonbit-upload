@@ -1,6 +1,6 @@
-# MoonRelay 0.3：统一 CLI 与公共传输库
+# MoonRelay 0.4：CLI 与公共传输库
 
-MoonRelay 是原生 MoonBit 单文件传输工具和库。SSH 使用系统 OpenSSH，HTTP 保留已有认证服务。它不包含 SSH 加密实现，不提供目录同步、中继、云存储适配或公网部署方案。
+MoonRelay 是原生 MoonBit 文件与目录传输工具和库。SSH 使用系统 OpenSSH，HTTP 提供认证上传和下载。目录传输支持逐文件恢复；不提供删除同步、中继、云存储适配或公网部署方案。
 
 ## 构建与两端准备
 
@@ -20,7 +20,7 @@ SSH 两端预装匹配的 moonrelay。远端登录用户的 PATH 中应有该程
 | 命令 | SSH | HTTP |
 |---|---|---|
 | push | 本地文件 → `user@host:/绝对路径` | 本地文件 → HTTP 服务源地址 |
-| pull | 远端绝对路径 → 本地文件，支持恢复 | HTTP 资源 → 本地文件，保留已有校验下载行为 |
+| pull | 远端绝对路径 → 本地文件，支持恢复 | HTTP 资源 → 本地文件，支持恢复和最终校验 |
 | status | 查询目标的持久化进度及完成状态 | 查询资源偏移、总长度、用户和完成状态 |
 | verify | 计算远端文件完整 SHA-256，与给定哈希比较 | 流式读取完成资源并与给定哈希/receipt 比较 |
 | hash | 计算本地文件 SHA-256 | 共用本地命令 |
@@ -59,7 +59,7 @@ bin/moonrelay pull http://127.0.0.1:4176/files/12 ./copy.zip \
 bin/moonrelay verify http://127.0.0.1:4176/files/12 --sha256 TRUSTED_SHA256
 ```
 
-旧的 upload/download 命令与 `bin/moon-upload` 保留。HTTP push 默认保存 FILE.moon-upload.json；pull/verify 必须给可信 SHA256 或 receipt。HTTP 下载仍不支持断点恢复，SSH push/pull 两个方向支持。浏览器入口保持原样。
+旧的 upload/download 命令与 `bin/moon-upload` 保留。HTTP push 默认保存 FILE.moon-upload.json；pull/verify 必须给可信 SHA256 或 receipt。HTTP CLI 下载支持断点恢复，保留目标旁的 .part 与 .part.json 后重跑同一命令继续；最终完整 SHA-256 校验通过后生成目标。SSH push/pull 同样支持恢复。浏览器下载验证限制为 128 MiB。
 
 serve 默认使用 `./bin/moonrelay-server`；在其他工作目录运行时可设置 `MOONRELAY_SERVER_BIN` 为服务可执行文件的完整路径。HTTP 服务固定回环监听，资源权限与额度沿用原配置。
 
@@ -82,7 +82,7 @@ SSH 的恢复数据位于接收目标旁的 `TARGET.moonrelay/`。其中 identit
 
 SSH 每个 RPC 启动一个 SSH 进程/远端接收程序；块之间复用的是持久化状态，不是库内长连接。它可沿用用户的 OpenSSH 连接复用配置，但当前不主张比 rsync 更快。
 
-原始分块与最终文件暂时同时保留，成功传输约占接收端 2 倍文件大小；pull 还会有一个最多 8 MiB 的 staging 文件。失败的 publish 文件也可能留存。没有自动垃圾回收或删除命令，不能随意删除正在使用的恢复目录。SSH 没有 HTTP 全库预留额度，受登录账号权限、磁盘空间及单文件 16 GiB 限制约束；实际验证上限以报告为准。
+原始分块与最终文件暂时同时保留，成功传输约占接收端 2 倍文件大小；pull 还会有一个最多 8 MiB 的 staging 文件。失败的 publish 文件也可能留存。可用 tasks 查看恢复数据占用，并用 clean 显式清理已完成任务；详见[维护说明](maintenance.md)。不能随意删除正在使用的恢复目录。SSH 没有 HTTP 全库预留额度，受登录账号权限、磁盘空间及单文件 16 GiB 限制约束；实际验证上限以报告为准。
 
 ## 公共 API
 
@@ -104,7 +104,7 @@ assert_eq(sent.sha256, received.sha256)
 
 HTTP 旧客户端位于 `kaigeliang/upload/httpclient`，磁盘 API 位于 `kaigeliang/upload/storage`，SHA256 位于 `kaigeliang/upload/sha256`。CLI 共用这些库，不复制一套存储恢复实现。
 
-`examples/library-consumer` 是拥有独立 moon.mod 的调用项目，直接通过 API 发送/接收并检查进度回调，不是调用 CLI 完成传输。已发布 Mooncakes `kaigeliang/upload@0.4.0`。`tools/registry-consumer-verify.sh` 在仓库外从注册表安装并验证 API；`tools/consumer-verify.sh` 保留为本地源码 workspace 验证入口。两者的依赖来源不同，注册表验证回执见 [验收核对](acceptance-0.4.0.md)。
+`examples/library-consumer` 是拥有独立 moon.mod 的调用项目，直接通过 API 发送/接收并检查进度回调，不是调用 CLI 完成传输。已发布 Mooncakes `kaigeliang/upload@0.4.0`。`tools/registry-consumer-verify.sh` 在仓库外从注册表安装并验证 API；`tools/consumer-verify.sh` 保留为本地源码 workspace 验证入口。两者的依赖来源不同，注册表验证回执见 [独立安装验证记录](evidence/mooncakes-0.4.0.json)。
 
 ## 目录断点续传
 
