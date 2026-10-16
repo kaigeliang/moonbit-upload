@@ -112,7 +112,7 @@ HTTP 上传与 CLI 下载支持断点恢复；下载中断后，保留目标旁�
 
 [Linux 功能验证](https://github.com/kaigeliang/moonbit-upload/actions/runs/38860963811)覆盖大文件、故障恢复及独立库调用。
 
-Apache-2.0。MoonBit 传输与存储逻辑独立实现；SSH 使用系统 OpenSSH。
+Apache-2.0。MoonBit 传输与存储逻辑独立实现；SSH 使用系统 OpenSSH。协议参考范围、依赖及许可证见 [参考来源与第三方说明](docs/references.md)。
 
 ## Windows 客户端
 
