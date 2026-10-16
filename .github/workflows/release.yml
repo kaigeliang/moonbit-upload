@@ -31,12 +31,14 @@ jobs:
         run: |
           irm https://cli.moonbitlang.com/install/powershell.ps1 | iex
           "$env:USERPROFILE\.moon\bin" >> $env:GITHUB_PATH
-      - name: Check and package
-        run: |
-          moon update
-          moon check --target native --deny-warn
-          moon test --target native
-          python tools/package-release.py
+      - name: Resolve dependencies
+        run: moon update
+      - name: Check native packages
+        run: moon check --target native --deny-warn
+      - name: Run native unit tests
+        run: moon test --target native
+      - name: Build release archive
+        run: python tools/package-release.py
       - name: Verify extracted package
         shell: bash
         run: |

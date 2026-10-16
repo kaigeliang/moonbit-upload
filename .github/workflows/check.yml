@@ -112,10 +112,11 @@ jobs:
           if ($LASTEXITCODE -ne 0) { throw 'Tests failed' }
           ./tools/build-cli.ps1
       - name: Native Windows file and HTTP workflows
-        run: |
-          python tools/windows-verify.py
-          python tools/download-verify.py
-          python tools/maintenance-verify.py
+        run: python tools/windows-verify.py
+      - name: HTTP download recovery and active locking
+        run: python tools/download-verify.py
+      - name: HTTP task inventory and cleanup
+        run: python tools/maintenance-verify.py
       - uses: actions/upload-artifact@v4
         with:
           name: moonrelay-windows-client
