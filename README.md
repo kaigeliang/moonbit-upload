@@ -98,6 +98,10 @@ HTTP 上传与 CLI 下载支持断点恢复；下载中断后，保留目标旁�
 
 查看 [API 与接入示例](docs/moonrelay.md#公共-api) 和 [独立调用项目](examples/library-consumer)。已发布 [kaigeliang/upload@0.4.0](https://mooncakes.io/docs/kaigeliang/upload)。在独立项目中运行 `moon add kaigeliang/upload@0.4.0`，按示例导入包并使用 `--target native` 构建。注册表安装与真实 API 验证见 [验收核对记录](docs/acceptance-0.4.0.md)。
 
+## 第三方库接入案例
+
+[MoonDocKit 文档站交付](docs/cases/moondockit-delivery.md)：独立应用从 Mooncakes 安装 MoonDocKit 和 MoonRelay，生成文档站，交付至 Linux，中断重跑后逐文件校验并取回。提供[完整示例](examples/docsite-delivery)和复现脚本；这是本项目完成的第三方库集成，不代表上游采用。
+
 ## 任务与空间管理
 
 用 moonrelay tasks ./results 查看任务、恢复文件占用和可回收字节数；用 moonrelay clean ./results/model.bin 校验最终文件后回收重复分块。HTTP 仓库的显式删除、锁保护和完整命令见[维护说明](docs/maintenance.md)。

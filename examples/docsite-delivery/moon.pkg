@@ -1,0 +1,11 @@
+supported_targets = "native"
+
+pkgtype(kind: "executable")
+
+import {
+  "Estrella-11/moondockit" @docs,
+  "kaigeliang/upload/transfer",
+  "moonbitlang/async",
+  "moonbitlang/async/fs",
+  "moonbitlang/core/env",
+}

@@ -77,6 +77,8 @@ jobs:
           python3 tools/maintenance-verify.py
       - name: Real SSH, bidirectional recovery and independent library consumer
         run: python3 tools/relay-verify.py --real-ssh --big-mib 1280 --consumer
+      - name: Third-party MoonDocKit registry integration and interrupted delivery
+        run: python3 tools/docsite-local-verify.py
       - uses: actions/upload-artifact@v4
         if: always()
         with:

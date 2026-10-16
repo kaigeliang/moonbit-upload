@@ -11,3 +11,7 @@ MoonRelay 的传输协议实现、分块持久化、恢复状态、SHA-256、库
 | [OpenSSH](https://www.openssh.com/) | [上游多项 BSD / ISC 等许可证](https://www.openssh.com/portable.html) | 调用用户系统的 ssh 程序负责登录、主机认证及加密；不在本项目安装包中分发 OpenSSH，不将其实现归为 MoonRelay。 |
 
 工具链及依赖保留各自版权与许可；项目的 Apache-2.0 声明不替代第三方许可证。测试数据由验证脚本生成；浏览器截图来自本项目演示界面。生成的构建产物来自本仓库及上述公开依赖。
+
+## 集成示例依赖
+
+examples/docsite-delivery 额外依赖 [Estrella-11/moondockit@0.6.0](https://mooncakes.io/docs/Estrella-11/moondockit@0.6.0)（[源码](https://github.com/Estrella-11/moonbit_1)，[Apache-2.0](https://github.com/Estrella-11/moonbit_1/blob/main/LICENSE)）。用于真实文档站生成；它不属于 MoonRelay 核心实现或 0.4.0 原生安装包依赖。示例通过注册表使用其公共 API，不复制上游源码。
