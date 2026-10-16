@@ -2,6 +2,10 @@
 
 核对日期：2026-10-16。此记录是工程证据索引，不代表主办方已验收，也不代表已提交验收表单。
 
+最终 CI：提交 `83cd07669a642a01d4d5fa961e16584590b83c19` 的 [运行 38870612891](https://github.com/kaigeliang/moonbit-upload/actions/runs/38870612891) 全部通过（linux、windows-client、relay-linux）；SSH 集成任务于 2026-10-16 16:06:33（北京时间）通过。结构化结果见 [CI 回执](evidence/acceptance-ci-0.4.0.json)。
+
+可直接参考的提交正文与材料索引见 [验收提交材料](submission-0.4.0.md)。
+
 ## 逐项对应
 
 依据 [正式章程](https://bxup9uklfcb.feishu.cn/wiki/Dx4Bwd6D1i3GfHkajQCcF7SznEd) 第五章验收阶段及第七章：
