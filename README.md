@@ -49,7 +49,7 @@ SSH 传输需要两端安装兼容的 MoonRelay 和系统 OpenSSH。先确认普
 
 ## 详细文档
 
-- [命令、目录传输与公共 API](docs/moonrelay.md) · [Mooncakes 包](https://mooncakes.io/docs/kaigeliang/upload@0.4.0) · [独立库调用示例](examples/library-consumer)
+- [命令、目录传输与公共 API](docs/moonrelay.md) · [Mooncakes 库（0.4.1 文档修订）](https://mooncakes.io/docs/kaigeliang/upload@0.4.1) · [独立库调用示例](examples/library-consumer)
 - [HTTP 与浏览器上传](docs/http.md) · [访问控制](docs/api.md)
 - [Windows 客户端](docs/windows.md) · [安装包与源码构建](docs/releases.md)
 - [任务管理与空间清理](docs/maintenance.md)
