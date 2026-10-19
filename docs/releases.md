@@ -6,6 +6,22 @@ Linux 包在 Ubuntu 22.04 构建，需使用兼容其原生运行环境的发行
 
 安装包包含 `bin/` 中的三个原生程序、`web/` 浏览器资源、许可证、`build.json` 与安装说明。运行时不需要 MoonBit、Node 或 Python；SSH 需要系统 OpenSSH。
 
+## 从源码构建
+
+需要 Git 和 MoonBit CLI；已验证的工具链为 MoonBit CLI 0.1.20261012。macOS / Linux：
+
+```sh
+git clone https://github.com/kaigeliang/moonbit-upload.git
+cd moonbit-upload
+moon update
+tools/build-cli.sh
+./bin/moonrelay --version
+```
+
+构建生成 `bin/moonrelay`、兼容入口 `bin/moon-upload` 与 `bin/moonrelay-server`。可用 `MOON=/实际路径/moon tools/build-cli.sh` 指定工具链。Windows 的 MSVC / SDK 与 PowerShell 步骤见 [Windows 客户端](windows.md)。SSH 两端需要各自平台的程序，macOS 二进制不能直接用于 Linux。
+
+## 构建与检查安装包
+
 在目标平台安装 MoonBit 和 Python 3.12+ 后运行：
 
 ```sh
