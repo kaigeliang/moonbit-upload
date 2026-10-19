@@ -1,0 +1,5192 @@
+{
+  "date": "2026-10-19",
+  "moonrelay_scope": "Unreleased 0.5.0 development snapshot; not v0.4.0 or the latest local candidate",
+  "moonrelay_identity": {
+    "client": {
+      "sha256": "b56780e7187557041f5b7809f69b5ea6b5622d310b9e6d368d9bf372489634e9",
+      "version": "moonrelay 0.5.0-dev-download-r10"
+    },
+    "receiver_version": "moonrelay 0.5.0-dev-download-r10",
+    "receiver_sha256": "1dfa66ef8f506d2d082297a452e97b7c10036264d03ac10bc7cd3be4e06bd070"
+  },
+  "platforms": {
+    "client": "macOS ARM64",
+    "server": "Linux x86_64"
+  },
+  "versions": {
+    "ssh": "OpenSSH 10.3p1",
+    "rsync_client": "rsync  version 3.5.0  protocol version 32",
+    "rsync_server": "rsync  version 3.2.7  protocol version 31",
+    "rclone": "rclone v1.75.2"
+  },
+  "profile": {
+    "big_mib": 128,
+    "small_files": 32,
+    "cut_mib": 32,
+    "restart_mibps": 8,
+    "settle_seconds": 1,
+    "connection": "warm",
+    "cipher": "aes128-gcm@openssh.com",
+    "rclone_transfers": 4,
+    "rclone_checkers": 8,
+    "rclone_concurrency": 64,
+    "rclone_chunk_size": "32Ki"
+  },
+  "input_manifest": {
+    "large": {
+      "files": {
+        "payload.bin": {
+          "bytes": 134217728,
+          "sha256": "32d7386cf2fb7ee6e6fc37c843abd3475a090fb74b79a3954f1a2a28b6638dcc"
+        }
+      },
+      "directories": [],
+      "special": []
+    },
+    "tree": {
+      "files": {
+        "group-0/0000.bin": {
+          "bytes": 65536,
+          "sha256": "fed565a4134b59df002ec36c40074ea45aa3797dee3b65512ff5dab48aa7e74c"
+        },
+        "group-0/0004.bin": {
+          "bytes": 65536,
+          "sha256": "9b5613a731c54129fd5a0a4df7da1dd27a73b3dd7643b7f400e787e91090e2d1"
+        },
+        "group-0/0008.bin": {
+          "bytes": 65536,
+          "sha256": "2e9fc0d339cc427d08dc33bc59a2d2e646ccd587cd327aab763d10c0f638ae9d"
+        },
+        "group-0/0012.bin": {
+          "bytes": 65536,
+          "sha256": "e6b48c3a5e8d48bb76f7e246f774f4f445d58570bde4e8bb9aab310d973de291"
+        },
+        "group-0/0016.bin": {
+          "bytes": 65536,
+          "sha256": "9984b6914e0e0eac0379b4aff3fddf16dc6be967b6c04093b8656ff46a7edff1"
+        },
+        "group-0/0020.bin": {
+          "bytes": 65536,
+          "sha256": "35ca7425fece57c3fdd5baef47281811f163921b6378d303ca2c4f78c6006d5d"
+        },
+        "group-0/0024.bin": {
+          "bytes": 65536,
+          "sha256": "560c041bf97c9d7d109397b417fe8158b9f9b19d24eb50c08d58939300c502d6"
+        },
+        "group-0/0028.bin": {
+          "bytes": 65536,
+          "sha256": "d9abf3dbe7dad716ee0cd02150135b4898c916443af30684f7b6aa50c2fad36f"
+        },
+        "group-1/0001.bin": {
+          "bytes": 65536,
+          "sha256": "89e368c61c6dbcf5f6516f2775ce036f0a8b2ff21bb5cb5a7b119a799629dc2a"
+        },
+        "group-1/0005.bin": {
+          "bytes": 65536,
+          "sha256": "1a9781c26935d9cc68e676a729361b678c4c4c45c46123bb576aedbba53bf024"
+        },
+        "group-1/0009.bin": {
+          "bytes": 65536,
+          "sha256": "5209e5ef2a1c313e225bd81cd6e8040074c0a6029380fe29efa615334bfec54d"
+        },
+        "group-1/0013.bin": {
+          "bytes": 65536,
+          "sha256": "1ca0221ef2a5a10cec9715bd6bafcc0d3388997d52104a6dd7e760b996a84002"
+        },
+        "group-1/0017.bin": {
+          "bytes": 65536,
+          "sha256": "dcc461e1745846b10868d90d1e516be9637bbb2d8770fde3859a53e0103eed9c"
+        },
+        "group-1/0021.bin": {
+          "bytes": 65536,
+          "sha256": "eb611a22db833411638facc5f32c63e600584bef04b2d54021d15c898ef5c2a6"
+        },
+        "group-1/0025.bin": {
+          "bytes": 65536,
+          "sha256": "2e9e8245c15f3deed53abab3ad205c38a3c65e40c20f326ee3933fd26f6483e5"
+        },
+        "group-1/0029.bin": {
+          "bytes": 65536,
+          "sha256": "53e4e572d39083283b623f5564bb7514168496fe97140e8fa1974300d4d5ab98"
+        },
+        "group-2/0002.bin": {
+          "bytes": 65536,
+          "sha256": "bd661e4c5ca7396949e2a75e80c6586e86805b58cd14751e904c51ebfc063c62"
+        },
+        "group-2/0006.bin": {
+          "bytes": 65536,
+          "sha256": "29f50355418a5f404e1fc5f26b5359968f69a03f8deeb1697e8b6ae777b7e5f5"
+        },
+        "group-2/0010.bin": {
+          "bytes": 65536,
+          "sha256": "baf2b26bdc08cddce152b17122f63fb56804c6a74d0865f19e98a05c92d0be35"
+        },
+        "group-2/0014.bin": {
+          "bytes": 65536,
+          "sha256": "746420744908fc59df3bee912a9747c8c40251ab379b648530729680ada51290"
+        },
+        "group-2/0018.bin": {
+          "bytes": 65536,
+          "sha256": "85110f1695eb40757d786b7734d9571290ec1fc394182a34aab2abbdb0360fb4"
+        },
+        "group-2/0022.bin": {
+          "bytes": 65536,
+          "sha256": "e5e08b67e36def43cdf91aba88e7560ec202ba3885c3d648a786508a8ca473a4"
+        },
+        "group-2/0026.bin": {
+          "bytes": 65536,
+          "sha256": "34bae1493f75247f0d8238aa1b18433a6b6618e6a2503521c836a29f19c8772a"
+        },
+        "group-2/0030.bin": {
+          "bytes": 65536,
+          "sha256": "ec29f0b7bedd38a1b91bc8c5ff0d5fe11a43a25411d000ddc31f8b12656fc41e"
+        },
+        "group-3/0003.bin": {
+          "bytes": 65536,
+          "sha256": "24b5aaadb8d359a3cb2898ab9b0311ec27859832ff410b9b09e232f02c7fc7f2"
+        },
+        "group-3/0007.bin": {
+          "bytes": 65536,
+          "sha256": "5081aae754b4f10cf62ad2b4b47090109ff00b63d453270616d64dee04b78211"
+        },
+        "group-3/0011.bin": {
+          "bytes": 65536,
+          "sha256": "bca450e76841cfe00b36c75e006fbf09f9dbc7d0b2c0b1ee2ca36cbd4b511d7c"
+        },
+        "group-3/0015.bin": {
+          "bytes": 65536,
+          "sha256": "a6d1a256cf8aa068e9b98c19e2e05d90cd941d9a8cb691094b8eea8d2108e423"
+        },
+        "group-3/0019.bin": {
+          "bytes": 65536,
+          "sha256": "47f18dd3d287db482a694e60bd34feb92f0d43b5bebcc6e7d81e7bcca1b92806"
+        },
+        "group-3/0023.bin": {
+          "bytes": 65536,
+          "sha256": "104956ea036a5a856265d721bceb1292e4c6983970c6dd4dc5e9c9efee4f9daf"
+        },
+        "group-3/0027.bin": {
+          "bytes": 65536,
+          "sha256": "d53308b7c606efe11bf15623b1852c575f8a8c039445ad8173ab0771ca100caa"
+        },
+        "group-3/0031.bin": {
+          "bytes": 65536,
+          "sha256": "32706d2c9f1510d3daf75d5b4f750e034ce8940b34953f48cbdb27f5f6fd47ce"
+        }
+      },
+      "directories": [
+        "group-0",
+        "group-1",
+        "group-2",
+        "group-3"
+      ],
+      "special": []
+    }
+  },
+  "completion": "tool-native completion plus independently checked payload paths/SHA-256; no common durability wrapper",
+  "rclone_transport": "SFTP over external OpenSSH; not native Go SSH and not rclone default UX",
+  "scheduling": "Interleaved randomized configurations; original block positions are retained. All fixed observations of each displayed build/tool are included.",
+  "groups": [
+    {
+      "direction": "pull",
+      "scenario": "fresh",
+      "tools": {
+        "MoonRelay": {
+          "n": 10,
+          "metrics": {
+            "native_seconds": {
+              "n": 10,
+              "median": 13.824820426999999,
+              "min": 10.801886667,
+              "max": 18.354885209
+            },
+            "verification_seconds": {
+              "n": 10,
+              "median": 0.05681341700255871,
+              "min": 0.05462645902298391,
+              "max": 0.059500542003661394
+            },
+            "verified_delivery_seconds": {
+              "n": 10,
+              "median": 13.88147178153455,
+              "min": 10.8583331249802,
+              "max": 18.411512625983246
+            },
+            "ssh_stream_sent_bytes": {
+              "n": 10,
+              "median": 41178.0,
+              "min": 40800,
+              "max": 41772
+            },
+            "ssh_stream_received_bytes": {
+              "n": 10,
+              "median": 134387030.0,
+              "min": 134386220,
+              "max": 134391680
+            },
+            "payload_direction_ssh_stream_bytes": {
+              "n": 10,
+              "median": 134387030.0,
+              "min": 134386220,
+              "max": 134391680
+            },
+            "payload_direction_ssh_stream_over_payload": {
+              "n": 10,
+              "median": 1.0012613981962204,
+              "min": 1.001255363225937,
+              "max": 1.001296043395996
+            },
+            "retained_unique_inode_logical_bytes": {
+              "n": 10,
+              "median": 134217896.0,
+              "min": 134217896,
+              "max": 134217896
+            },
+            "retained_unique_inode_allocated_bytes": {
+              "n": 10,
+              "median": 135270400.0,
+              "min": 135270400,
+              "max": 135270400
+            },
+            "retained_unique_inode_logical_excess_vs_payload_bytes": {
+              "n": 10,
+              "median": 168.0,
+              "min": 168,
+              "max": 168
+            },
+            "retained_unique_inode_allocated_difference_vs_payload_bytes": {
+              "n": 10,
+              "median": 1052672.0,
+              "min": 1052672,
+              "max": 1052672
+            },
+            "retained_unique_inode_logical_over_payload": {
+              "n": 10,
+              "median": 1.0000012516975403,
+              "min": 1.0000012516975403,
+              "max": 1.0000012516975403
+            },
+            "retained_unique_inode_allocated_over_payload": {
+              "n": 10,
+              "median": 1.007843017578125,
+              "min": 1.007843017578125,
+              "max": 1.007843017578125
+            },
+            "benchmark_teardown_seconds": {
+              "n": 10,
+              "median": 0.003046124940738082,
+              "min": 0.0024730840232223272,
+              "max": 0.005011165980249643
+            },
+            "retained_partial_path_count": {
+              "n": 10,
+              "median": 0.0,
+              "min": 0,
+              "max": 0
+            },
+            "retained_partial_path_sum_logical_bytes": {
+              "n": 10,
+              "median": 0.0,
+              "min": 0,
+              "max": 0
+            }
+          }
+        },
+        "rsync": {
+          "n": 10,
+          "metrics": {
+            "native_seconds": {
+              "n": 10,
+              "median": 12.112602698,
+              "min": 10.14237602,
+              "max": 15.6781365
+            },
+            "verification_seconds": {
+              "n": 10,
+              "median": 0.07836825051344931,
+              "min": 0.0599052500911057,
+              "max": 0.08628779207356274
+            },
+            "verified_delivery_seconds": {
+              "n": 10,
+              "median": 12.184190968599022,
+              "min": 10.219376561845337,
+              "max": 15.764424292073564
+            },
+            "ssh_stream_sent_bytes": {
+              "n": 10,
+              "median": 52160.0,
+              "min": 51368,
+              "max": 53708
+            },
+            "ssh_stream_received_bytes": {
+              "n": 10,
+              "median": 134429392.0,
+              "min": 134423936,
+              "max": 134430480
+            },
+            "payload_direction_ssh_stream_bytes": {
+              "n": 10,
+              "median": 134429392.0,
+              "min": 134423936,
+              "max": 134430480
+            },
+            "payload_direction_ssh_stream_over_payload": {
+              "n": 10,
+              "median": 1.0015770196914673,
+              "min": 1.0015363693237305,
+              "max": 1.0015851259231567
+            },
+            "retained_unique_inode_logical_bytes": {
+              "n": 10,
+              "median": 134217728.0,
+              "min": 134217728,
+              "max": 134217728
+            },
+            "retained_unique_inode_allocated_bytes": {
+              "n": 10,
+              "median": 134479872.0,
+              "min": 134479872,
+              "max": 135266304
+            },
+            "retained_unique_inode_logical_excess_vs_payload_bytes": {
+              "n": 10,
+              "median": 0.0,
+              "min": 0,
+              "max": 0
+            },
+            "retained_unique_inode_allocated_difference_vs_payload_bytes": {
+              "n": 10,
+              "median": 262144.0,
+              "min": 262144,
+              "max": 1048576
+            },
+            "retained_unique_inode_logical_over_payload": {
+              "n": 10,
+              "median": 1.0,
+              "min": 1.0,
+              "max": 1.0
+            },
+            "retained_unique_inode_allocated_over_payload": {
+              "n": 10,
+              "median": 1.001953125,
+              "min": 1.001953125,
+              "max": 1.0078125
+            },
+            "benchmark_teardown_seconds": {
+              "n": 10,
+              "median": 0.002650270937010646,
+              "min": 0.0020899169612675905,
+              "max": 0.004164000041782856
+            },
+            "retained_partial_path_count": {
+              "n": 10,
+              "median": 0.0,
+              "min": 0,
+              "max": 0
+            },
+            "retained_partial_path_sum_logical_bytes": {
+              "n": 10,
+              "median": 0.0,
+              "min": 0,
+              "max": 0
+            }
+          }
+        },
+        "rclone SFTP": {
+          "n": 10,
+          "metrics": {
+            "native_seconds": {
+              "n": 10,
+              "median": 13.423777427,
+              "min": 10.957226,
+              "max": 16.904711042
+            },
+            "verification_seconds": {
+              "n": 10,
+              "median": 0.07908443745691329,
+              "min": 0.0662582500372082,
+              "max": 0.08302262495271862
+            },
+            "verified_delivery_seconds": {
+              "n": 10,
+              "median": 13.49689365591575,
+              "min": 11.036963666994334,
+              "max": 16.986789584094677
+            },
+            "ssh_stream_sent_bytes": {
+              "n": 10,
+              "median": 322508.0,
+              "min": 321364,
+              "max": 323492
+            },
+            "ssh_stream_received_bytes": {
+              "n": 10,
+              "median": 134453852.0,
+              "min": 134451624,
+              "max": 134459056
+            },
+            "payload_direction_ssh_stream_bytes": {
+              "n": 10,
+              "median": 134453852.0,
+              "min": 134451624,
+              "max": 134459056
+            },
+            "payload_direction_ssh_stream_over_payload": {
+              "n": 10,
+              "median": 1.001759260892868,
+              "min": 1.001742660999298,
+              "max": 1.0017980337142944
+            },
+            "retained_unique_inode_logical_bytes": {
+              "n": 10,
+              "median": 134217728.0,
+              "min": 134217728,
+              "max": 134217728
+            },
+            "retained_unique_inode_allocated_bytes": {
+              "n": 10,
+              "median": 135262208.0,
+              "min": 135262208,
+              "max": 135262208
+            },
+            "retained_unique_inode_logical_excess_vs_payload_bytes": {
+              "n": 10,
+              "median": 0.0,
+              "min": 0,
+              "max": 0
+            },
+            "retained_unique_inode_allocated_difference_vs_payload_bytes": {
+              "n": 10,
+              "median": 1044480.0,
+              "min": 1044480,
+              "max": 1044480
+            },
+            "retained_unique_inode_logical_over_payload": {
+              "n": 10,
+              "median": 1.0,
+              "min": 1.0,
+              "max": 1.0
+            },
+            "retained_unique_inode_allocated_over_payload": {
+              "n": 10,
+              "median": 1.007781982421875,
+              "min": 1.007781982421875,
+              "max": 1.007781982421875
+            },
+            "benchmark_teardown_seconds": {
+              "n": 10,
+              "median": 0.002938145538792014,
+              "min": 0.0023902920074760914,
+              "max": 0.009383416967466474
+            },
+            "retained_partial_path_count": {
+              "n": 10,
+              "median": 0.0,
+              "min": 0,
+              "max": 0
+            },
+            "retained_partial_path_sum_logical_bytes": {
+              "n": 10,
+              "median": 0.0,
+              "min": 0,
+              "max": 0
+            }
+          }
+        }
+      }
+    },
+    {
+      "direction": "pull",
+      "scenario": "completed-rerun",
+      "tools": {
+        "MoonRelay": {
+          "n": 10,
+          "metrics": {
+            "native_seconds": {
+              "n": 10,
+              "median": 0.34792449950000004,
+              "min": 0.296717291,
+              "max": 0.457450626
+            },
+            "verification_seconds": {
+              "n": 10,
+              "median": 0.053881270927377045,
+              "min": 0.05028037494048476,
+              "max": 0.07458249991759658
+            },
+            "verified_delivery_seconds": {
+              "n": 10,
+              "median": 0.4032120199248205,
+              "min": 0.3490367068449769,
+              "max": 0.519797666977329
+            },
+            "ssh_stream_sent_bytes": {
+              "n": 10,
+              "median": 712.0,
+              "min": 712,
+              "max": 712
+            },
+            "ssh_stream_received_bytes": {
+              "n": 10,
+              "median": 720.0,
+              "min": 720,
+              "max": 792
+            },
+            "payload_direction_ssh_stream_bytes": {
+              "n": 10,
+              "median": 720.0,
+              "min": 720,
+              "max": 792
+            },
+            "payload_direction_ssh_stream_over_payload": {
+              "n": 10,
+              "median": 5.364418029785156e-06,
+              "min": 5.364418029785156e-06,
+              "max": 5.900859832763672e-06
+            },
+            "retained_unique_inode_logical_bytes": {
+              "n": 10,
+              "median": 134217896.0,
+              "min": 134217896,
+              "max": 134217896
+            },
+            "retained_unique_inode_allocated_bytes": {
+              "n": 10,
+              "median": 135270400.0,
+              "min": 135270400,
+              "max": 135270400
+            },
+            "retained_unique_inode_logical_excess_vs_payload_bytes": {
+              "n": 10,
+              "median": 168.0,
+              "min": 168,
+              "max": 168
+            },
+            "retained_unique_inode_allocated_difference_vs_payload_bytes": {
+              "n": 10,
+              "median": 1052672.0,
+              "min": 1052672,
+              "max": 1052672
+            },
+            "retained_unique_inode_logical_over_payload": {
+              "n": 10,
+              "median": 1.0000012516975403,
+              "min": 1.0000012516975403,
+              "max": 1.0000012516975403
+            },
+            "retained_unique_inode_allocated_over_payload": {
+              "n": 10,
+              "median": 1.007843017578125,
+              "min": 1.007843017578125,
+              "max": 1.007843017578125
+            },
+            "benchmark_teardown_seconds": {
+              "n": 10,
+              "median": 0.0031086039962247014,
+              "min": 0.0022226658184081316,
+              "max": 0.005134333157911897
+            },
+            "retained_partial_path_count": {
+              "n": 10,
+              "median": 0.0,
+              "min": 0,
+              "max": 0
+            },
+            "retained_partial_path_sum_logical_bytes": {
+              "n": 10,
+              "median": 0.0,
+              "min": 0,
+              "max": 0
+            }
+          }
+        },
+        "rsync": {
+          "n": 10,
+          "metrics": {
+            "native_seconds": {
+              "n": 10,
+              "median": 0.132188698,
+              "min": 0.128261229,
+              "max": 0.184477895
+            },
+            "verification_seconds": {
+              "n": 10,
+              "median": 0.06392383389174938,
+              "min": 0.05052220914512873,
+              "max": 0.07269516703672707
+            },
+            "verified_delivery_seconds": {
+              "n": 10,
+              "median": 0.1954405629810393,
+              "min": 0.18282306314512872,
+              "max": 0.2571730620367271
+            },
+            "ssh_stream_sent_bytes": {
+              "n": 10,
+              "median": 612.0,
+              "min": 612,
+              "max": 612
+            },
+            "ssh_stream_received_bytes": {
+              "n": 10,
+              "median": 676.0,
+              "min": 676,
+              "max": 712
+            },
+            "payload_direction_ssh_stream_bytes": {
+              "n": 10,
+              "median": 676.0,
+              "min": 676,
+              "max": 712
+            },
+            "payload_direction_ssh_stream_over_payload": {
+              "n": 10,
+              "median": 5.036592483520508e-06,
+              "min": 5.036592483520508e-06,
+              "max": 5.304813385009766e-06
+            },
+            "retained_unique_inode_logical_bytes": {
+              "n": 10,
+              "median": 134217728.0,
+              "min": 134217728,
+              "max": 134217728
+            },
+            "retained_unique_inode_allocated_bytes": {
+              "n": 10,
+              "median": 135004160.0,
+              "min": 134479872,
+              "max": 135266304
+            },
+            "retained_unique_inode_logical_excess_vs_payload_bytes": {
+              "n": 10,
+              "median": 0.0,
+              "min": 0,
+              "max": 0
+            },
+            "retained_unique_inode_allocated_difference_vs_payload_bytes": {
+              "n": 10,
+              "median": 786432.0,
+              "min": 262144,
+              "max": 1048576
+            },
+            "retained_unique_inode_logical_over_payload": {
+              "n": 10,
+              "median": 1.0,
+              "min": 1.0,
+              "max": 1.0
+            },
+            "retained_unique_inode_allocated_over_payload": {
+              "n": 10,
+              "median": 1.005859375,
+              "min": 1.001953125,
+              "max": 1.0078125
+            },
+            "benchmark_teardown_seconds": {
+              "n": 10,
+              "median": 0.0027359164087101817,
+              "min": 0.002094249939545989,
+              "max": 0.003909499850124121
+            },
+            "retained_partial_path_count": {
+              "n": 10,
+              "median": 0.0,
+              "min": 0,
+              "max": 0
+            },
+            "retained_partial_path_sum_logical_bytes": {
+              "n": 10,
+              "median": 0.0,
+              "min": 0,
+              "max": 0
+            }
+          }
+        },
+        "rclone SFTP": {
+          "n": 10,
+          "metrics": {
+            "native_seconds": {
+              "n": 10,
+              "median": 0.12880640599999998,
+              "min": 0.123496833,
+              "max": 0.185870791
+            },
+            "verification_seconds": {
+              "n": 10,
+              "median": 0.05682872899342328,
+              "min": 0.05405829194933176,
+              "max": 0.0654785840306431
+            },
+            "verified_delivery_seconds": {
+              "n": 10,
+              "median": 0.1861712079934233,
+              "min": 0.17755512494933176,
+              "max": 0.25134937503064314
+            },
+            "ssh_stream_sent_bytes": {
+              "n": 10,
+              "median": 492.0,
+              "min": 492,
+              "max": 492
+            },
+            "ssh_stream_received_bytes": {
+              "n": 10,
+              "median": 692.0,
+              "min": 692,
+              "max": 692
+            },
+            "payload_direction_ssh_stream_bytes": {
+              "n": 10,
+              "median": 692.0,
+              "min": 692,
+              "max": 692
+            },
+            "payload_direction_ssh_stream_over_payload": {
+              "n": 10,
+              "median": 5.155801773071289e-06,
+              "min": 5.155801773071289e-06,
+              "max": 5.155801773071289e-06
+            },
+            "retained_unique_inode_logical_bytes": {
+              "n": 10,
+              "median": 134217728.0,
+              "min": 134217728,
+              "max": 134217728
+            },
+            "retained_unique_inode_allocated_bytes": {
+              "n": 10,
+              "median": 135262208.0,
+              "min": 135262208,
+              "max": 135262208
+            },
+            "retained_unique_inode_logical_excess_vs_payload_bytes": {
+              "n": 10,
+              "median": 0.0,
+              "min": 0,
+              "max": 0
+            },
+            "retained_unique_inode_allocated_difference_vs_payload_bytes": {
+              "n": 10,
+              "median": 1044480.0,
+              "min": 1044480,
+              "max": 1044480
+            },
+            "retained_unique_inode_logical_over_payload": {
+              "n": 10,
+              "median": 1.0,
+              "min": 1.0,
+              "max": 1.0
+            },
+            "retained_unique_inode_allocated_over_payload": {
+              "n": 10,
+              "median": 1.007781982421875,
+              "min": 1.007781982421875,
+              "max": 1.007781982421875
+            },
+            "benchmark_teardown_seconds": {
+              "n": 10,
+              "median": 0.0029494784539565444,
+              "min": 0.001959499903023243,
+              "max": 0.003640249837189913
+            },
+            "retained_partial_path_count": {
+              "n": 10,
+              "median": 0.0,
+              "min": 0,
+              "max": 0
+            },
+            "retained_partial_path_sum_logical_bytes": {
+              "n": 10,
+              "median": 0.0,
+              "min": 0,
+              "max": 0
+            }
+          }
+        }
+      }
+    },
+    {
+      "direction": "pull",
+      "scenario": "small-directory",
+      "tools": {
+        "MoonRelay": {
+          "n": 10,
+          "metrics": {
+            "native_seconds": {
+              "n": 10,
+              "median": 1.141927365,
+              "min": 0.997173625,
+              "max": 1.444434896
+            },
+            "verification_seconds": {
+              "n": 10,
+              "median": 0.06289943750016391,
+              "min": 0.047876833006739616,
+              "max": 0.0748913330025971
+            },
+            "verified_delivery_seconds": {
+              "n": 10,
+              "median": 1.204205448525598,
+              "min": 1.0450504580067395,
+              "max": 1.5160269789679817
+            },
+            "ssh_stream_sent_bytes": {
+              "n": 10,
+              "median": 19350.0,
+              "min": 19280,
+              "max": 19636
+            },
+            "ssh_stream_received_bytes": {
+              "n": 10,
+              "median": 2135786.0,
+              "min": 2135340,
+              "max": 2137280
+            },
+            "payload_direction_ssh_stream_bytes": {
+              "n": 10,
+              "median": 2135786.0,
+              "min": 2135340,
+              "max": 2137280
+            },
+            "payload_direction_ssh_stream_over_payload": {
+              "n": 10,
+              "median": 1.0184221267700195,
+              "min": 1.018209457397461,
+              "max": 1.019134521484375
+            },
+            "retained_unique_inode_logical_bytes": {
+              "n": 10,
+              "median": 2106989.0,
+              "min": 2106989,
+              "max": 2106989
+            },
+            "retained_unique_inode_allocated_bytes": {
+              "n": 10,
+              "median": 2236416.0,
+              "min": 2236416,
+              "max": 2236416
+            },
+            "retained_unique_inode_logical_excess_vs_payload_bytes": {
+              "n": 10,
+              "median": 9837.0,
+              "min": 9837,
+              "max": 9837
+            },
+            "retained_unique_inode_allocated_difference_vs_payload_bytes": {
+              "n": 10,
+              "median": 139264.0,
+              "min": 139264,
+              "max": 139264
+            },
+            "retained_unique_inode_logical_over_payload": {
+              "n": 10,
+              "median": 1.0046906471252441,
+              "min": 1.0046906471252441,
+              "max": 1.0046906471252441
+            },
+            "retained_unique_inode_allocated_over_payload": {
+              "n": 10,
+              "median": 1.06640625,
+              "min": 1.06640625,
+              "max": 1.06640625
+            },
+            "benchmark_teardown_seconds": {
+              "n": 10,
+              "median": 0.0054661668837070465,
+              "min": 0.004775125067681074,
+              "max": 0.005797708872705698
+            },
+            "retained_partial_path_count": {
+              "n": 10,
+              "median": 0.0,
+              "min": 0,
+              "max": 0
+            },
+            "retained_partial_path_sum_logical_bytes": {
+              "n": 10,
+              "median": 0.0,
+              "min": 0,
+              "max": 0
+            }
+          }
+        },
+        "rsync": {
+          "n": 10,
+          "metrics": {
+            "native_seconds": {
+              "n": 10,
+              "median": 0.294934406,
+              "min": 0.237784813,
+              "max": 0.402702187
+            },
+            "verification_seconds": {
+              "n": 10,
+              "median": 0.010726708453148603,
+              "min": 0.004759500036016107,
+              "max": 0.03279041592031717
+            },
+            "verified_delivery_seconds": {
+              "n": 10,
+              "median": 0.305172416457405,
+              "min": 0.24783139706600357,
+              "max": 0.40815747883000325
+            },
+            "ssh_stream_sent_bytes": {
+              "n": 10,
+              "median": 2290.0,
+              "min": 2272,
+              "max": 4216
+            },
+            "ssh_stream_received_bytes": {
+              "n": 10,
+              "median": 2102680.0,
+              "min": 2102664,
+              "max": 2103208
+            },
+            "payload_direction_ssh_stream_bytes": {
+              "n": 10,
+              "median": 2102680.0,
+              "min": 2102664,
+              "max": 2103208
+            },
+            "payload_direction_ssh_stream_over_payload": {
+              "n": 10,
+              "median": 1.0026359558105469,
+              "min": 1.0026283264160156,
+              "max": 1.0028877258300781
+            },
+            "retained_unique_inode_logical_bytes": {
+              "n": 10,
+              "median": 2097152.0,
+              "min": 2097152,
+              "max": 2097152
+            },
+            "retained_unique_inode_allocated_bytes": {
+              "n": 10,
+              "median": 2097152.0,
+              "min": 2097152,
+              "max": 2097152
+            },
+            "retained_unique_inode_logical_excess_vs_payload_bytes": {
+              "n": 10,
+              "median": 0.0,
+              "min": 0,
+              "max": 0
+            },
+            "retained_unique_inode_allocated_difference_vs_payload_bytes": {
+              "n": 10,
+              "median": 0.0,
+              "min": 0,
+              "max": 0
+            },
+            "retained_unique_inode_logical_over_payload": {
+              "n": 10,
+              "median": 1.0,
+              "min": 1.0,
+              "max": 1.0
+            },
+            "retained_unique_inode_allocated_over_payload": {
+              "n": 10,
+              "median": 1.0,
+              "min": 1.0,
+              "max": 1.0
+            },
+            "benchmark_teardown_seconds": {
+              "n": 10,
+              "median": 0.003025874961167574,
+              "min": 0.0015287918504327536,
+              "max": 0.008935374906286597
+            },
+            "retained_partial_path_count": {
+              "n": 10,
+              "median": 0.0,
+              "min": 0,
+              "max": 0
+            },
+            "retained_partial_path_sum_logical_bytes": {
+              "n": 10,
+              "median": 0.0,
+              "min": 0,
+              "max": 0
+            }
+          }
+        },
+        "rclone SFTP": {
+          "n": 10,
+          "metrics": {
+            "native_seconds": {
+              "n": 10,
+              "median": 1.4302450005,
+              "min": 1.228267188,
+              "max": 1.624936792
+            },
+            "verification_seconds": {
+              "n": 10,
+              "median": 0.009182645590044558,
+              "min": 0.005452957935631275,
+              "max": 0.01221075002104044
+            },
+            "verified_delivery_seconds": {
+              "n": 10,
+              "median": 1.4408633125515198,
+              "min": 1.2371099789649909,
+              "max": 1.6334542091254038
+            },
+            "ssh_stream_sent_bytes": {
+              "n": 10,
+              "median": 34278.0,
+              "min": 33792,
+              "max": 39122
+            },
+            "ssh_stream_received_bytes": {
+              "n": 10,
+              "median": 2137706.0,
+              "min": 2137268,
+              "max": 2142242
+            },
+            "payload_direction_ssh_stream_bytes": {
+              "n": 10,
+              "median": 2137706.0,
+              "min": 2137268,
+              "max": 2142242
+            },
+            "payload_direction_ssh_stream_over_payload": {
+              "n": 10,
+              "median": 1.0193376541137695,
+              "min": 1.0191287994384766,
+              "max": 1.021500587463379
+            },
+            "retained_unique_inode_logical_bytes": {
+              "n": 10,
+              "median": 2097152.0,
+              "min": 2097152,
+              "max": 2097152
+            },
+            "retained_unique_inode_allocated_bytes": {
+              "n": 10,
+              "median": 2097152.0,
+              "min": 2097152,
+              "max": 2097152
+            },
+            "retained_unique_inode_logical_excess_vs_payload_bytes": {
+              "n": 10,
+              "median": 0.0,
+              "min": 0,
+              "max": 0
+            },
+            "retained_unique_inode_allocated_difference_vs_payload_bytes": {
+              "n": 10,
+              "median": 0.0,
+              "min": 0,
+              "max": 0
+            },
+            "retained_unique_inode_logical_over_payload": {
+              "n": 10,
+              "median": 1.0,
+              "min": 1.0,
+              "max": 1.0
+            },
+            "retained_unique_inode_allocated_over_payload": {
+              "n": 10,
+              "median": 1.0,
+              "min": 1.0,
+              "max": 1.0
+            },
+            "benchmark_teardown_seconds": {
+              "n": 10,
+              "median": 0.002425041515380144,
+              "min": 0.0014755830634385347,
+              "max": 0.003271833062171936
+            },
+            "retained_partial_path_count": {
+              "n": 10,
+              "median": 0.0,
+              "min": 0,
+              "max": 0
+            },
+            "retained_partial_path_sum_logical_bytes": {
+              "n": 10,
+              "median": 0.0,
+              "min": 0,
+              "max": 0
+            }
+          }
+        }
+      }
+    },
+    {
+      "direction": "pull",
+      "scenario": "interrupted-restart",
+      "tools": {
+        "MoonRelay": {
+          "n": 10,
+          "metrics": {
+            "native_seconds": {
+              "n": 10,
+              "median": 16.800534823,
+              "min": 16.524687812,
+              "max": 16.968389937
+            },
+            "verification_seconds": {
+              "n": 10,
+              "median": 0.056531645357608795,
+              "min": 0.0490576250012964,
+              "max": 0.07248529093340039
+            },
+            "verified_delivery_seconds": {
+              "n": 10,
+              "median": 16.8572961765095,
+              "min": 16.57948706209422,
+              "max": 17.0408752279334
+            },
+            "ssh_stream_sent_bytes": {
+              "n": 10,
+              "median": 37226.0,
+              "min": 35930,
+              "max": 38090
+            },
+            "ssh_stream_received_bytes": {
+              "n": 10,
+              "median": 109193678.0,
+              "min": 109185166,
+              "max": 109198746
+            },
+            "payload_direction_ssh_stream_bytes": {
+              "n": 10,
+              "median": 109193678.0,
+              "min": 109185166,
+              "max": 109198746
+            },
+            "payload_direction_ssh_stream_over_payload": {
+              "n": 10,
+              "median": 0.8135562986135483,
+              "min": 0.8134928792715073,
+              "max": 0.8135940581560135
+            },
+            "retained_unique_inode_logical_bytes": {
+              "n": 10,
+              "median": 134217896.0,
+              "min": 134217896,
+              "max": 134217896
+            },
+            "retained_unique_inode_allocated_bytes": {
+              "n": 10,
+              "median": 135270400.0,
+              "min": 135270400,
+              "max": 135270400
+            },
+            "retained_unique_inode_logical_excess_vs_payload_bytes": {
+              "n": 10,
+              "median": 168.0,
+              "min": 168,
+              "max": 168
+            },
+            "retained_unique_inode_allocated_difference_vs_payload_bytes": {
+              "n": 10,
+              "median": 1052672.0,
+              "min": 1052672,
+              "max": 1052672
+            },
+            "retained_unique_inode_logical_over_payload": {
+              "n": 10,
+              "median": 1.0000012516975403,
+              "min": 1.0000012516975403,
+              "max": 1.0000012516975403
+            },
+            "retained_unique_inode_allocated_over_payload": {
+              "n": 10,
+              "median": 1.007843017578125,
+              "min": 1.007843017578125,
+              "max": 1.007843017578125
+            },
+            "benchmark_teardown_seconds": {
+              "n": 10,
+              "median": 0.0030567505164071918,
+              "min": 0.0027649591211229563,
+              "max": 0.003938874928280711
+            },
+            "retained_partial_path_count": {
+              "n": 10,
+              "median": 0.0,
+              "min": 0,
+              "max": 0
+            },
+            "retained_partial_path_sum_logical_bytes": {
+              "n": 10,
+              "median": 0.0,
+              "min": 0,
+              "max": 0
+            }
+          }
+        },
+        "rsync": {
+          "n": 10,
+          "metrics": {
+            "native_seconds": {
+              "n": 10,
+              "median": 20.2357981985,
+              "min": 19.903036104,
+              "max": 21.127610709
+            },
+            "verification_seconds": {
+              "n": 10,
+              "median": 0.0818978330353275,
+              "min": 0.07620583288371563,
+              "max": 0.16765204188413918
+            },
+            "verified_delivery_seconds": {
+              "n": 10,
+              "median": 20.339906270996302,
+              "min": 19.987236686932683,
+              "max": 21.21093766781836
+            },
+            "ssh_stream_sent_bytes": {
+              "n": 10,
+              "median": 56110.0,
+              "min": 55786,
+              "max": 56794
+            },
+            "ssh_stream_received_bytes": {
+              "n": 10,
+              "median": 134452988.0,
+              "min": 134432986,
+              "max": 134462938
+            },
+            "payload_direction_ssh_stream_bytes": {
+              "n": 10,
+              "median": 134452988.0,
+              "min": 134432986,
+              "max": 134462938
+            },
+            "payload_direction_ssh_stream_over_payload": {
+              "n": 10,
+              "median": 1.0017528235912323,
+              "min": 1.0016037970781326,
+              "max": 1.0018269568681717
+            },
+            "retained_unique_inode_logical_bytes": {
+              "n": 10,
+              "median": 167510016.0,
+              "min": 167510016,
+              "max": 167510016
+            },
+            "retained_unique_inode_allocated_bytes": {
+              "n": 10,
+              "median": 168558592.0,
+              "min": 167772160,
+              "max": 169345024
+            },
+            "retained_unique_inode_logical_excess_vs_payload_bytes": {
+              "n": 10,
+              "median": 33292288.0,
+              "min": 33292288,
+              "max": 33292288
+            },
+            "retained_unique_inode_allocated_difference_vs_payload_bytes": {
+              "n": 10,
+              "median": 34340864.0,
+              "min": 33554432,
+              "max": 35127296
+            },
+            "retained_unique_inode_logical_over_payload": {
+              "n": 10,
+              "median": 1.248046875,
+              "min": 1.248046875,
+              "max": 1.248046875
+            },
+            "retained_unique_inode_allocated_over_payload": {
+              "n": 10,
+              "median": 1.255859375,
+              "min": 1.25,
+              "max": 1.26171875
+            },
+            "benchmark_teardown_seconds": {
+              "n": 10,
+              "median": 0.0033327084966003895,
+              "min": 0.0031058751046657562,
+              "max": 0.004466624930500984
+            },
+            "retained_partial_path_count": {
+              "n": 10,
+              "median": 1.0,
+              "min": 1,
+              "max": 1
+            },
+            "retained_partial_path_sum_logical_bytes": {
+              "n": 10,
+              "median": 33292288.0,
+              "min": 33292288,
+              "max": 33292288
+            }
+          }
+        },
+        "rclone SFTP": {
+          "n": 10,
+          "metrics": {
+            "native_seconds": {
+              "n": 10,
+              "median": 20.6503313645,
+              "min": 20.189787104,
+              "max": 21.020620584
+            },
+            "verification_seconds": {
+              "n": 10,
+              "median": 0.08019654150120914,
+              "min": 0.07327279215678573,
+              "max": 0.08813033392652869
+            },
+            "verified_delivery_seconds": {
+              "n": 10,
+              "median": 20.73050726055879,
+              "min": 20.2698207290104,
+              "max": 21.093893376156785
+            },
+            "ssh_stream_sent_bytes": {
+              "n": 10,
+              "median": 323466.0,
+              "min": 321406,
+              "max": 328030
+            },
+            "ssh_stream_received_bytes": {
+              "n": 10,
+              "median": 134475342.0,
+              "min": 134453070,
+              "max": 134482642
+            },
+            "payload_direction_ssh_stream_bytes": {
+              "n": 10,
+              "median": 134475342.0,
+              "min": 134453070,
+              "max": 134482642
+            },
+            "payload_direction_ssh_stream_over_payload": {
+              "n": 10,
+              "median": 1.001919373869896,
+              "min": 1.0017534345388412,
+              "max": 1.0019737631082535
+            },
+            "retained_unique_inode_logical_bytes": {
+              "n": 10,
+              "median": 134217728.0,
+              "min": 134217728,
+              "max": 134217728
+            },
+            "retained_unique_inode_allocated_bytes": {
+              "n": 10,
+              "median": 134246400.0,
+              "min": 134246400,
+              "max": 134246400
+            },
+            "retained_unique_inode_logical_excess_vs_payload_bytes": {
+              "n": 10,
+              "median": 0.0,
+              "min": 0,
+              "max": 0
+            },
+            "retained_unique_inode_allocated_difference_vs_payload_bytes": {
+              "n": 10,
+              "median": 28672.0,
+              "min": 28672,
+              "max": 28672
+            },
+            "retained_unique_inode_logical_over_payload": {
+              "n": 10,
+              "median": 1.0,
+              "min": 1.0,
+              "max": 1.0
+            },
+            "retained_unique_inode_allocated_over_payload": {
+              "n": 10,
+              "median": 1.000213623046875,
+              "min": 1.000213623046875,
+              "max": 1.000213623046875
+            },
+            "benchmark_teardown_seconds": {
+              "n": 10,
+              "median": 0.003089416422881186,
+              "min": 0.0025365829933434725,
+              "max": 0.004087792010977864
+            },
+            "retained_partial_path_count": {
+              "n": 10,
+              "median": 0.0,
+              "min": 0,
+              "max": 0
+            },
+            "retained_partial_path_sum_logical_bytes": {
+              "n": 10,
+              "median": 0.0,
+              "min": 0,
+              "max": 0
+            }
+          }
+        }
+      }
+    },
+    {
+      "direction": "push",
+      "scenario": "fresh",
+      "tools": {
+        "MoonRelay": {
+          "n": 5,
+          "metrics": {
+            "native_seconds": {
+              "n": 5,
+              "median": 10.578308083,
+              "min": 7.934738146,
+              "max": 13.417405396
+            },
+            "verification_seconds": {
+              "n": 5,
+              "median": 0.24523754208348691,
+              "min": 0.2309954590164125,
+              "max": 0.3113907079678029
+            },
+            "verified_delivery_seconds": {
+              "n": 5,
+              "median": 10.830638748942281,
+              "min": 8.165826688146609,
+              "max": 13.728796103967802
+            },
+            "ssh_stream_sent_bytes": {
+              "n": 5,
+              "median": 134366400,
+              "min": 134366364,
+              "max": 134366472
+            },
+            "ssh_stream_received_bytes": {
+              "n": 5,
+              "median": 42948,
+              "min": 42720,
+              "max": 44288
+            },
+            "payload_direction_ssh_stream_bytes": {
+              "n": 5,
+              "median": 134366400,
+              "min": 134366364,
+              "max": 134366472
+            },
+            "payload_direction_ssh_stream_over_payload": {
+              "n": 5,
+              "median": 1.0011076927185059,
+              "min": 1.0011074244976044,
+              "max": 1.0011082291603088
+            },
+            "retained_unique_inode_logical_bytes": {
+              "n": 5,
+              "median": 134217896,
+              "min": 134217896,
+              "max": 134217896
+            },
+            "retained_unique_inode_allocated_bytes": {
+              "n": 5,
+              "median": 134225920,
+              "min": 134225920,
+              "max": 134225920
+            },
+            "retained_unique_inode_logical_excess_vs_payload_bytes": {
+              "n": 5,
+              "median": 168,
+              "min": 168,
+              "max": 168
+            },
+            "retained_unique_inode_allocated_difference_vs_payload_bytes": {
+              "n": 5,
+              "median": 8192,
+              "min": 8192,
+              "max": 8192
+            },
+            "retained_unique_inode_logical_over_payload": {
+              "n": 5,
+              "median": 1.0000012516975403,
+              "min": 1.0000012516975403,
+              "max": 1.0000012516975403
+            },
+            "retained_unique_inode_allocated_over_payload": {
+              "n": 5,
+              "median": 1.00006103515625,
+              "min": 1.00006103515625,
+              "max": 1.00006103515625
+            },
+            "benchmark_teardown_seconds": {
+              "n": 5,
+              "median": 0.09920383291319013,
+              "min": 0.08577954210340977,
+              "max": 0.1374570420011878
+            },
+            "retained_partial_path_count": {
+              "n": 5,
+              "median": 0,
+              "min": 0,
+              "max": 0
+            },
+            "retained_partial_path_sum_logical_bytes": {
+              "n": 5,
+              "median": 0,
+              "min": 0,
+              "max": 0
+            }
+          }
+        },
+        "rsync": {
+          "n": 5,
+          "metrics": {
+            "native_seconds": {
+              "n": 5,
+              "median": 11.192904812,
+              "min": 9.670986395,
+              "max": 11.703257563
+            },
+            "verification_seconds": {
+              "n": 5,
+              "median": 0.2557909160386771,
+              "min": 0.2526288330554962,
+              "max": 0.26957020885311067
+            },
+            "verified_delivery_seconds": {
+              "n": 5,
+              "median": 11.455156812160515,
+              "min": 9.94055660385311,
+              "max": 11.955886396055496
+            },
+            "ssh_stream_sent_bytes": {
+              "n": 5,
+              "median": 134901172,
+              "min": 134889476,
+              "max": 134936528
+            },
+            "ssh_stream_received_bytes": {
+              "n": 5,
+              "median": 48628,
+              "min": 47260,
+              "max": 49024
+            },
+            "payload_direction_ssh_stream_bytes": {
+              "n": 5,
+              "median": 134901172,
+              "min": 134889476,
+              "max": 134936528
+            },
+            "payload_direction_ssh_stream_over_payload": {
+              "n": 5,
+              "median": 1.005092054605484,
+              "min": 1.0050049126148224,
+              "max": 1.0053554773330688
+            },
+            "retained_unique_inode_logical_bytes": {
+              "n": 5,
+              "median": 134217728,
+              "min": 134217728,
+              "max": 134217728
+            },
+            "retained_unique_inode_allocated_bytes": {
+              "n": 5,
+              "median": 134217728,
+              "min": 134217728,
+              "max": 134217728
+            },
+            "retained_unique_inode_logical_excess_vs_payload_bytes": {
+              "n": 5,
+              "median": 0,
+              "min": 0,
+              "max": 0
+            },
+            "retained_unique_inode_allocated_difference_vs_payload_bytes": {
+              "n": 5,
+              "median": 0,
+              "min": 0,
+              "max": 0
+            },
+            "retained_unique_inode_logical_over_payload": {
+              "n": 5,
+              "median": 1.0,
+              "min": 1.0,
+              "max": 1.0
+            },
+            "retained_unique_inode_allocated_over_payload": {
+              "n": 5,
+              "median": 1.0,
+              "min": 1.0,
+              "max": 1.0
+            },
+            "benchmark_teardown_seconds": {
+              "n": 5,
+              "median": 0.11034991615451872,
+              "min": 0.09572820807807148,
+              "max": 0.1436307500116527
+            },
+            "retained_partial_path_count": {
+              "n": 5,
+              "median": 0,
+              "min": 0,
+              "max": 0
+            },
+            "retained_partial_path_sum_logical_bytes": {
+              "n": 5,
+              "median": 0,
+              "min": 0,
+              "max": 0
+            }
+          }
+        },
+        "rclone SFTP": {
+          "n": 5,
+          "metrics": {
+            "native_seconds": {
+              "n": 5,
+              "median": 9.405457855,
+              "min": 9.114908479,
+              "max": 13.647637125
+            },
+            "verification_seconds": {
+              "n": 5,
+              "median": 0.24017787515185773,
+              "min": 0.20910187507979572,
+              "max": 0.25035929097793996
+            },
+            "verified_delivery_seconds": {
+              "n": 5,
+              "median": 9.614559730079796,
+              "min": 9.361574978879212,
+              "max": 13.887815000151857
+            },
+            "ssh_stream_sent_bytes": {
+              "n": 5,
+              "median": 134517872,
+              "min": 134515880,
+              "max": 134531944
+            },
+            "ssh_stream_received_bytes": {
+              "n": 5,
+              "median": 321520,
+              "min": 321124,
+              "max": 323824
+            },
+            "payload_direction_ssh_stream_bytes": {
+              "n": 5,
+              "median": 134517872,
+              "min": 134515880,
+              "max": 134531944
+            },
+            "payload_direction_ssh_stream_over_payload": {
+              "n": 5,
+              "median": 1.002236247062683,
+              "min": 1.002221405506134,
+              "max": 1.002341091632843
+            },
+            "retained_unique_inode_logical_bytes": {
+              "n": 5,
+              "median": 134217728,
+              "min": 134217728,
+              "max": 134217728
+            },
+            "retained_unique_inode_allocated_bytes": {
+              "n": 5,
+              "median": 134217728,
+              "min": 134217728,
+              "max": 134217728
+            },
+            "retained_unique_inode_logical_excess_vs_payload_bytes": {
+              "n": 5,
+              "median": 0,
+              "min": 0,
+              "max": 0
+            },
+            "retained_unique_inode_allocated_difference_vs_payload_bytes": {
+              "n": 5,
+              "median": 0,
+              "min": 0,
+              "max": 0
+            },
+            "retained_unique_inode_logical_over_payload": {
+              "n": 5,
+              "median": 1.0,
+              "min": 1.0,
+              "max": 1.0
+            },
+            "retained_unique_inode_allocated_over_payload": {
+              "n": 5,
+              "median": 1.0,
+              "min": 1.0,
+              "max": 1.0
+            },
+            "benchmark_teardown_seconds": {
+              "n": 5,
+              "median": 0.09787004115059972,
+              "min": 0.0752121249679476,
+              "max": 0.1054494590498507
+            },
+            "retained_partial_path_count": {
+              "n": 5,
+              "median": 0,
+              "min": 0,
+              "max": 0
+            },
+            "retained_partial_path_sum_logical_bytes": {
+              "n": 5,
+              "median": 0,
+              "min": 0,
+              "max": 0
+            }
+          }
+        }
+      }
+    },
+    {
+      "direction": "push",
+      "scenario": "completed-rerun",
+      "tools": {
+        "MoonRelay": {
+          "n": 5,
+          "metrics": {
+            "native_seconds": {
+              "n": 5,
+              "median": 0.288447437,
+              "min": 0.239617708,
+              "max": 0.29493375
+            },
+            "verification_seconds": {
+              "n": 5,
+              "median": 0.23701420798897743,
+              "min": 0.19011204200796783,
+              "max": 0.25630229199305177
+            },
+            "verified_delivery_seconds": {
+              "n": 5,
+              "median": 0.5169865619930518,
+              "min": 0.42972975000796787,
+              "max": 0.5440749169179797
+            },
+            "ssh_stream_sent_bytes": {
+              "n": 5,
+              "median": 548,
+              "min": 548,
+              "max": 548
+            },
+            "ssh_stream_received_bytes": {
+              "n": 5,
+              "median": 604,
+              "min": 604,
+              "max": 604
+            },
+            "payload_direction_ssh_stream_bytes": {
+              "n": 5,
+              "median": 548,
+              "min": 548,
+              "max": 548
+            },
+            "payload_direction_ssh_stream_over_payload": {
+              "n": 5,
+              "median": 4.082918167114258e-06,
+              "min": 4.082918167114258e-06,
+              "max": 4.082918167114258e-06
+            },
+            "retained_unique_inode_logical_bytes": {
+              "n": 5,
+              "median": 134217896,
+              "min": 134217896,
+              "max": 134217896
+            },
+            "retained_unique_inode_allocated_bytes": {
+              "n": 5,
+              "median": 134225920,
+              "min": 134225920,
+              "max": 134225920
+            },
+            "retained_unique_inode_logical_excess_vs_payload_bytes": {
+              "n": 5,
+              "median": 168,
+              "min": 168,
+              "max": 168
+            },
+            "retained_unique_inode_allocated_difference_vs_payload_bytes": {
+              "n": 5,
+              "median": 8192,
+              "min": 8192,
+              "max": 8192
+            },
+            "retained_unique_inode_logical_over_payload": {
+              "n": 5,
+              "median": 1.0000012516975403,
+              "min": 1.0000012516975403,
+              "max": 1.0000012516975403
+            },
+            "retained_unique_inode_allocated_over_payload": {
+              "n": 5,
+              "median": 1.00006103515625,
+              "min": 1.00006103515625,
+              "max": 1.00006103515625
+            },
+            "benchmark_teardown_seconds": {
+              "n": 5,
+              "median": 0.10225804196670651,
+              "min": 0.07751791598275304,
+              "max": 0.12345304200425744
+            },
+            "retained_partial_path_count": {
+              "n": 5,
+              "median": 0,
+              "min": 0,
+              "max": 0
+            },
+            "retained_partial_path_sum_logical_bytes": {
+              "n": 5,
+              "median": 0,
+              "min": 0,
+              "max": 0
+            }
+          }
+        },
+        "rsync": {
+          "n": 5,
+          "metrics": {
+            "native_seconds": {
+              "n": 5,
+              "median": 0.135963271,
+              "min": 0.132414125,
+              "max": 0.347990979
+            },
+            "verification_seconds": {
+              "n": 5,
+              "median": 0.23479479108937085,
+              "min": 0.1881735830102116,
+              "max": 0.26134808314964175
+            },
+            "verified_delivery_seconds": {
+              "n": 5,
+              "median": 0.39559772914964175,
+              "min": 0.3205877080102116,
+              "max": 0.5692700629839726
+            },
+            "ssh_stream_sent_bytes": {
+              "n": 5,
+              "median": 624,
+              "min": 624,
+              "max": 676
+            },
+            "ssh_stream_received_bytes": {
+              "n": 5,
+              "median": 644,
+              "min": 644,
+              "max": 680
+            },
+            "payload_direction_ssh_stream_bytes": {
+              "n": 5,
+              "median": 624,
+              "min": 624,
+              "max": 676
+            },
+            "payload_direction_ssh_stream_over_payload": {
+              "n": 5,
+              "median": 4.649162292480469e-06,
+              "min": 4.649162292480469e-06,
+              "max": 5.036592483520508e-06
+            },
+            "retained_unique_inode_logical_bytes": {
+              "n": 5,
+              "median": 134217728,
+              "min": 134217728,
+              "max": 134217728
+            },
+            "retained_unique_inode_allocated_bytes": {
+              "n": 5,
+              "median": 134217728,
+              "min": 134217728,
+              "max": 134217728
+            },
+            "retained_unique_inode_logical_excess_vs_payload_bytes": {
+              "n": 5,
+              "median": 0,
+              "min": 0,
+              "max": 0
+            },
+            "retained_unique_inode_allocated_difference_vs_payload_bytes": {
+              "n": 5,
+              "median": 0,
+              "min": 0,
+              "max": 0
+            },
+            "retained_unique_inode_logical_over_payload": {
+              "n": 5,
+              "median": 1.0,
+              "min": 1.0,
+              "max": 1.0
+            },
+            "retained_unique_inode_allocated_over_payload": {
+              "n": 5,
+              "median": 1.0,
+              "min": 1.0,
+              "max": 1.0
+            },
+            "benchmark_teardown_seconds": {
+              "n": 5,
+              "median": 0.09261837508529425,
+              "min": 0.08370487508364022,
+              "max": 0.11286187497898936
+            },
+            "retained_partial_path_count": {
+              "n": 5,
+              "median": 0,
+              "min": 0,
+              "max": 0
+            },
+            "retained_partial_path_sum_logical_bytes": {
+              "n": 5,
+              "median": 0,
+              "min": 0,
+              "max": 0
+            }
+          }
+        },
+        "rclone SFTP": {
+          "n": 5,
+          "metrics": {
+            "native_seconds": {
+              "n": 5,
+              "median": 0.130678167,
+              "min": 0.123393333,
+              "max": 0.133531271
+            },
+            "verification_seconds": {
+              "n": 5,
+              "median": 0.24365558405406773,
+              "min": 0.19504204182885587,
+              "max": 0.2607316661160439
+            },
+            "verified_delivery_seconds": {
+              "n": 5,
+              "median": 0.3670489170540677,
+              "min": 0.3285733128288559,
+              "max": 0.38812725011604393
+            },
+            "ssh_stream_sent_bytes": {
+              "n": 5,
+              "median": 392,
+              "min": 392,
+              "max": 392
+            },
+            "ssh_stream_received_bytes": {
+              "n": 5,
+              "median": 608,
+              "min": 608,
+              "max": 608
+            },
+            "payload_direction_ssh_stream_bytes": {
+              "n": 5,
+              "median": 392,
+              "min": 392,
+              "max": 392
+            },
+            "payload_direction_ssh_stream_over_payload": {
+              "n": 5,
+              "median": 2.9206275939941406e-06,
+              "min": 2.9206275939941406e-06,
+              "max": 2.9206275939941406e-06
+            },
+            "retained_unique_inode_logical_bytes": {
+              "n": 5,
+              "median": 134217728,
+              "min": 134217728,
+              "max": 134217728
+            },
+            "retained_unique_inode_allocated_bytes": {
+              "n": 5,
+              "median": 134217728,
+              "min": 134217728,
+              "max": 134217728
+            },
+            "retained_unique_inode_logical_excess_vs_payload_bytes": {
+              "n": 5,
+              "median": 0,
+              "min": 0,
+              "max": 0
+            },
+            "retained_unique_inode_allocated_difference_vs_payload_bytes": {
+              "n": 5,
+              "median": 0,
+              "min": 0,
+              "max": 0
+            },
+            "retained_unique_inode_logical_over_payload": {
+              "n": 5,
+              "median": 1.0,
+              "min": 1.0,
+              "max": 1.0
+            },
+            "retained_unique_inode_allocated_over_payload": {
+              "n": 5,
+              "median": 1.0,
+              "min": 1.0,
+              "max": 1.0
+            },
+            "benchmark_teardown_seconds": {
+              "n": 5,
+              "median": 0.1012487921398133,
+              "min": 0.08422333304770291,
+              "max": 0.1061598330270499
+            },
+            "retained_partial_path_count": {
+              "n": 5,
+              "median": 0,
+              "min": 0,
+              "max": 0
+            },
+            "retained_partial_path_sum_logical_bytes": {
+              "n": 5,
+              "median": 0,
+              "min": 0,
+              "max": 0
+            }
+          }
+        }
+      }
+    },
+    {
+      "direction": "push",
+      "scenario": "small-directory",
+      "tools": {
+        "MoonRelay": {
+          "n": 5,
+          "metrics": {
+            "native_seconds": {
+              "n": 5,
+              "median": 0.404764667,
+              "min": 0.348581125,
+              "max": 0.934632417
+            },
+            "verification_seconds": {
+              "n": 5,
+              "median": 0.11901304102502763,
+              "min": 0.08435266581363976,
+              "max": 0.1509645830374211
+            },
+            "verified_delivery_seconds": {
+              "n": 5,
+              "median": 0.5134098339689268,
+              "min": 0.4675941660250276,
+              "max": 1.085597000037421
+            },
+            "ssh_stream_sent_bytes": {
+              "n": 5,
+              "median": 2110068,
+              "min": 2110068,
+              "max": 2110068
+            },
+            "ssh_stream_received_bytes": {
+              "n": 5,
+              "median": 22796,
+              "min": 22584,
+              "max": 22832
+            },
+            "payload_direction_ssh_stream_bytes": {
+              "n": 5,
+              "median": 2110068,
+              "min": 2110068,
+              "max": 2110068
+            },
+            "payload_direction_ssh_stream_over_payload": {
+              "n": 5,
+              "median": 1.0061588287353516,
+              "min": 1.0061588287353516,
+              "max": 1.0061588287353516
+            },
+            "retained_unique_inode_logical_bytes": {
+              "n": 5,
+              "median": 2106608,
+              "min": 2106608,
+              "max": 2106608
+            },
+            "retained_unique_inode_allocated_bytes": {
+              "n": 5,
+              "median": 2113536,
+              "min": 2113536,
+              "max": 2113536
+            },
+            "retained_unique_inode_logical_excess_vs_payload_bytes": {
+              "n": 5,
+              "median": 9456,
+              "min": 9456,
+              "max": 9456
+            },
+            "retained_unique_inode_allocated_difference_vs_payload_bytes": {
+              "n": 5,
+              "median": 16384,
+              "min": 16384,
+              "max": 16384
+            },
+            "retained_unique_inode_logical_over_payload": {
+              "n": 5,
+              "median": 1.0045089721679688,
+              "min": 1.0045089721679688,
+              "max": 1.0045089721679688
+            },
+            "retained_unique_inode_allocated_over_payload": {
+              "n": 5,
+              "median": 1.0078125,
+              "min": 1.0078125,
+              "max": 1.0078125
+            },
+            "benchmark_teardown_seconds": {
+              "n": 5,
+              "median": 0.08822620799764991,
+              "min": 0.06526458379812539,
+              "max": 0.10467012482695282
+            },
+            "retained_partial_path_count": {
+              "n": 5,
+              "median": 0,
+              "min": 0,
+              "max": 0
+            },
+            "retained_partial_path_sum_logical_bytes": {
+              "n": 5,
+              "median": 0,
+              "min": 0,
+              "max": 0
+            }
+          }
+        },
+        "rsync": {
+          "n": 5,
+          "metrics": {
+            "native_seconds": {
+              "n": 5,
+              "median": 0.292283667,
+              "min": 0.243224104,
+              "max": 0.351342916
+            },
+            "verification_seconds": {
+              "n": 5,
+              "median": 0.07718154205940664,
+              "min": 0.06069891597144306,
+              "max": 0.09345337515696883
+            },
+            "verified_delivery_seconds": {
+              "n": 5,
+              "median": 0.36946520905940666,
+              "min": 0.3231644370311179,
+              "max": 0.4273713319332514
+            },
+            "ssh_stream_sent_bytes": {
+              "n": 5,
+              "median": 2105676,
+              "min": 2105124,
+              "max": 2110292
+            },
+            "ssh_stream_received_bytes": {
+              "n": 5,
+              "median": 2160,
+              "min": 2124,
+              "max": 2268
+            },
+            "payload_direction_ssh_stream_bytes": {
+              "n": 5,
+              "median": 2105676,
+              "min": 2105124,
+              "max": 2110292
+            },
+            "payload_direction_ssh_stream_over_payload": {
+              "n": 5,
+              "median": 1.0040645599365234,
+              "min": 1.0038013458251953,
+              "max": 1.006265640258789
+            },
+            "retained_unique_inode_logical_bytes": {
+              "n": 5,
+              "median": 2097152,
+              "min": 2097152,
+              "max": 2097152
+            },
+            "retained_unique_inode_allocated_bytes": {
+              "n": 5,
+              "median": 2097152,
+              "min": 2097152,
+              "max": 2097152
+            },
+            "retained_unique_inode_logical_excess_vs_payload_bytes": {
+              "n": 5,
+              "median": 0,
+              "min": 0,
+              "max": 0
+            },
+            "retained_unique_inode_allocated_difference_vs_payload_bytes": {
+              "n": 5,
+              "median": 0,
+              "min": 0,
+              "max": 0
+            },
+            "retained_unique_inode_logical_over_payload": {
+              "n": 5,
+              "median": 1.0,
+              "min": 1.0,
+              "max": 1.0
+            },
+            "retained_unique_inode_allocated_over_payload": {
+              "n": 5,
+              "median": 1.0,
+              "min": 1.0,
+              "max": 1.0
+            },
+            "benchmark_teardown_seconds": {
+              "n": 5,
+              "median": 0.07507954211905599,
+              "min": 0.06748020905070007,
+              "max": 0.08560995804145932
+            },
+            "retained_partial_path_count": {
+              "n": 5,
+              "median": 0,
+              "min": 0,
+              "max": 0
+            },
+            "retained_partial_path_sum_logical_bytes": {
+              "n": 5,
+              "median": 0,
+              "min": 0,
+              "max": 0
+            }
+          }
+        },
+        "rclone SFTP": {
+          "n": 5,
+          "metrics": {
+            "native_seconds": {
+              "n": 5,
+              "median": 1.512434084,
+              "min": 1.421822542,
+              "max": 1.774054813
+            },
+            "verification_seconds": {
+              "n": 5,
+              "median": 0.0837745419703424,
+              "min": 0.0677575001027435,
+              "max": 0.12008158396929502
+            },
+            "verified_delivery_seconds": {
+              "n": 5,
+              "median": 1.6152944171651538,
+              "min": 1.4982906669856948,
+              "max": 1.8578293549703424
+            },
+            "ssh_stream_sent_bytes": {
+              "n": 5,
+              "median": 2165776,
+              "min": 2165472,
+              "max": 2165832
+            },
+            "ssh_stream_received_bytes": {
+              "n": 5,
+              "median": 43088,
+              "min": 42516,
+              "max": 43140
+            },
+            "payload_direction_ssh_stream_bytes": {
+              "n": 5,
+              "median": 2165776,
+              "min": 2165472,
+              "max": 2165832
+            },
+            "payload_direction_ssh_stream_over_payload": {
+              "n": 5,
+              "median": 1.0327224731445312,
+              "min": 1.0325775146484375,
+              "max": 1.0327491760253906
+            },
+            "retained_unique_inode_logical_bytes": {
+              "n": 5,
+              "median": 2097152,
+              "min": 2097152,
+              "max": 2097152
+            },
+            "retained_unique_inode_allocated_bytes": {
+              "n": 5,
+              "median": 2097152,
+              "min": 2097152,
+              "max": 2097152
+            },
+            "retained_unique_inode_logical_excess_vs_payload_bytes": {
+              "n": 5,
+              "median": 0,
+              "min": 0,
+              "max": 0
+            },
+            "retained_unique_inode_allocated_difference_vs_payload_bytes": {
+              "n": 5,
+              "median": 0,
+              "min": 0,
+              "max": 0
+            },
+            "retained_unique_inode_logical_over_payload": {
+              "n": 5,
+              "median": 1.0,
+              "min": 1.0,
+              "max": 1.0
+            },
+            "retained_unique_inode_allocated_over_payload": {
+              "n": 5,
+              "median": 1.0,
+              "min": 1.0,
+              "max": 1.0
+            },
+            "benchmark_teardown_seconds": {
+              "n": 5,
+              "median": 0.0730552498716861,
+              "min": 0.05442520813085139,
+              "max": 0.08603637502528727
+            },
+            "retained_partial_path_count": {
+              "n": 5,
+              "median": 0,
+              "min": 0,
+              "max": 0
+            },
+            "retained_partial_path_sum_logical_bytes": {
+              "n": 5,
+              "median": 0,
+              "min": 0,
+              "max": 0
+            }
+          }
+        }
+      }
+    },
+    {
+      "direction": "push",
+      "scenario": "interrupted-restart",
+      "tools": {
+        "MoonRelay": {
+          "n": 5,
+          "metrics": {
+            "native_seconds": {
+              "n": 5,
+              "median": 16.802126021,
+              "min": 16.680654958,
+              "max": 16.986387084
+            },
+            "verification_seconds": {
+              "n": 5,
+              "median": 0.24920908291824162,
+              "min": 0.2198495001066476,
+              "max": 0.32507295813411474
+            },
+            "verified_delivery_seconds": {
+              "n": 5,
+              "median": 17.038347354034336,
+              "min": 16.90050445810665,
+              "max": 17.235596166918242
+            },
+            "ssh_stream_sent_bytes": {
+              "n": 5,
+              "median": 109177682,
+              "min": 109177682,
+              "max": 109177734
+            },
+            "ssh_stream_received_bytes": {
+              "n": 5,
+              "median": 38914,
+              "min": 38914,
+              "max": 39022
+            },
+            "payload_direction_ssh_stream_bytes": {
+              "n": 5,
+              "median": 109177682,
+              "min": 109177682,
+              "max": 109177734
+            },
+            "payload_direction_ssh_stream_over_payload": {
+              "n": 5,
+              "median": 0.8134371191263199,
+              "min": 0.8134371191263199,
+              "max": 0.8134375065565109
+            },
+            "retained_unique_inode_logical_bytes": {
+              "n": 5,
+              "median": 134217896,
+              "min": 134217896,
+              "max": 134217896
+            },
+            "retained_unique_inode_allocated_bytes": {
+              "n": 5,
+              "median": 134225920,
+              "min": 134225920,
+              "max": 134225920
+            },
+            "retained_unique_inode_logical_excess_vs_payload_bytes": {
+              "n": 5,
+              "median": 168,
+              "min": 168,
+              "max": 168
+            },
+            "retained_unique_inode_allocated_difference_vs_payload_bytes": {
+              "n": 5,
+              "median": 8192,
+              "min": 8192,
+              "max": 8192
+            },
+            "retained_unique_inode_logical_over_payload": {
+              "n": 5,
+              "median": 1.0000012516975403,
+              "min": 1.0000012516975403,
+              "max": 1.0000012516975403
+            },
+            "retained_unique_inode_allocated_over_payload": {
+              "n": 5,
+              "median": 1.00006103515625,
+              "min": 1.00006103515625,
+              "max": 1.00006103515625
+            },
+            "benchmark_teardown_seconds": {
+              "n": 5,
+              "median": 0.08874879102222621,
+              "min": 0.06697375001385808,
+              "max": 0.10978920804336667
+            },
+            "retained_partial_path_count": {
+              "n": 5,
+              "median": 0,
+              "min": 0,
+              "max": 0
+            },
+            "retained_partial_path_sum_logical_bytes": {
+              "n": 5,
+              "median": 0,
+              "min": 0,
+              "max": 0
+            }
+          }
+        },
+        "rsync": {
+          "n": 5,
+          "metrics": {
+            "native_seconds": {
+              "n": 5,
+              "median": 15.55843725,
+              "min": 15.547441479,
+              "max": 15.951299459
+            },
+            "verification_seconds": {
+              "n": 5,
+              "median": 0.2378143749665469,
+              "min": 0.20396433304995298,
+              "max": 0.26787891681306064
+            },
+            "verified_delivery_seconds": {
+              "n": 5,
+              "median": 15.81897460481306,
+              "min": 15.766020020884199,
+              "max": 16.19288291714794
+            },
+            "ssh_stream_sent_bytes": {
+              "n": 5,
+              "median": 100980994,
+              "min": 100968310,
+              "max": 101411490
+            },
+            "ssh_stream_received_bytes": {
+              "n": 5,
+              "median": 68746,
+              "min": 67718,
+              "max": 75210
+            },
+            "payload_direction_ssh_stream_bytes": {
+              "n": 5,
+              "median": 100980994,
+              "min": 100968310,
+              "max": 101411490
+            },
+            "payload_direction_ssh_stream_over_payload": {
+              "n": 5,
+              "median": 0.7523670345544815,
+              "min": 0.7522725313901901,
+              "max": 0.7555744796991348
+            },
+            "retained_unique_inode_logical_bytes": {
+              "n": 5,
+              "median": 134217728,
+              "min": 134217728,
+              "max": 134217728
+            },
+            "retained_unique_inode_allocated_bytes": {
+              "n": 5,
+              "median": 134217728,
+              "min": 134217728,
+              "max": 134217728
+            },
+            "retained_unique_inode_logical_excess_vs_payload_bytes": {
+              "n": 5,
+              "median": 0,
+              "min": 0,
+              "max": 0
+            },
+            "retained_unique_inode_allocated_difference_vs_payload_bytes": {
+              "n": 5,
+              "median": 0,
+              "min": 0,
+              "max": 0
+            },
+            "retained_unique_inode_logical_over_payload": {
+              "n": 5,
+              "median": 1.0,
+              "min": 1.0,
+              "max": 1.0
+            },
+            "retained_unique_inode_allocated_over_payload": {
+              "n": 5,
+              "median": 1.0,
+              "min": 1.0,
+              "max": 1.0
+            },
+            "benchmark_teardown_seconds": {
+              "n": 5,
+              "median": 0.08403045916929841,
+              "min": 0.08123574987985194,
+              "max": 0.1102427919395268
+            },
+            "retained_partial_path_count": {
+              "n": 5,
+              "median": 0,
+              "min": 0,
+              "max": 0
+            },
+            "retained_partial_path_sum_logical_bytes": {
+              "n": 5,
+              "median": 0,
+              "min": 0,
+              "max": 0
+            }
+          }
+        },
+        "rclone SFTP": {
+          "n": 5,
+          "metrics": {
+            "native_seconds": {
+              "n": 5,
+              "median": 20.68381127,
+              "min": 20.5797335,
+              "max": 21.96690948
+            },
+            "verification_seconds": {
+              "n": 5,
+              "median": 0.23577637504786253,
+              "min": 0.19272662489674985,
+              "max": 0.25603725016117096
+            },
+            "verified_delivery_seconds": {
+              "n": 5,
+              "median": 20.93094083403263,
+              "min": 20.77246012489675,
+              "max": 22.202685855047864
+            },
+            "ssh_stream_sent_bytes": {
+              "n": 5,
+              "median": 134491062,
+              "min": 134490994,
+              "max": 134493586
+            },
+            "ssh_stream_received_bytes": {
+              "n": 5,
+              "median": 321458,
+              "min": 321458,
+              "max": 321818
+            },
+            "payload_direction_ssh_stream_bytes": {
+              "n": 5,
+              "median": 134491062,
+              "min": 134490994,
+              "max": 134493586
+            },
+            "payload_direction_ssh_stream_over_payload": {
+              "n": 5,
+              "median": 1.0020364969968796,
+              "min": 1.002035990357399,
+              "max": 1.0020553022623062
+            },
+            "retained_unique_inode_logical_bytes": {
+              "n": 5,
+              "median": 134217728,
+              "min": 134217728,
+              "max": 134217728
+            },
+            "retained_unique_inode_allocated_bytes": {
+              "n": 5,
+              "median": 134221824,
+              "min": 134221824,
+              "max": 134221824
+            },
+            "retained_unique_inode_logical_excess_vs_payload_bytes": {
+              "n": 5,
+              "median": 0,
+              "min": 0,
+              "max": 0
+            },
+            "retained_unique_inode_allocated_difference_vs_payload_bytes": {
+              "n": 5,
+              "median": 4096,
+              "min": 4096,
+              "max": 4096
+            },
+            "retained_unique_inode_logical_over_payload": {
+              "n": 5,
+              "median": 1.0,
+              "min": 1.0,
+              "max": 1.0
+            },
+            "retained_unique_inode_allocated_over_payload": {
+              "n": 5,
+              "median": 1.000030517578125,
+              "min": 1.000030517578125,
+              "max": 1.000030517578125
+            },
+            "benchmark_teardown_seconds": {
+              "n": 5,
+              "median": 0.1014717910438776,
+              "min": 0.06874654116109014,
+              "max": 0.11250966694206
+            },
+            "retained_partial_path_count": {
+              "n": 5,
+              "median": 0,
+              "min": 0,
+              "max": 0
+            },
+            "retained_partial_path_sum_logical_bytes": {
+              "n": 5,
+              "median": 0,
+              "min": 0,
+              "max": 0
+            }
+          }
+        }
+      }
+    }
+  ],
+  "trials": [
+    {
+      "direction": "push",
+      "scenario": "fresh",
+      "tool": "MoonRelay",
+      "sample": 1,
+      "position_in_original_block": 0,
+      "native_seconds": 7.934738146,
+      "verification_seconds": 0.23108854214660823,
+      "verified_delivery_seconds": 8.165826688146609,
+      "payload_bytes": 134217728,
+      "file_count": 1,
+      "payload_direction_ssh_stream_bytes": 134366364,
+      "sha256_passed": true
+    },
+    {
+      "direction": "push",
+      "scenario": "fresh",
+      "tool": "rclone SFTP",
+      "sample": 1,
+      "position_in_original_block": 1,
+      "native_seconds": 9.114908479,
+      "verification_seconds": 0.2466664998792112,
+      "verified_delivery_seconds": 9.361574978879212,
+      "payload_bytes": 134217728,
+      "file_count": 1,
+      "payload_direction_ssh_stream_bytes": 134515880,
+      "sha256_passed": true
+    },
+    {
+      "direction": "push",
+      "scenario": "fresh",
+      "tool": "rsync",
+      "sample": 1,
+      "position_in_original_block": 3,
+      "native_seconds": 11.703257563,
+      "verification_seconds": 0.2526288330554962,
+      "verified_delivery_seconds": 11.955886396055496,
+      "payload_bytes": 134217728,
+      "file_count": 1,
+      "payload_direction_ssh_stream_bytes": 134936528,
+      "sha256_passed": true
+    },
+    {
+      "direction": "push",
+      "scenario": "completed-rerun",
+      "tool": "rclone SFTP",
+      "sample": 1,
+      "position_in_original_block": 1,
+      "native_seconds": 0.127395584,
+      "verification_seconds": 0.2607316661160439,
+      "verified_delivery_seconds": 0.38812725011604393,
+      "payload_bytes": 134217728,
+      "file_count": 1,
+      "payload_direction_ssh_stream_bytes": 392,
+      "sha256_passed": true
+    },
+    {
+      "direction": "push",
+      "scenario": "completed-rerun",
+      "tool": "rsync",
+      "sample": 1,
+      "position_in_original_block": 2,
+      "native_seconds": 0.347990979,
+      "verification_seconds": 0.22127908398397267,
+      "verified_delivery_seconds": 0.5692700629839726,
+      "payload_bytes": 134217728,
+      "file_count": 1,
+      "payload_direction_ssh_stream_bytes": 624,
+      "sha256_passed": true
+    },
+    {
+      "direction": "push",
+      "scenario": "completed-rerun",
+      "tool": "MoonRelay",
+      "sample": 1,
+      "position_in_original_block": 3,
+      "native_seconds": 0.29493375,
+      "verification_seconds": 0.24914116691797972,
+      "verified_delivery_seconds": 0.5440749169179797,
+      "payload_bytes": 134217728,
+      "file_count": 1,
+      "payload_direction_ssh_stream_bytes": 548,
+      "sha256_passed": true
+    },
+    {
+      "direction": "push",
+      "scenario": "small-directory",
+      "tool": "MoonRelay",
+      "sample": 1,
+      "position_in_original_block": 0,
+      "native_seconds": 0.404764667,
+      "verification_seconds": 0.10864516696892679,
+      "verified_delivery_seconds": 0.5134098339689268,
+      "payload_bytes": 2097152,
+      "file_count": 32,
+      "payload_direction_ssh_stream_bytes": 2110068,
+      "sha256_passed": true
+    },
+    {
+      "direction": "push",
+      "scenario": "small-directory",
+      "tool": "rsync",
+      "sample": 1,
+      "position_in_original_block": 2,
+      "native_seconds": 0.292283667,
+      "verification_seconds": 0.07718154205940664,
+      "verified_delivery_seconds": 0.36946520905940666,
+      "payload_bytes": 2097152,
+      "file_count": 32,
+      "payload_direction_ssh_stream_bytes": 2105676,
+      "sha256_passed": true
+    },
+    {
+      "direction": "push",
+      "scenario": "small-directory",
+      "tool": "rclone SFTP",
+      "sample": 1,
+      "position_in_original_block": 3,
+      "native_seconds": 1.512434084,
+      "verification_seconds": 0.10286033316515386,
+      "verified_delivery_seconds": 1.6152944171651538,
+      "payload_bytes": 2097152,
+      "file_count": 32,
+      "payload_direction_ssh_stream_bytes": 2165776,
+      "sha256_passed": true
+    },
+    {
+      "direction": "push",
+      "scenario": "interrupted-restart",
+      "tool": "rsync",
+      "sample": 1,
+      "position_in_original_block": 1,
+      "native_seconds": 15.663985583,
+      "verification_seconds": 0.20396433304995298,
+      "verified_delivery_seconds": 15.867949916049954,
+      "payload_bytes": 134217728,
+      "file_count": 1,
+      "payload_direction_ssh_stream_bytes": 100968310,
+      "sha256_passed": true
+    },
+    {
+      "direction": "push",
+      "scenario": "interrupted-restart",
+      "tool": "rclone SFTP",
+      "sample": 1,
+      "position_in_original_block": 2,
+      "native_seconds": 20.68381127,
+      "verification_seconds": 0.19763416703790426,
+      "verified_delivery_seconds": 20.881445437037904,
+      "payload_bytes": 134217728,
+      "file_count": 1,
+      "payload_direction_ssh_stream_bytes": 134491010,
+      "sha256_passed": true
+    },
+    {
+      "direction": "push",
+      "scenario": "interrupted-restart",
+      "tool": "MoonRelay",
+      "sample": 1,
+      "position_in_original_block": 3,
+      "native_seconds": 16.862452312,
+      "verification_seconds": 0.32507295813411474,
+      "verified_delivery_seconds": 17.187525270134113,
+      "payload_bytes": 134217728,
+      "file_count": 1,
+      "payload_direction_ssh_stream_bytes": 109177734,
+      "sha256_passed": true
+    },
+    {
+      "direction": "push",
+      "scenario": "interrupted-restart",
+      "tool": "rsync",
+      "sample": 2,
+      "position_in_original_block": 0,
+      "native_seconds": 15.547441479,
+      "verification_seconds": 0.21857854188419878,
+      "verified_delivery_seconds": 15.766020020884199,
+      "payload_bytes": 134217728,
+      "file_count": 1,
+      "payload_direction_ssh_stream_bytes": 100980994,
+      "sha256_passed": true
+    },
+    {
+      "direction": "push",
+      "scenario": "interrupted-restart",
+      "tool": "rclone SFTP",
+      "sample": 2,
+      "position_in_original_block": 1,
+      "native_seconds": 20.772323563,
+      "verification_seconds": 0.25603725016117096,
+      "verified_delivery_seconds": 21.02836081316117,
+      "payload_bytes": 134217728,
+      "file_count": 1,
+      "payload_direction_ssh_stream_bytes": 134491062,
+      "sha256_passed": true
+    },
+    {
+      "direction": "push",
+      "scenario": "interrupted-restart",
+      "tool": "MoonRelay",
+      "sample": 2,
+      "position_in_original_block": 2,
+      "native_seconds": 16.986387084,
+      "verification_seconds": 0.24920908291824162,
+      "verified_delivery_seconds": 17.235596166918242,
+      "payload_bytes": 134217728,
+      "file_count": 1,
+      "payload_direction_ssh_stream_bytes": 109177682,
+      "sha256_passed": true
+    },
+    {
+      "direction": "push",
+      "scenario": "small-directory",
+      "tool": "rsync",
+      "sample": 2,
+      "position_in_original_block": 1,
+      "native_seconds": 0.295705479,
+      "verification_seconds": 0.09345337515696883,
+      "verified_delivery_seconds": 0.3891588541569688,
+      "payload_bytes": 2097152,
+      "file_count": 32,
+      "payload_direction_ssh_stream_bytes": 2105244,
+      "sha256_passed": true
+    },
+    {
+      "direction": "push",
+      "scenario": "small-directory",
+      "tool": "rclone SFTP",
+      "sample": 2,
+      "position_in_original_block": 2,
+      "native_seconds": 1.565227709,
+      "verification_seconds": 0.12008158396929502,
+      "verified_delivery_seconds": 1.685309292969295,
+      "payload_bytes": 2097152,
+      "file_count": 32,
+      "payload_direction_ssh_stream_bytes": 2165832,
+      "sha256_passed": true
+    },
+    {
+      "direction": "push",
+      "scenario": "small-directory",
+      "tool": "MoonRelay",
+      "sample": 2,
+      "position_in_original_block": 3,
+      "native_seconds": 0.35229402,
+      "verification_seconds": 0.14191079209558666,
+      "verified_delivery_seconds": 0.49420481209558664,
+      "payload_bytes": 2097152,
+      "file_count": 32,
+      "payload_direction_ssh_stream_bytes": 2110068,
+      "sha256_passed": true
+    },
+    {
+      "direction": "push",
+      "scenario": "fresh",
+      "tool": "rclone SFTP",
+      "sample": 2,
+      "position_in_original_block": 0,
+      "native_seconds": 9.405457855,
+      "verification_seconds": 0.20910187507979572,
+      "verified_delivery_seconds": 9.614559730079796,
+      "payload_bytes": 134217728,
+      "file_count": 1,
+      "payload_direction_ssh_stream_bytes": 134518252,
+      "sha256_passed": true
+    },
+    {
+      "direction": "push",
+      "scenario": "fresh",
+      "tool": "rsync",
+      "sample": 2,
+      "position_in_original_block": 2,
+      "native_seconds": 10.455617708,
+      "verification_seconds": 0.2550087501294911,
+      "verified_delivery_seconds": 10.710626458129491,
+      "payload_bytes": 134217728,
+      "file_count": 1,
+      "payload_direction_ssh_stream_bytes": 134901172,
+      "sha256_passed": true
+    },
+    {
+      "direction": "push",
+      "scenario": "fresh",
+      "tool": "MoonRelay",
+      "sample": 2,
+      "position_in_original_block": 3,
+      "native_seconds": 10.578308083,
+      "verification_seconds": 0.2523306659422815,
+      "verified_delivery_seconds": 10.830638748942281,
+      "payload_bytes": 134217728,
+      "file_count": 1,
+      "payload_direction_ssh_stream_bytes": 134366400,
+      "sha256_passed": true
+    },
+    {
+      "direction": "push",
+      "scenario": "completed-rerun",
+      "tool": "rclone SFTP",
+      "sample": 2,
+      "position_in_original_block": 0,
+      "native_seconds": 0.132175354,
+      "verification_seconds": 0.2501938750501722,
+      "verified_delivery_seconds": 0.38236922905017223,
+      "payload_bytes": 134217728,
+      "file_count": 1,
+      "payload_direction_ssh_stream_bytes": 392,
+      "sha256_passed": true
+    },
+    {
+      "direction": "push",
+      "scenario": "completed-rerun",
+      "tool": "rsync",
+      "sample": 2,
+      "position_in_original_block": 1,
+      "native_seconds": 0.132414125,
+      "verification_seconds": 0.1881735830102116,
+      "verified_delivery_seconds": 0.3205877080102116,
+      "payload_bytes": 134217728,
+      "file_count": 1,
+      "payload_direction_ssh_stream_bytes": 676,
+      "sha256_passed": true
+    },
+    {
+      "direction": "push",
+      "scenario": "completed-rerun",
+      "tool": "MoonRelay",
+      "sample": 2,
+      "position_in_original_block": 2,
+      "native_seconds": 0.239617708,
+      "verification_seconds": 0.19011204200796783,
+      "verified_delivery_seconds": 0.42972975000796787,
+      "payload_bytes": 134217728,
+      "file_count": 1,
+      "payload_direction_ssh_stream_bytes": 548,
+      "sha256_passed": true
+    },
+    {
+      "direction": "push",
+      "scenario": "small-directory",
+      "tool": "rsync",
+      "sample": 3,
+      "position_in_original_block": 0,
+      "native_seconds": 0.243224104,
+      "verification_seconds": 0.07994033303111792,
+      "verified_delivery_seconds": 0.3231644370311179,
+      "payload_bytes": 2097152,
+      "file_count": 32,
+      "payload_direction_ssh_stream_bytes": 2110292,
+      "sha256_passed": true
+    },
+    {
+      "direction": "push",
+      "scenario": "small-directory",
+      "tool": "rclone SFTP",
+      "sample": 3,
+      "position_in_original_block": 1,
+      "native_seconds": 1.421822542,
+      "verification_seconds": 0.07646812498569489,
+      "verified_delivery_seconds": 1.4982906669856948,
+      "payload_bytes": 2097152,
+      "file_count": 32,
+      "payload_direction_ssh_stream_bytes": 2165472,
+      "sha256_passed": true
+    },
+    {
+      "direction": "push",
+      "scenario": "small-directory",
+      "tool": "MoonRelay",
+      "sample": 3,
+      "position_in_original_block": 2,
+      "native_seconds": 0.348581125,
+      "verification_seconds": 0.11901304102502763,
+      "verified_delivery_seconds": 0.4675941660250276,
+      "payload_bytes": 2097152,
+      "file_count": 32,
+      "payload_direction_ssh_stream_bytes": 2110068,
+      "sha256_passed": true
+    },
+    {
+      "direction": "push",
+      "scenario": "interrupted-restart",
+      "tool": "rclone SFTP",
+      "sample": 3,
+      "position_in_original_block": 0,
+      "native_seconds": 21.96690948,
+      "verification_seconds": 0.23577637504786253,
+      "verified_delivery_seconds": 22.202685855047864,
+      "payload_bytes": 134217728,
+      "file_count": 1,
+      "payload_direction_ssh_stream_bytes": 134493586,
+      "sha256_passed": true
+    },
+    {
+      "direction": "push",
+      "scenario": "interrupted-restart",
+      "tool": "MoonRelay",
+      "sample": 3,
+      "position_in_original_block": 1,
+      "native_seconds": 16.802126021,
+      "verification_seconds": 0.23622133303433657,
+      "verified_delivery_seconds": 17.038347354034336,
+      "payload_bytes": 134217728,
+      "file_count": 1,
+      "payload_direction_ssh_stream_bytes": 109177734,
+      "sha256_passed": true
+    },
+    {
+      "direction": "push",
+      "scenario": "interrupted-restart",
+      "tool": "rsync",
+      "sample": 3,
+      "position_in_original_block": 3,
+      "native_seconds": 15.951299459,
+      "verification_seconds": 0.24158345814794302,
+      "verified_delivery_seconds": 16.19288291714794,
+      "payload_bytes": 134217728,
+      "file_count": 1,
+      "payload_direction_ssh_stream_bytes": 101033578,
+      "sha256_passed": true
+    },
+    {
+      "direction": "push",
+      "scenario": "fresh",
+      "tool": "rsync",
+      "sample": 3,
+      "position_in_original_block": 1,
+      "native_seconds": 11.192904812,
+      "verification_seconds": 0.2622520001605153,
+      "verified_delivery_seconds": 11.455156812160515,
+      "payload_bytes": 134217728,
+      "file_count": 1,
+      "payload_direction_ssh_stream_bytes": 134889476,
+      "sha256_passed": true
+    },
+    {
+      "direction": "push",
+      "scenario": "fresh",
+      "tool": "MoonRelay",
+      "sample": 3,
+      "position_in_original_block": 2,
+      "native_seconds": 13.417405396,
+      "verification_seconds": 0.3113907079678029,
+      "verified_delivery_seconds": 13.728796103967802,
+      "payload_bytes": 134217728,
+      "file_count": 1,
+      "payload_direction_ssh_stream_bytes": 134366400,
+      "sha256_passed": true
+    },
+    {
+      "direction": "push",
+      "scenario": "fresh",
+      "tool": "rclone SFTP",
+      "sample": 3,
+      "position_in_original_block": 3,
+      "native_seconds": 9.271003417,
+      "verification_seconds": 0.21166208409704268,
+      "verified_delivery_seconds": 9.482665501097042,
+      "payload_bytes": 134217728,
+      "file_count": 1,
+      "payload_direction_ssh_stream_bytes": 134516572,
+      "sha256_passed": true
+    },
+    {
+      "direction": "push",
+      "scenario": "completed-rerun",
+      "tool": "rsync",
+      "sample": 3,
+      "position_in_original_block": 0,
+      "native_seconds": 0.134249646,
+      "verification_seconds": 0.26134808314964175,
+      "verified_delivery_seconds": 0.39559772914964175,
+      "payload_bytes": 134217728,
+      "file_count": 1,
+      "payload_direction_ssh_stream_bytes": 624,
+      "sha256_passed": true
+    },
+    {
+      "direction": "push",
+      "scenario": "completed-rerun",
+      "tool": "MoonRelay",
+      "sample": 3,
+      "position_in_original_block": 1,
+      "native_seconds": 0.288891917,
+      "verification_seconds": 0.20586020802147686,
+      "verified_delivery_seconds": 0.49475212502147686,
+      "payload_bytes": 134217728,
+      "file_count": 1,
+      "payload_direction_ssh_stream_bytes": 548,
+      "sha256_passed": true
+    },
+    {
+      "direction": "push",
+      "scenario": "completed-rerun",
+      "tool": "rclone SFTP",
+      "sample": 3,
+      "position_in_original_block": 3,
+      "native_seconds": 0.133531271,
+      "verification_seconds": 0.19504204182885587,
+      "verified_delivery_seconds": 0.3285733128288559,
+      "payload_bytes": 134217728,
+      "file_count": 1,
+      "payload_direction_ssh_stream_bytes": 392,
+      "sha256_passed": true
+    },
+    {
+      "direction": "push",
+      "scenario": "fresh",
+      "tool": "rsync",
+      "sample": 4,
+      "position_in_original_block": 0,
+      "native_seconds": 11.387011083,
+      "verification_seconds": 0.2557909160386771,
+      "verified_delivery_seconds": 11.642801999038678,
+      "payload_bytes": 134217728,
+      "file_count": 1,
+      "payload_direction_ssh_stream_bytes": 134889800,
+      "sha256_passed": true
+    },
+    {
+      "direction": "push",
+      "scenario": "fresh",
+      "tool": "MoonRelay",
+      "sample": 4,
+      "position_in_original_block": 1,
+      "native_seconds": 11.771556875,
+      "verification_seconds": 0.2309954590164125,
+      "verified_delivery_seconds": 12.002552334016412,
+      "payload_bytes": 134217728,
+      "file_count": 1,
+      "payload_direction_ssh_stream_bytes": 134366400,
+      "sha256_passed": true
+    },
+    {
+      "direction": "push",
+      "scenario": "fresh",
+      "tool": "rclone SFTP",
+      "sample": 4,
+      "position_in_original_block": 2,
+      "native_seconds": 13.647637125,
+      "verification_seconds": 0.24017787515185773,
+      "verified_delivery_seconds": 13.887815000151857,
+      "payload_bytes": 134217728,
+      "file_count": 1,
+      "payload_direction_ssh_stream_bytes": 134531944,
+      "sha256_passed": true
+    },
+    {
+      "direction": "push",
+      "scenario": "small-directory",
+      "tool": "rclone SFTP",
+      "sample": 4,
+      "position_in_original_block": 0,
+      "native_seconds": 1.774054813,
+      "verification_seconds": 0.0837745419703424,
+      "verified_delivery_seconds": 1.8578293549703424,
+      "payload_bytes": 2097152,
+      "file_count": 32,
+      "payload_direction_ssh_stream_bytes": 2165688,
+      "sha256_passed": true
+    },
+    {
+      "direction": "push",
+      "scenario": "small-directory",
+      "tool": "MoonRelay",
+      "sample": 4,
+      "position_in_original_block": 1,
+      "native_seconds": 0.462117063,
+      "verification_seconds": 0.08435266581363976,
+      "verified_delivery_seconds": 0.5464697288136398,
+      "payload_bytes": 2097152,
+      "file_count": 32,
+      "payload_direction_ssh_stream_bytes": 2110068,
+      "sha256_passed": true
+    },
+    {
+      "direction": "push",
+      "scenario": "small-directory",
+      "tool": "rsync",
+      "sample": 4,
+      "position_in_original_block": 3,
+      "native_seconds": 0.291721105,
+      "verification_seconds": 0.06069891597144306,
+      "verified_delivery_seconds": 0.35242002097144304,
+      "payload_bytes": 2097152,
+      "file_count": 32,
+      "payload_direction_ssh_stream_bytes": 2109944,
+      "sha256_passed": true
+    },
+    {
+      "direction": "push",
+      "scenario": "completed-rerun",
+      "tool": "MoonRelay",
+      "sample": 4,
+      "position_in_original_block": 0,
+      "native_seconds": 0.288447437,
+      "verification_seconds": 0.23701420798897743,
+      "verified_delivery_seconds": 0.5254616449889774,
+      "payload_bytes": 134217728,
+      "file_count": 1,
+      "payload_direction_ssh_stream_bytes": 548,
+      "sha256_passed": true
+    },
+    {
+      "direction": "push",
+      "scenario": "completed-rerun",
+      "tool": "rclone SFTP",
+      "sample": 4,
+      "position_in_original_block": 2,
+      "native_seconds": 0.123393333,
+      "verification_seconds": 0.24365558405406773,
+      "verified_delivery_seconds": 0.3670489170540677,
+      "payload_bytes": 134217728,
+      "file_count": 1,
+      "payload_direction_ssh_stream_bytes": 392,
+      "sha256_passed": true
+    },
+    {
+      "direction": "push",
+      "scenario": "completed-rerun",
+      "tool": "rsync",
+      "sample": 4,
+      "position_in_original_block": 3,
+      "native_seconds": 0.180413166,
+      "verification_seconds": 0.23479479108937085,
+      "verified_delivery_seconds": 0.41520795708937086,
+      "payload_bytes": 134217728,
+      "file_count": 1,
+      "payload_direction_ssh_stream_bytes": 676,
+      "sha256_passed": true
+    },
+    {
+      "direction": "push",
+      "scenario": "interrupted-restart",
+      "tool": "MoonRelay",
+      "sample": 4,
+      "position_in_original_block": 0,
+      "native_seconds": 16.680654958,
+      "verification_seconds": 0.2198495001066476,
+      "verified_delivery_seconds": 16.90050445810665,
+      "payload_bytes": 134217728,
+      "file_count": 1,
+      "payload_direction_ssh_stream_bytes": 109177682,
+      "sha256_passed": true
+    },
+    {
+      "direction": "push",
+      "scenario": "interrupted-restart",
+      "tool": "rsync",
+      "sample": 4,
+      "position_in_original_block": 2,
+      "native_seconds": 15.551095688,
+      "verification_seconds": 0.26787891681306064,
+      "verified_delivery_seconds": 15.81897460481306,
+      "payload_bytes": 134217728,
+      "file_count": 1,
+      "payload_direction_ssh_stream_bytes": 101411490,
+      "sha256_passed": true
+    },
+    {
+      "direction": "push",
+      "scenario": "interrupted-restart",
+      "tool": "rclone SFTP",
+      "sample": 4,
+      "position_in_original_block": 3,
+      "native_seconds": 20.5797335,
+      "verification_seconds": 0.19272662489674985,
+      "verified_delivery_seconds": 20.77246012489675,
+      "payload_bytes": 134217728,
+      "file_count": 1,
+      "payload_direction_ssh_stream_bytes": 134490994,
+      "sha256_passed": true
+    },
+    {
+      "direction": "push",
+      "scenario": "fresh",
+      "tool": "MoonRelay",
+      "sample": 5,
+      "position_in_original_block": 1,
+      "native_seconds": 9.244812625,
+      "verification_seconds": 0.24523754208348691,
+      "verified_delivery_seconds": 9.490050167083487,
+      "payload_bytes": 134217728,
+      "file_count": 1,
+      "payload_direction_ssh_stream_bytes": 134366472,
+      "sha256_passed": true
+    },
+    {
+      "direction": "push",
+      "scenario": "fresh",
+      "tool": "rclone SFTP",
+      "sample": 5,
+      "position_in_original_block": 2,
+      "native_seconds": 10.4403845,
+      "verification_seconds": 0.25035929097793996,
+      "verified_delivery_seconds": 10.69074379097794,
+      "payload_bytes": 134217728,
+      "file_count": 1,
+      "payload_direction_ssh_stream_bytes": 134517872,
+      "sha256_passed": true
+    },
+    {
+      "direction": "push",
+      "scenario": "fresh",
+      "tool": "rsync",
+      "sample": 5,
+      "position_in_original_block": 3,
+      "native_seconds": 9.670986395,
+      "verification_seconds": 0.26957020885311067,
+      "verified_delivery_seconds": 9.94055660385311,
+      "payload_bytes": 134217728,
+      "file_count": 1,
+      "payload_direction_ssh_stream_bytes": 134918220,
+      "sha256_passed": true
+    },
+    {
+      "direction": "push",
+      "scenario": "interrupted-restart",
+      "tool": "rsync",
+      "sample": 5,
+      "position_in_original_block": 1,
+      "native_seconds": 15.55843725,
+      "verification_seconds": 0.2378143749665469,
+      "verified_delivery_seconds": 15.796251624966548,
+      "payload_bytes": 134217728,
+      "file_count": 1,
+      "payload_direction_ssh_stream_bytes": 100979394,
+      "sha256_passed": true
+    },
+    {
+      "direction": "push",
+      "scenario": "interrupted-restart",
+      "tool": "rclone SFTP",
+      "sample": 5,
+      "position_in_original_block": 2,
+      "native_seconds": 20.677801917,
+      "verification_seconds": 0.25313891703262925,
+      "verified_delivery_seconds": 20.93094083403263,
+      "payload_bytes": 134217728,
+      "file_count": 1,
+      "payload_direction_ssh_stream_bytes": 134492994,
+      "sha256_passed": true
+    },
+    {
+      "direction": "push",
+      "scenario": "interrupted-restart",
+      "tool": "MoonRelay",
+      "sample": 5,
+      "position_in_original_block": 3,
+      "native_seconds": 16.769109396,
+      "verification_seconds": 0.25902237510308623,
+      "verified_delivery_seconds": 17.028131771103087,
+      "payload_bytes": 134217728,
+      "file_count": 1,
+      "payload_direction_ssh_stream_bytes": 109177682,
+      "sha256_passed": true
+    },
+    {
+      "direction": "push",
+      "scenario": "small-directory",
+      "tool": "MoonRelay",
+      "sample": 5,
+      "position_in_original_block": 0,
+      "native_seconds": 0.934632417,
+      "verification_seconds": 0.1509645830374211,
+      "verified_delivery_seconds": 1.085597000037421,
+      "payload_bytes": 2097152,
+      "file_count": 32,
+      "payload_direction_ssh_stream_bytes": 2110068,
+      "sha256_passed": true
+    },
+    {
+      "direction": "push",
+      "scenario": "small-directory",
+      "tool": "rclone SFTP",
+      "sample": 5,
+      "position_in_original_block": 1,
+      "native_seconds": 1.457383605,
+      "verification_seconds": 0.0677575001027435,
+      "verified_delivery_seconds": 1.5251411051027435,
+      "payload_bytes": 2097152,
+      "file_count": 32,
+      "payload_direction_ssh_stream_bytes": 2165832,
+      "sha256_passed": true
+    },
+    {
+      "direction": "push",
+      "scenario": "small-directory",
+      "tool": "rsync",
+      "sample": 5,
+      "position_in_original_block": 2,
+      "native_seconds": 0.351342916,
+      "verification_seconds": 0.07602841593325138,
+      "verified_delivery_seconds": 0.4273713319332514,
+      "payload_bytes": 2097152,
+      "file_count": 32,
+      "payload_direction_ssh_stream_bytes": 2105124,
+      "sha256_passed": true
+    },
+    {
+      "direction": "push",
+      "scenario": "completed-rerun",
+      "tool": "rsync",
+      "sample": 5,
+      "position_in_original_block": 0,
+      "native_seconds": 0.135963271,
+      "verification_seconds": 0.2567133749835193,
+      "verified_delivery_seconds": 0.3926766459835193,
+      "payload_bytes": 134217728,
+      "file_count": 1,
+      "payload_direction_ssh_stream_bytes": 624,
+      "sha256_passed": true
+    },
+    {
+      "direction": "push",
+      "scenario": "completed-rerun",
+      "tool": "rclone SFTP",
+      "sample": 5,
+      "position_in_original_block": 1,
+      "native_seconds": 0.130678167,
+      "verification_seconds": 0.19897999987006187,
+      "verified_delivery_seconds": 0.3296581668700619,
+      "payload_bytes": 134217728,
+      "file_count": 1,
+      "payload_direction_ssh_stream_bytes": 392,
+      "sha256_passed": true
+    },
+    {
+      "direction": "push",
+      "scenario": "completed-rerun",
+      "tool": "MoonRelay",
+      "sample": 5,
+      "position_in_original_block": 3,
+      "native_seconds": 0.26068427,
+      "verification_seconds": 0.25630229199305177,
+      "verified_delivery_seconds": 0.5169865619930518,
+      "payload_bytes": 134217728,
+      "file_count": 1,
+      "payload_direction_ssh_stream_bytes": 548,
+      "sha256_passed": true
+    },
+    {
+      "direction": "pull",
+      "scenario": "completed-rerun",
+      "tool": "MoonRelay",
+      "sample": 1,
+      "position_in_original_block": 0,
+      "native_seconds": 0.347460062,
+      "verification_seconds": 0.05028037494048476,
+      "verified_delivery_seconds": 0.3977404369404848,
+      "payload_bytes": 134217728,
+      "file_count": 1,
+      "payload_direction_ssh_stream_bytes": 720,
+      "sha256_passed": true
+    },
+    {
+      "direction": "pull",
+      "scenario": "completed-rerun",
+      "tool": "rclone SFTP",
+      "sample": 1,
+      "position_in_original_block": 1,
+      "native_seconds": 0.12514198,
+      "verification_seconds": 0.05967620899900794,
+      "verified_delivery_seconds": 0.18481818899900795,
+      "payload_bytes": 134217728,
+      "file_count": 1,
+      "payload_direction_ssh_stream_bytes": 692,
+      "sha256_passed": true
+    },
+    {
+      "direction": "pull",
+      "scenario": "completed-rerun",
+      "tool": "rsync",
+      "sample": 1,
+      "position_in_original_block": 2,
+      "native_seconds": 0.132300854,
+      "verification_seconds": 0.05052220914512873,
+      "verified_delivery_seconds": 0.18282306314512872,
+      "payload_bytes": 134217728,
+      "file_count": 1,
+      "payload_direction_ssh_stream_bytes": 676,
+      "sha256_passed": true
+    },
+    {
+      "direction": "pull",
+      "scenario": "fresh",
+      "tool": "MoonRelay",
+      "sample": 1,
+      "position_in_original_block": 1,
+      "native_seconds": 18.01284473,
+      "verification_seconds": 0.05532520799897611,
+      "verified_delivery_seconds": 18.068169937998977,
+      "payload_bytes": 134217728,
+      "file_count": 1,
+      "payload_direction_ssh_stream_bytes": 134391680,
+      "sha256_passed": true
+    },
+    {
+      "direction": "pull",
+      "scenario": "fresh",
+      "tool": "rclone SFTP",
+      "sample": 1,
+      "position_in_original_block": 2,
+      "native_seconds": 16.904711042,
+      "verification_seconds": 0.08207854209467769,
+      "verified_delivery_seconds": 16.986789584094677,
+      "payload_bytes": 134217728,
+      "file_count": 1,
+      "payload_direction_ssh_stream_bytes": 134459056,
+      "sha256_passed": true
+    },
+    {
+      "direction": "pull",
+      "scenario": "fresh",
+      "tool": "rsync",
+      "sample": 1,
+      "position_in_original_block": 3,
+      "native_seconds": 15.6781365,
+      "verification_seconds": 0.08628779207356274,
+      "verified_delivery_seconds": 15.764424292073564,
+      "payload_bytes": 134217728,
+      "file_count": 1,
+      "payload_direction_ssh_stream_bytes": 134430400,
+      "sha256_passed": true
+    },
+    {
+      "direction": "pull",
+      "scenario": "interrupted-restart",
+      "tool": "rsync",
+      "sample": 1,
+      "position_in_original_block": 0,
+      "native_seconds": 20.26361123,
+      "verification_seconds": 0.08191508310846984,
+      "verified_delivery_seconds": 20.34552631310847,
+      "payload_bytes": 134217728,
+      "file_count": 1,
+      "payload_direction_ssh_stream_bytes": 134432986,
+      "sha256_passed": true
+    },
+    {
+      "direction": "pull",
+      "scenario": "interrupted-restart",
+      "tool": "MoonRelay",
+      "sample": 1,
+      "position_in_original_block": 1,
+      "native_seconds": 16.813966437,
+      "verification_seconds": 0.058285208186134696,
+      "verified_delivery_seconds": 16.872251645186136,
+      "payload_bytes": 134217728,
+      "file_count": 1,
+      "payload_direction_ssh_stream_bytes": 109195606,
+      "sha256_passed": true
+    },
+    {
+      "direction": "pull",
+      "scenario": "interrupted-restart",
+      "tool": "rclone SFTP",
+      "sample": 1,
+      "position_in_original_block": 2,
+      "native_seconds": 20.800419167,
+      "verification_seconds": 0.07840504101477563,
+      "verified_delivery_seconds": 20.878824208014777,
+      "payload_bytes": 134217728,
+      "file_count": 1,
+      "payload_direction_ssh_stream_bytes": 134470158,
+      "sha256_passed": true
+    },
+    {
+      "direction": "pull",
+      "scenario": "small-directory",
+      "tool": "rclone SFTP",
+      "sample": 1,
+      "position_in_original_block": 1,
+      "native_seconds": 1.507042688,
+      "verification_seconds": 0.005452957935631275,
+      "verified_delivery_seconds": 1.5124956459356313,
+      "payload_bytes": 2097152,
+      "file_count": 32,
+      "payload_direction_ssh_stream_bytes": 2137640,
+      "sha256_passed": true
+    },
+    {
+      "direction": "pull",
+      "scenario": "small-directory",
+      "tool": "MoonRelay",
+      "sample": 1,
+      "position_in_original_block": 2,
+      "native_seconds": 1.444434896,
+      "verification_seconds": 0.0715920829679817,
+      "verified_delivery_seconds": 1.5160269789679817,
+      "payload_bytes": 2097152,
+      "file_count": 32,
+      "payload_direction_ssh_stream_bytes": 2135524,
+      "sha256_passed": true
+    },
+    {
+      "direction": "pull",
+      "scenario": "small-directory",
+      "tool": "rsync",
+      "sample": 1,
+      "position_in_original_block": 3,
+      "native_seconds": 0.402702187,
+      "verification_seconds": 0.0054552918300032616,
+      "verified_delivery_seconds": 0.40815747883000325,
+      "payload_bytes": 2097152,
+      "file_count": 32,
+      "payload_direction_ssh_stream_bytes": 2102680,
+      "sha256_passed": true
+    },
+    {
+      "direction": "pull",
+      "scenario": "small-directory",
+      "tool": "rclone SFTP",
+      "sample": 2,
+      "position_in_original_block": 0,
+      "native_seconds": 1.398755063,
+      "verification_seconds": 0.01093658315949142,
+      "verified_delivery_seconds": 1.4096916461594915,
+      "payload_bytes": 2097152,
+      "file_count": 32,
+      "payload_direction_ssh_stream_bytes": 2137740,
+      "sha256_passed": true
+    },
+    {
+      "direction": "pull",
+      "scenario": "small-directory",
+      "tool": "MoonRelay",
+      "sample": 2,
+      "position_in_original_block": 1,
+      "native_seconds": 1.411517062,
+      "verification_seconds": 0.07225474994629622,
+      "verified_delivery_seconds": 1.4837718119462961,
+      "payload_bytes": 2097152,
+      "file_count": 32,
+      "payload_direction_ssh_stream_bytes": 2135840,
+      "sha256_passed": true
+    },
+    {
+      "direction": "pull",
+      "scenario": "small-directory",
+      "tool": "rsync",
+      "sample": 2,
+      "position_in_original_block": 2,
+      "native_seconds": 0.294458979,
+      "verification_seconds": 0.011202624998986721,
+      "verified_delivery_seconds": 0.30566160399898673,
+      "payload_bytes": 2097152,
+      "file_count": 32,
+      "payload_direction_ssh_stream_bytes": 2102680,
+      "sha256_passed": true
+    },
+    {
+      "direction": "pull",
+      "scenario": "fresh",
+      "tool": "MoonRelay",
+      "sample": 2,
+      "position_in_original_block": 0,
+      "native_seconds": 14.434509396,
+      "verification_seconds": 0.056739124935120344,
+      "verified_delivery_seconds": 14.49124852093512,
+      "payload_bytes": 134217728,
+      "file_count": 1,
+      "payload_direction_ssh_stream_bytes": 134387188,
+      "sha256_passed": true
+    },
+    {
+      "direction": "pull",
+      "scenario": "fresh",
+      "tool": "rclone SFTP",
+      "sample": 2,
+      "position_in_original_block": 1,
+      "native_seconds": 13.792611208,
+      "verification_seconds": 0.07961554196663201,
+      "verified_delivery_seconds": 13.872226749966632,
+      "payload_bytes": 134217728,
+      "file_count": 1,
+      "payload_direction_ssh_stream_bytes": 134452548,
+      "sha256_passed": true
+    },
+    {
+      "direction": "pull",
+      "scenario": "fresh",
+      "tool": "rsync",
+      "sample": 2,
+      "position_in_original_block": 2,
+      "native_seconds": 11.976117333,
+      "verification_seconds": 0.08327129110693932,
+      "verified_delivery_seconds": 12.059388624106939,
+      "payload_bytes": 134217728,
+      "file_count": 1,
+      "payload_direction_ssh_stream_bytes": 134429516,
+      "sha256_passed": true
+    },
+    {
+      "direction": "pull",
+      "scenario": "interrupted-restart",
+      "tool": "MoonRelay",
+      "sample": 2,
+      "position_in_original_block": 0,
+      "native_seconds": 16.812207979,
+      "verification_seconds": 0.05638829083181918,
+      "verified_delivery_seconds": 16.86859626983182,
+      "payload_bytes": 134217728,
+      "file_count": 1,
+      "payload_direction_ssh_stream_bytes": 109198570,
+      "sha256_passed": true
+    },
+    {
+      "direction": "pull",
+      "scenario": "interrupted-restart",
+      "tool": "rclone SFTP",
+      "sample": 2,
+      "position_in_original_block": 1,
+      "native_seconds": 20.477516083,
+      "verification_seconds": 0.08186875004321337,
+      "verified_delivery_seconds": 20.559384833043215,
+      "payload_bytes": 134217728,
+      "file_count": 1,
+      "payload_direction_ssh_stream_bytes": 134480354,
+      "sha256_passed": true
+    },
+    {
+      "direction": "pull",
+      "scenario": "interrupted-restart",
+      "tool": "rsync",
+      "sample": 2,
+      "position_in_original_block": 3,
+      "native_seconds": 21.127610709,
+      "verification_seconds": 0.08332695881836116,
+      "verified_delivery_seconds": 21.21093766781836,
+      "payload_bytes": 134217728,
+      "file_count": 1,
+      "payload_direction_ssh_stream_bytes": 134442098,
+      "sha256_passed": true
+    },
+    {
+      "direction": "pull",
+      "scenario": "completed-rerun",
+      "tool": "rclone SFTP",
+      "sample": 2,
+      "position_in_original_block": 0,
+      "native_seconds": 0.123496833,
+      "verification_seconds": 0.05405829194933176,
+      "verified_delivery_seconds": 0.17755512494933176,
+      "payload_bytes": 134217728,
+      "file_count": 1,
+      "payload_direction_ssh_stream_bytes": 692,
+      "sha256_passed": true
+    },
+    {
+      "direction": "pull",
+      "scenario": "completed-rerun",
+      "tool": "rsync",
+      "sample": 2,
+      "position_in_original_block": 1,
+      "native_seconds": 0.128261229,
+      "verification_seconds": 0.06703170901164412,
+      "verified_delivery_seconds": 0.19529293801164413,
+      "payload_bytes": 134217728,
+      "file_count": 1,
+      "payload_direction_ssh_stream_bytes": 676,
+      "sha256_passed": true
+    },
+    {
+      "direction": "pull",
+      "scenario": "completed-rerun",
+      "tool": "MoonRelay",
+      "sample": 2,
+      "position_in_original_block": 3,
+      "native_seconds": 0.350404562,
+      "verification_seconds": 0.05326704098843038,
+      "verified_delivery_seconds": 0.40367160298843036,
+      "payload_bytes": 134217728,
+      "file_count": 1,
+      "payload_direction_ssh_stream_bytes": 720,
+      "sha256_passed": true
+    },
+    {
+      "direction": "pull",
+      "scenario": "fresh",
+      "tool": "rclone SFTP",
+      "sample": 3,
+      "position_in_original_block": 0,
+      "native_seconds": 13.092113062,
+      "verification_seconds": 0.06692945794202387,
+      "verified_delivery_seconds": 13.159042519942023,
+      "payload_bytes": 134217728,
+      "file_count": 1,
+      "payload_direction_ssh_stream_bytes": 134456132,
+      "sha256_passed": true
+    },
+    {
+      "direction": "pull",
+      "scenario": "fresh",
+      "tool": "rsync",
+      "sample": 3,
+      "position_in_original_block": 1,
+      "native_seconds": 12.957495563,
+      "verification_seconds": 0.07959020906127989,
+      "verified_delivery_seconds": 13.03708577206128,
+      "payload_bytes": 134217728,
+      "file_count": 1,
+      "payload_direction_ssh_stream_bytes": 134429232,
+      "sha256_passed": true
+    },
+    {
+      "direction": "pull",
+      "scenario": "fresh",
+      "tool": "MoonRelay",
+      "sample": 3,
+      "position_in_original_block": 3,
+      "native_seconds": 11.678441521,
+      "verification_seconds": 0.057283208006992936,
+      "verified_delivery_seconds": 11.735724729006993,
+      "payload_bytes": 134217728,
+      "file_count": 1,
+      "payload_direction_ssh_stream_bytes": 134387204,
+      "sha256_passed": true
+    },
+    {
+      "direction": "pull",
+      "scenario": "small-directory",
+      "tool": "MoonRelay",
+      "sample": 3,
+      "position_in_original_block": 0,
+      "native_seconds": 1.049381001,
+      "verification_seconds": 0.06252629193477333,
+      "verified_delivery_seconds": 1.1119072929347733,
+      "payload_bytes": 2097152,
+      "file_count": 32,
+      "payload_direction_ssh_stream_bytes": 2135752,
+      "sha256_passed": true
+    },
+    {
+      "direction": "pull",
+      "scenario": "small-directory",
+      "tool": "rsync",
+      "sample": 3,
+      "position_in_original_block": 1,
+      "native_seconds": 0.242365791,
+      "verification_seconds": 0.010762416990473866,
+      "verified_delivery_seconds": 0.25312820799047386,
+      "payload_bytes": 2097152,
+      "file_count": 32,
+      "payload_direction_ssh_stream_bytes": 2102716,
+      "sha256_passed": true
+    },
+    {
+      "direction": "pull",
+      "scenario": "small-directory",
+      "tool": "rclone SFTP",
+      "sample": 3,
+      "position_in_original_block": 3,
+      "native_seconds": 1.358704646,
+      "verification_seconds": 0.008119917009025812,
+      "verified_delivery_seconds": 1.3668245630090259,
+      "payload_bytes": 2097152,
+      "file_count": 32,
+      "payload_direction_ssh_stream_bytes": 2137268,
+      "sha256_passed": true
+    },
+    {
+      "direction": "pull",
+      "scenario": "interrupted-restart",
+      "tool": "rclone SFTP",
+      "sample": 3,
+      "position_in_original_block": 0,
+      "native_seconds": 20.902172812,
+      "verification_seconds": 0.08035945799201727,
+      "verified_delivery_seconds": 20.982532269992017,
+      "payload_bytes": 134217728,
+      "file_count": 1,
+      "payload_direction_ssh_stream_bytes": 134481118,
+      "sha256_passed": true
+    },
+    {
+      "direction": "pull",
+      "scenario": "interrupted-restart",
+      "tool": "rsync",
+      "sample": 3,
+      "position_in_original_block": 2,
+      "native_seconds": 20.320483687,
+      "verification_seconds": 0.07629141584038734,
+      "verified_delivery_seconds": 20.396775102840387,
+      "payload_bytes": 134217728,
+      "file_count": 1,
+      "payload_direction_ssh_stream_bytes": 134448038,
+      "sha256_passed": true
+    },
+    {
+      "direction": "pull",
+      "scenario": "interrupted-restart",
+      "tool": "MoonRelay",
+      "sample": 3,
+      "position_in_original_block": 3,
+      "native_seconds": 16.968389937,
+      "verification_seconds": 0.07248529093340039,
+      "verified_delivery_seconds": 17.0408752279334,
+      "payload_bytes": 134217728,
+      "file_count": 1,
+      "payload_direction_ssh_stream_bytes": 109196918,
+      "sha256_passed": true
+    },
+    {
+      "direction": "pull",
+      "scenario": "completed-rerun",
+      "tool": "rsync",
+      "sample": 3,
+      "position_in_original_block": 0,
+      "native_seconds": 0.131052313,
+      "verification_seconds": 0.06294708303175867,
+      "verified_delivery_seconds": 0.19399939603175867,
+      "payload_bytes": 134217728,
+      "file_count": 1,
+      "payload_direction_ssh_stream_bytes": 676,
+      "sha256_passed": true
+    },
+    {
+      "direction": "pull",
+      "scenario": "completed-rerun",
+      "tool": "MoonRelay",
+      "sample": 3,
+      "position_in_original_block": 2,
+      "native_seconds": 0.34608902,
+      "verification_seconds": 0.07458249991759658,
+      "verified_delivery_seconds": 0.4206715199175966,
+      "payload_bytes": 134217728,
+      "file_count": 1,
+      "payload_direction_ssh_stream_bytes": 720,
+      "sha256_passed": true
+    },
+    {
+      "direction": "pull",
+      "scenario": "completed-rerun",
+      "tool": "rclone SFTP",
+      "sample": 3,
+      "position_in_original_block": 3,
+      "native_seconds": 0.129339187,
+      "verification_seconds": 0.057145874947309494,
+      "verified_delivery_seconds": 0.1864850619473095,
+      "payload_bytes": 134217728,
+      "file_count": 1,
+      "payload_direction_ssh_stream_bytes": 692,
+      "sha256_passed": true
+    },
+    {
+      "direction": "pull",
+      "scenario": "interrupted-restart",
+      "tool": "rsync",
+      "sample": 4,
+      "position_in_original_block": 1,
+      "native_seconds": 20.166634187,
+      "verification_seconds": 0.16765204188413918,
+      "verified_delivery_seconds": 20.33428622888414,
+      "payload_bytes": 134217728,
+      "file_count": 1,
+      "payload_direction_ssh_stream_bytes": 134462938,
+      "sha256_passed": true
+    },
+    {
+      "direction": "pull",
+      "scenario": "interrupted-restart",
+      "tool": "MoonRelay",
+      "sample": 4,
+      "position_in_original_block": 2,
+      "native_seconds": 16.669645438,
+      "verification_seconds": 0.0490576250012964,
+      "verified_delivery_seconds": 16.718703063001296,
+      "payload_bytes": 134217728,
+      "file_count": 1,
+      "payload_direction_ssh_stream_bytes": 109191490,
+      "sha256_passed": true
+    },
+    {
+      "direction": "pull",
+      "scenario": "interrupted-restart",
+      "tool": "rclone SFTP",
+      "sample": 4,
+      "position_in_original_block": 3,
+      "native_seconds": 20.5601945,
+      "verification_seconds": 0.08071200014092028,
+      "verified_delivery_seconds": 20.64090650014092,
+      "payload_bytes": 134217728,
+      "file_count": 1,
+      "payload_direction_ssh_stream_bytes": 134453070,
+      "sha256_passed": true
+    },
+    {
+      "direction": "pull",
+      "scenario": "completed-rerun",
+      "tool": "MoonRelay",
+      "sample": 4,
+      "position_in_original_block": 1,
+      "native_seconds": 0.296717291,
+      "verification_seconds": 0.0523194158449769,
+      "verified_delivery_seconds": 0.3490367068449769,
+      "payload_bytes": 134217728,
+      "file_count": 1,
+      "payload_direction_ssh_stream_bytes": 720,
+      "sha256_passed": true
+    },
+    {
+      "direction": "pull",
+      "scenario": "completed-rerun",
+      "tool": "rclone SFTP",
+      "sample": 4,
+      "position_in_original_block": 2,
+      "native_seconds": 0.127239584,
+      "verification_seconds": 0.05474137491546571,
+      "verified_delivery_seconds": 0.1819809589154657,
+      "payload_bytes": 134217728,
+      "file_count": 1,
+      "payload_direction_ssh_stream_bytes": 692,
+      "sha256_passed": true
+    },
+    {
+      "direction": "pull",
+      "scenario": "completed-rerun",
+      "tool": "rsync",
+      "sample": 4,
+      "position_in_original_block": 3,
+      "native_seconds": 0.132076542,
+      "verification_seconds": 0.06395508395507932,
+      "verified_delivery_seconds": 0.1960316259550793,
+      "payload_bytes": 134217728,
+      "file_count": 1,
+      "payload_direction_ssh_stream_bytes": 676,
+      "sha256_passed": true
+    },
+    {
+      "direction": "pull",
+      "scenario": "small-directory",
+      "tool": "rsync",
+      "sample": 4,
+      "position_in_original_block": 0,
+      "native_seconds": 0.349423312,
+      "verification_seconds": 0.0108946249820292,
+      "verified_delivery_seconds": 0.3603179369820292,
+      "payload_bytes": 2097152,
+      "file_count": 32,
+      "payload_direction_ssh_stream_bytes": 2102680,
+      "sha256_passed": true
+    },
+    {
+      "direction": "pull",
+      "scenario": "small-directory",
+      "tool": "rclone SFTP",
+      "sample": 4,
+      "position_in_original_block": 2,
+      "native_seconds": 1.461734938,
+      "verification_seconds": 0.010300040943548083,
+      "verified_delivery_seconds": 1.472034978943548,
+      "payload_bytes": 2097152,
+      "file_count": 32,
+      "payload_direction_ssh_stream_bytes": 2142242,
+      "sha256_passed": true
+    },
+    {
+      "direction": "pull",
+      "scenario": "small-directory",
+      "tool": "MoonRelay",
+      "sample": 4,
+      "position_in_original_block": 3,
+      "native_seconds": 1.265006084,
+      "verification_seconds": 0.0632725830655545,
+      "verified_delivery_seconds": 1.3282786670655544,
+      "payload_bytes": 2097152,
+      "file_count": 32,
+      "payload_direction_ssh_stream_bytes": 2137280,
+      "sha256_passed": true
+    },
+    {
+      "direction": "pull",
+      "scenario": "fresh",
+      "tool": "rsync",
+      "sample": 4,
+      "position_in_original_block": 0,
+      "native_seconds": 15.18630475,
+      "verification_seconds": 0.07714629196561873,
+      "verified_delivery_seconds": 15.263451041965618,
+      "payload_bytes": 134217728,
+      "file_count": 1,
+      "payload_direction_ssh_stream_bytes": 134428356,
+      "sha256_passed": true
+    },
+    {
+      "direction": "pull",
+      "scenario": "fresh",
+      "tool": "MoonRelay",
+      "sample": 4,
+      "position_in_original_block": 2,
+      "native_seconds": 16.872888688,
+      "verification_seconds": 0.05688770906999707,
+      "verified_delivery_seconds": 16.929776397069997,
+      "payload_bytes": 134217728,
+      "file_count": 1,
+      "payload_direction_ssh_stream_bytes": 134386220,
+      "sha256_passed": true
+    },
+    {
+      "direction": "pull",
+      "scenario": "fresh",
+      "tool": "rclone SFTP",
+      "sample": 4,
+      "position_in_original_block": 3,
+      "native_seconds": 13.669902938,
+      "verification_seconds": 0.08302262495271862,
+      "verified_delivery_seconds": 13.752925562952719,
+      "payload_bytes": 134217728,
+      "file_count": 1,
+      "payload_direction_ssh_stream_bytes": 134454604,
+      "sha256_passed": true
+    },
+    {
+      "direction": "pull",
+      "scenario": "completed-rerun",
+      "tool": "rsync",
+      "sample": 5,
+      "position_in_original_block": 0,
+      "native_seconds": 0.132983396,
+      "verification_seconds": 0.06260479195043445,
+      "verified_delivery_seconds": 0.19558818795043445,
+      "payload_bytes": 134217728,
+      "file_count": 1,
+      "payload_direction_ssh_stream_bytes": 676,
+      "sha256_passed": true
+    },
+    {
+      "direction": "pull",
+      "scenario": "completed-rerun",
+      "tool": "rclone SFTP",
+      "sample": 5,
+      "position_in_original_block": 1,
+      "native_seconds": 0.125795291,
+      "verification_seconds": 0.05426512495614588,
+      "verified_delivery_seconds": 0.1800604159561459,
+      "payload_bytes": 134217728,
+      "file_count": 1,
+      "payload_direction_ssh_stream_bytes": 692,
+      "sha256_passed": true
+    },
+    {
+      "direction": "pull",
+      "scenario": "completed-rerun",
+      "tool": "MoonRelay",
+      "sample": 5,
+      "position_in_original_block": 3,
+      "native_seconds": 0.343833083,
+      "verification_seconds": 0.05556866689585149,
+      "verified_delivery_seconds": 0.3994017498958515,
+      "payload_bytes": 134217728,
+      "file_count": 1,
+      "payload_direction_ssh_stream_bytes": 720,
+      "sha256_passed": true
+    },
+    {
+      "direction": "pull",
+      "scenario": "interrupted-restart",
+      "tool": "rsync",
+      "sample": 5,
+      "position_in_original_block": 1,
+      "native_seconds": 20.270995438,
+      "verification_seconds": 0.07945241616107523,
+      "verified_delivery_seconds": 20.350447854161075,
+      "payload_bytes": 134217728,
+      "file_count": 1,
+      "payload_direction_ssh_stream_bytes": 134452798,
+      "sha256_passed": true
+    },
+    {
+      "direction": "pull",
+      "scenario": "interrupted-restart",
+      "tool": "MoonRelay",
+      "sample": 5,
+      "position_in_original_block": 2,
+      "native_seconds": 16.788861667,
+      "verification_seconds": 0.05713441618718207,
+      "verified_delivery_seconds": 16.84599608318718,
+      "payload_bytes": 134217728,
+      "file_count": 1,
+      "payload_direction_ssh_stream_bytes": 109196326,
+      "sha256_passed": true
+    },
+    {
+      "direction": "pull",
+      "scenario": "interrupted-restart",
+      "tool": "rclone SFTP",
+      "sample": 5,
+      "position_in_original_block": 3,
+      "native_seconds": 20.813437521,
+      "verification_seconds": 0.08241779101081192,
+      "verified_delivery_seconds": 20.895855312010813,
+      "payload_bytes": 134217728,
+      "file_count": 1,
+      "payload_direction_ssh_stream_bytes": 134482090,
+      "sha256_passed": true
+    },
+    {
+      "direction": "pull",
+      "scenario": "fresh",
+      "tool": "rclone SFTP",
+      "sample": 5,
+      "position_in_original_block": 0,
+      "native_seconds": 13.950219875,
+      "verification_seconds": 0.0662582500372082,
+      "verified_delivery_seconds": 14.016478125037208,
+      "payload_bytes": 134217728,
+      "file_count": 1,
+      "payload_direction_ssh_stream_bytes": 134451624,
+      "sha256_passed": true
+    },
+    {
+      "direction": "pull",
+      "scenario": "fresh",
+      "tool": "rsync",
+      "sample": 5,
+      "position_in_original_block": 1,
+      "native_seconds": 12.716565937,
+      "verification_seconds": 0.061469916021451354,
+      "verified_delivery_seconds": 12.778035853021452,
+      "payload_bytes": 134217728,
+      "file_count": 1,
+      "payload_direction_ssh_stream_bytes": 134429876,
+      "sha256_passed": true
+    },
+    {
+      "direction": "pull",
+      "scenario": "fresh",
+      "tool": "MoonRelay",
+      "sample": 5,
+      "position_in_original_block": 2,
+      "native_seconds": 14.297897396,
+      "verification_seconds": 0.05462645902298391,
+      "verified_delivery_seconds": 14.352523855022984,
+      "payload_bytes": 134217728,
+      "file_count": 1,
+      "payload_direction_ssh_stream_bytes": 134387612,
+      "sha256_passed": true
+    },
+    {
+      "direction": "pull",
+      "scenario": "small-directory",
+      "tool": "rsync",
+      "sample": 5,
+      "position_in_original_block": 0,
+      "native_seconds": 0.316368937,
+      "verification_seconds": 0.03279041592031717,
+      "verified_delivery_seconds": 0.3491593529203172,
+      "payload_bytes": 2097152,
+      "file_count": 32,
+      "payload_direction_ssh_stream_bytes": 2103208,
+      "sha256_passed": true
+    },
+    {
+      "direction": "pull",
+      "scenario": "small-directory",
+      "tool": "MoonRelay",
+      "sample": 5,
+      "position_in_original_block": 1,
+      "native_seconds": 0.997173625,
+      "verification_seconds": 0.047876833006739616,
+      "verified_delivery_seconds": 1.0450504580067395,
+      "payload_bytes": 2097152,
+      "file_count": 32,
+      "payload_direction_ssh_stream_bytes": 2137244,
+      "sha256_passed": true
+    },
+    {
+      "direction": "pull",
+      "scenario": "small-directory",
+      "tool": "rclone SFTP",
+      "sample": 5,
+      "position_in_original_block": 3,
+      "native_seconds": 1.352717417,
+      "verification_seconds": 0.009522500215098262,
+      "verified_delivery_seconds": 1.3622399172150983,
+      "payload_bytes": 2097152,
+      "file_count": 32,
+      "payload_direction_ssh_stream_bytes": 2142074,
+      "sha256_passed": true
+    },
+    {
+      "direction": "pull",
+      "scenario": "small-directory",
+      "tool": "MoonRelay",
+      "sample": 6,
+      "position_in_original_block": 0,
+      "native_seconds": 1.205817125,
+      "verification_seconds": 0.0748913330025971,
+      "verified_delivery_seconds": 1.2807084580025971,
+      "payload_bytes": 2097152,
+      "file_count": 32,
+      "payload_direction_ssh_stream_bytes": 2135644,
+      "sha256_passed": true
+    },
+    {
+      "direction": "pull",
+      "scenario": "small-directory",
+      "tool": "rclone SFTP",
+      "sample": 6,
+      "position_in_original_block": 2,
+      "native_seconds": 1.278002313,
+      "verification_seconds": 0.008807000005617738,
+      "verified_delivery_seconds": 1.2868093130056177,
+      "payload_bytes": 2097152,
+      "file_count": 32,
+      "payload_direction_ssh_stream_bytes": 2137320,
+      "sha256_passed": true
+    },
+    {
+      "direction": "pull",
+      "scenario": "small-directory",
+      "tool": "rsync",
+      "sample": 6,
+      "position_in_original_block": 3,
+      "native_seconds": 0.298289895,
+      "verification_seconds": 0.010967999929562211,
+      "verified_delivery_seconds": 0.30925789492956224,
+      "payload_bytes": 2097152,
+      "file_count": 32,
+      "payload_direction_ssh_stream_bytes": 2102680,
+      "sha256_passed": true
+    },
+    {
+      "direction": "pull",
+      "scenario": "fresh",
+      "tool": "rsync",
+      "sample": 6,
+      "position_in_original_block": 0,
+      "native_seconds": 12.249088063,
+      "verification_seconds": 0.0599052500911057,
+      "verified_delivery_seconds": 12.308993313091106,
+      "payload_bytes": 134217728,
+      "file_count": 1,
+      "payload_direction_ssh_stream_bytes": 134429208,
+      "sha256_passed": true
+    },
+    {
+      "direction": "pull",
+      "scenario": "fresh",
+      "tool": "MoonRelay",
+      "sample": 6,
+      "position_in_original_block": 1,
+      "native_seconds": 13.351743458,
+      "verification_seconds": 0.058676250046119094,
+      "verified_delivery_seconds": 13.410419708046119,
+      "payload_bytes": 134217728,
+      "file_count": 1,
+      "payload_direction_ssh_stream_bytes": 134386784,
+      "sha256_passed": true
+    },
+    {
+      "direction": "pull",
+      "scenario": "fresh",
+      "tool": "rclone SFTP",
+      "sample": 6,
+      "position_in_original_block": 3,
+      "native_seconds": 13.239377687,
+      "verification_seconds": 0.07753383298404515,
+      "verified_delivery_seconds": 13.316911519984044,
+      "payload_bytes": 134217728,
+      "file_count": 1,
+      "payload_direction_ssh_stream_bytes": 134453100,
+      "sha256_passed": true
+    },
+    {
+      "direction": "pull",
+      "scenario": "completed-rerun",
+      "tool": "rclone SFTP",
+      "sample": 6,
+      "position_in_original_block": 0,
+      "native_seconds": 0.185870791,
+      "verification_seconds": 0.0654785840306431,
+      "verified_delivery_seconds": 0.25134937503064314,
+      "payload_bytes": 134217728,
+      "file_count": 1,
+      "payload_direction_ssh_stream_bytes": 692,
+      "sha256_passed": true
+    },
+    {
+      "direction": "pull",
+      "scenario": "completed-rerun",
+      "tool": "MoonRelay",
+      "sample": 6,
+      "position_in_original_block": 2,
+      "native_seconds": 0.345783104,
+      "verification_seconds": 0.053399041993543506,
+      "verified_delivery_seconds": 0.3991821459935435,
+      "payload_bytes": 134217728,
+      "file_count": 1,
+      "payload_direction_ssh_stream_bytes": 792,
+      "sha256_passed": true
+    },
+    {
+      "direction": "pull",
+      "scenario": "completed-rerun",
+      "tool": "rsync",
+      "sample": 6,
+      "position_in_original_block": 3,
+      "native_seconds": 0.133031895,
+      "verification_seconds": 0.0648274589329958,
+      "verified_delivery_seconds": 0.1978593539329958,
+      "payload_bytes": 134217728,
+      "file_count": 1,
+      "payload_direction_ssh_stream_bytes": 712,
+      "sha256_passed": true
+    },
+    {
+      "direction": "pull",
+      "scenario": "interrupted-restart",
+      "tool": "rsync",
+      "sample": 6,
+      "position_in_original_block": 0,
+      "native_seconds": 20.081142438,
+      "verification_seconds": 0.08188058296218514,
+      "verified_delivery_seconds": 20.163023020962186,
+      "payload_bytes": 134217728,
+      "file_count": 1,
+      "payload_direction_ssh_stream_bytes": 134461702,
+      "sha256_passed": true
+    },
+    {
+      "direction": "pull",
+      "scenario": "interrupted-restart",
+      "tool": "MoonRelay",
+      "sample": 6,
+      "position_in_original_block": 1,
+      "native_seconds": 16.633025062,
+      "verification_seconds": 0.06042820797301829,
+      "verified_delivery_seconds": 16.69345326997302,
+      "payload_bytes": 134217728,
+      "file_count": 1,
+      "payload_direction_ssh_stream_bytes": 109191750,
+      "sha256_passed": true
+    },
+    {
+      "direction": "pull",
+      "scenario": "interrupted-restart",
+      "tool": "rclone SFTP",
+      "sample": 6,
+      "position_in_original_block": 2,
+      "native_seconds": 20.740468229,
+      "verification_seconds": 0.07963979197666049,
+      "verified_delivery_seconds": 20.82010802097666,
+      "payload_bytes": 134217728,
+      "file_count": 1,
+      "payload_direction_ssh_stream_bytes": 134473642,
+      "sha256_passed": true
+    },
+    {
+      "direction": "pull",
+      "scenario": "interrupted-restart",
+      "tool": "MoonRelay",
+      "sample": 7,
+      "position_in_original_block": 0,
+      "native_seconds": 16.568688875,
+      "verification_seconds": 0.056674999883398414,
+      "verified_delivery_seconds": 16.625363874883398,
+      "payload_bytes": 134217728,
+      "file_count": 1,
+      "payload_direction_ssh_stream_bytes": 109185714,
+      "sha256_passed": true
+    },
+    {
+      "direction": "pull",
+      "scenario": "interrupted-restart",
+      "tool": "rclone SFTP",
+      "sample": 7,
+      "position_in_original_block": 1,
+      "native_seconds": 20.189787104,
+      "verification_seconds": 0.08003362501040101,
+      "verified_delivery_seconds": 20.2698207290104,
+      "payload_bytes": 134217728,
+      "file_count": 1,
+      "payload_direction_ssh_stream_bytes": 134477042,
+      "sha256_passed": true
+    },
+    {
+      "direction": "pull",
+      "scenario": "interrupted-restart",
+      "tool": "rsync",
+      "sample": 7,
+      "position_in_original_block": 3,
+      "native_seconds": 19.903036104,
+      "verification_seconds": 0.08420058293268085,
+      "verified_delivery_seconds": 19.987236686932683,
+      "payload_bytes": 134217728,
+      "file_count": 1,
+      "payload_direction_ssh_stream_bytes": 134458174,
+      "sha256_passed": true
+    },
+    {
+      "direction": "pull",
+      "scenario": "fresh",
+      "tool": "MoonRelay",
+      "sample": 7,
+      "position_in_original_block": 0,
+      "native_seconds": 11.340416729,
+      "verification_seconds": 0.057807583129033446,
+      "verified_delivery_seconds": 11.398224312129033,
+      "payload_bytes": 134217728,
+      "file_count": 1,
+      "payload_direction_ssh_stream_bytes": 134386872,
+      "sha256_passed": true
+    },
+    {
+      "direction": "pull",
+      "scenario": "fresh",
+      "tool": "rclone SFTP",
+      "sample": 7,
+      "position_in_original_block": 2,
+      "native_seconds": 12.121623229,
+      "verification_seconds": 0.07855333294719458,
+      "verified_delivery_seconds": 12.200176561947195,
+      "payload_bytes": 134217728,
+      "file_count": 1,
+      "payload_direction_ssh_stream_bytes": 134455896,
+      "sha256_passed": true
+    },
+    {
+      "direction": "pull",
+      "scenario": "fresh",
+      "tool": "rsync",
+      "sample": 7,
+      "position_in_original_block": 3,
+      "native_seconds": 11.449379916,
+      "verification_seconds": 0.08620349992997944,
+      "verified_delivery_seconds": 11.53558341592998,
+      "payload_bytes": 134217728,
+      "file_count": 1,
+      "payload_direction_ssh_stream_bytes": 134430416,
+      "sha256_passed": true
+    },
+    {
+      "direction": "pull",
+      "scenario": "small-directory",
+      "tool": "rclone SFTP",
+      "sample": 7,
+      "position_in_original_block": 1,
+      "native_seconds": 1.462895834,
+      "verification_seconds": 0.01157658314332366,
+      "verified_delivery_seconds": 1.4744724171433237,
+      "payload_bytes": 2097152,
+      "file_count": 32,
+      "payload_direction_ssh_stream_bytes": 2137636,
+      "sha256_passed": true
+    },
+    {
+      "direction": "pull",
+      "scenario": "small-directory",
+      "tool": "rsync",
+      "sample": 7,
+      "position_in_original_block": 2,
+      "native_seconds": 0.289742146,
+      "verification_seconds": 0.010205958038568497,
+      "verified_delivery_seconds": 0.2999481040385685,
+      "payload_bytes": 2097152,
+      "file_count": 32,
+      "payload_direction_ssh_stream_bytes": 2102664,
+      "sha256_passed": true
+    },
+    {
+      "direction": "pull",
+      "scenario": "small-directory",
+      "tool": "MoonRelay",
+      "sample": 7,
+      "position_in_original_block": 3,
+      "native_seconds": 1.129558584,
+      "verification_seconds": 0.06985724996775389,
+      "verified_delivery_seconds": 1.1994158339677539,
+      "payload_bytes": 2097152,
+      "file_count": 32,
+      "payload_direction_ssh_stream_bytes": 2136240,
+      "sha256_passed": true
+    },
+    {
+      "direction": "pull",
+      "scenario": "completed-rerun",
+      "tool": "MoonRelay",
+      "sample": 7,
+      "position_in_original_block": 1,
+      "native_seconds": 0.352306709,
+      "verification_seconds": 0.05609083408489823,
+      "verified_delivery_seconds": 0.40839754308489823,
+      "payload_bytes": 134217728,
+      "file_count": 1,
+      "payload_direction_ssh_stream_bytes": 756,
+      "sha256_passed": true
+    },
+    {
+      "direction": "pull",
+      "scenario": "completed-rerun",
+      "tool": "rsync",
+      "sample": 7,
+      "position_in_original_block": 2,
+      "native_seconds": 0.130436875,
+      "verification_seconds": 0.06389258382841945,
+      "verified_delivery_seconds": 0.19432945882841945,
+      "payload_bytes": 134217728,
+      "file_count": 1,
+      "payload_direction_ssh_stream_bytes": 676,
+      "sha256_passed": true
+    },
+    {
+      "direction": "pull",
+      "scenario": "completed-rerun",
+      "tool": "rclone SFTP",
+      "sample": 7,
+      "position_in_original_block": 3,
+      "native_seconds": 0.13133925,
+      "verification_seconds": 0.05577191594056785,
+      "verified_delivery_seconds": 0.18711116594056784,
+      "payload_bytes": 134217728,
+      "file_count": 1,
+      "payload_direction_ssh_stream_bytes": 692,
+      "sha256_passed": true
+    },
+    {
+      "direction": "pull",
+      "scenario": "small-directory",
+      "tool": "rclone SFTP",
+      "sample": 8,
+      "position_in_original_block": 0,
+      "native_seconds": 1.228267188,
+      "verification_seconds": 0.008842790964990854,
+      "verified_delivery_seconds": 1.2371099789649909,
+      "payload_bytes": 2097152,
+      "file_count": 32,
+      "payload_direction_ssh_stream_bytes": 2137672,
+      "sha256_passed": true
+    },
+    {
+      "direction": "pull",
+      "scenario": "small-directory",
+      "tool": "rsync",
+      "sample": 8,
+      "position_in_original_block": 1,
+      "native_seconds": 0.293992229,
+      "verification_seconds": 0.01069099991582334,
+      "verified_delivery_seconds": 0.30468322891582333,
+      "payload_bytes": 2097152,
+      "file_count": 32,
+      "payload_direction_ssh_stream_bytes": 2102680,
+      "sha256_passed": true
+    },
+    {
+      "direction": "pull",
+      "scenario": "small-directory",
+      "tool": "MoonRelay",
+      "sample": 8,
+      "position_in_original_block": 2,
+      "native_seconds": 1.154296146,
+      "verification_seconds": 0.05469891708344221,
+      "verified_delivery_seconds": 1.2089950630834423,
+      "payload_bytes": 2097152,
+      "file_count": 32,
+      "payload_direction_ssh_stream_bytes": 2135820,
+      "sha256_passed": true
+    },
+    {
+      "direction": "pull",
+      "scenario": "completed-rerun",
+      "tool": "MoonRelay",
+      "sample": 8,
+      "position_in_original_block": 0,
+      "native_seconds": 0.352666813,
+      "verification_seconds": 0.052867624908685684,
+      "verified_delivery_seconds": 0.4055344379086857,
+      "payload_bytes": 134217728,
+      "file_count": 1,
+      "payload_direction_ssh_stream_bytes": 720,
+      "sha256_passed": true
+    },
+    {
+      "direction": "pull",
+      "scenario": "completed-rerun",
+      "tool": "rsync",
+      "sample": 8,
+      "position_in_original_block": 1,
+      "native_seconds": 0.131144791,
+      "verification_seconds": 0.06342395907267928,
+      "verified_delivery_seconds": 0.1945687500726793,
+      "payload_bytes": 134217728,
+      "file_count": 1,
+      "payload_direction_ssh_stream_bytes": 712,
+      "sha256_passed": true
+    },
+    {
+      "direction": "pull",
+      "scenario": "completed-rerun",
+      "tool": "rclone SFTP",
+      "sample": 8,
+      "position_in_original_block": 2,
+      "native_seconds": 0.129345771,
+      "verification_seconds": 0.05651158303953707,
+      "verified_delivery_seconds": 0.18585735403953707,
+      "payload_bytes": 134217728,
+      "file_count": 1,
+      "payload_direction_ssh_stream_bytes": 692,
+      "sha256_passed": true
+    },
+    {
+      "direction": "pull",
+      "scenario": "fresh",
+      "tool": "rclone SFTP",
+      "sample": 8,
+      "position_in_original_block": 1,
+      "native_seconds": 10.957226,
+      "verification_seconds": 0.07973766699433327,
+      "verified_delivery_seconds": 11.036963666994334,
+      "payload_bytes": 134217728,
+      "file_count": 1,
+      "payload_direction_ssh_stream_bytes": 134452104,
+      "sha256_passed": true
+    },
+    {
+      "direction": "pull",
+      "scenario": "fresh",
+      "tool": "rsync",
+      "sample": 8,
+      "position_in_original_block": 2,
+      "native_seconds": 11.075289063,
+      "verification_seconds": 0.08078662492334843,
+      "verified_delivery_seconds": 11.156075687923348,
+      "payload_bytes": 134217728,
+      "file_count": 1,
+      "payload_direction_ssh_stream_bytes": 134423936,
+      "sha256_passed": true
+    },
+    {
+      "direction": "pull",
+      "scenario": "fresh",
+      "tool": "MoonRelay",
+      "sample": 8,
+      "position_in_original_block": 3,
+      "native_seconds": 10.801886667,
+      "verification_seconds": 0.05644645798020065,
+      "verified_delivery_seconds": 10.8583331249802,
+      "payload_bytes": 134217728,
+      "file_count": 1,
+      "payload_direction_ssh_stream_bytes": 134387868,
+      "sha256_passed": true
+    },
+    {
+      "direction": "pull",
+      "scenario": "interrupted-restart",
+      "tool": "rclone SFTP",
+      "sample": 8,
+      "position_in_original_block": 0,
+      "native_seconds": 20.298174437,
+      "verification_seconds": 0.08813033392652869,
+      "verified_delivery_seconds": 20.38630477092653,
+      "payload_bytes": 134217728,
+      "file_count": 1,
+      "payload_direction_ssh_stream_bytes": 134455906,
+      "sha256_passed": true
+    },
+    {
+      "direction": "pull",
+      "scenario": "interrupted-restart",
+      "tool": "rsync",
+      "sample": 8,
+      "position_in_original_block": 2,
+      "native_seconds": 19.970618271,
+      "verification_seconds": 0.08595783310011029,
+      "verified_delivery_seconds": 20.05657610410011,
+      "payload_bytes": 134217728,
+      "file_count": 1,
+      "payload_direction_ssh_stream_bytes": 134446070,
+      "sha256_passed": true
+    },
+    {
+      "direction": "pull",
+      "scenario": "interrupted-restart",
+      "tool": "MoonRelay",
+      "sample": 8,
+      "position_in_original_block": 3,
+      "native_seconds": 16.524687812,
+      "verification_seconds": 0.05479925009422004,
+      "verified_delivery_seconds": 16.57948706209422,
+      "payload_bytes": 134217728,
+      "file_count": 1,
+      "payload_direction_ssh_stream_bytes": 109198746,
+      "sha256_passed": true
+    },
+    {
+      "direction": "pull",
+      "scenario": "completed-rerun",
+      "tool": "rsync",
+      "sample": 9,
+      "position_in_original_block": 1,
+      "native_seconds": 0.184477895,
+      "verification_seconds": 0.07269516703672707,
+      "verified_delivery_seconds": 0.2571730620367271,
+      "payload_bytes": 134217728,
+      "file_count": 1,
+      "payload_direction_ssh_stream_bytes": 676,
+      "sha256_passed": true
+    },
+    {
+      "direction": "pull",
+      "scenario": "completed-rerun",
+      "tool": "rclone SFTP",
+      "sample": 9,
+      "position_in_original_block": 2,
+      "native_seconds": 0.129752813,
+      "verification_seconds": 0.05744920903816819,
+      "verified_delivery_seconds": 0.1872020220381682,
+      "payload_bytes": 134217728,
+      "file_count": 1,
+      "payload_direction_ssh_stream_bytes": 692,
+      "sha256_passed": true
+    },
+    {
+      "direction": "pull",
+      "scenario": "completed-rerun",
+      "tool": "MoonRelay",
+      "sample": 9,
+      "position_in_original_block": 3,
+      "native_seconds": 0.348388937,
+      "verification_seconds": 0.054363499861210585,
+      "verified_delivery_seconds": 0.4027524368612106,
+      "payload_bytes": 134217728,
+      "file_count": 1,
+      "payload_direction_ssh_stream_bytes": 720,
+      "sha256_passed": true
+    },
+    {
+      "direction": "pull",
+      "scenario": "fresh",
+      "tool": "rsync",
+      "sample": 9,
+      "position_in_original_block": 0,
+      "native_seconds": 10.14237602,
+      "verification_seconds": 0.07700054184533656,
+      "verified_delivery_seconds": 10.219376561845337,
+      "payload_bytes": 134217728,
+      "file_count": 1,
+      "payload_direction_ssh_stream_bytes": 134429268,
+      "sha256_passed": true
+    },
+    {
+      "direction": "pull",
+      "scenario": "fresh",
+      "tool": "MoonRelay",
+      "sample": 9,
+      "position_in_original_block": 2,
+      "native_seconds": 12.096085958,
+      "verification_seconds": 0.059500542003661394,
+      "verified_delivery_seconds": 12.155586500003661,
+      "payload_bytes": 134217728,
+      "file_count": 1,
+      "payload_direction_ssh_stream_bytes": 134386428,
+      "sha256_passed": true
+    },
+    {
+      "direction": "pull",
+      "scenario": "fresh",
+      "tool": "rclone SFTP",
+      "sample": 9,
+      "position_in_original_block": 3,
+      "native_seconds": 11.140491667,
+      "verification_seconds": 0.08037070813588798,
+      "verified_delivery_seconds": 11.220862375135887,
+      "payload_bytes": 134217728,
+      "file_count": 1,
+      "payload_direction_ssh_stream_bytes": 134452252,
+      "sha256_passed": true
+    },
+    {
+      "direction": "pull",
+      "scenario": "interrupted-restart",
+      "tool": "rclone SFTP",
+      "sample": 9,
+      "position_in_original_block": 0,
+      "native_seconds": 20.361386417,
+      "verification_seconds": 0.07948691700585186,
+      "verified_delivery_seconds": 20.44087333400585,
+      "payload_bytes": 134217728,
+      "file_count": 1,
+      "payload_direction_ssh_stream_bytes": 134482642,
+      "sha256_passed": true
+    },
+    {
+      "direction": "pull",
+      "scenario": "interrupted-restart",
+      "tool": "rsync",
+      "sample": 9,
+      "position_in_original_block": 1,
+      "native_seconds": 20.207985167,
+      "verification_seconds": 0.07897804188542068,
+      "verified_delivery_seconds": 20.28696320888542,
+      "payload_bytes": 134217728,
+      "file_count": 1,
+      "payload_direction_ssh_stream_bytes": 134459746,
+      "sha256_passed": true
+    },
+    {
+      "direction": "pull",
+      "scenario": "interrupted-restart",
+      "tool": "MoonRelay",
+      "sample": 9,
+      "position_in_original_block": 3,
+      "native_seconds": 16.907912312,
+      "verification_seconds": 0.05464137508533895,
+      "verified_delivery_seconds": 16.96255368708534,
+      "payload_bytes": 134217728,
+      "file_count": 1,
+      "payload_direction_ssh_stream_bytes": 109185166,
+      "sha256_passed": true
+    },
+    {
+      "direction": "pull",
+      "scenario": "small-directory",
+      "tool": "rsync",
+      "sample": 9,
+      "position_in_original_block": 1,
+      "native_seconds": 0.295409833,
+      "verification_seconds": 0.004759500036016107,
+      "verified_delivery_seconds": 0.3001693330360161,
+      "payload_bytes": 2097152,
+      "file_count": 32,
+      "payload_direction_ssh_stream_bytes": 2102664,
+      "sha256_passed": true
+    },
+    {
+      "direction": "pull",
+      "scenario": "small-directory",
+      "tool": "MoonRelay",
+      "sample": 9,
+      "position_in_original_block": 2,
+      "native_seconds": 1.102807854,
+      "verification_seconds": 0.06012591579928994,
+      "verified_delivery_seconds": 1.1629337697992899,
+      "payload_bytes": 2097152,
+      "file_count": 32,
+      "payload_direction_ssh_stream_bytes": 2135560,
+      "sha256_passed": true
+    },
+    {
+      "direction": "pull",
+      "scenario": "small-directory",
+      "tool": "rclone SFTP",
+      "sample": 9,
+      "position_in_original_block": 3,
+      "native_seconds": 1.50672725,
+      "verification_seconds": 0.01221075002104044,
+      "verified_delivery_seconds": 1.5189380000210404,
+      "payload_bytes": 2097152,
+      "file_count": 32,
+      "payload_direction_ssh_stream_bytes": 2137848,
+      "sha256_passed": true
+    },
+    {
+      "direction": "pull",
+      "scenario": "interrupted-restart",
+      "tool": "rsync",
+      "sample": 10,
+      "position_in_original_block": 0,
+      "native_seconds": 20.374357125,
+      "verification_seconds": 0.07620583288371563,
+      "verified_delivery_seconds": 20.450562957883715,
+      "payload_bytes": 134217728,
+      "file_count": 1,
+      "payload_direction_ssh_stream_bytes": 134453178,
+      "sha256_passed": true
+    },
+    {
+      "direction": "pull",
+      "scenario": "interrupted-restart",
+      "tool": "MoonRelay",
+      "sample": 10,
+      "position_in_original_block": 2,
+      "native_seconds": 16.960789959,
+      "verification_seconds": 0.05483083380386233,
+      "verified_delivery_seconds": 17.015620792803862,
+      "payload_bytes": 134217728,
+      "file_count": 1,
+      "payload_direction_ssh_stream_bytes": 109191066,
+      "sha256_passed": true
+    },
+    {
+      "direction": "pull",
+      "scenario": "interrupted-restart",
+      "tool": "rclone SFTP",
+      "sample": 10,
+      "position_in_original_block": 3,
+      "native_seconds": 21.020620584,
+      "verification_seconds": 0.07327279215678573,
+      "verified_delivery_seconds": 21.093893376156785,
+      "payload_bytes": 134217728,
+      "file_count": 1,
+      "payload_direction_ssh_stream_bytes": 134460670,
+      "sha256_passed": true
+    },
+    {
+      "direction": "pull",
+      "scenario": "fresh",
+      "tool": "MoonRelay",
+      "sample": 10,
+      "position_in_original_block": 1,
+      "native_seconds": 18.354885209,
+      "verification_seconds": 0.0566274169832468,
+      "verified_delivery_seconds": 18.411512625983246,
+      "payload_bytes": 134217728,
+      "file_count": 1,
+      "payload_direction_ssh_stream_bytes": 134386636,
+      "sha256_passed": true
+    },
+    {
+      "direction": "pull",
+      "scenario": "fresh",
+      "tool": "rclone SFTP",
+      "sample": 10,
+      "position_in_original_block": 2,
+      "native_seconds": 13.608177167,
+      "verification_seconds": 0.06869862484745681,
+      "verified_delivery_seconds": 13.676875791847456,
+      "payload_bytes": 134217728,
+      "file_count": 1,
+      "payload_direction_ssh_stream_bytes": 134456468,
+      "sha256_passed": true
+    },
+    {
+      "direction": "pull",
+      "scenario": "fresh",
+      "tool": "rsync",
+      "sample": 10,
+      "position_in_original_block": 3,
+      "native_seconds": 11.186930063,
+      "verification_seconds": 0.0748346250038594,
+      "verified_delivery_seconds": 11.26176468800386,
+      "payload_bytes": 134217728,
+      "file_count": 1,
+      "payload_direction_ssh_stream_bytes": 134430480,
+      "sha256_passed": true
+    },
+    {
+      "direction": "pull",
+      "scenario": "completed-rerun",
+      "tool": "rsync",
+      "sample": 10,
+      "position_in_original_block": 0,
+      "native_seconds": 0.133191959,
+      "verification_seconds": 0.06618383317254484,
+      "verified_delivery_seconds": 0.19937579217254484,
+      "payload_bytes": 134217728,
+      "file_count": 1,
+      "payload_direction_ssh_stream_bytes": 676,
+      "sha256_passed": true
+    },
+    {
+      "direction": "pull",
+      "scenario": "completed-rerun",
+      "tool": "rclone SFTP",
+      "sample": 10,
+      "position_in_original_block": 1,
+      "native_seconds": 0.128273625,
+      "verification_seconds": 0.0598993340972811,
+      "verified_delivery_seconds": 0.1881729590972811,
+      "payload_bytes": 134217728,
+      "file_count": 1,
+      "payload_direction_ssh_stream_bytes": 692,
+      "sha256_passed": true
+    },
+    {
+      "direction": "pull",
+      "scenario": "completed-rerun",
+      "tool": "MoonRelay",
+      "sample": 10,
+      "position_in_original_block": 2,
+      "native_seconds": 0.457450626,
+      "verification_seconds": 0.062347040977329016,
+      "verified_delivery_seconds": 0.519797666977329,
+      "payload_bytes": 134217728,
+      "file_count": 1,
+      "payload_direction_ssh_stream_bytes": 756,
+      "sha256_passed": true
+    },
+    {
+      "direction": "pull",
+      "scenario": "small-directory",
+      "tool": "rsync",
+      "sample": 10,
+      "position_in_original_block": 0,
+      "native_seconds": 0.237784813,
+      "verification_seconds": 0.010046584066003561,
+      "verified_delivery_seconds": 0.24783139706600357,
+      "payload_bytes": 2097152,
+      "file_count": 32,
+      "payload_direction_ssh_stream_bytes": 2102716,
+      "sha256_passed": true
+    },
+    {
+      "direction": "pull",
+      "scenario": "small-directory",
+      "tool": "MoonRelay",
+      "sample": 10,
+      "position_in_original_block": 1,
+      "native_seconds": 1.102530187,
+      "verification_seconds": 0.053024458931759,
+      "verified_delivery_seconds": 1.155554645931759,
+      "payload_bytes": 2097152,
+      "file_count": 32,
+      "payload_direction_ssh_stream_bytes": 2135340,
+      "sha256_passed": true
+    },
+    {
+      "direction": "pull",
+      "scenario": "small-directory",
+      "tool": "rclone SFTP",
+      "sample": 10,
+      "position_in_original_block": 2,
+      "native_seconds": 1.624936792,
+      "verification_seconds": 0.008517417125403881,
+      "verified_delivery_seconds": 1.6334542091254038,
+      "payload_bytes": 2097152,
+      "file_count": 32,
+      "payload_direction_ssh_stream_bytes": 2141950,
+      "sha256_passed": true
+    }
+  ],
+  "limitations": [
+    "Single host pair and sequential time windows, warm source and SSH, shared background load; not a universal ranking.",
+    "Independent complete SHA-256 and file-set verification is timed separately; native durability semantics differ.",
+    "Interruption at 32 MiB observed encrypted SSH stream, 8 MiB/s cap, client process group termination and payload disconnect; actual persisted prefixes can differ.",
+    "Restart timings include only the restarted command plus final verification.",
+    "SSH counters exclude TCP/IP framing and TCP retransmission; storage totals are unique-inode observations, not peak or reflink-aware physical use."
+  ]
+}

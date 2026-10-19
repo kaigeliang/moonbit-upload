@@ -106,9 +106,22 @@ HTTP 上传与 CLI 下载支持断点恢复；下载中断后，保留目标旁�
 
 用 moonrelay tasks ./results 查看任务、恢复文件占用和可回收字节数；用 moonrelay clean ./results/model.bin 校验最终文件后回收重复分块。HTTP 仓库的显式删除、锁保护和完整命令见[维护说明](docs/maintenance.md)。
 
-## 性能与选型
+## 与其他工具的差异
 
-[与 scp、rsync 的三轮实机对照](docs/transfer-comparison.md)包含首次传输、已完成重跑、小文件目录、中断恢复，以及内存、空间和 SSH 字节数。在本次 Mac→Linux 环境中，scp/rsync 的首次和小文件传输更快；MoonRelay 侧重可在 MoonBit 应用中直接调用的传输接口与恢复状态。完整参数、逐轮数字和复现工具均随报告提供。
+MoonRelay 适合希望在 MoonBit 应用中直接调用传输接口、读取进度和恢复状态的场景。需要通用文件同步时，应同时考虑 rsync；只需复制文件时，也可以使用 scp。
+
+**可下载版本 0.4.0：** 下表是同一 macOS → Linux 环境的中位耗时，单位秒，包含独立完整 SHA-256 / 文件集核验。首次传输与目录复制中，scp、rsync 更快；完成后重跑时，MoonRelay 可复用已完成内容，但耗时仍高于 rsync。
+
+| 场景 | MoonRelay 0.4.0 | scp | rsync |
+| --- | ---: | ---: | ---: |
+| 128 MiB 首次上传 | 19.376 | 6.928 | 6.812 |
+| 完成后重跑 | 2.255 | 6.431 | 0.434 |
+| 32 × 64 KiB 目录 | 9.750 | 1.857 | 0.325 |
+| 中断后重启阶段（8 MiB/s 上限） | 27.150 | 21.343 | 15.588 |
+
+0.4.0 接收端在清理前约保留两份文件内容；SSH 两端都需要安装 MoonRelay。完整范围、流量、内存、空间和参数见[发布版对照](docs/transfer-comparison.md)。这些是单组机器的观测，工具的同步与掉电持久性规则并未统一。
+
+**未发布开发版：** 另有[与 rsync、rclone SFTP 的双向对照](docs/development-comparison.md)。该快照的小目录传输快于本页 rclone 配置、慢于 rsync；大文件首传未全面领先。开发版数值不能当作 0.4.0 安装包或 Mooncakes 包的表现。
 
 ## 使用前了解这些限制
 
